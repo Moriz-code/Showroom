@@ -13,12 +13,14 @@
                 "boughtAt": "15/01/20"
         }
     ],
+
     "shop": [
-        {
+              {
                 "_id":"1234",
                 "name": "MyBrand",
                 "owner": {"_id" : "1111" , "name" : "mor" },
                 "description": "our Magical shop!",
+                
                 "media": {
                     "instagram": "",
                     "facebook": ""
