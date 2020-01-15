@@ -4,18 +4,20 @@ import {setCurrentItem } from '../actions/ShopActions';
 
 class ItemDetails extends Component {
 
-    componentDidMount=()=>{
+    componentDidMount(){
+        console.log(this.props.setCurrentItem);
+        
         this.props.setCurrentItem(this.props.match.params.id)
 
     }
 
     componentWillUnmount = () => {
-        this.props.setCurrentItem(null)
+        // this.props.setCurrentItem(null)
 
     }
 
     onBack = () => {
-        this.props.history.push('/')
+        // this.props.history.push('/')
     }
 
     render() {
@@ -30,7 +32,7 @@ class ItemDetails extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentItem: state.shop.currentItem,
+        // currentItem: state.shop.currentItem,
     };
 };
 
