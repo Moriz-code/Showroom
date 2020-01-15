@@ -1,8 +1,28 @@
-const INITIAL_STATE = {
 
-};
+const initalState = {
+    items: [],
+    selectedItem: null
+}
 
-export default function xxx(state = INITIAL_STATE, action) {
+export default function (state = initalState, action = {}) {
+    switch (action.type) {
+        case 'SET_ITEMS':
+            return { ...state, items: action.items }
 
-    return state;
+        case 'ITEM_ADD':
+            return { ...state, items: [...state.items, action.item] };
+
+        case 'ITEM_UPDATE':
+            return {
+                ...state,
+                items: state.items.map(item =>
+                    item.id === action.item.id ? action.item : item
+                )
+            };
+
+        default:
+            return state
+    }
+
+
 }
