@@ -7,7 +7,7 @@ const initalState = {
 export default function (state = initalState, action = {}) {
     switch (action.type) {
         case 'SET_ITEMS':
-            return { ...state, items: action.items }
+            return { ...state, items: action.items };
 
         case 'ITEM_ADD':
             return { ...state, items: [...state.items, action.item] };
@@ -20,9 +20,10 @@ export default function (state = initalState, action = {}) {
                 )
             };
 
+        case 'SET_ITEM':
+            return { ...state, selectedItem: action.item };
+
         default:
             return state
     }
-
-
 }

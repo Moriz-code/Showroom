@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import {setCurrentItem } from '../actions/ShopActions';
 
 class ItemDetails extends Component {
+
+    componentDidMount=()=>{
+        this.props.setCurrentItem(this.props.match.params.id)
+
+    }
+
+    componentWillUnmount = () => {
+        this.props.setCurrentItem(null)
+
+    }
+
+    onBack = () => {
+        this.props.history.push('/')
+    }
 
     render() {
         return (
@@ -13,14 +28,14 @@ class ItemDetails extends Component {
 
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        //state
+        currentItem: state.shop.currentItem,
     };
 };
 
 const mapDispatchToProps = {
-    //functions
+    setCurrentItem
 };
 
 export default connect(

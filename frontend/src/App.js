@@ -25,7 +25,11 @@ function App() {
       <NavBar></NavBar>
       <Switch>
         <Route component={ShopApp} path="/" exact></Route>
+<<<<<<< HEAD
         <Route component={SignUp} path="/signUp" exact></Route> 
+=======
+        <Route component={SignUp} path="/signUp" exact></Route>
+>>>>>>> cb12bcb3ec05ce9a343367e7b761fa0f61fa870d
         <Route component={ShopItems} path="/item" exact></Route>
         <Route component={Login} path="/login" exact></Route>
         <Route component={ItemDetails} path="/item/:id" exact></Route>
