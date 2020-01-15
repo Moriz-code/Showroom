@@ -20,7 +20,7 @@ const history = createBrowserHistory();
 
 function App() {
   return <React.Fragment>
-    <h1>Shop</h1>
+    <h1>Shop!</h1>
     <Router history={history}>
       <NavBar></NavBar>
       <Switch>
