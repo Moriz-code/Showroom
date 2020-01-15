@@ -16,6 +16,7 @@
     "redux": "^4.0.5",
     "redux-history": "^1.0.2",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.24.4",
     "thunk": "0.0.1"
   },
   "scripts": {
