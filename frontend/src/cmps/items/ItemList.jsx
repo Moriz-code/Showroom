@@ -1,5 +1,12 @@
 import React from 'react'
 
-export default function ItemList() {
-  return <div>ItemList</div>
+import ItemPreview from '../items/ItemPreview'
+import { withRouter } from "react-router";
+
+function ItemList(items) {
+  return <ul>{items.map(item=><ItemPreview key={item._id} item={item}></ItemPreview>)}</ul>
+
 }
+
+
+export default withRouter(ItemList)

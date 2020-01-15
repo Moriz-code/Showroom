@@ -2,9 +2,13 @@
 import ShopService from '../services/ShopService'
 
 export function loadItems() {
+    console.log('loadItems');
+
+    let items=[];
     return async dispatch => {
         try {
-            const items = await ShopService.query();
+            const shops = await ShopService.query();
+            shops.map(shop=>{items.push(shop.items);})
             dispatch(setItems(items));
         } catch (err) {
             console.log('ShopActions: err in loadItems', err);
@@ -13,6 +17,8 @@ export function loadItems() {
 }
 
 function setItems(items) {
+    console.log('setItems');
+
     return {
         type: 'SET_ITEMS',
         items
