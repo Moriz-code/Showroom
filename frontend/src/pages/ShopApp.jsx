@@ -5,11 +5,6 @@ class ShopApp extends Component {
 
 
     render() {
-<<<<<<< HEAD
-        return(
-            <h1>ShopApp!!!!!!!!!</h1>
-        ) 
-=======
         return <React.Fragment>
 
             <div>Buy and sell local fashion good</div>
@@ -30,7 +25,6 @@ class ShopApp extends Component {
 
             </div>
         </React.Fragment>
->>>>>>> 4f39933c4996784403a604ea7867d79a63fc6c66
     }
 }
 
