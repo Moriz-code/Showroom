@@ -13,6 +13,8 @@ var axios = Axios.create({
 
 export default {
     get(endpoint, data){
+        console.log('get');
+
         return ajax(endpoint, 'GET', data)
     },
     post(endpoint, data){

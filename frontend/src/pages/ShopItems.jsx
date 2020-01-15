@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { loadItems } from '../actions/ShopActions'
 
-// import ToyList from '../cmps/items/ItemList'
+import ItemsList from '../cmps/items/ItemList'
 
 class ShopItems extends Component {
 
   componentDidMount() {
+    console.log('componentDidMount');
     this.props.loadItems();
   }
 
   get itemsToShow() {
+    console.log('itemsToShow');
+
     return this.props.items;
   }
 
@@ -18,14 +21,16 @@ class ShopItems extends Component {
     return <React.Fragment>
       <h1>Shop-Items-page</h1>
 
-      {/* <ToyList items={this.itemsToShow}></ToyList> */}
+      <ItemsList items={this.itemsToShow}></ItemsList>
     </React.Fragment>
   }
 }
 
 const mapStateToProps = state => {
+  console.log('nbdsvcnsvc n');
+  
   return {
-    items: state.items
+    items: state.shop.items
   };
 };
 
