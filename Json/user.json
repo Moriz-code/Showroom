@@ -1,0 +1,19 @@
+[
+    {
+        "user": {
+            "_id":"123456",
+            "userName": "roy",
+            "fullName": "roy amar",
+            "password": "123",
+            "wishlist": [
+                {
+                    "id": "",
+                    "title": "",
+                    "price": 12,
+                    "imgUrl": ""
+                }
+            ],   
+            "shopId": "111"  
+        }
+    }
+]

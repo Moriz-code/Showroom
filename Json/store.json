@@ -1,0 +1,76 @@
+[
+    {
+        "shop": {
+            "_id":"1234",
+            "name": "MyBrand",
+            "owner": {"_id" : "1111" , "name" : "mor" },
+            "description": "our Magical shop!",
+            "media": {
+                "instagram": "",
+                "facebook": ""
+            },
+            "style": {
+                "bgColor": "#ffff",
+                "theme": "lovely Summer",
+                "videoUrl": "",
+                "coverImgUrl": "",
+                "logoUrl": ""
+            },
+            "products": [
+                {
+                    "id": "123",
+                    "title": "blue-dress",
+                    "price": 123,
+                    "description": "amazing dress!",
+                    "sizeFit": "the model is 180cm wearing size m",
+                    "size": "L",
+                    "gender": "female",
+                    "labels": ["dress","summer","slim fit"],
+                    "imgs": [],
+                    "reviews": [
+                        {
+                            "byUser":{"name" : "coral solomon" , "_id" : ""},
+                            "txt": "",
+                            "rate": 3
+                        }
+                    ]
+                }, {
+                    "id": "124",
+                    "title": "grenn-hat",
+                    "price": 12,
+                    "description": "The hat that everybody will talk about",
+                    "sizeFit": "the model wears size m",
+                    "size": "S",
+                    "gender": "male",
+                    "labels": ["accessories","hat"],
+                    "imgs": [],
+                    "reviews": [
+                        {
+                            "byUser":{"name" : "coral solomon" , "_id" : ""},
+                            "txt": "",
+                            "rate": 3
+                        }
+                    ]
+                },
+                {
+                    "id": "125",
+                    "title": "black-shirt",
+                    "price": 210,
+                    "description": "cozy black shirt",
+                    "sizeFit": "the model is 170cm. wear size m",
+                    "size": "M",
+                    "gender": "female",
+                    "labels": ["short sleeve","summer","cutton"],
+                    "imgs": [],
+                    "reviews": [
+                        {
+                            "byUser":{"name" : "coral solomon" , "_id" : ""},
+                            "txt": "",
+                            "rate": 3
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]
