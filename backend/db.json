@@ -32,7 +32,8 @@
                     "coverImgUrl": "",
                     "logoUrl": ""
                 },
-                "products": [
+                "products":
+                 [
                     {
                         "id": "123",
                         "title": "blue-dress",
