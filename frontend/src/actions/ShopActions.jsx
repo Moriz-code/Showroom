@@ -1,7 +1,23 @@
-<<<<<<< HEAD
-=======
 
-import ShopService from "../services/ShopService";
+import ShopService from '../services/ShopService'
+
+export function loadItems() {
+    return async dispatch => {
+        try {
+            const items = await ShopService.query();
+            dispatch(setItems(items));
+        } catch (err) {
+            console.log('ShopActions: err in loadItems', err);
+        }
+    }
+}
+
+function setItems(items) {
+    return {
+        type: 'SET_ITEMS',
+        items
+    }
+}
 
 export function setCurrentItem(itemId) {
     return async (dispatch) => {
@@ -14,4 +30,4 @@ export function setCurrentItem(itemId) {
 
     }
 }
->>>>>>> cb12bcb3ec05ce9a343367e7b761fa0f61fa870d
+
