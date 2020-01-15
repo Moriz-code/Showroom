@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { loadItems } from '../actions/ShopActions'
 
+<<<<<<< HEAD
 import ItemsList from '../cmps/items/ItemList'
+=======
+// import ToyList from '../cmps/items/ItemList'
+>>>>>>> 4f39933c4996784403a604ea7867d79a63fc6c66
 
 class ShopItems extends Component {
 
@@ -21,7 +25,11 @@ class ShopItems extends Component {
     return <React.Fragment>
       <h1>Shop-Items-page</h1>
 
+<<<<<<< HEAD
       <ItemsList items={this.itemsToShow}></ItemsList>
+=======
+      {/* <ToyList items={this.itemsToShow}></ToyList> */}
+>>>>>>> 4f39933c4996784403a604ea7867d79a63fc6c66
     </React.Fragment>
   }
 }

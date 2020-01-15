@@ -1,0 +1,54 @@
+.home-categories{
+    
+    div {
+        border-radius: 5px;
+        background-color: lightcyan;
+    }
+    display: grid;
+    grid-gap:1.5vh;
+    min-height: 100vh;
+    grid-template-columns: auto;
+    grid-template-rows: 50px 50px;
+    grid-template-areas:
+    'a a a a a'
+    'a a a a a'
+    'a a a a a'
+    'b b c c c'
+    'b b c c c'
+    'd d c c c'
+    'e e e e e'
+    ;
+}
+
+
+
+.category-a {
+    grid-area: a;
+   
+    background-position: center;
+  }
+
+  .category-b {
+    background-image: url("../assets/imgs/cover.jpg");
+    grid-area: b;
+  }
+
+  .category-c {
+    background-image: url("../assets/imgs/summer.jpg");
+    background-size: 130% 100%;
+    background-repeat: no-repeat;
+    grid-area: c;
+  }
+
+  .category-d {
+    background-image: url("../assets/imgs/back.jpg");
+    background-size: 80% 180%;
+    grid-area: d;
+  }
+
+  .category-e {
+    
+    background-size: 100% 100%;
+    grid-area: e;
+  }
+

@@ -5,6 +5,10 @@ const initalState = {
 }
 
 export default function (state = initalState, action = {}) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4f39933c4996784403a604ea7867d79a63fc6c66
     
     switch (action.type) {
         case 'SET_ITEMS':
