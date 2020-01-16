@@ -22,6 +22,7 @@ async function add(item) {
 
 
 async function get(itemId) {
+  
     const item = await HttpService.get(`item/${itemId}`);
 
      return  item

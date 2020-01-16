@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { loadItems } from '../actions/ItemActions'
+import Filter from '../cmps/items/Filter'
 
 import ItemsList from '../cmps/items/ItemList'
 
@@ -11,16 +12,11 @@ class ShopItems extends Component {
 
   }
 
-  // get itemsToShow() {
-  //   console.log('itemsToShow');
-  //   console.log(this.props.items);
-  //   return this.props.items;
-  // }
-
   render() {
     // const { items } = this.props.items
     return (
       <React.Fragment>
+        <Filter></Filter>
         {this.props.items ? <ItemsList items={this.props.items}>
         </ItemsList>:'shit!'}
       </React.Fragment>)

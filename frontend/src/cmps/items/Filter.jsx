@@ -5,70 +5,59 @@ import { connect } from 'react-redux';
 
 class Filter extends Component {
 
-  onSelectFilter = (ev) => {
-    // let filter = ev.target;
-  }
-
-  onChangeSortKey = (ev) => {
-    //change sort
-  }
-
-  get currentFilter() {
-    return this.props.currentFilter;
-  }
 
   render() {
     return <React.Fragment>
-      Price:
+
       <input type="range" name="points" min="0" max="10" />
-
-
-{/* gender */}
-Gender: 
-      <input type="checkbox" name="gender" value="Women"/>
-      <input type="checkbox" name="gender" value="Men"/>
+      {/* colors */}
+      <select>
+      <option value="" disabled selected>Color</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="blue">Blue</option>
+        <option value="pink">Pink</option>
+      </select>
+      {/* gender */}
+      <select>
+      <option value="" disabled selected>Gender</option>
+        <option value="women">Women</option>
+        <option value="man">Men</option>
+        <option value="unisex">Unisex</option>
+      </select>
+      {/* sizes */}
+      <select>
+      <option value="" disabled selected>Size</option>
+        <option value="s">S</option>
+        <option value="m">M</option>
+        <option value="l">L</option>
+      </select>
+      {/* brand */}
+      <select>
+      <option value="" disabled selected>Brand</option>
+        <option value="zara">Zara</option>
+        <option value="asos">Asos</option>
+        <option value="urban">Urban</option>
+      </select>
       
-
-      Brand: 
-      <input type="checkbox" name="brand" value=""/>
-      <input type="checkbox" name="brand" value=""/>
-      <input type="checkbox" name="brand" value=""/>
-      <input type="checkbox" name="brand" value=""/>
-
-
-
-
-
-      {/* <form action="/action_page.php">
-  <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-  <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
-  <input type="checkbox" name="vehicle3" value="Boat" checked> I have a boat<br><br>
-  <input type="submit" value="Submit">
-</form> */}
-    
-  
-
     </React.Fragment>
-            }
-          
-          }
-          
-          
+  }
+
+}
+
+
+
 const mapStateToProps = state => {
   return {
-              items: state.items
-          }
-        }
-        
+    //state
+  };
+};
+
 const mapDispatchToProps = {
+  //functions
+};
 
-              filterBy,
-              sortBy
-              // loadItems
-            }
-
-            export default connect(mapStateToProps, mapDispatchToProps)(Filter);
-// export default function Filter() {
-//   return <div>Filter</div>
-// }
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Filter);
