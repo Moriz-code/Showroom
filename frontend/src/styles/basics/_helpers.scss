@@ -28,3 +28,24 @@
         align-items: center;
     }
 }
+
+
+// GRIDS
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 10px;
+}
+
+
+//list Helpers
+
+.clean-list{
+    list-style-type: none;
+}
+
+.clean-line{
+    text-decoration: none;
+    color:black
+}

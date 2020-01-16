@@ -4,7 +4,7 @@
             "_id": "1123",
             "product": {
                 "id": "125",
-                "title": "black-shirt",
+                "title": "Champion Boyfriend Logo Patch Hoodie Sweatshirt",
                 "price": 210,
                 "imgUrl": "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjglZiJnIXnAhVGJlAKHVWFDKMQjRx6BAgBEAQ&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fhuman&psig=AOvVaw2h53jVLqbAwmfVFNkaDpW2&ust=1579164430110761"
             },
@@ -42,7 +42,7 @@
     "item": [
         {
             "id": "123",
-            "title": "blue-dress",
+            "title": "Holland Thermal Henley Top",
             "price": 123,
             "description": "amazing dress!",
             "sizeFit": "the model is 180cm wearing size m",
@@ -76,7 +76,7 @@
         },
         {
             "id": "124",
-            "title": "grenn-hat",
+            "title": "Julia Tiered Ruffle Mini Dress",
             "price": 12,
             "description": "The hat that everybody will talk about",
             "sizeFit": "the model wears size m",
@@ -109,7 +109,7 @@
         },
         {
             "id": "125",
-            "title": "black-shirt",
+            "title": "Out From Under Ella Long Sleeve Cropped Tee",
             "price": 210,
             "description": "cozy black shirt",
             "sizeFit": "the model is 170cm. wear size m",
