@@ -20,7 +20,7 @@ export default function (state = initalState, action = {}) {
             return {
                 ...state,
                 items: state.items.map(item =>
-                    item.id === action.item.id ? action.item : item
+                    item._id === action.item._id ? action.item : item
                 )
             };
 
