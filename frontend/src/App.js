@@ -15,7 +15,7 @@ import Cart from './pages/customer/Cart'
 import Header from './cmps/Header'
 import Footer from './cmps/Footer'
 
-import './styles/global.scss';
+import './styles/global.scss'
 const history = createBrowserHistory();
 
 function App() {

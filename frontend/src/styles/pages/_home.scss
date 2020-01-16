@@ -29,7 +29,7 @@
 
 .category-a {
     grid-area: a;
-    background-image: url("../assets/imgs/textue.jpg");
+     background-image: url("../assets/imgs/textue.jpg");
     background-size: 100% 100%;
     background-color: lightgray;
   }
@@ -49,13 +49,14 @@
   }
 
   .category-d {
-    background-image: url("../assets/imgs/summer.jpg");
+    //  background-image: url("../assets/imgs/summer2.jpg");
     background-size: 100% 100%;
     grid-area: d;
   }
 
   .category-e {
-    background-image: url("../assets/imgs/sale.jpg");
+    
+    // background-image: url("../assets/imgs/sale.jpg");
     background-size: 50% 150%;
     background-repeat: no-repeat;
     grid-area: e;

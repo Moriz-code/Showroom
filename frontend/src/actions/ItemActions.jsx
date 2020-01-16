@@ -29,13 +29,7 @@ export function setCurrentItem(itemId) {
 
     return async dispatch => {
         try {
-            const shop = await ItemService.query();
-     
-            const shopItems=shop[0].items
-            const item=shopItems.find(item=>item.id===itemId)
-
-            // const item = await ShopService.get(itemId)
-            // console.log(item);
+            const item = await ItemService.get(itemId);
             
             await dispatch({ type: 'SET_ITEM', item })
         } catch (err) {

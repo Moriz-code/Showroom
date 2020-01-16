@@ -19,7 +19,9 @@
     "redux": "^4.0.5",
     "redux-history": "^1.0.2",
     "redux-thunk": "^2.3.0",
+    "resolve-url-loader": "^3.1.1",
     "sass": "^1.24.4",
+    "sass-loader": "^8.0.2",
     "thunk": "0.0.1"
   },
   "scripts": {

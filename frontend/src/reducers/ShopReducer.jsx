@@ -1,7 +1,7 @@
 
 const initalState = {
     items: [],
-    selectedItem: null
+
 }
 export default function (state = initalState, action = {}) {
     
@@ -22,9 +22,6 @@ export default function (state = initalState, action = {}) {
                     item.id === action.item.id ? action.item : item
                 )
             };
-
-        case 'SET_ITEM':
-            return { ...state, selectedItem: action.item };
 
         default:
             return state
