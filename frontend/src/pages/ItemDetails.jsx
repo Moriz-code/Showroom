@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { setCurrentItem } from '../actions/ShopActions';
-import Avatar from '@material-ui/core/Avatar';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+// import Avatar from '@material-ui/core/Avatar';
+// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
 class ItemDetails extends Component {
 
     componentDidMount() {
@@ -34,7 +34,7 @@ class ItemDetails extends Component {
                     <div>
                         <h1> {item.title}</h1>
                         <div className="store-details flex">
-                            <Avatar alt="Remy Sharp" src="https://scontent.ftlv1-2.fna.fbcdn.net/v/t1.0-9/10559713_10153073749172830_4028919375654008823_n.jpg?_nc_cat=110&_nc_ohc=TqMHX-jzQCcAX_JVJD3&_nc_ht=scontent.ftlv1-2.fna&oh=366d9a3e70b80391ab1885fe174797f4&oe=5E8DD8EF" />
+                            {/* <Avatar alt="Remy Sharp" src="https://scontent.ftlv1-2.fna.fbcdn.net/v/t1.0-9/10559713_10153073749172830_4028919375654008823_n.jpg?_nc_cat=110&_nc_ohc=TqMHX-jzQCcAX_JVJD3&_nc_ht=scontent.ftlv1-2.fna&oh=366d9a3e70b80391ab1885fe174797f4&oe=5E8DD8EF" /> */}
                             <h4> Seller:Roy Amar</h4>
                         </div>
                         <div> {item.price}$</div>
@@ -45,8 +45,8 @@ class ItemDetails extends Component {
                             <button>Buy Now</button>
                         </div>
                         <h5>{item.sizeFit}</h5>
-                        <FavoriteBorderIcon> </FavoriteBorderIcon>
-                        <FavoriteIcon></FavoriteIcon>
+                        {/* <FavoriteBorderIcon> </FavoriteBorderIcon>
+                        <FavoriteIcon></FavoriteIcon> */}
                     </div>
                 </section>
                 <h3> Item description:
