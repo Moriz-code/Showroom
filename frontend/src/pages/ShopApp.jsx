@@ -7,12 +7,16 @@ class ShopApp extends Component {
     render() {
         return <React.Fragment>
 
-            <div>Buy and sell local fashion good</div>
-            <button>Shop Now</button>
 
-            <div className="home-categories category-a">
-                <div className="category-b">WOMEN</div>
-                <div className="category-c">NEW</div>
+
+            <div className="container home-categories">
+
+                <div className="category-a">
+                    <p>Buy and sell local fashion good</p>
+                    <button>Shop Now</button>
+                </div>
+                <div className="category-b">MEN</div>
+                <div className="category-c">WOMEN</div>
                 <div className="category-d">SUMMER SALE</div>
                 <div className="category-e">LAST CHANCE</div>
             </div>
