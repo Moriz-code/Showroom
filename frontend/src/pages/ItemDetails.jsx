@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { setCurrentItem } from '../actions/ShopActions';
+import { setCurrentItem } from '../actions/ItemActions';
 // import Avatar from '@material-ui/core/Avatar';
 // import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 // import FavoriteIcon from '@material-ui/icons/Favorite';

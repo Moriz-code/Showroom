@@ -1,5 +1,5 @@
 {
-    "orders": [
+    "order": [
         {
             "_id": "1123",
             "product": {
@@ -39,7 +39,7 @@
             }
         }
     ],
-    "items": [
+    "item": [
         {
             "id": "123",
             "title": "blue-dress",
@@ -48,9 +48,9 @@
             "sizeFit": "the model is 180cm wearing size m",
             "size": "L",
             "gender": "female",
-            "itemOwner" : {
+            "itemOwner": {
                 "id": "1234",
-                "name" : "MyBrand",
+                "name": "MyBrand",
                 "logoUrl": ""
             },
             "labels": [
@@ -58,7 +58,11 @@
                 "summer",
                 "slim fit"
             ],
-            "imgs": [],
+            "imgs": [
+                "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,h_900,q_auto,w_600/media/catalog/product/0/i/0i4a9280_2.jpg",
+                "https://res-3.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9245_3.jpg",
+                "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9294_1_2.jpg"
+            ],
             "reviews": [
                 {
                     "byUser": {
@@ -82,7 +86,11 @@
                 "accessories",
                 "hat"
             ],
-            "imgs": [],
+            "imgs": [
+                "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0475_2.jpg",
+                "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0491_5.jpg",
+                "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0528_3.jpg"
+            ],
             "reviews": [
                 {
                     "byUser": {
@@ -107,7 +115,11 @@
                 "summer",
                 "cutton"
             ],
-            "imgs": [],
+            "imgs": [
+                "https://res-5.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9599_2.jpg",
+                "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9594_2_10.jpg",
+                "https://res-3.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9630_1.jpg"
+            ],
             "reviews": [
                 {
                     "byUser": {
