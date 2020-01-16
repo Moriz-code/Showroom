@@ -1,5 +1,4 @@
 import ShopService from '../services/ShopService'
-import ShopService from '../services/ShopService'
 
 export function loadItems() {
     console.log('loadItems');
@@ -31,13 +30,13 @@ export function setCurrentItem(itemId) {
     return async dispatch => {
         try {
             const shop = await ShopService.query();
-     
-            const shopItems=shop[0].items
-            const item=shopItems.find(item=>item.id===itemId)
+
+            const shopItems = shop[0].items
+            const item = shopItems.find(item => item.id === itemId)
 
             // const item = await ShopService.get(itemId)
             // console.log(item);
-            
+
             await dispatch({ type: 'SET_ITEM', item })
         } catch (err) {
             console.log('ReviewActions: err in loadReviews', err);
