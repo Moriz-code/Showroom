@@ -7,6 +7,8 @@ import Store from './store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+
+
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // const store = createStore(composeEnhancers(applyMiddleware(thunk)))
 
