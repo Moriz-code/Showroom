@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { loadItems } from '../actions/ShopActions'
+import { loadItems } from '../actions/ItemActions'
 
 import ItemsList from '../cmps/items/ItemList'
 

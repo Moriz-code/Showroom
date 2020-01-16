@@ -1,5 +1,5 @@
 
-import ShopService from '../services/ShopService'
+import ItemService from '../services/ItemService'
 
 export function loadItems() {
     console.log('loadItems');
@@ -7,7 +7,7 @@ export function loadItems() {
     let items=[];
     return async dispatch => {
         try {
-            const shops = await ShopService.query();
+            const shops = await ItemService.query();
             shops.map(shop=>{items.push(shop.items);})
             dispatch(setItems(items));
         } catch (err) {
@@ -29,7 +29,7 @@ export function setCurrentItem(itemId) {
 
     return async dispatch => {
         try {
-            const shop = await ShopService.query();
+            const shop = await ItemService.query();
      
             const shopItems=shop[0].items
             const item=shopItems.find(item=>item.id===itemId)
