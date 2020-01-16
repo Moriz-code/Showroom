@@ -2,58 +2,65 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 class Filter extends Component {
+
+  state = {
+    isToggle: '',
+    isClicked: ''
+  }
+
+  onSelectFilter = async (ev) => {
+
+    // this.setState((prevState) => {
+    //   if (prevState.isClicked === '') this.state.isClicked = ev.target.value
+    //   else this.state.isClicked = ''
+    // })
+    // let key = ev.target.name
+    // let value = this.state.isClicked
+    // console.log({ [key]: value });
+
+
+    // this.props.setFilters({ [key]: value });
+  }
+
+  onToggleActive = () => {
+    this.setState((prevState) => {
+      if (prevState.isToggle === '') return this.state.isToggle = 'is-active'
+      return this.state.isToggle = ''
+    })
+
+  }
 
 
   render() {
     return <React.Fragment>
+      <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
+        Color
+  <ul className="checkbox-dropdown-list" >
+          <li>
+            <label>
+              <input type="checkbox" value="black" name="color" onChange={this.onSelectFilter} />Black</label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" value="white" name="color" />White</label>
+          </li>
+        </ul>
+      </div>
 
-      <input type="range" name="points" min="0" max="10" />
-      {/* colors */}
-      <select>
-      <option value="" disabled selected>Color</option>
-        <option value="black">Black</option>
-        <option value="white">White</option>
-        <option value="blue">Blue</option>
-        <option value="pink">Pink</option>
-      </select>
-      {/* gender */}
-      <select>
-      <option value="" disabled selected>Gender</option>
-        <option value="women">Women</option>
-        <option value="man">Men</option>
-        <option value="unisex">Unisex</option>
-      </select>
-      {/* sizes */}
-      <select>
-      <option value="" disabled selected>Size</option>
-        <option value="s">S</option>
-        <option value="m">M</option>
-        <option value="l">L</option>
-      </select>
-      {/* brand */}
-      <select>
-      <option value="" disabled selected>Brand</option>
-        <option value="zara">Zara</option>
-        <option value="asos">Asos</option>
-        <option value="urban">Urban</option>
-      </select>
-      
+
     </React.Fragment>
   }
 
 }
-
-
-
 const mapStateToProps = state => {
   return {
-    //state
+    // filter: state.filter
   };
 };
 
 const mapDispatchToProps = {
+  // setFilters
   //functions
 };
 

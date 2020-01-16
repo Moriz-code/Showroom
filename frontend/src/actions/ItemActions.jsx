@@ -18,11 +18,18 @@ function setItems(items) {
     }
 }
 
+// export function setFilters(filters) {
+//     return {
+//         type: 'SET_FILTERS',
+//         filters
+//     }
+// }
+
 export function setCurrentItem(itemId) {
     return async dispatch => {
         try {
             const item = await ItemService.get(itemId);
-            
+
             await dispatch({ type: 'SET_ITEM', item })
         } catch (err) {
             console.log('ReviewActions: err in loadReviews', err);
