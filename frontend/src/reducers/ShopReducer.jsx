@@ -3,11 +3,13 @@ const initalState = {
     items: [],
     selectedItem: null
 }
-
 export default function (state = initalState, action = {}) {
     
     switch (action.type) {
         case 'SET_ITEMS':
+            console.log('action.type');
+            console.log('coral',{ ...state, items: action.items });
+
             return { ...state, items: action.items };
 
         case 'ITEM_ADD':
