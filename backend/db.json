@@ -19,7 +19,7 @@
     ],
     "shop": [
         {
-            "id": "1234",
+            "_id": "1234",
             "name": "MyBrand",
             "owner": {
                 "_id": "1111",
@@ -27,21 +27,21 @@
             },
             "description": "our Magical shop!",
             "media": {
-                "instagram": "",
-                "facebook": ""
+                "instagram": "https://www.instagram.com/pitzkulim/",
+                "facebook": "https://www.facebook.com/Pitzkulim/"
             },
             "style": {
-                "bgColor": "#ffff",
+                "bgColor": "#FFD075",
                 "theme": "lovely Summer",
-                "videoUrl": "",
-                "coverImgUrl": "",
-                "logoUrl": ""
+                "videoUrl": "https://www.youtube.com/watch?v=zx5SzWW5Fhs",
+                "coverImgUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                "logoUrl": "https://cdn.shopifycloud.com/hatchful-web/assets/6fcc76cfd1c59f44d43a485167fb3139.png"
             }
         }
     ],
     "item": [
         {
-            "id": "123",
+            "_id": "123",
             "title": "blue-dress",
             "price": 123,
             "description": "amazing dress!",
@@ -75,7 +75,7 @@
             ]
         },
         {
-            "id": "124",
+            "_id": "124",
             "title": "grenn-hat",
             "price": 12,
             "description": "The hat that everybody will talk about",
@@ -83,7 +83,7 @@
             "size": "S",
             "gender": "male",
             "itemOwner": {
-                "id": "1234",
+                "id": "1111",
                 "name": "MyBrand",
                 "logoUrl": ""
             },
@@ -116,7 +116,7 @@
             "size": "M",
             "gender": "female",
             "itemOwner": {
-                "id": "1234",
+                "id": "3333",
                 "name": "MyBrand",
                 "logoUrl": ""
             },

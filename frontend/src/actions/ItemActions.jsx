@@ -1,4 +1,3 @@
-
 import ItemService from '../services/ItemService'
 
 export function loadItems() {
@@ -20,7 +19,6 @@ function setItems(items) {
 }
 
 export function setCurrentItem(itemId) {
-
     return async dispatch => {
         try {
             const item = await ItemService.get(itemId);

@@ -4,7 +4,7 @@ export function loadShop(shopId) {
     return async dispatch => {
         try {
             const shop = await ShopService.get(shopId);
-            dispatch(setShop(shop));
+            dispatch(setShop(shop));    
         } catch (err) {
             console.log(`cant get shop ${shopId}`);
         }
@@ -12,12 +12,17 @@ export function loadShop(shopId) {
 
 }
 
-function setShop(shop){
+
+function setShop(shop) {
     return {
         type: 'SET_SHOP',
         shop
     }
 }
+
+
+
+
 
 
 

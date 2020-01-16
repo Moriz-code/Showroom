@@ -7,6 +7,6 @@ export default function Footer() {
       <li>About Us</li>
       <li>Contact Us</li>
     </ul>
-    <logo>LOGO</logo>
+   <div>LOGO</div>
   </div>
 }

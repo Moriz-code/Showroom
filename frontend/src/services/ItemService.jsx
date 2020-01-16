@@ -8,7 +8,6 @@ export default {
 };
 
 function query() {
-
     return HttpService.get('item');
 }
 
