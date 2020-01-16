@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 class ShopApp extends Component {
 
@@ -13,7 +15,7 @@ class ShopApp extends Component {
 
                 <div className="category-a">
                     <p>Buy and sell local fashion good</p>
-                    <button>Shop Now</button>
+                    <Link to="/item"><button>Shop Now</button></Link>
                 </div>
                 <div className="category-b">MEN</div>
                 <div className="category-c">WOMEN</div>

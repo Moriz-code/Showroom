@@ -5,7 +5,8 @@ import UserReducer from './UserReducer';
 import ItemReducer from './ItemReducer';
 
 const rootReducer = combineReducers({
-    order:OrderReducer,
+    item: ItemReducer,
+    order: OrderReducer,
     shop: ShopReducer,
     user: UserReducer,
     item:ItemReducer
