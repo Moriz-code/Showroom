@@ -1,5 +1,5 @@
 {
-    "orders": [
+    "order": [
         {
             "_id": "1123",
             "product": {
@@ -39,7 +39,7 @@
             }
         }
     ],
-    "items": [
+    "item": [
         {
             "id": "123",
             "title": "blue-dress",
