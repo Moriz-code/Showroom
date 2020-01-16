@@ -9,10 +9,15 @@ class Filter extends Component {
     isClicked: ''
   }
 
-  onSelectFilter = async (ev) => {
+  onSelectFilter = (ev) => {
+console.log(ev.target.value);
 
     // this.setState((prevState) => {
-    //   if (prevState.isClicked === '') this.state.isClicked = ev.target.value
+    //   if (prevState.isClicked === ''){
+    //     this.state.isClicked = ev.target.value
+        // console.log(this.state.isClicked);
+        
+    //   } 
     //   else this.state.isClicked = ''
     // })
     // let key = ev.target.name
