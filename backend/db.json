@@ -42,7 +42,7 @@
                         "size": "L",
                         "gender": "female",
                         "labels": ["dress","summer","slim fit"],
-                        "imgs": [],
+                        "imgs": ["https://www.lulus.com/images/product/xlarge/3304170_595952.jpg?w=560"],
                         "reviews": [
                             {
                                 "byUser":{"name" : "coral solomon" , "_id" : ""},
