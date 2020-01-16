@@ -7,6 +7,7 @@ export default function NavBar() {
         <ul className="navbar">
             <li><NavLink activeClassName="active" to='/item' exact>Shop</NavLink></li>
             <li><NavLink activeClassName="active" to='/' exact>About Us</NavLink></li>
+            <li><NavLink activeClassName="active" to='/cart' exact>Cart</NavLink></li>
         </ul>
     </React.Fragment>
 }

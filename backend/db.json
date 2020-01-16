@@ -19,7 +19,7 @@
     ],
     "shop": [
         {
-            "id": "1234",
+            "_id": "1234",
             "name": "MyBrand",
             "owner": {
                 "_id": "1111",
@@ -41,7 +41,7 @@
     ],
     "item": [
         {
-            "id": "123",
+            "_id": "123",
             "title": "Holland Thermal Henley Top",
             "price": 123,
             "description": "amazing dress!",
@@ -75,7 +75,7 @@
             ]
         },
         {
-            "id": "124",
+            "_id": "124",
             "title": "Julia Tiered Ruffle Mini Dress",
             "price": 12,
             "description": "The hat that everybody will talk about",
@@ -108,7 +108,7 @@
             ]
         },
         {
-            "id": "125",
+            "_id": "125",
             "title": "Out From Under Ella Long Sleeve Cropped Tee",
             "price": 210,
             "description": "cozy black shirt",

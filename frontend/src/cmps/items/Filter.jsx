@@ -39,6 +39,7 @@ class Filter extends Component {
         <option value="asos">Asos</option>
         <option value="urban">Urban</option>
       </select>
+      
     </React.Fragment>
   }
 
