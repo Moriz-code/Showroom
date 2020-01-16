@@ -8,7 +8,7 @@ export default {
 };
 
 function query() {
-    console.log('query');
+
     return HttpService.get('item');
 }
 
@@ -27,5 +27,3 @@ async function get(itemId) {
 
      return  item
 }
-
-//save 
