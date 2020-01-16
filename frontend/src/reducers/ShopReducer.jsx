@@ -1,32 +1,20 @@
 
-// const initalState = {
-//     items: [],
-//   
-// }
-// export default function (state = initalState, action = {}) {
-    
-//     switch (action.type) {
-//         case 'SET_ITEMS':
-//             console.log('action.type');
-//             console.log('coral',{ ...state, items: action.items });
+const initalState = {
 
-//             return { ...state, items: action.items };
+    //for future use
+    shops: [],
+    selectedShop: null
+}
 
-//         case 'ITEM_ADD':
-//             return { ...state, items: [...state.items, action.item] };
+export default function (state = initalState, action = {}) {
+    switch (action.type) {
+        case 'SET_SHOP':
+            return { state, selectedShop: action.shop }
+            
+        default:
+            return state
+    }
 
-//         case 'ITEM_UPDATE':
-//             return {
-//                 ...state,
-//                 items: state.items.map(item =>
-//                     item.id === action.item.id ? action.item : item
-//                 )
-//             };
 
-//         case 'SET_ITEM':
-//             return { ...state, selectedItem: action.item };
+}
 
-//         default:
-//             return state
-//     }
-// }
