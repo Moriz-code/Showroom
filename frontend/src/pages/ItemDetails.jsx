@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { setCurrentItem } from '../actions/ItemActions';
-// import Avatar from '@material-ui/core/Avatar';
-// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
+import OrderService from '../services/OrderService'
+
 class ItemDetails extends Component {
 
     state = {
@@ -12,10 +11,7 @@ class ItemDetails extends Component {
     }
 
     componentDidMount() {
-
-
         this.props.setCurrentItem(this.props.match.params.id)
-
     }
 
     componentWillUnmount = () => {
@@ -27,9 +23,19 @@ class ItemDetails extends Component {
         this.props.history.push('/')
     }
 
-    toggleImg = (imgIndex) => {
+    setMainImg = (imgIndex) => {
         this.setState({ imgIndex })
     }
+
+    onAddToCart=()=>{
+        OrderService.addItemtoCart(this.props.item)
+    }
+
+    onBuyNow=async()=>{
+       await OrderService.addItemtoCart(this.props.item)
+       this.props.history.push('/cart')
+    }
+
 
     render() {
         const { item } = this.props
@@ -40,9 +46,9 @@ class ItemDetails extends Component {
                 <section className="item-container flex space-between">
                     <div className="item-img container flex">
                         <div className="item-secondary-image flex column">
-                            <img onClick={() => this.toggleImg(0)} src={item.imgs[0]} alt="image" style={{ height: "100px", width: "100px" }} />
-                            <img onClick={() => this.toggleImg(1)} src={item.imgs[1]} alt="image" style={{ height: "100px", width: "100px" }} />
-                            <im onClick={() => this.toggleImg(2)} src={item.imgs[2]} alt="image" style={{ height: "100px", width: "100px" }} />
+                            <img onClick={() => this.setMainImg(0)} src={item.imgs[0]} alt="image" style={{ height: "100px", width: "100px" }} />
+                            <img onClick={() => this.setMainImg(1)} src={item.imgs[1]} alt="image" style={{ height: "100px", width: "100px" }} />
+                            <im onClick={() => this.setMainImg(2)} src={item.imgs[2]} alt="image" style={{ height: "100px", width: "100px" }} />
                         </div>
                         <div className="item-main-image flex">
                             <img src={item.imgs[this.state.imgIndex]} alt="image" style={{ height: "450px", width: "570px" }} />
@@ -61,8 +67,8 @@ class ItemDetails extends Component {
                         <div>Size:{item.size}</div>
                         <input type="number" placeholder="1 "></input>
                         <div className="item-buttons flex">
-                            <button>Add to cart</button>
-                            <button>Buy Now</button>
+                            <button onClick={this.onAddToCart}>Add to cart</button>
+                            <button onClick={this.onBuyNow}>Buy Now</button>
                         </div>
                         <h5>{item.sizeFit}</h5>
                     </div>
