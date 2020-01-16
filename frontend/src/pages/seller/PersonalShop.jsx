@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { loadShop } from '../../actions/ShopActions';
-import { loadItems } from '../../actions/ItemActions';
-import ItemsList from '../../cmps/items/ItemList'
+// import { getItemById } from '../../actions/ShopActions';
+import { loadItems , setCurrentItem} from '../../actions/ItemActions';
+import ItemsList from '../../cmps/items/ItemList';
+import ShopSettings from '../../cmps/shop/ShopSettings';
 
 import InstgaramIcon from '../../styles/assets/logo/insta.png';
 import FacebookIcon from '../../styles/assets/logo/facebook.png';
@@ -11,8 +12,9 @@ import FacebookIcon from '../../styles/assets/logo/facebook.png';
 class PersonalShop extends Component {
 
     componentDidMount() {
-        this.props.loadShop(this.props.match.params.id);
-        this.props.loadItems();
+        this.props.setCurrentItem(this.props.match.params.id);
+       
+        // this.props.loadItems();
         // console.log('loadShop ' , this.props.match.params.id);     
     }
 
@@ -25,7 +27,9 @@ class PersonalShop extends Component {
             <React.Fragment>
                 <h1>SHOP</h1>
                 {this.props.shop.selectedShop ?
+              
                     <div style={{ backgroundColor: selectedShop.style.bgColor }}>
+                        <ShopSettings></ShopSettings>
                         <div className="shop-coverImg" style={{ backgroundImage: 'url(' + selectedShop.style.coverImgUrl + ')' }}></div>
                         <img className="shop-logo" src={selectedShop.style.logoUrl} />
                         <h1>{selectedShop.name}</h1>
@@ -59,11 +63,12 @@ const mapStateToProps = state => {
     return {
         shop: state.shop,
         items: state.item.items
+        // currentShop: state.selectedItem
     };
 };
 
 const mapDispatchToProps = {
-    loadShop,
+    setCurrentItem,
     loadItems
 };
 

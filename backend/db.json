@@ -19,11 +19,31 @@
     ],
     "shop": [
         {
-            "_id": "1234",
+            "_id": "123",
             "name": "MyBrand",
             "owner": {
-                "_id": "1111",
+                "_id": "111",
                 "name": "mor"
+            },
+            "description": "our Magical shop!",
+            "media": {
+                "instagram": "https://www.instagram.com/pitzkulim/",
+                "facebook": "https://www.facebook.com/Pitzkulim/"
+            },
+            "style": {
+                "bgColor": "#FFD075",
+                "theme": "lovely Summer",
+                "videoUrl": "https://www.youtube.com/watch?v=zx5SzWW5Fhs",
+                "coverImgUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                "logoUrl": "https://cdn.shopifycloud.com/hatchful-web/assets/6fcc76cfd1c59f44d43a485167fb3139.png"
+            }
+        },
+        {
+            "_id": "456",
+            "name": "AnotherBrand",
+            "owner": {
+                "_id": "222",
+                "name": "Roy"
             },
             "description": "our Magical shop!",
             "media": {
@@ -41,7 +61,7 @@
     ],
     "item": [
         {
-            "_id": "123",
+            "_id": "111",
             "title": "Holland Thermal Henley Top",
             "price": 123,
             "description": "amazing dress!",
@@ -49,7 +69,7 @@
             "size": "L",
             "gender": "female",
             "itemOwner": {
-                "id": "1234",
+                "id": "123",
                 "name": "MyBrand",
                 "logoUrl": ""
             },
@@ -83,7 +103,7 @@
             "size": "S",
             "gender": "male",
             "itemOwner": {
-                "id": "1111",
+                "id": "456",
                 "name": "MyBrand",
                 "logoUrl": ""
             },

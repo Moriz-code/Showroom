@@ -1,9 +1,9 @@
 import ShopService from '../services/ShopService';
 
-export function loadShop(shopId) {
+export function loadShopByItemId(itemId) {
     return async dispatch => {
         try {
-            const shop = await ShopService.get(shopId);
+            const shop = await ShopService.getByItemId(itemId);
             dispatch(setShop(shop));    
         } catch (err) {
             console.log(`cant get shop ${shopId}`);

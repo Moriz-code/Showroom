@@ -9,7 +9,7 @@ export default function (state = initalState, action = {}) {
     
     switch (action.type) {
         case 'SET_ITEMS':
-            console.log('SET_ITEMS',{...state, items: action.items});
+            // console.log('SET_ITEMS',{...state, items: action.items});
             
             return { ...state, items: action.items };
 

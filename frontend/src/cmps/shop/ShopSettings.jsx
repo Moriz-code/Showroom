@@ -1,5 +1,5 @@
 import React from 'react'
 
-export default function ShopSetting() {
+export default function ShopSettings() {
   return <div>ShopSetting</div>
 }

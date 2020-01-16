@@ -18,6 +18,8 @@ function setItems(items) {
     }
 }
 
+
+
 // export function setFilters(filters) {
 //     return {
 //         type: 'SET_FILTERS',
