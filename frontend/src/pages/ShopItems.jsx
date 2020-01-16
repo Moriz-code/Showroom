@@ -11,29 +11,25 @@ class ShopItems extends Component {
 
   }
 
-  get itemsToShow() {
-    console.log('itemsToShow');
-    console.log(this.props.items);
-    return this.props.items;
-
-  }
+  // get itemsToShow() {
+  //   console.log('itemsToShow');
+  //   console.log(this.props.items);
+  //   return this.props.items;
+  // }
 
   render() {
-    const { items } = this.props.items
-    console.log('shopItems',this.props.items);
+    // const { items } = this.props.items
     return (
       <React.Fragment>
-        {items ? <ItemsList items={this.props.items[0]}>
+        {this.props.items ? <ItemsList items={this.props.items}>
         </ItemsList>:'shit!'}
       </React.Fragment>)
   }
 }
 
 const mapStateToProps = state => {
-  console.log('state.shop', state.shop);
-
   return {
-    items: state.shop.items
+    items: state.item.items
   };
 };
 

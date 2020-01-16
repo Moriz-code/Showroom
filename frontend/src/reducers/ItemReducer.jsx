@@ -1,13 +1,15 @@
 
 const initalState = {
     items: [],
-    selectedItem: null
+    selectedItem:null
 }
 
 export default function (state = initalState, action = {}) {
     
     switch (action.type) {
         case 'SET_ITEMS':
+            console.log('SET_ITEMS',{...state, items: action.items});
+            
             return { ...state, items: action.items };
 
         case 'ITEM_ADD':

@@ -2,23 +2,17 @@
 import ItemService from '../services/ItemService'
 
 export function loadItems() {
-    console.log('loadItems');
-
-    let items=[];
     return async dispatch => {
         try {
-            const shops = await ItemService.query();
-            shops.map(shop=>{items.push(shop.items);})
+            const items = await ItemService.query();
             dispatch(setItems(items));
         } catch (err) {
-            console.log('ShopActions: err in loadItems', err);
+            console.log('ItemActions: err in loadItems', err);
         }
     }
 }
 
 function setItems(items) {
-    console.log('setItems');
-
     return {
         type: 'SET_ITEMS',
         items
