@@ -7,7 +7,10 @@ class ItemPreview extends Component {
   generateBtns = () => {
     switch (this.props.listMode) {
       case "cartMode":
-        return <button onClick={()=>this.handleDelete(this.props.item._id)}>X</button>
+        return (<div>
+                <button onClick={()=>this.handleDelete(this.props.item._id)}>X</button>
+                </div>
+        )
 
       case "adminMode":
         return (
