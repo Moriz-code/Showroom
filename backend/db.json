@@ -59,9 +59,9 @@
                 "slim fit"
             ],
             "imgs": [
-                "https://images.asos-media.com/products/prettylittlething-exclusive-oversized-jumper-dress-in-pale-blue/14482377-1-blue?$XXL$&wid=513&fit=constrain",
-                "https://images.asos-media.com/products/prettylittlething-exclusive-oversized-jumper-dress-in-pale-blue/14482377-2?$XXL$&wid=513&fit=constrain",
-                "https://images.asos-media.com/products/prettylittlething-exclusive-oversized-jumper-dress-in-pale-blue/14482377-4?$XXL$&wid=513&fit=constrain"
+                "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,h_900,q_auto,w_600/media/catalog/product/0/i/0i4a9280_2.jpg",
+                "https://res-3.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9245_3.jpg",
+                "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9294_1_2.jpg"
             ],
             "reviews": [
                 {
@@ -82,11 +82,20 @@
             "sizeFit": "the model wears size m",
             "size": "S",
             "gender": "male",
+            "itemOwner": {
+                "id": "1234",
+                "name": "MyBrand",
+                "logoUrl": ""
+            },
             "labels": [
                 "accessories",
                 "hat"
             ],
-            "imgs": [],
+            "imgs": [
+                "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0475_2.jpg",
+                "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0491_5.jpg",
+                "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0528_3.jpg"
+            ],
             "reviews": [
                 {
                     "byUser": {
@@ -106,12 +115,21 @@
             "sizeFit": "the model is 170cm. wear size m",
             "size": "M",
             "gender": "female",
+            "itemOwner": {
+                "id": "1234",
+                "name": "MyBrand",
+                "logoUrl": ""
+            },
             "labels": [
                 "short sleeve",
                 "summer",
                 "cutton"
             ],
-            "imgs": [],
+            "imgs": [
+                "https://res-5.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9599_2.jpg",
+                "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9594_2_10.jpg",
+                "https://res-3.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9630_1.jpg"
+            ],
             "reviews": [
                 {
                     "byUser": {
