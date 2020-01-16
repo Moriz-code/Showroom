@@ -13,11 +13,11 @@ class ShopItems extends Component {
   }
 
   render() {
-    // const { items } = this.props.items
+    const { items } = this.props
     return (
       <React.Fragment>
         <Filter></Filter>
-        {this.props.items ? <ItemsList items={this.props.items}>
+        {items ? <ItemsList items={items}>
         </ItemsList>:'shit!'}
       </React.Fragment>)
   }

@@ -1,7 +1,8 @@
 
 const initalState = {
     items: [],
-    selectedItem:null
+    selectedItem:null,
+    filter:''
 }
 
 export default function (state = initalState, action = {}) {
