@@ -1,162 +1,188 @@
 {
-    "order": [
+  "order": [
+    {
+      "_id": "1123",
+      "product": {
+        "id": "125",
+        "title": "Champion Boyfriend Logo Patch Hoodie Sweatshirt",
+        "price": 210,
+        "imgUrl": "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjglZiJnIXnAhVGJlAKHVWFDKMQjRx6BAgBEAQ&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fhuman&psig=AOvVaw2h53jVLqbAwmfVFNkaDpW2&ust=1579164430110761"
+      },
+      "fromShop": {
+        "name": "MyBrand"
+      },
+      "byUser": {
+        "userName": "roy"
+      },
+      "boughtAt": "15/01/20"
+    },
+    {
+      "product": {
+        "id": "123",
+        "title": "Holland Thermal Henley Top",
+        "price": 123,
+        "imgUrl": "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,h_900,q_auto,w_600/media/catalog/product/0/i/0i4a9280_2.jpg"
+      },
+      "fromShop": {
+        "id": "1234",
+        "name": "MyBrand"
+      },
+      "byUser": {
+        "id": "123456",
+        "name": "roy amar"
+      },
+      "boughtAt": 1579268513904,
+      "_id": "29SFuOa"
+    }
+  ],
+  "shop": [
+    {
+      "_id": "1234",
+      "info": {
+        "name": "My Brand",
+        "description": "I belive in second hand high-quality clothes!",
+        "instagram": "https://www.instagram.com/pitzkulim/",
+        "facebook": "https://www.facebook.com/Pitzkulim/"
+      },
+      "owner": {
+        "_id": "1111",
+        "name": "mor"
+      },
+      "style": {
+        "bgColor": "#FFD075",
+        "theme": "lovely Summer",
+        "videoUrl": "https://www.youtube.com/watch?v=zx5SzWW5Fhs",
+        "coverImgUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        "logoUrl": "https://cdn.shopifycloud.com/hatchful-web/assets/6fcc76cfd1c59f44d43a485167fb3139.png"
+      }
+    }
+  ],
+  "item": [
+    {
+      "_id": "123",
+      "title": "Holland Thermal Henley Top",
+      "price": 123,
+      "description": "amazing dress!",
+      "sizeFit": "the model is 180cm wearing size m",
+      "size": "L",
+      "gender": "female",
+      "itemOwner": {
+        "id": "1234",
+        "name": "MyBrand",
+        "logoUrl": ""
+      },
+      "labels": [
+        "dress",
+        "summer",
+        "slim fit"
+      ],
+      "imgs": [
+        "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,h_900,q_auto,w_600/media/catalog/product/0/i/0i4a9280_2.jpg",
+        "https://res-3.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9245_3.jpg",
+        "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9294_1_2.jpg"
+      ],
+      "reviews": [
         {
-            "_id": "1123",
-            "product": {
-                "id": "125",
-                "title": "Champion Boyfriend Logo Patch Hoodie Sweatshirt",
-                "price": 210,
-                "imgUrl": "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjglZiJnIXnAhVGJlAKHVWFDKMQjRx6BAgBEAQ&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fhuman&psig=AOvVaw2h53jVLqbAwmfVFNkaDpW2&ust=1579164430110761"
-            },
-            "fromShop": {
-                "name": "MyBrand"
-            },
-            "byUser": {
-                "userName": "roy"
-            },
-            "boughtAt": "15/01/20"
+          "byUser": {
+            "name": "coral solomon",
+            "_id": ""
+          },
+          "txt": "",
+          "rate": 3
         }
-    ],
-    "shop": [
+      ]
+    },
+    {
+      "_id": "124",
+      "title": "grenn-hat",
+      "price": 12,
+      "description": "The hat that everybody will talk about",
+      "sizeFit": "the model wears size m",
+      "size": "S",
+      "gender": "male",
+      "itemOwner": {
+        "id": "1111",
+        "name": "MyBrand",
+        "logoUrl": ""
+      },
+      "labels": [
+        "accessories",
+        "hat"
+      ],
+      "imgs": [
+        "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0475_2.jpg",
+        "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0491_5.jpg",
+        "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0528_3.jpg"
+      ],
+      "reviews": [
         {
-            "_id": "1234",
-            "name": "MyBrand",
-            "owner": {
-                "_id": "1111",
-                "name": "mor"
-            },
-            "description": "our Magical shop!",
-            "media": {
-                "instagram": "https://www.instagram.com/pitzkulim/",
-                "facebook": "https://www.facebook.com/Pitzkulim/"
-            },
-            "style": {
-                "bgColor": "#FFD075",
-                "theme": "lovely Summer",
-                "videoUrl": "https://www.youtube.com/watch?v=zx5SzWW5Fhs",
-                "coverImgUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-                "logoUrl": "https://cdn.shopifycloud.com/hatchful-web/assets/6fcc76cfd1c59f44d43a485167fb3139.png"
-            }
+          "byUser": {
+            "name": "coral solomon",
+            "_id": ""
+          },
+          "txt": "",
+          "rate": 3
         }
-    ],
-    "item": [
+      ]
+    },
+    {
+      "_id": "125",
+      "title": "Out From Under Ella Long Sleeve Cropped Tee",
+      "price": 210,
+      "description": "cozy black shirt",
+      "sizeFit": "the model is 170cm. wear size m",
+      "size": "M",
+      "gender": "female",
+      "itemOwner": {
+        "id": "3333",
+        "name": "MyBrand",
+        "logoUrl": ""
+      },
+      "labels": [
+        "short sleeve",
+        "summer",
+        "cutton"
+      ],
+      "imgs": [
+        "https://res-5.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9599_2.jpg",
+        "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9594_2_10.jpg",
+        "https://res-3.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9630_1.jpg"
+      ],
+      "reviews": [
         {
-            "_id": "123",
-            "title": "Holland Thermal Henley Top",
-            "price": 123,
-            "description": "amazing dress!",
-            "sizeFit": "the model is 180cm wearing size m",
-            "size": "L",
-            "gender": "female",
-            "itemOwner": {
-                "id": "1234",
-                "name": "MyBrand",
-                "logoUrl": ""
-            },
-            "labels": [
-                "dress",
-                "summer",
-                "slim fit"
-            ],
-            "imgs": [
-                "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,h_900,q_auto,w_600/media/catalog/product/0/i/0i4a9280_2.jpg",
-                "https://res-3.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9245_3.jpg",
-                "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9294_1_2.jpg"
-            ],
-            "reviews": [
-                {
-                    "byUser": {
-                        "name": "coral solomon",
-                        "_id": ""
-                    },
-                    "txt": "",
-                    "rate": 3
-                }
-            ]
+          "byUser": {
+            "name": "coral solomon",
+            "_id": ""
+          },
+          "txt": "",
+          "rate": 3
+        }
+      ]
+    }
+  ],
+  "user": [
+    {
+      "_id": "123456",
+      "userName": "roy",
+      "fullName": "roy amar",
+      "password": "123",
+      "wishlist": [
+        {
+          "id": "",
+          "title": "",
+          "price": 12,
+          "imgs": []
         },
         {
-            "_id": "124",
-            "title": "grenn-hat",
-            "price": 12,
-            "description": "The hat that everybody will talk about",
-            "sizeFit": "the model wears size m",
-            "size": "S",
-            "gender": "male",
-            "itemOwner": {
-                "id": "1111",
-                "name": "MyBrand",
-                "logoUrl": ""
-            },
-            "labels": [
-                "accessories",
-                "hat"
-            ],
-            "imgs": [
-                "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0475_2.jpg",
-                "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0491_5.jpg",
-                "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0528_3.jpg"
-            ],
-            "reviews": [
-                {
-                    "byUser": {
-                        "name": "coral solomon",
-                        "_id": ""
-                    },
-                    "txt": "",
-                    "rate": 3
-                }
-            ]
-        },
-        {
-            "_id": "125",
-            "title": "Out From Under Ella Long Sleeve Cropped Tee",
-            "price": 210,
-            "description": "cozy black shirt",
-            "sizeFit": "the model is 170cm. wear size m",
-            "size": "M",
-            "gender": "female",
-            "itemOwner": {
-                "id": "3333",
-                "name": "MyBrand",
-                "logoUrl": ""
-            },
-            "labels": [
-                "short sleeve",
-                "summer",
-                "cutton"
-            ],
-            "imgs": [
-                "https://res-5.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9599_2.jpg",
-                "https://res-1.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9594_2_10.jpg",
-                "https://res-3.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a9630_1.jpg"
-            ],
-            "reviews": [
-                {
-                    "byUser": {
-                        "name": "coral solomon",
-                        "_id": ""
-                    },
-                    "txt": "",
-                    "rate": 3
-                }
-            ]
+          "id": "123",
+          "title": "Holland Thermal Henley Top",
+          "price": 123,
+          "imgs": [
+            "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,h_900,q_auto,w_600/media/catalog/product/0/i/0i4a9280_2.jpg"
+          ]
         }
-    ],
-    "user": [
-        {
-            "_id": "123456",
-            "userName": "roy",
-            "fullName": "roy amar",
-            "password": "123",
-            "wishlist": [
-                {
-                    "id": "",
-                    "title": "",
-                    "price": 12,
-                    "imgUrl": ""
-                }
-            ],
-            "shopId": "111"
-        }
-    ]
+      ],
+      "shopId": "111"
+    }
+  ]
 }

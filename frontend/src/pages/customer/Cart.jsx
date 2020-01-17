@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import orderService from '../../services/OrderService'
 import ItemsList from '../../cmps/items/ItemList'
-
+import { placeOrder } from '../../actions/OrderActions'
 
 class Cart extends Component {
 
@@ -29,12 +29,20 @@ class Cart extends Component {
         return totalPrice
     }
 
+    onPlaceOrder = async () => {
+        await this.props.placeOrder(this.props.loggedInUser)
+        await this.clearCart()
+        this.props.history.push("/")
+    }
 
+    clearCart=async()=>{
+        orderService.clearCart()
+    }
     render() {
         return (<div>
             <div>
                 Total: {this.calculateTotal()}$
-            <button>PLACE ORDER</button>
+            <button onClick={this.onPlaceOrder}>PLACE ORDER</button>
             </div>
             {this.state.items ?
                 <div>
@@ -54,12 +62,12 @@ class Cart extends Component {
 
 const mapStateToProps = state => {
     return {
-        //state
+        loggedInUser: state.user.loggedInUser
     };
 };
 
 const mapDispatchToProps = {
-    //functions
+    placeOrder
 };
 
 export default connect(

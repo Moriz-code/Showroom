@@ -11,6 +11,11 @@ class ItemPreview extends Component {
                 <button onClick={()=>this.handleDelete(this.props.item._id)}>X</button>
                 </div>
         )
+      case "wishListMode":
+        return (<div>
+                <button onClick={()=>this.handleDelete(this.props.item._id)}>X</button>
+                </div>
+        )
 
       case "adminMode":
         return (
