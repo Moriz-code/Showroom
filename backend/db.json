@@ -46,8 +46,8 @@
             "price": 123,
             "description": "amazing dress!",
             "sizeFit": "the model is 180cm wearing size m",
-            "size": "L",
-            "gender": "female",
+            "size": "l",
+            "gender": "women",
             "itemOwner": {
                 "id": "1234",
                 "name": "MyBrand",
@@ -80,8 +80,8 @@
             "price": 12,
             "description": "The hat that everybody will talk about",
             "sizeFit": "the model wears size m",
-            "size": "S",
-            "gender": "male",
+            "size": "s",
+            "gender": "men",
             "itemOwner": {
                 "id": "1111",
                 "name": "MyBrand",
@@ -110,11 +110,11 @@
         {
             "_id": "125",
             "title": "Out From Under Ella Long Sleeve Cropped Tee",
-            "price": 210,
+            "price": 15,
             "description": "cozy black shirt",
             "sizeFit": "the model is 170cm. wear size m",
-            "size": "M",
-            "gender": "female",
+            "size": "s",
+            "gender": "unisex",
             "itemOwner": {
                 "id": "3333",
                 "name": "MyBrand",

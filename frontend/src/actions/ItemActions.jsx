@@ -18,12 +18,21 @@ function setItems(items) {
     }
 }
 
-// export function setFilters(filters) {
-//     return {
-//         type: 'SET_FILTERS',
-//         filters
-//     }
-// }
+export function removeFilter(filter){
+    console.log('removeFilter',filter);
+    return{
+        type: 'REMOVE_FILTER',
+        filter
+    }
+}
+
+export function setFilters(filters) {
+    console.log('filters',filters);
+    return {
+        type: 'SET_FILTERS',
+        filters
+    }
+}
 
 export function setCurrentItem(itemId) {
     return async dispatch => {
