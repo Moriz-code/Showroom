@@ -12,20 +12,52 @@ class ShopItems extends Component {
 
   }
 
+  get filteredItems() {
+    let filterKey, filterValue;
+    const { items } = this.props;
+    const { filter } = this.props;
+    let filteredItems = items;
+    if (filter.length === 0) return this.props.items
+    else {
+      filter.forEach((filter) => {
+        for (const key in filter) {
+          filterKey = key;
+          filterValue = filter[key]
+          filteredItems = filteredItems.filter((item) => {
+            console.log('item', item);
+            console.log('filterKey', filterKey);
+            // console.log('item[filterKey]', item[filterKey]);
+            console.log('filterValue', filterValue);
+            // debugger;
+            if ((filterKey === 'shop') && (item.itemOwner.name === filterValue)) return true
+            else if ((filterKey === 'price') && (item[filterKey] <= filterValue)) return true
+            else if (item[filterKey] === filterValue) return true
+            else return false
+          })
+        }
+      })
+      return filteredItems;
+    }
+  }
+
+
+
+
+
   render() {
-    const { items } = this.props
     return (
       <React.Fragment>
         <Filter></Filter>
-        {items ? <ItemsList items={items}>
-        </ItemsList>:'shit!'}
+        {this.filteredItems.length !== 0 ? <ItemsList items={this.filteredItems}>
+        </ItemsList> : 'NO ITEMS!'}
       </React.Fragment>)
   }
 }
 
 const mapStateToProps = state => {
   return {
-    items: state.item.items
+    items: state.item.items,
+    filter: state.item.filter
   };
 };
 
@@ -37,3 +69,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ShopItems);
+
+

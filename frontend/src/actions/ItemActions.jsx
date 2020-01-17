@@ -18,13 +18,21 @@ function setItems(items) {
     }
 }
 
+export function removeFilter(filter){
+    console.log('removeFilter',filter);
+    return{
+        type: 'REMOVE_FILTER',
+        filter
+    }
+}
 
-// export function setFilters(filters) {
-//     return {
-//         type: 'SET_FILTERS',
-//         filters
-//     }
-// }
+export function setFilters(filters) {
+    console.log('filters',filters);
+    return {
+        type: 'SET_FILTERS',
+        filters
+    }
+}
 
 
 // export function setFilter(filterBy) {
