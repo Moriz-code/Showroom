@@ -6,7 +6,8 @@ export default {
     post,
     put,
     remove,
-    postMany
+    postMany,
+    clearStorage
 }
 
 function query(entityType) {
@@ -20,7 +21,7 @@ function get(entityType, entityId) {
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 function post(entityType, newEntity) {
-    newEntity._id = _makeId()
+    // newEntity._id = _makeId() //// turned off because it changes the item id(roy)    
     return query(entityType)
         .then(entities => {
             entities.push(newEntity);
@@ -60,6 +61,12 @@ function remove(entityType, entityId) {
 
 function _save(entityType, entities) {
     localStorage.setItem(entityType, JSON.stringify(entities))
+}
+
+
+function clearStorage(){
+    localStorage.removeItem('order');
+
 }
 
 function _makeId(length = 5) {

@@ -27,6 +27,12 @@
     &.align-center {
         align-items: center;
     }
+    &.justify-space-around { 
+        justify-content: space-around;
+    }
+    &.justify-space-between { 
+        justify-content: space-between;
+    }
 }
 
 
