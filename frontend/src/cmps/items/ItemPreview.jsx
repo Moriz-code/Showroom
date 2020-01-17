@@ -9,7 +9,15 @@ class ItemPreview extends Component {
   generateBtns = () => {
     switch (this.props.listMode) {
       case "cartMode":
-        return <button onClick={() => this.handleDelete(this.props.item._id)}>X</button>
+        return (<div>
+                <button onClick={()=>this.handleDelete(this.props.item._id)}>X</button>
+                </div>
+        )
+      case "wishListMode":
+        return (<div>
+                <button onClick={()=>this.handleDelete(this.props.item._id)}>X</button>
+                </div>
+        )
 
       case "adminMode":
         return (
@@ -33,7 +41,7 @@ class ItemPreview extends Component {
       <Link to={`/item/${this.props.item._id}`}>
 
         <li className="item-card clean-line">
-          <img src={this.props.item.imgs[0]} />
+          <img alt="img-item" src={this.props.item.imgs[0]} />
           <h3>{this.props.item.title}</h3>
           <p>{this.props.item.price}</p>
 

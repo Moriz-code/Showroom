@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import ShopApp from './pages/ShopApp'
@@ -27,11 +27,11 @@ function App() {
         <Route component={SignUp} path="/signUp" exact></Route>
         <Route component={ShopItems} path="/item" exact></Route>
         <Route component={Login} path="/login" exact></Route>
+        <Route component={Wishlist} path="/wishlist" exact></Route>
         <Route component={ItemDetails} path="/item/:id" exact></Route>
         <Route component={About} path="/about" exact></Route>
         <Route component={PersonalShop} path="/shop/:id" exact></Route>
         <Route component={Dashboard} path="/dashboard" exact></Route>
-        <Route component={Wishlist} path="/wishlist" exact></Route>
         <Route component={Cart} path="/cart" exact></Route>
       </Switch>
     </Router>

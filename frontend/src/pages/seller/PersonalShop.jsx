@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { loadShop, updateShopSettings } from '../../actions/ShopActions';
-import { loadItems, setFilterBy, deleteItem } from '../../actions/ItemActions';
+import { loadItems, deleteItem } from '../../actions/ItemActions';
 import ItemsList from '../../cmps/items/ItemList';
 import ShopSettings from '../../cmps/shop/ShopSettings'
 
@@ -94,7 +94,7 @@ class PersonalShop extends Component {
                             <h2 className="designer-name">
                             Shop Owner <br></br>{selectedShop.owner.name}</h2>
                                
-                             <iframe className="shop-video" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                             <iframe title="video" className="shop-video" src="https://www.youtube.com/embed/tgbNymZ7vqY">
                             </iframe> 
 
 

@@ -15,62 +15,60 @@
         "userName": "roy"
       },
       "boughtAt": "15/01/20"
+    },
+    {
+      "product": {
+        "id": "123",
+        "title": "Holland Thermal Henley Top",
+        "price": 123,
+        "imgUrl": "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,h_900,q_auto,w_600/media/catalog/product/0/i/0i4a9280_2.jpg"
+      },
+      "fromShop": {
+        "id": "1234",
+        "name": "MyBrand"
+      },
+      "byUser": {
+        "id": "123456",
+        "name": "roy amar"
+      },
+      "boughtAt": 1579268513904,
+      "_id": "29SFuOa"
     }
   ],
   "shop": [
     {
-      "_id": "123",
+      "_id": "1234",
       "info": {
         "name": "My Brand",
-        "description": "I belive in second hand high-quality clothes! and in light-salmon",
+        "description": "I belive in second hand high-quality clothes!",
         "instagram": "https://www.instagram.com/pitzkulim/",
         "facebook": "https://www.facebook.com/Pitzkulim/"
       },
       "owner": {
-        "id": "111",
-        "name": "Mor Zeevi"
+        "id": "1111",
+        "name": "mor"
       },
       "style": {
-        "bgColor": "#400080",
+        "bgColor": "#FFD075",
         "theme": "lovely Summer",
         "videoUrl": "https://www.youtube.com/watch?v=zx5SzWW5Fhs",
-        "coverImgUrl": "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/p-385-mckinsey-21a0557-kut.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=600&s=76c4564dcb43e30c5c1648e880b70af2",
-        "logoUrl": "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v518-wan-67-badge_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1000&s=00a83077882f951428f6a76df166fda2"
-      }
-    },
-    {
-      "_id": "456",
-      "info": {
-        "name": "Brand!",
-        "description": "roy shop!",
-        "instagram": "https://www.instagram.com/pitzkulim/",
-        "facebook": "https://www.facebook.com/Pitzkulim/"
-      },
-      "owner": {
-        "id": "111",
-        "name": "roy"
-      },
-      "style": {
-        "bgColor": "#808080",
-        "theme": "lovely Summer",
-        "videoUrl": "https://www.youtube.com/watch?v=zx5SzWW5Fhs",
-        "coverImgUrl": "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/p-385-mckinsey-21a0557-kut.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=600&s=76c4564dcb43e30c5c1648e880b70af2",
-        "logoUrl": "https://about.canva.com/wp-content/uploads/sites/3/2016/08/logos-1.png",
+        "coverImgUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        "logoUrl": "https://cdn.shopifycloud.com/hatchful-web/assets/6fcc76cfd1c59f44d43a485167fb3139.png",
         "darkMode": ""
       }
     }
   ],
   "item": [
     {
-      "_id": "111",
+      "_id": "123",
       "title": "Holland Thermal Henley Top",
       "price": 123,
       "description": "amazing dress!",
       "sizeFit": "the model is 180cm wearing size m",
-      "size": "L",
+      "size": "l",
       "gender": "female",
       "itemOwner": {
-        "id": "123",
+        "id": "1234",
         "name": "MyBrand",
         "logoUrl": ""
       },
@@ -101,10 +99,10 @@
       "price": 12,
       "description": "The hat that everybody will talk about",
       "sizeFit": "the model wears size m",
-      "size": "S",
+      "size": "l",
       "gender": "male",
       "itemOwner": {
-        "id": "456",
+        "id": "1111",
         "name": "MyBrand",
         "logoUrl": ""
       },
@@ -134,7 +132,7 @@
       "price": 210,
       "description": "cozy black shirt",
       "sizeFit": "the model is 170cm. wear size m",
-      "size": "M",
+      "size": "m",
       "gender": "female",
       "itemOwner": {
         "id": "3333",
@@ -174,7 +172,15 @@
           "id": "",
           "title": "",
           "price": 12,
-          "imgUrl": ""
+          "imgs": []
+        },
+        {
+          "id": "123",
+          "title": "Holland Thermal Henley Top",
+          "price": 123,
+          "imgs": [
+            "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,h_900,q_auto,w_600/media/catalog/product/0/i/0i4a9280_2.jpg"
+          ]
         }
       ],
       "shopId": "111"
