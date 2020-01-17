@@ -4,15 +4,17 @@ import { withRouter } from "react-router";
 
 
 class ItemPreview extends Component {
+
+
   generateBtns = () => {
     switch (this.props.listMode) {
       case "cartMode":
-        return <button onClick={()=>this.handleDelete(this.props.item._id)}>X</button>
+        return <button onClick={() => this.handleDelete(this.props.item._id)}>X</button>
 
       case "adminMode":
         return (
           <div>
-            <button onClick={()=>this.handleDelete(this.props.item._id)}>delete</button>
+            <button onClick={() => this.handleDelete(this.props.item._id)}>delete</button>
             <button>edit</button>
           </div>
         )
@@ -20,10 +22,11 @@ class ItemPreview extends Component {
         break;
     }
   }
-    handleDelete=(itemId)=>{
-      this.props.deleteItem(itemId)
-    }
-    
+
+  handleDelete = (itemId) => {
+    this.props.deleteItem(itemId)
+  }
+
 
   render() {
     return (<React.Fragment>

@@ -1,13 +1,20 @@
 import HttpService from './HttpService';
 
 export default {
-    getByItemId
+    get,
+    put
 }
 
-async function getByItemId(itemId){
-    const foundItem = items.find(item => item._d === itemId)
-    const shop = await HttpService.get(`shop/${itemId}`)
+async function get(shopId){
+    const shop = await HttpService.get(`shop/${shopId}`)
     return shop
 }
 
+async function put(shop){
+    console.log('Shop Service ', shop);
+    const shopUpdate = await HttpService.put(`shop/${shop._id}` , shop)
+    return shopUpdate
+}
 
+
+// async function put(shopId)
