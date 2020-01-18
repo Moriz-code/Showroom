@@ -13,7 +13,7 @@ class PersonalShop extends Component {
 
 
     state = {
-        isOnEditSettigs: true,
+        isOnEditSettigs: false,
         shop: {
             _id: '',
             info: {
@@ -42,7 +42,7 @@ class PersonalShop extends Component {
         this.props.loadItems();
 
 
-      
+
         await new Promise(resolve => { setTimeout(resolve, 1000); })
         this.setState({ shop: this.props.shop.selectedShop })
         return Promise.resolve();
@@ -72,6 +72,15 @@ class PersonalShop extends Component {
         this.props.updateShopSettings(this.state.shop);
     }
 
+    onEditSettings = () => {
+        this.setState(state => ({
+            isOnEditSettigs: !state.isOnEditSettigs
+        })
+        )
+        console.log(this.state.isOnEditSettigs);
+        
+    }
+
 
 
     render() {
@@ -82,8 +91,9 @@ class PersonalShop extends Component {
                     <div className="shop-container" style={{ backgroundColor: selectedShop.style.bgColor }}>
                         <div className="shop-header">
                             {/* settings */}
-                            <div onClick={this.onEditSettings}></div>
-                            <div className={this.state.isOnEditSettigs ? '' : 'display-none'}>
+
+                            <div onClick={this.onEditSettings}>Edit</div>
+                            <div className={this.state.isOnEditSettigs ? 'modal' : 'display-none'}>
                                 <ShopSettings onSave={this.onSave} handleChange={this.handleChange} shop={this.state.shop}></ShopSettings>
                             </div>
 
@@ -92,10 +102,10 @@ class PersonalShop extends Component {
                             <h1 className="title">{selectedShop.info.name}</h1>
                             <h2 className="description">{selectedShop.info.description}</h2>
                             <h2 className="designer-name">
-                            Shop Owner <br></br>{selectedShop.owner.name}</h2>
-                               
-                             <iframe title="video" className="shop-video" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                            </iframe> 
+                                Shop Owner <br></br>{selectedShop.owner.name}</h2>
+
+                            <iframe title="video" className="shop-video" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                            </iframe>
 
 
                             <div className="insta-icon">
@@ -110,7 +120,7 @@ class PersonalShop extends Component {
                                 </a>
                             </div>
                         </div>
-                        {this.props.items ? <ItemsList deleteItem={deleteItem} listMode="adminMode" items={this.props.items}> </ItemsList> : 'There is No Items'} 
+                        {this.props.items ? <ItemsList deleteItem={deleteItem} listMode="adminMode" items={this.props.items}> </ItemsList> : 'There is No Items'}
                     </div>
                     : 'this shop is not availble'}
 

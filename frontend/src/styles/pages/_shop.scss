@@ -81,6 +81,11 @@
     grid-row: 11/ 12;
 }
 
+.setting-panel{
+    grid-column: 1 / 5;
+    grid-row: 2/ 12;
+}
+
 
 // {this.props.shop.selectedShop ?
 //     <div className="shop-container" style={{ backgroundColor: selectedShop.style.bgColor }}>
