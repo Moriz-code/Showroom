@@ -17,12 +17,11 @@ class Wishlist extends Component{
     }
     render(){
        
-        console.log(this.props.loggedInUser.wishlist[1].imgUrl);
+       
         
         return(
             <div>
                 <ItemsList deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>
-                <img src={this.props.loggedInUser.wishlist[1].imgUrl} alt=""/>
             </div>
         )
     }

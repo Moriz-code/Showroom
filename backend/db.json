@@ -49,7 +49,7 @@
         "name": "mor"
       },
       "style": {
-        "bgColor": "#FFD075",
+        "bgColor": "#ff0080",
         "theme": "lovely Summer",
         "videoUrl": "https://www.youtube.com/watch?v=zx5SzWW5Fhs",
         "coverImgUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
@@ -173,6 +173,14 @@
           "title": "",
           "price": 12,
           "imgs": []
+        },
+        {
+          "id": "124",
+          "title": "grenn-hat",
+          "price": 12,
+          "imgs": [
+            "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0475_2.jpg"
+          ]
         },
         {
           "id": "124",
