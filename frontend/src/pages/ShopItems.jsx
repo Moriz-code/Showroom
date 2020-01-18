@@ -26,11 +26,11 @@ class ShopItems extends Component {
           filteredItems = filteredItems.filter((item) => {
             console.log('item', item);
             console.log('filterKey', filterKey);
-            // console.log('item[filterKey]', item[filterKey]);
-            console.log('filterValue', filterValue);
+            console.log('item[filterKey]', item[filterKey]);
+            console.log('filterValue', +filterValue);
             // debugger;
-            if ((filterKey === 'shop') && (item.itemOwner.name === filterValue)) return true
-            else if ((filterKey === 'price') && (item[filterKey] <= filterValue)) return true
+            if (((filterKey === 'shop') && (item.itemOwner.name === filterValue)) ||
+            ((filterKey === 'price') && (item[filterKey] <= +filterValue))) return true
             else if (item[filterKey] === filterValue) return true
             else return false
           })
