@@ -1,27 +1,29 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import ItemsList from '../../cmps/items/ItemList'
-class Wishlist extends Component{
+import { removeFromWishList } from '../../actions/UserActions'
+import OrderService from '../../services/OrderService';
+class Wishlist extends Component {
 
-    componentDidMount=()=>{
-      
-        // wishlist.map(item=>console.log(item.imgUrl)
-        // )
-       
+    componentDidMount = () => {
+
     }
 
-    deleteItem=(itemId)=>{
-
-        console.log(itemId);
-        
+    deleteItem = (itemId) => {
+        this.props.removeFromWishList(itemId, this.props.loggedInUser)
     }
-    render(){
-       
-       
-        
-        return(
+
+    addToCart=(item)=> {
+        this.deleteItem(item._id)
+        OrderService.addItemtoCart(item)
+
+    }
+
+    render() {
+
+        return (
             <div>
-                <ItemsList deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>
+                <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>
             </div>
         )
     }
@@ -35,7 +37,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    //functions
+    removeFromWishList
+
 };
 
 export default connect(

@@ -10,13 +10,14 @@ class ItemPreview extends Component {
     switch (this.props.listMode) {
       case "cartMode":
         return (<div>
-                <button onClick={()=>this.handleDelete(this.props.item._id)}>X</button>
-                </div>
+          <button onClick={() => this.handleDelete(this.props.item._id)}>X</button>
+        </div>
         )
       case "wishListMode":
         return (<div>
-                <button onClick={()=>this.handleDelete(this.props.item._id)}>X</button>
-                </div>
+          <button onClick={() => this.handleDelete(this.props.item._id)}>X</button>
+          <button onClick={() => this.handleAddToCart(this.props.item)}>Add To Cart</button>
+        </div>
         )
 
       case "adminMode":
@@ -35,11 +36,14 @@ class ItemPreview extends Component {
     this.props.deleteItem(itemId)
   }
 
+  handleAddToCart=(item)=>{
+  this.props.addToCart(item)
+  }
+
 
   render() {
     return (<React.Fragment>
       <Link to={`/item/${this.props.item._id}`}>
-
         <li className="item-card clean-line">
           <img alt="img-item" src={this.props.item.imgs[0]} />
           <h3>{this.props.item.title}</h3>

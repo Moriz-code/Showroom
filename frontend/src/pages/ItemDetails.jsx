@@ -29,6 +29,8 @@ class ItemDetails extends Component {
     }
 
     onAddToCart = () => {
+        console.log(this.props.item,'itemmmmm');
+        
         OrderService.addItemtoCart(this.props.item)
     }
 
