@@ -2,7 +2,8 @@
 const initalState = {
     items: [],
     selectedItem: null,
-    filter: []
+    filter: [],
+    sorts:[]
 }
 
 export default function (state = initalState, action = {}) {
@@ -35,7 +36,6 @@ export default function (state = initalState, action = {}) {
             return { ...state, selectedItem: action.item };
 
         case 'SET_FILTERS':
-            console.log({ ...state, filter: [...state.filter, action.filters] });
             return ({ ...state, filter: [...state.filter, action.filters] })
 
         case 'REMOVE_FILTER':
@@ -44,6 +44,10 @@ export default function (state = initalState, action = {}) {
                    _checkMatchFilter(curFilter,action.filter)
                 })
             }
+            case 'SET_SORTS':
+                return{
+                     ...state, sorts: [...state.sorts, action.sorts] 
+                }
         default:
             return state
     }

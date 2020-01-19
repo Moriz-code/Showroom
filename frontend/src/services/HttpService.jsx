@@ -12,7 +12,9 @@ var axios = Axios.create({
 });
 
 export default {
-    get(endpoint, data){
+    get(endpoint, data) {
+console.log('endpoint',endpoint,'data',data);
+
         return ajax(endpoint, 'GET', data)
     },
     post(endpoint, data){
@@ -27,7 +29,7 @@ export default {
 }
 
 
-async function ajax(endpoint, method='get', data=null , dispatch) {
+async function ajax(endpoint, method = 'get', data = null, dispatch) {
     
     try {
         const res = await axios({

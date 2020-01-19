@@ -12,29 +12,34 @@ export function loadItems(filterBy) {
 }
 
 function setItems(items) {
+    console.log('items',items);
+    
     return {
         type: 'SET_ITEMS',
         items
     }
 }
 
-export function removeFilter(filter) {
-    console.log('removeFilter', filter);
-    return {
+export function removeFilter(filter){
+    return{
         type: 'REMOVE_FILTER',
         filter
     }
 }
 
 export function setFilters(filters) {
-    console.log('filters', filters);
     return {
         type: 'SET_FILTERS',
         filters
     }
 }
 
-
+export function setSorts(sorts) {
+    return {
+        type: 'SET_SORTS',
+        sorts
+    }
+}
 
 export function saveItem(item) {
     return async dispatch => {

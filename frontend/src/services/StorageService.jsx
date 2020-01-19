@@ -21,6 +21,7 @@ function get(entityType, entityId) {
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 function post(entityType, newEntity) {
+      
     // newEntity._id = _makeId() //// turned off because it changes the item id(roy)    
     return query(entityType)
         .then(entities => {

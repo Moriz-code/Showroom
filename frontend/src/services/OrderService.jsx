@@ -10,9 +10,7 @@ export default {
 
 
 async function addItemtoCart(item) {
-
     const addeditem = await StorageService.post(`order`, item);
-
     return addeditem
 }
 

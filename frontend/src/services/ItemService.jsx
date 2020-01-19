@@ -8,8 +8,9 @@ export default {
     put
 };
 
-async function query() {
-    return await HttpService.get('item');
+function query(filterBy) {
+
+    return HttpService.get('item',`?gender=men`);
 }
 
 function remove(itemId) {
