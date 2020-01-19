@@ -4,11 +4,12 @@ export default {
     add,
     query,
     remove,
-    get
+    get,
+    put
 };
 
-function query() {
-    return HttpService.get('item');
+async function query() {
+    return await HttpService.get('item');
 }
 
 function remove(itemId) {
@@ -25,4 +26,16 @@ async function get(itemId) {
     const item = await HttpService.get(`item/${itemId}`);
      return  item
 }
+
+async function put(editedItem) {  
+    const itemToEdit = await HttpService.put(`item/${editedItem._id}` , editedItem);
+     return itemToEdit
+}
+
+// async function put(shop){
+//     const shopUpdate = await HttpService.put(`shop/${shop._id}` , shop)
+//     return shopUpdate
+// }
+
+
 

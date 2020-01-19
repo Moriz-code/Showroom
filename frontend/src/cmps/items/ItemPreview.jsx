@@ -23,7 +23,7 @@ class ItemPreview extends Component {
         return (
           <div>
             <button onClick={() => this.handleDelete(this.props.item._id)}>delete</button>
-            <button>edit</button>
+            <button onClick={() => this.handleEdit(this.props.item)}>edit</button>
           </div>
         )
       default:
@@ -33,6 +33,10 @@ class ItemPreview extends Component {
 
   handleDelete = (itemId) => {
     this.props.deleteItem(itemId)
+  }
+
+  handleEdit = (item) => {
+    this.props.editItem(item)
   }
 
 

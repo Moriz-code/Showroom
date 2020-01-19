@@ -2,18 +2,47 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { loadShop, updateShopSettings } from '../../actions/ShopActions';
-import { loadItems, deleteItem } from '../../actions/ItemActions';
+import { loadItems, deleteItem, saveItem } from '../../actions/ItemActions';
+
 import ItemsList from '../../cmps/items/ItemList';
-import ShopSettings from '../../cmps/shop/ShopSettings'
+import EditItem from '../../cmps/items/EditItem';
+import ShopSettings from '../../cmps/shop/ShopSettings';
 
 import InstgaramIcon from '../../styles/assets/logo/insta.png';
 import FacebookIcon from '../../styles/assets/logo/facebook.png';
 
 class PersonalShop extends Component {
-
-
     state = {
+        isOnEditMode: false,
         isOnEditSettigs: false,
+
+        item: {
+            _id: '',
+            title: '',
+            price: '',
+            description: '',
+            sizeFit: '',
+            size: '',
+            gender: '',
+            itemOwner: {
+                id: this.props.match.params.id,
+                name: '',
+                logoUrl: ''
+            },
+            labels: [],
+            imgs: [],
+            reviews: [
+                {
+                    byUser: {
+                        name: '',
+                        id: ''
+                    },
+                    txt: '',
+                    rate: ''
+                }
+            ]
+        },
+
         shop: {
             _id: '',
             info: {
@@ -38,10 +67,9 @@ class PersonalShop extends Component {
     }
 
     async componentDidMount() {
+        console.log('did mount')
         this.props.loadShop(this.props.match.params.id)
         this.props.loadItems();
-
-
 
         await new Promise(resolve => { setTimeout(resolve, 1000); })
         this.setState({ shop: this.props.shop.selectedShop })
@@ -49,9 +77,12 @@ class PersonalShop extends Component {
 
     }
 
+    componentDidUpdate() {
+        //this.props.loadItems();
+    }
 
 
-    handleChange = (ev) => {
+    handleSettingChange = (ev) => {
         const { name, value, alt } = ev.target;
         this.setState(prevState => ({
             ...prevState,
@@ -63,11 +94,38 @@ class PersonalShop extends Component {
                 }
             }
         }))
+    }
 
+    handleFormChange = (ev) => {
+        let { name, value } = ev.target;
+
+        if (name === 'labels' || name === 'imgs') {
+            var list = [...this.state.item[name]];
+            var i = list.indexOf(value)
+            // console.log('handle form'  , i);
+
+            if (i >= 0) {
+                list.splice(i, 1)
+                value = list
+            }
+            else {
+                value = list.concat(value);
+                console.log('check');
+            }
+        }
+
+        this.setState(prevState => ({
+            ...prevState,
+            item: {
+                ...prevState.item, [name]: value
+            }
+        }))
+
+        console.log(this.state.item);
 
     }
 
-    onSave = (ev) => {
+    onSaveSettings = (ev) => {
         ev.preventDefault();
         this.props.updateShopSettings(this.state.shop);
     }
@@ -77,26 +135,76 @@ class PersonalShop extends Component {
             isOnEditSettigs: !state.isOnEditSettigs
         })
         )
-        console.log(this.state.isOnEditSettigs);
-        
+    }
+
+    onEditMode = () => {
+        this.setState(state => ({
+            isOnEditMode: !state.isOnEditMode,
+        }))
+    }
+
+    onSaveItem = async (ev) => {
+        ev.preventDefault();
+        await this.props.saveItem(this.state.item);
+        this.clearItemState();
+        //  this.props.loadItems();
+
+        // await new Promise(resolve => { setTimeout(resolve, 1000); })
+        // this.props.saveItem(this.state.item);
+        // this.clearItemState();
+        // return Promise.resolve();
+    }
+
+    editItem = (item) => {
+        this.setState(prevState => ({
+            ...prevState,
+            item
+        }))
+        this.onEditMode();
+    }
+
+    clearItemState() {
+        this.setState(prevState => ({
+            isOnEditMode: false,
+            item: {
+                _id: '',
+                title: '',
+                price: '',
+                description: '',
+                sizeFit: '',
+                size: '',
+                gender: '',
+                itemOwner: {
+                    id: this.props.match.params.id,
+                    name: '',
+                    logoUrl: ''
+                },
+                labels: [],
+                imgs: [],
+                reviews: [
+                    {
+                        byUser: {
+                            name: '',
+                            id: ''
+                        },
+                        txt: '',
+                        rate: ''
+                    }
+                ]
+
+            }
+        }))
     }
 
 
-
     render() {
-        const { selectedShop } = this.props.shop
+        const { selectedShop } = this.props.shop;
         return (
             <React.Fragment>
                 {this.props.shop.selectedShop ?
                     <div className="shop-container" style={{ backgroundColor: selectedShop.style.bgColor }}>
                         <div className="shop-header">
                             {/* settings */}
-
-                            <div onClick={this.onEditSettings}>Edit</div>
-                            <div className={this.state.isOnEditSettigs ? 'modal' : 'display-none'}>
-                                <ShopSettings onSave={this.onSave} handleChange={this.handleChange} shop={this.state.shop}></ShopSettings>
-                            </div>
-
                             <div className="coverImg" style={{ backgroundImage: 'url(' + selectedShop.style.coverImgUrl + ')' }}></div>
                             <img className="shop-logo" src={selectedShop.style.logoUrl} />
                             <h1 className="title">{selectedShop.info.name}</h1>
@@ -120,25 +228,28 @@ class PersonalShop extends Component {
                                 </a>
                             </div>
                         </div>
-                        {this.props.items ? <ItemsList deleteItem={deleteItem} listMode="adminMode" items={this.props.items}> </ItemsList> : 'There is No Items'}
+
+                        <button onClick={this.onEditSettings}>Edit Shop Style</button>
+                        <div className={this.state.isOnEditSettigs ? 'modal' : 'display-none'}>
+                            <ShopSettings onSaveSettings={this.onSaveSettings} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
+                        </div>
+
+                        <button onClick={this.onEditMode}>Add Item</button>
+                        <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
+                            <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
+                        </div>
+                        {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode="adminMode" items={this.props.items} /> : 'There is No Items'}
                     </div>
                     : 'this shop is not availble'}
-
-
 
             </React.Fragment>)
     }
 }
 
-
-// ItemsList items={this.props.items}>
-//         </ItemsList>:'shit!'}
-
 const mapStateToProps = state => {
     return {
         shop: state.shop,
         items: state.item.items,
-        // filterBy: state.filterBy
     };
 };
 
@@ -146,7 +257,8 @@ const mapDispatchToProps = {
     loadShop,
     loadItems,
     deleteItem,
-    updateShopSettings
+    updateShopSettings,
+    saveItem
     // setFilterBy
 };
 
@@ -156,5 +268,4 @@ export default connect(
 )(PersonalShop);
 
 
-//http://localhost:3000/item?itemOwner.id=1234
 
