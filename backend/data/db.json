@@ -181,6 +181,14 @@
           "imgs": [
             "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0475_2.jpg"
           ]
+        },
+        {
+          "id": "124",
+          "title": "grenn-hat",
+          "price": 12,
+          "imgs": [
+            "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0475_2.jpg"
+          ]
         }
       ],
       "shopId": "111"

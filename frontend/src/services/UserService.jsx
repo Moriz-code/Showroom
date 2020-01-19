@@ -1,14 +1,15 @@
 import HttpService from './HttpService';
+import Login from '../pages/Login';
 
 export default {
     login,
-    updateWishList
+    updateWishList,
+    removeItemFromWishList
 };
 
 
 async function login(userCred) {
     const user = await HttpService.post('auth/login', userCred)
-
     return _handleLogin(user)
 }
 
@@ -27,3 +28,10 @@ async function updateWishList(item, user) {
     return newUser
 }
 
+async function removeItemFromWishList(itemId, user) {
+    const userWishList = user.wishlist
+    const wishlist = userWishList.filter(item=>item._id!==itemId)
+    let updatedUser = { ...user, wishlist }
+    const newUser = await HttpService.put(`user/${updatedUser._id}`, updatedUser)
+    return newUser
+}

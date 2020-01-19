@@ -10,6 +10,10 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 const itemRoutes = require('./api/item/item.routes')
+const shopRoutes = require('./api/shop/shop.routes')
+const orderRoutes = require('./api/order/order.routes')
+const authRoutes = require('./api/auth/auth.routes')
+const userRoutes = require('./api/user/user.routes')
 
 app.use(cookieParser())
 app.use(bodyParser.json());
@@ -33,6 +37,10 @@ if (process.env.NODE_ENV === 'production') {
 
 
 app.use('/api/item', itemRoutes)
+app.use('/api/shop', shopRoutes)
+app.use('/api/order', orderRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/user', userRoutes)
 // connectSockets(io)
 
 const logger = require('./services/logger.service')

@@ -7,15 +7,11 @@ export function placeOrder(loggedInUser) {
         const order = await orderService.getOrder()
         
         const orderToSave = _createOrder(miniUser, order)
+        console.log(orderToSave,'order');
         
         try {
             
-            // const addedOrder = orderService.add(orderToSave) //in mongo-we need to cancel the map and send postmany
-            orderToSave.map(async order =>{
-                let item =await orderService.add(order)
-                return item
-            })
-            
+            const addedOrder = orderService.add(orderToSave) 
             dispatch({
                 type: 'SAVE_ORDER',
                 orderToSave

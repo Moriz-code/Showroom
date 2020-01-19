@@ -21,12 +21,8 @@ class Login extends Component {
             return this.setState({ msg: 'Please enter user/password' });
         }
         const userCreds = { email, password };
-       
-        
         this.props.login(userCreds);
-        // this.setState({ loginCred: { email: '', password: '' } });
-
-
+        this.setState({ loginCred: { email: '', password: '' } });
     }
 
     loginHandleChange = ev => {
