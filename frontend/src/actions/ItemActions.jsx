@@ -12,6 +12,8 @@ export function loadItems(filterBy) {
 }
 
 function setItems(items) {
+    console.log('items',items);
+    
     return {
         type: 'SET_ITEMS',
         items
@@ -19,7 +21,6 @@ function setItems(items) {
 }
 
 export function removeFilter(filter){
-    console.log('removeFilter',filter);
     return{
         type: 'REMOVE_FILTER',
         filter
@@ -27,25 +28,20 @@ export function removeFilter(filter){
 }
 
 export function setFilters(filters) {
-    console.log('filters',filters);
     return {
         type: 'SET_FILTERS',
         filters
     }
 }
 
+export function setSorts(sorts) {
+    return {
+        type: 'SET_SORTS',
+        sorts
+    }
+}
 
-// export function setFilter(filterBy) {
-//     return {
-//         type: 'SET_FILTERS',
-//         filterBy
-//     }
-// }
 
-
-// export function setFilterBy(filterBy) {
-//     return (dispatch) => dispatch(setFilter(filterBy))
-// }
 
 
 export function setCurrentItem(itemId) {

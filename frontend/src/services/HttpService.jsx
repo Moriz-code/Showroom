@@ -1,10 +1,15 @@
 import history from '../history';
 import Axios from 'axios';
 
-const BASE_URL = '//localhost:3000/'
-    // process.env.NODE_ENV === 'production'
-    // ? '/api/'
-    // : '//localhost:3030/api/'
+// const BASE_URL = '//localhost:3000/'
+//     process.env.NODE_ENV === 'production'
+//     ? '/api/'
+//     : '//localhost:3030/api/'
+
+
+const BASE_URL = process.env.NODE_ENV === 'production'
+    ? '/api/'
+    : '//localhost:3030/api/'
 
 
 var axios = Axios.create({
@@ -12,23 +17,24 @@ var axios = Axios.create({
 });
 
 export default {
-    get(endpoint, data){
+    get(endpoint, data) {
+console.log('endpoint',endpoint,'data',data);
 
         return ajax(endpoint, 'GET', data)
     },
-    post(endpoint, data){
+    post(endpoint, data) {
         return ajax(endpoint, 'POST', data)
     },
-    put(endpoint, data){
+    put(endpoint, data) {
         return ajax(endpoint, 'PUT', data)
     },
-    delete(endpoint, data){
+    delete(endpoint, data) {
         return ajax(endpoint, 'DELETE', data)
     }
 }
 
 
-async function ajax(endpoint, method='get', data=null , dispatch) {
+async function ajax(endpoint, method = 'get', data = null, dispatch) {
     
     try {
         const res = await axios({
@@ -36,16 +42,16 @@ async function ajax(endpoint, method='get', data=null , dispatch) {
             method,
             data
         })
-        
-        
+
+
         return res.data;
     } catch (err) {
         console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`);
         console.dir(err);
         if (err.response && err.response.status === 401) {
-          history.push('/'); // diaspatch ('authorition error')
+            history.push('/'); // diaspatch ('authorition error')
         }
-          // diaspatch ('error')
-          throw err; 
+        // diaspatch ('error')
+        throw err;
     }
 }
