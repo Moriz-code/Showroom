@@ -134,10 +134,15 @@ Sun, 19 Jan 2020 14:02:34 GMT - Info - Server is running on port: 3030
 Sun, 19 Jan 2020 14:03:49 GMT - Info - Server is running on port: 3030
 =======
 
+
 Sun, 19 Jan 2020 14:04:00 GMT - Info - Server is running on port: 3030
 Sun, 19 Jan 2020 14:13:23 GMT - Info - Server is running on port: 3030
 Sun, 19 Jan 2020 14:13:36 GMT - Info - Server is running on port: 3030
 Sun, 19 Jan 2020 14:21:34 GMT - Debug - auth.service - login with email: roy@gmail.com
 Sun, 19 Jan 2020 14:28:59 GMT - Info - Server is running on port: 3030
+<<<<<<< HEAD
 >>>>>>> c34fe102185dff8041c5367975c6bb725a23464c
 Sun, 19 Jan 2020 14:40:48 GMT - Info - Server is running on port: 3030
+=======
+
+>>>>>>> 41c5efa298124a12ff07fadc9cf3497105ad6f79
