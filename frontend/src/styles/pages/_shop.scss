@@ -1,0 +1,115 @@
+
+
+.shop-container{
+    font-family: Lato, sans-serif;
+}
+
+.shop-header{
+    max-height:70vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-gap: 10px 10px;
+}
+
+.coverImg{
+    grid-column: 1/13;
+    grid-row: 1 / 8;
+}
+
+.shop-logo{
+    width:100%;
+    // height:100%;
+    grid-column: 2 / 4;
+    grid-row: 5 / 9;
+    border-radius: 50%;
+    border: 2px solid lightgrey;
+}
+
+.shop-video{
+    width:100%;
+    height:100%;
+}
+
+.title{
+    grid-column: 5 / 8;
+    grid-row: 6 / 8;
+    text-shadow: 1px 1px lightgrey;
+    font-family: Lato-italic , sans-serif;
+}
+
+.description{
+    grid-column: 6 / 9;
+    grid-row: 9 / 12;
+}
+
+.designer-name{
+    font-family: Lato-italic, sans-serif;
+    color:white;
+    grid-column: 10 / 13;
+    grid-row: 10 / 11;
+
+}
+
+// .social{
+//      grid-column: 10 / 12;
+//      grid-row: 12 / 13;
+//      max-width:50px;
+    
+     
+// }
+
+.shop-video{
+    grid-column: 2 / 6;
+    grid-row: 9 / 13;
+    padding:5px;
+    border-radius:10px;
+    background-color: whitesmoke;
+}
+
+.insta-icon{
+    max-width:50px;
+    justify-self: center ;
+    grid-column: 11 / 12;
+    grid-row: 11/ 12;
+}
+
+.fb-icon{
+    max-width:50px;
+    justify-self: center;
+    grid-column: 10 / 11;
+    grid-row: 11/ 12;
+}
+
+.setting-panel{
+    grid-column: 1 / 5;
+    grid-row: 2/ 12;
+}
+
+
+// {this.props.shop.selectedShop ?
+//     <div className="shop-container" style={{ backgroundColor: selectedShop.style.bgColor }}>
+
+//         {/* settings */}
+//         <div className={this.state.isOnEditSettigs ? '' : 'display-none'}>
+//             <ShopSettings onSave={this.onSave} handleChange={this.handleChange} shop={this.state.shop}></ShopSettings>
+//         </div>
+
+//         <div className="coverImg" style={{ backgroundImage: 'url(' + selectedShop.style.coverImgUrl + ')' }}></div>
+//         <img className="logo" src={selectedShop.style.logoUrl} />
+//         <h1 className="title">{selectedShop.name}</h1>
+//         <h2 className="description">{selectedShop.description}</h2>
+//         <h2 className="designer-name">By the designer : {selectedShop.owner.name}</h2>
+//         <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+//         </iframe>
+//         <div className="social">
+//             Social Media:
+//             <a href={selectedShop.info.instagram}>
+//                 <img src={InstgaramIcon} className="shop-icon" alt="icon" />
+//             </a>
+
+//             <a href={selectedShop.info.facebook}>
+//                 <img src={FacebookIcon} className="shop-icon" alt="icon" />
+//             </a>
+//         </div>
+//     </div>

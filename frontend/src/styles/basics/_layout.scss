@@ -1,0 +1,42 @@
+.container {
+    // max-width: $normal-breakpoint;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    @include for-narrow-layout {
+        max-width: $mobile-breakpoint;
+    }
+    @include for-normal-layout {
+        max-width: $narrow-breakpoint;
+    }
+    @include for-wide-layout {
+        max-width: $normal-breakpoint;
+    }
+}
+
+
+//modal
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    color:white;
+    font-size:20px;
+    height: 40%;
+    background: rgba(0, 0, 0, 0.8);
+  
+    
+    
+  }
+  
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
+  

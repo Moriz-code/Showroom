@@ -1,7 +1,24 @@
 //setup
-
+@import "./setup/variables.scss";
+@import "./setup/functions.scss";
+@import "./setup/mixins.scss";
 //basics
+@import "./basics/helpers.scss";
+@import "./basics/layout.scss";
+@import "./basics/base.scss";
+@import "./basics/links.scss";
+@import "./basics/buttons.scss";
+@import "./basics/typography.scss";
+
 
 //cmps
+@import "./cmps/header.scss";
+@import "./cmps/footer.scss";
+@import "./cmps//itemPreview.scss";
+@import "./cmps/filter.scss";
 
-//pages
+
+// //pages
+ @import "./pages/home.scss";
+ @import "./pages/shop.scss";
+ @import "./pages/itemDetails.scss";

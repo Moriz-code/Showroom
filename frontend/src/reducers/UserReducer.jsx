@@ -1,8 +1,17 @@
 const INITIAL_STATE = {
-
+  loggedInUser: {
+  
+  }
 };
 
-export default function xxx(state = INITIAL_STATE, action) {
+export default function UserReducer(state = INITIAL_STATE, action = {}) {
 
-    return state;
+  switch (action.type) {
+    case 'SET_USER':
+      return { ...state, loggedInUser: action.user };
+    case 'UPDATE_USER':
+      return { ...state, loggedInUser: action.user }
+    default:
+      return state;
+  }
 }

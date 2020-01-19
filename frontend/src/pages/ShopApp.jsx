@@ -1,11 +1,36 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 class ShopApp extends Component {
 
 
     render() {
-        return <h1>ShopApp</h1>
+        return <React.Fragment>
+
+
+
+            <div className="container home-categories">
+
+                <div className="category-a">
+                    <p>Buy and sell local fashion good</p>
+                    <Link to="/item"><button>Shop Now</button></Link>
+                </div>
+                <div className="category-b">MEN</div>
+                <div className="category-c">WOMEN</div>
+                <div className="category-d">SUMMER SALE</div>
+                <div className="category-e">LAST CHANCE</div>
+            </div>
+
+            <div>
+                <h3>
+                    Title
+                </h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda provident officia neque sequi. Explicabo reprehenderit unde, cumque quos iure excepturi velit dicta aliquid ab. Voluptas consequatur vero officia ea cum.</p>
+
+            </div>
+        </React.Fragment>
     }
 }
 
