@@ -8,8 +8,22 @@ export default {
 };
 
 function query(filterBy) {
-
-    return HttpService.get('item',`?gender=men`);
+    let str = '';
+    console.log('filterBy-coral', filterBy);
+    for (const key in filterBy) {
+        if (str !== '') str += '&'
+        if (filterBy[key].length !== 0) {
+            if (filterBy[key].length === 1)
+                str += key + '=' + filterBy[key][0]
+        } else {
+            filterBy[key].forEach((value) => {
+                str += key + '=' + value
+            })
+        }
+        console.log('str-coral',str);
+        
+    }
+    return HttpService.get('item?', str);
 }
 
 function remove(itemId) {
@@ -24,6 +38,6 @@ async function add(item) {
 
 async function get(itemId) {
     const item = await HttpService.get(`item/${itemId}`);
-     return  item
+    return item
 }
 
