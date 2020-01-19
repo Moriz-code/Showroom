@@ -21,26 +21,22 @@
     width:100%;
     // height:100%;
     grid-column: 2 / 4;
-    grid-row: 5 / 9;
+    grid-row: 4 / 6;
     border-radius: 50%;
     border: 2px solid lightgrey;
 }
 
-.shop-video{
-    width:100%;
-    height:100%;
-}
 
 .title{
-    grid-column: 5 / 8;
+    grid-column: 4 / 8;
     grid-row: 6 / 8;
     text-shadow: 1px 1px lightgrey;
     font-family: Lato-italic , sans-serif;
 }
 
 .description{
-    grid-column: 6 / 9;
-    grid-row: 9 / 12;
+    grid-column: 4 / 13;
+    grid-row: 8 / 12;
 }
 
 .designer-name{
@@ -60,8 +56,8 @@
 // }
 
 .shop-video{
-    grid-column: 2 / 6;
-    grid-row: 9 / 13;
+    grid-column: 4 / 7;
+    grid-row: 10 / 13;
     padding:5px;
     border-radius:10px;
     background-color: whitesmoke;

@@ -11,7 +11,6 @@ async function get(shopId){
 }
 
 async function put(shop){
-    console.log('Shop Service ', shop);
     const shopUpdate = await HttpService.put(`shop/${shop._id}` , shop)
     return shopUpdate
 }
