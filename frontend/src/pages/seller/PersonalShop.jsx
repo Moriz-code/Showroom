@@ -110,7 +110,7 @@ class PersonalShop extends Component {
             }
             else {
                 value = list.concat(value);
-                console.log('check');
+                // console.log('check');
             }
         }
 

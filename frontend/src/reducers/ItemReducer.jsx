@@ -14,7 +14,7 @@ export default function (state = initalState, action = {}) {
 
             //make sure the action is on the same name
         case 'ITEM_ADD':
-            console.log('WTF',action.addedItem)
+           
             return { ...state, items: [...state.items, action.addedItem] };
 
         case 'ITEM_UPDATE':

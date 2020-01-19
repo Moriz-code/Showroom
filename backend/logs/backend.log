@@ -5,11 +5,6 @@ Sat, 18 Jan 2020 10:34:06 GMT - Info - Server is running on port: 3030
 Sat, 18 Jan 2020 10:36:30 GMT - Info - Server is running on port: 3030
 Sat, 18 Jan 2020 10:36:48 GMT - Info - Server is running on port: 3030
 Sat, 18 Jan 2020 10:42:20 GMT - Info - Server is running on port: 3030
-<<<<<<< HEAD
-Sat, 18 Jan 2020 11:16:19 GMT - Info - Server is running on port: 3030
-Sat, 18 Jan 2020 11:24:50 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 11:39:37 GMT - Info - Server is running on port: 3030
-=======
 Sat, 18 Jan 2020 11:02:35 GMT - Info - Server is running on port: 3030
 Sat, 18 Jan 2020 11:15:39 GMT - Info - Server is running on port: 3030
 Sat, 18 Jan 2020 13:02:17 GMT - Info - Server is running on port: 3030
@@ -128,4 +123,7 @@ Sun, 19 Jan 2020 11:29:30 GMT - Info - Server is running on port: 3030
 Sun, 19 Jan 2020 11:29:56 GMT - Info - Server is running on port: 3030
 Sun, 19 Jan 2020 11:30:06 GMT - Debug - auth.service - login with email: roy@gmail.com
 
->>>>>>> a1fa86d1ee5704710af4ea3f772650be45999195
+Sun, 19 Jan 2020 14:04:00 GMT - Info - Server is running on port: 3030
+Sun, 19 Jan 2020 14:13:23 GMT - Info - Server is running on port: 3030
+Sun, 19 Jan 2020 14:13:36 GMT - Info - Server is running on port: 3030
+Sun, 19 Jan 2020 14:21:34 GMT - Debug - auth.service - login with email: roy@gmail.com
