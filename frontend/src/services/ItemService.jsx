@@ -7,9 +7,9 @@ export default {
     get
 };
 
-function query(filterBy) {
+function query(filterBy = null) {
 
-    return HttpService.get('item',`?gender=men`);
+    return HttpService.get('item', `?gender=men`);
 }
 
 function remove(itemId) {
@@ -24,6 +24,6 @@ async function add(item) {
 
 async function get(itemId) {
     const item = await HttpService.get(`item/${itemId}`);
-     return  item
+    return item
 }
 
