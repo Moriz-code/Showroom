@@ -9,11 +9,13 @@ const initalState = {
 export default function (state = initalState, action = {}) {
     switch (action.type) {
         case 'SET_ITEMS':
-            console.log('SET_ITEMS', { ...state, items: action.items });
+            // console.log('SET_ITEMS', { ...state, items: action.items });
             return { ...state, items: action.items };
 
+            //make sure the action is on the same name
         case 'ITEM_ADD':
-            return { ...state, items: [...state.items, action.item] };
+           
+            return { ...state, items: [...state.items, action.addedItem] };
 
         case 'ITEM_UPDATE':
             return {
