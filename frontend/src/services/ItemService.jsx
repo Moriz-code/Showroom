@@ -7,8 +7,9 @@ export default {
     get
 };
 
-function query() {
-    return HttpService.get('item');
+function query(filterBy) {
+
+    return HttpService.get('item',`?gender=men`);
 }
 
 function remove(itemId) {
