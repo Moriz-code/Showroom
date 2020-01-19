@@ -122,7 +122,4 @@ Sun, 19 Jan 2020 11:28:26 GMT - Debug - auth.service - login with email: roy@gma
 Sun, 19 Jan 2020 11:29:30 GMT - Info - Server is running on port: 3030
 Sun, 19 Jan 2020 11:29:56 GMT - Info - Server is running on port: 3030
 Sun, 19 Jan 2020 11:30:06 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 12:32:30 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 12:32:48 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 12:32:57 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 12:34:38 GMT - Debug - auth.service - login with email: roy@gmail.com
+
