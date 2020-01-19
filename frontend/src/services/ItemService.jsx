@@ -4,26 +4,12 @@ export default {
     add,
     query,
     remove,
-    get
+    get,
+    put
 };
 
 function query(filterBy) {
-    let str = '';
-    console.log('filterBy-coral', filterBy);
-    for (const key in filterBy) {
-        if (str !== '') str += '&'
-        if (filterBy[key].length !== 0) {
-            if (filterBy[key].length === 1)
-                str += key + '=' + filterBy[key][0]
-        } else {
-            filterBy[key].forEach((value) => {
-                str += key + '=' + value
-            })
-        }
-        console.log('str-coral',str);
-        
-    }
-    return HttpService.get('item?', str);
+    return HttpService.get(`item`);
 }
 
 function remove(itemId) {
@@ -40,4 +26,16 @@ async function get(itemId) {
     const item = await HttpService.get(`item/${itemId}`);
     return item
 }
+
+async function put(editedItem) {  
+    const itemToEdit = await HttpService.put(`item/${editedItem._id}` , editedItem);
+     return itemToEdit
+}
+
+// async function put(shop){
+//     const shopUpdate = await HttpService.put(`shop/${shop._id}` , shop)
+//     return shopUpdate
+// }
+
+
 

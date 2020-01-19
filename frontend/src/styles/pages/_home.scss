@@ -1,63 +1,63 @@
 .home-categories{
     
-    div {
-        border-radius: 5px;
-        background-color: lightcyan;
-    }
-    display: grid;
-    grid-gap:2.5vh;
-    min-height: 100vh;
-    grid-template-columns: auto;
-    grid-template-rows: 50px 50px;
-    grid-template-areas:
-    'a a a a a'
-    'a a a a a'
-    'a a a a a'
-    'b b c c c'
-    'b b c c c'
-    'b b c c c'
-    'd d c c c'
-    'd d c c c'
-    'd d c c c'
-    'd d c c c'
-    'e e e e e'
-    'e e e e e'
-    ;
+  div {
+      border-radius: 5px;
+      background-color: lightcyan;
+  }
+  display: grid;
+  grid-gap:2.5vh;
+  min-height: 100vh;
+  grid-template-columns: auto;
+  grid-template-rows: 50px 50px;
+  grid-template-areas:
+  'a a a a a'
+  'a a a a a'
+  'a a a a a'
+  'b b c c c'
+  'b b c c c'
+  'b b c c c'
+  'd d c c c'
+  'd d c c c'
+  'd d c c c'
+  'd d c c c'
+  'e e e e e'
+  'e e e e e'
+  ;
 }
 
 
 
 .category-a {
-    grid-area: a;
-     background-image: url("../assets/imgs/textue.jpg");
-    background-size: 100% 100%;
-    background-color: lightgray;
-  }
+  grid-area: a;
+   background-image: url("../assets/imgs/textue.jpg");
+  background-size: 100% 100%;
+  background-color: lightgray;
+}
 
-  .category-b {
-    background-image: url("../assets/imgs/ment.jpg");
-    background-size: 100% 150%;
-    background-position: 70% 40%;
-    grid-area: b;
-  }
+.category-b {
+  background-image: url("../assets/imgs/ment.jpg");
+  background-size: 100% 150%;
+  background-position: 70% 40%;
+  grid-area: b;
+}
 
-  .category-c {
-    background-image: url("../assets/imgs/ddd.jpg");
-    background-size: 100% 110%;
-    background-repeat: no-repeat;
-    grid-area: c;
-  }
+.category-c {
+  background-image: url("../assets/imgs/ddd.jpg");
+  background-size: 100% 110%;
+  background-repeat: no-repeat;
+  grid-area: c;
+}
 
-  .category-d {
-    // background-image: url("../assets/imgs/summer.jpg");
-    background-size: 100% 100%;
-    grid-area: d;
-  }
+.category-d {
+  // background-image: url("../assets/imgs/summer.jpg");
+  background-size: 100% 100%;
+  grid-area: d;
+}
 
-  .category-e {
-    // background-image: url("../assets/imgs/sale.jpg");
-    background-size: 50% 150%;
-    background-repeat: no-repeat;
-    grid-area: e;
-  }
+.category-e {
+  // background-image: url("../assets/imgs/sale.jpg");
+  background-size: 50% 150%;
+  background-repeat: no-repeat;
+  grid-area: e;
+}
 
