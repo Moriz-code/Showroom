@@ -29,18 +29,18 @@ async function query(filterBy = {}) {
 async function getById(itemId) {
     const collection = await dbService.getCollection('item')
     try {
-        const item = await collection.findOne({"_id":ObjectId(itemId)})
+        const item = await collection.findOne({ "_id": ObjectId(itemId) })
         return item
     } catch (err) {
         console.log(`ERROR: while finding item ${itemId}`)
-        throw err;
+        
     }
-    }
+}
 
 async function remove(itemId) {
     const collection = await dbService.getCollection('item')
     try {
-        await collection.deleteOne({"_id":ObjectId(itemId)})
+        await collection.deleteOne({ "_id": ObjectId(itemId) })
     } catch (err) {
         console.log(`ERROR: cannot remove item ${itemId}`)
         throw err;
@@ -52,7 +52,7 @@ async function update(item) {
     item._id = ObjectId(item._id);
 
     try {
-        await collection.replaceOne({"_id":item._id}, {$set : item})
+        await collection.replaceOne({ "_id": item._id }, { $set: item })
         return item
     } catch (err) {
         console.log(`ERROR: cannot update item ${item._id}`)
@@ -77,7 +77,7 @@ function _buildCriteria(filterBy) {
         criteria.itemname = filterBy.txt
     }
     if (filterBy.minBalance) {
-        criteria.balance = {$gte : +filterBy.minBalance}
+        criteria.balance = { $gte: +filterBy.minBalance }
     }
     return criteria;
 }

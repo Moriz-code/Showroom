@@ -29,7 +29,7 @@ async function query(filterBy = {}) {
 }
 
 async function getById(shopId) {
-    console.log('shopid',shopId)
+    // console.log('shopid',shopId)
     const collection = await dbService.getCollection('shop')
     try {
         const shop = await collection.findOne({"_id":ObjectId(shopId)})

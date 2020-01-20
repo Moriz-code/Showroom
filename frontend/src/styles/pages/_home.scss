@@ -10,9 +10,7 @@
   grid-template-columns: auto;
   grid-template-rows: 50px 50px;
   grid-template-areas:
-  'a a a a a'
-  'a a a a a'
-  'a a a a a'
+
   'b b c c c'
   'b b c c c'
   'b b c c c'
@@ -27,37 +25,61 @@
 
 
 
+.category-c{
+  grid-area: c;
+  background-image: url("../assets/imgs/womenn.jpg");
+  background-size: 100%;  
+}
+
+
+
 .category-a {
   grid-area: a;
-   background-image: url("../assets/imgs/textue.jpg");
   background-size: 100% 100%;
-  background-color: lightgray;
 }
 
 .category-b {
-  background-image: url("../assets/imgs/ment.jpg");
-  background-size: 100% 150%;
-  background-position: 70% 40%;
+  background-image: url("../assets/imgs/heart.jpg");
+  // background-image: url("../assets/imgs/ment.jpg");
+  background-position: center;
+  background-size: 300px;
   grid-area: b;
 }
 
-.category-c {
-  background-image: url("../assets/imgs/ddd.jpg");
-  background-size: 100% 110%;
+.hero {
+
+  background-image: url("../assets/imgs/cover.jpg");
+  height: 400px;
+  display: flex;
+  margin-bottom:20px;
+  background-size: 100%;
+   background-position: 30% 50%;
   background-repeat: no-repeat;
-  grid-area: c;
+ 
 }
 
 .category-d {
-  // background-image: url("../assets/imgs/summer.jpg");
+  background-image: url("../assets/imgs/accori.jpg");
   background-size: 100% 100%;
   grid-area: d;
 }
 
 .category-e {
-  // background-image: url("../assets/imgs/sale.jpg");
-  background-size: 50% 150%;
+  background-image: url("../assets/imgs/enjoy.jpg");
+  background-size: 70% 100%;
   background-repeat: no-repeat;
   grid-area: e;
 }
+
+.hero-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Lato;
+  font-size: 3rem;
+  text-align: center;
+  // margin: 150px 150px 150px 150px;
+
+}
+
 
