@@ -13,16 +13,17 @@
 }
 
 .coverImg{
+  
     grid-column: 1/13;
     grid-row: 1 / 8;
 }
 
 .shop-logo{
-    width:100%;
-    height:100%;
+    width:200px;
+    height:200px;
     grid-column: 2 / 4;
-    grid-row: 4 / 9;
-    border-radius: 50%;
+    grid-row: 4 / 6;
+    border-radius: 900px;
     border: 2px solid lightgrey;
 }
 
@@ -35,21 +36,22 @@
 }
 
 .description{
-    grid-column: 4 / 13;
+    grid-column: 4 / 7;
     grid-row: 8 / 12;
 }
 
 .designer-name{
     font-family: Lato-italic, sans-serif;
     color:white;
-    grid-column: 10 / 13;
-    grid-row: 10 / 11;
+    grid-column: 10 / 12;
+    grid-row: 8 / 10;
+    justify-self: center ;
 
 }
 
 .shop-video{
-    grid-column: 4 / 7;
-    grid-row: 10 / 13;
+    grid-column: 7 / 9;
+    grid-row: 9 / 13;
     padding:5px;
     border-radius:10px;
     background-color: whitesmoke;
@@ -57,16 +59,16 @@
 
 .insta-icon{
     max-width:50px;
-    justify-self: center ;
+    justify-self: start ;
     grid-column: 11 / 12;
-    grid-row: 11/ 12;
+    grid-row: 7/ 9;
 }
 
 .fb-icon{
     max-width:50px;
-    justify-self: center;
+    justify-self: end;
     grid-column: 10 / 11;
-    grid-row: 11/ 12;
+    grid-row: 7/ 9;
 }
 
 .setting-panel{
@@ -74,32 +76,3 @@
     grid-row: 2/ 12;
 }
 
-
-//need to be at home but i have a bug
-
-// {this.props.shop.selectedShop ?
-//     <div className="shop-container" style={{ backgroundColor: selectedShop.style.bgColor }}>
-
-//         {/* settings */}
-//         <div className={this.state.isOnEditSettigs ? '' : 'display-none'}>
-//             <ShopSettings onSave={this.onSave} handleChange={this.handleChange} shop={this.state.shop}></ShopSettings>
-//         </div>
-
-//         <div className="coverImg" style={{ backgroundImage: 'url(' + selectedShop.style.coverImgUrl + ')' }}></div>
-//         <img className="logo" src={selectedShop.style.logoUrl} />
-//         <h1 className="title">{selectedShop.name}</h1>
-//         <h2 className="description">{selectedShop.description}</h2>
-//         <h2 className="designer-name">By the designer : {selectedShop.owner.name}</h2>
-//         <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-//         </iframe>
-//         <div className="social">
-//             Social Media:
-//             <a href={selectedShop.info.instagram}>
-//                 <img src={InstgaramIcon} className="shop-icon" alt="icon" />
-//             </a>
-
-//             <a href={selectedShop.info.facebook}>
-//                 <img src={FacebookIcon} className="shop-icon" alt="icon" />
-//             </a>
-//         </div>
-//     </div>

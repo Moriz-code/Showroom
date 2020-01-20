@@ -46,17 +46,7 @@
   grid-area: b;
 }
 
-.hero {
 
-  background-image: url("../assets/imgs/cover.jpg");
-  height: 400px;
-  display: flex;
-  margin-bottom:20px;
-  background-size: 100%;
-   background-position: 30% 50%;
-  background-repeat: no-repeat;
- 
-}
 
 .category-d {
   background-image: url("../assets/imgs/accori.jpg");
@@ -65,21 +55,55 @@
 }
 
 .category-e {
-  background-image: url("../assets/imgs/enjoy.jpg");
-  background-size: 70% 100%;
+  background-image: url("../assets/imgs/bag.jpg");
+  background-size: 100% auto;
   background-repeat: no-repeat;
   grid-area: e;
 }
 
-.hero-title{
+
+.hero {
+  height: 500px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Lato;
-  font-size: 3rem;
-  text-align: center;
-  // margin: 150px 150px 150px 150px;
-
+  background-image: url("../assets/imgs/cover2.jpg");
+  margin-bottom:20px;
+  background-size: 100% 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
+.hero-title{
+  display: flex;
+  color:white;
+  align-items: center;
+  font-family: Zcool;
+  font-size: 4.8em;
+  -webkit-text-stroke-width: 1px;
+  letter-spacing: 1px;
+  -webkit-text-stroke-color: black;
+  // margin: 150px 150px 150px 150px;
+}
+
+.hero-search{
+  font-family: Lato;
+  display: flex;
+  margin: 0 auto;
+  width: 60%;
+  height: 45px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid #D0CFCE;
+  border-radius: 5px;
+  outline: none;
+  &:focus{
+    border: 1px solid #73585B;
+    transition: 0.35s ease;
+    color: black;
+}
+}
+
 
 
