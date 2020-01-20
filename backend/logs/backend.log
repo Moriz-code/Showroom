@@ -120,64 +120,7 @@ Sun, 19 Jan 2020 10:34:36 GMT - Debug - auth.service - login with email: roy@gma
 Sun, 19 Jan 2020 10:39:57 GMT - Debug - auth.service - login with email: roy@gmail.com
 Sun, 19 Jan 2020 11:28:26 GMT - Debug - auth.service - login with email: roy@gmail.com
 Sun, 19 Jan 2020 11:29:30 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 11:29:56 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 11:30:06 GMT - Debug - auth.service - login with email: roy@gmail.com
-<<<<<<< HEAD
-Sun, 19 Jan 2020 12:32:30 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 12:32:48 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 12:32:57 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 12:34:38 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 13:13:50 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 13:41:13 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 13:42:35 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 14:02:34 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 14:03:49 GMT - Info - Server is running on port: 3030
-=======
-
-
-Sun, 19 Jan 2020 14:04:00 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 14:13:23 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 14:13:36 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 14:21:34 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 14:28:59 GMT - Info - Server is running on port: 3030
-<<<<<<< HEAD
->>>>>>> c34fe102185dff8041c5367975c6bb725a23464c
-Sun, 19 Jan 2020 14:40:48 GMT - Info - Server is running on port: 3030
-=======
-
->>>>>>> 41c5efa298124a12ff07fadc9cf3497105ad6f79
-Sun, 19 Jan 2020 14:56:38 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 14:56:53 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 14:58:07 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 14:59:35 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 14:59:38 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 15:00:05 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 15:27:13 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 16:31:29 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 16:54:54 GMT - Info - Server is running on port: 3030
-Sun, 19 Jan 2020 16:58:30 GMT - Debug - auth.service - login with email: roy1@gmail.com
-Sun, 19 Jan 2020 17:00:37 GMT - Debug - auth.service - login with email: roy1@gmail.com
-Sun, 19 Jan 2020 17:00:48 GMT - Debug - auth.service - login with email: roy1@gmail.com
-Sun, 19 Jan 2020 17:00:53 GMT - Debug - auth.service - login with email: roy1@gmail.com
-Sun, 19 Jan 2020 17:01:10 GMT - Debug - auth.service - login with email: roy1@gmail.com
-Sun, 19 Jan 2020 17:05:48 GMT - Debug - auth.service - login with email: roy1@gmail.com
-Sun, 19 Jan 2020 17:07:30 GMT - Debug - auth.service - login with email: roy1@gmail.com
-Sun, 19 Jan 2020 17:07:42 GMT - Debug - auth.service - login with email: roy1@gmail.com
-Sun, 19 Jan 2020 17:07:48 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 17:08:21 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 17:08:25 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 17:09:27 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 17:09:35 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 17:09:59 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 17:43:38 GMT - Debug - auth.service - login with email: roy1@gmail.com
-Sun, 19 Jan 2020 17:54:56 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 17:55:57 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 18:09:21 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 18:10:05 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 18:10:41 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 18:11:37 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 18:12:16 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sun, 19 Jan 2020 18:12:41 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 19 Jan 2020 11:29:56 GMT - Iun, 19 Jan 2020 18:12:41 GMT - Debug - auth.service - login with email: roy@gmail.com
 Sun, 19 Jan 2020 18:13:04 GMT - Debug - auth.service - login with email: roy@gmail.com
 Sun, 19 Jan 2020 18:15:01 GMT - Debug - auth.service - login with email: roy@gmail.com
 Sun, 19 Jan 2020 18:17:00 GMT - Debug - auth.service - login with email: roy@gmail.com
@@ -240,3 +183,4 @@ Mon, 20 Jan 2020 08:44:06 GMT - Info - Server is running on port: 3030
 Mon, 20 Jan 2020 08:44:22 GMT - Info - Server is running on port: 3030
 Mon, 20 Jan 2020 08:44:38 GMT - Debug - auth.service - login with email: roy1@gmail.com
 Mon, 20 Jan 2020 08:59:21 GMT - Debug - auth.service - login with email: roy@gmail.com
+

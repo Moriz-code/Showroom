@@ -19,9 +19,9 @@
 
 .shop-logo{
     width:100%;
-    // height:100%;
+    height:100%;
     grid-column: 2 / 4;
-    grid-row: 4 / 6;
+    grid-row: 4 / 9;
     border-radius: 50%;
     border: 2px solid lightgrey;
 }
@@ -46,14 +46,6 @@
     grid-row: 10 / 11;
 
 }
-
-// .social{
-//      grid-column: 10 / 12;
-//      grid-row: 12 / 13;
-//      max-width:50px;
-    
-     
-// }
 
 .shop-video{
     grid-column: 4 / 7;
@@ -82,6 +74,8 @@
     grid-row: 2/ 12;
 }
 
+
+//need to be at home but i have a bug
 
 // {this.props.shop.selectedShop ?
 //     <div className="shop-container" style={{ backgroundColor: selectedShop.style.bgColor }}>

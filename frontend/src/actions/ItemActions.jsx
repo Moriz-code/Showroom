@@ -12,7 +12,7 @@ export function loadItems(filterBy) {
 }
 
 function setItems(items) {
-    console.log('items',items);
+    // console.log('items',items);
     
     return {
         type: 'SET_ITEMS',
@@ -43,14 +43,18 @@ export function setSorts(sorts) {
 
 export function saveItem(item) {
     return async dispatch => {
+        console.log('save Item ', item);
         try {
             if (!item._id) {
+
                 // item._id = _makeId();
                 delete item._id
                 const addedItem = await ItemService.add(item);
+
+
                 dispatch({type: 'ITEM_ADD', addedItem})
             } else {
-                console.log('edit item');
+                // console.log('edit item');
                 const editedItem = await ItemService.put(item);
                  dispatch({ type: 'ITEM_UPDATE', editedItem});
             }

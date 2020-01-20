@@ -40,7 +40,7 @@ class ShopItems extends Component {
       }
     }))
 
-    console.log(this.state);
+    // console.log(this.state);
 
     this.props.loadItems(this.state.filterBy);
   }
