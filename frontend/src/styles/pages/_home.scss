@@ -63,7 +63,7 @@
 
 
 .hero {
-  height: 500px;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,7 +80,7 @@
   color:white;
   align-items: center;
   font-family: Zcool;
-  font-size: 4.8em;
+  font-size: 2.8em;
   -webkit-text-stroke-width: 1px;
   letter-spacing: 1px;
   -webkit-text-stroke-color: black;
@@ -103,6 +103,12 @@
     transition: 0.35s ease;
     color: black;
 }
+}
+
+.home-categories{
+  font-family: Lato;
+  font-size: 1.5rem;
+
 }
 
 
