@@ -46,12 +46,12 @@ export function saveItem(item) {
         console.log('save Item ', item);
         try {
             if (!item._id) {
+
+                // item._id = _makeId();
                 delete item._id
-                console.log('item after deleting id' , item);
                 const addedItem = await ItemService.add(item);
-                // console.log('addedItem' , addedItem)
-                console.log('addedItem', addedItem);
-                debugger;
+
+
                 dispatch({type: 'ITEM_ADD', addedItem})
             } else {
                 // console.log('edit item');
@@ -101,4 +101,5 @@ function _makeId(length = 5) {
     }
     return text;
 }
+
 

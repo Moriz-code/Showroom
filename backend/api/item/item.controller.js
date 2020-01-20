@@ -1,17 +1,19 @@
 const itemService = require('./item.service')
 
 async function getItems(req, res) {
-    // console.log(req.query);
+
     const items = await itemService.query(req.query)
+
     res.send(items)
 }
 
 async function getItem(req, res) {
-    const item = await itemService.getById(req.params.id)
+    let item = await itemService.getById(req.params.id)
     res.send(item)
 }
 
 async function updateItem(req, res) {
+
     let item = req.body;
     await itemService.update(item)
     res.send(item)

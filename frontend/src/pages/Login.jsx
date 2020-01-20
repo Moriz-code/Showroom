@@ -16,13 +16,18 @@ class Login extends Component {
 
     doLogin = async (ev) => {
         ev.preventDefault()
+       
         const { email, password } = this.state.loginCred;
         if (!email || !password) {
             return this.setState({ msg: 'Please enter user/password' });
         }
         const userCreds = { email, password };
-        this.props.login(userCreds);
-        this.setState({ loginCred: { email: '', password: '' } });
+         await this.props.login(userCreds);
+          this.setState({ loginCred: { email: '', password: '' } });
+         ( sessionStorage.getItem('user'))? this.props.history.push('./item') : this.setState({msg:'Wrong email or password'})
+        
+          
+    
     }
 
     loginHandleChange = ev => {

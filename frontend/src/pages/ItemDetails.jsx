@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setCurrentItem } from '../actions/ItemActions';
-import {addToWishList} from '../actions/UserActions'
+import { setCurrentItem, saveItem } from '../actions/ItemActions';
+import { addToWishList } from '../actions/UserActions'
 import OrderService from '../services/OrderService';
-
+import ReviewList from '../cmps/reviews/ReviewList'
+import ReviewRating from '../cmps/reviews/ReviewRating'
 class ItemDetails extends Component {
 
     state = {
-        imgIndex: 0
+        imgIndex: 0,
+        reviewMode: false,
+        review: {
+            txt: '',
+            rating: ''
+        }
     }
 
     componentDidMount() {
@@ -29,8 +35,7 @@ class ItemDetails extends Component {
     }
 
     onAddToCart = () => {
-        console.log(this.props.item,'itemmmmm');
-        
+
         OrderService.addItemtoCart(this.props.item)
     }
 
@@ -41,8 +46,52 @@ class ItemDetails extends Component {
 
 
     onAddToWishList = async () => {
-        const wishList= await this.props.addToWishList(this.props.item, this.props.loggedInUser)
+        const wishList = await this.props.addToWishList(this.props.item, this.props.loggedInUser)
     }
+
+    onAddReview = async () => {
+        await this.setState({ reviewMode: true })
+
+    }
+
+    handleSubmit = async (ev) => {
+        ev.preventDefault()
+        this.setState({ reviewMode: false, review: { txt: '', rate: '' } })
+        const itemToUpdate = { ...this.props.item }
+        const newReview = { byUser: { id: this.props.loggedInUser._id, name: this.props.loggedInUser.fullName }, txt: this.state.review.txt, rate: this.state.review.rating }
+        const reviews = await [...itemToUpdate.reviews, newReview]
+        const updatedItem = { ...itemToUpdate, reviews }
+        await this.props.saveItem(updatedItem)
+        this.props.setCurrentItem(this.props.match.params.id)
+    }
+
+
+
+
+
+    handleInput = (ev) => {
+        const value = ev.target.value;
+        const field = ev.target.name
+
+        this.setState(prevState => ({ review: { ...prevState.review, [field]: value } }))
+    }
+
+    calculateAvgRating = () => {
+        const { reviews } = this.props.item
+        const ratingSum = reviews.reduce((acc, review) => {
+
+
+            return acc += +review.rate
+        }, 0)
+        const avgRating = Math.floor(ratingSum / reviews.length / 5 * 100)
+        return avgRating
+
+    }
+
+
+
+
+
 
     render() {
         const { item } = this.props
@@ -70,13 +119,32 @@ class ItemDetails extends Component {
                                 <img style={{ height: "80px", width: "80px" }} src={item.itemOwner.logoUrl} alt="brandImg" />
                             </div>
                         </Link>
+                            <ReviewRating rating={this.calculateAvgRating()}></ReviewRating>
                         <div> {item.price}$</div>
                         <div>Size:{item.size}</div>
                         <div className="item-buttons flex">
                             <button className="item-details-btn add-to-cart" onClick={this.onAddToCart}>Add to cart</button>
                             <button className="item-details-btn buy-now" onClick={this.onBuyNow}>Buy Now</button>
-                            <button  className="item-details-btn" onClick={this.onAddToWishList}>WishList</button>
+                            <button className="item-details-btn" onClick={this.onAddToWishList}>WishList</button>
+                            <button className="item-details-btn" onClick={this.onAddReview}>Add Review</button>
                             <i className="far fa-heart"></i>
+                        </div>
+                        <div>
+                            {this.state.reviewMode &&
+                                <form onSubmit={this.handleSubmit}>
+                                    <input onChange={this.handleInput} type="txt" value={this.state.review.txt} name="txt" placeholder="What do you think about this product?"></input>
+                                    <button>Submit</button>
+                                    <fieldset className="rating" onChange={this.handleInput}>
+                                        <legend>Please rate:</legend>
+                                        <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
+                                        <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
+                                        <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
+                                        <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
+                                        <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
+                                    </fieldset>
+
+                                </form>
+                            }
                         </div>
                         <h5>{item.sizeFit}</h5>
                     </div>
@@ -84,6 +152,11 @@ class ItemDetails extends Component {
                 <h3> Item description:
                     <p>{item.description}</p>
                 </h3>
+                <section>
+                    <div>Reviews</div>
+                </section>
+                Customers Reviews
+                <ReviewList item={this.props.item}></ReviewList>
                 <section>
                     <div>you may also like</div>
                 </section>
@@ -106,7 +179,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     setCurrentItem,
-    addToWishList
+    addToWishList,
+    saveItem
 };
 
 export default connect(

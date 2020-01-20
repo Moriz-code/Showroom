@@ -22,6 +22,7 @@ class Wishlist extends Component {
     render() {
 
         return (
+            this.props.loggedInUser&&
             <div>
                 <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>
             </div>
