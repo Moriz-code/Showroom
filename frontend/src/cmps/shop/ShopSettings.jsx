@@ -3,7 +3,15 @@ import React from 'react';
 import InstgaramIcon from '../../styles/assets/logo/insta.png';
 import FacebookIcon from '../../styles/assets/logo/facebook.png';
 
+
+
+
+
+
 export default function ShopSettings(props) {
+
+
+  // <iframe width="420" height="315" src="https://www.youtube.com/embed/A6XUVjK9W4o" frameborder="0" allowfullscreen></iframe>
   
   return <React.Fragment>
 

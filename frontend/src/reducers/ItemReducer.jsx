@@ -14,6 +14,7 @@ export default function (state = initalState, action = {}) {
 
             //make sure the action is on the same name
         case 'ITEM_ADD':
+           console.log('item - reducer- add' , action);
            
             return { ...state, items: [...state.items, action.addedItem] };
 

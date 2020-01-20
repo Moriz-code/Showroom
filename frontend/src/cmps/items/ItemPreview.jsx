@@ -27,6 +27,14 @@ class ItemPreview extends Component {
             <button onClick={() => this.handleEdit(this.props.item)}>edit</button>
           </div>
         )
+      case "customerMode":
+        return (
+          <div>
+          </div>
+        )
+
+
+
       default:
         break;
     }
