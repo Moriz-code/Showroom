@@ -11,6 +11,7 @@ class ShopApp extends Component {
             <div className="hero">
                     <p className="hero-title">Buy and sell local fashion goods</p>
                     <input className="hero-search" type="text" id="search-bar" placeholder="Looking for something specific?" />
+                    {/* <button className="searchBtn">Search</button> */}
                     {/* <Link to="/item"><button>Shop Now</button></Link> */}
                 </div>
             <div className="container home-categories">

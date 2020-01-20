@@ -6,8 +6,7 @@ import {Link} from 'react-router-dom'
 class Header extends Component {
   render() {
     return <React.Fragment>
-      <div className="main-header flex">
-     <Link to={`/`}><div className="logo">LOGO</div></Link> 
+      <div className="header main-header">
         <NavBar></NavBar>
       </div>
     </React.Fragment>
