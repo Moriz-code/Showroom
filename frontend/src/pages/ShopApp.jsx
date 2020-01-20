@@ -8,15 +8,11 @@ class ShopApp extends Component {
 
     render() {
         return <React.Fragment>
-
-
-
-            <div className="container home-categories">
-
-                <div className="category-a">
-                    <p>Buy and sell local fashion good</p>
-                    <Link to="/item"><button>Shop Now</button></Link>
+            <div className="hero">
+                    <p className="hero-title">Buy and sell local fashion goods</p>
+                    {/* <Link to="/item"><button>Shop Now</button></Link> */}
                 </div>
+            <div className="container home-categories">
                 <div className="category-b">MEN</div>
                 <div className="category-c">WOMEN</div>
                 <div className="category-d">SUMMER SALE</div>
