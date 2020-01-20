@@ -69,7 +69,7 @@ class PersonalShop extends Component {
 
     async componentDidMount() {
         console.log('did mount')
-     await   this.props.loadShop(this.props.match.params.id)
+     await this.props.loadShop(this.props.match.params.id)
         await this.props.loadItems();
 
         // await new Promise(resolve => { setTimeout(resolve, 1000); })
