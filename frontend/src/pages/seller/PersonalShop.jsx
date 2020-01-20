@@ -69,9 +69,9 @@ class PersonalShop extends Component {
 
     async componentDidMount() {
 
-       
+
         console.log('did mount')
-     await this.props.loadShop(this.props.match.params.id)
+        await this.props.loadShop(this.props.match.params.id)
         await this.props.loadItems();
 
         // await new Promise(resolve => { setTimeout(resolve, 1000); })
@@ -84,8 +84,8 @@ class PersonalShop extends Component {
     handleSettingChange = (ev) => {
         let { name, value, alt } = ev.target;
 
-        if (name === 'videoUrl'){  
-        value = Utils.getEmbdedUrl(value);
+        if (name === 'videoUrl') {
+            value = Utils.getEmbdedUrl(value);
         }
 
         this.setState(prevState => ({
@@ -196,30 +196,28 @@ class PersonalShop extends Component {
 
 
     render() {
-        console.log('shop:',this.state.shop)
+        console.log('shop:', this.state.shop)
         const { shop } = this.state;
         return (
             <React.Fragment>
-
-                {this.state.shop  ?
+                {this.state.shop ?
                     <div className="shop-container" style={{ backgroundColor: shop.style.bgColor }}>
-                        <HeaderShop selectedShop={shop}></HeaderShop> 
+                        <HeaderShop selectedShop={shop}></HeaderShop>
 
                         <button onClick={this.onEditSettings}>Edit Shop Style</button>
                         <div className={this.state.isOnEditSettigs ? 'modal' : 'display-none'}>
-                        <ShopSettings onSaveSettings={this.onSaveSettings} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings> 
+                            <ShopSettings onSaveSettings={this.onSaveSettings} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
                         </div>
                         <button onClick={this.onEditMode}>Add Item</button>
                         <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
-                     <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
+                            <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
                         </div>
-                        </div>
-                        :''}
-                        {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id===this.props.loggedInUser._id ?"adminMode":"customerMode"} items={this.props.items} /> : 'There is No Items'}
                     </div>
-                    : 'this shop is not availble'}
-
-            </React.Fragment>)
+                    : ''}
+                {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
+                {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
+                   
+            </React.Fragment >)
     }
 }
 
@@ -246,3 +244,5 @@ export default connect(
 )(PersonalShop);
 
 
+
+// listMode={this.props.shop.selectedShop.owner.id===this.props.loggedInUser._id ?"adminMode":"customerMode"}

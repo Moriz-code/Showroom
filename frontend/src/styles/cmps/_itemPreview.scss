@@ -1,7 +1,10 @@
 .item-card {
-
-  img {
-    height: 400px;
-    object-fit: cover;
-  }
+  display: flex;
+  flex-direction: column;
+  padding:10px;
+  width:200px;
+  height:400px;
+  margin-top:10px;
+  border: 1px lightgrey solid;
+  padding: 10px;
 }

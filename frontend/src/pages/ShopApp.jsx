@@ -10,13 +10,15 @@ class ShopApp extends Component {
         return <React.Fragment>
             <div className="hero">
                     <p className="hero-title">Buy and sell local fashion goods</p>
+                    <input className="hero-search" type="text" id="search-bar" placeholder="Looking for something specific?" />
+                    {/* <button className="searchBtn">Search</button> */}
                     {/* <Link to="/item"><button>Shop Now</button></Link> */}
                 </div>
             <div className="container home-categories">
-                <div className="category-b">MEN</div>
-                <div className="category-c">WOMEN</div>
-                <div className="category-d">SUMMER SALE</div>
-                <div className="category-e">LAST CHANCE</div>
+                <div className="category-b">BEST SELLER</div>
+                <div className="category-c">WOMEN  & MEN</div>
+                <div className="category-d">ACCESSORIES</div>
+                <div className="category-e">BECOME A SELLER</div>
             </div>
 
             <div>

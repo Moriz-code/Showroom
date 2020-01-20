@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { withRouter } from "react-router";
+import ReviewRating from '../reviews/ReviewRating';
 
 
 class ItemPreview extends Component {
@@ -53,22 +54,40 @@ class ItemPreview extends Component {
     this.props.addToCart(item)
   }
 
+  calculateAvgRating = () => {
+    const { reviews } = this.props.item
+    const ratingSum = reviews.reduce((acc, review) => {
+
+
+      return acc += +review.rate
+    }, 0)
+    const avgRating = Math.floor(ratingSum / reviews.length / 5 * 100)
+    return avgRating
+
+  }
+
 
   render() {
-    return (<React.Fragment>
-      <Link to={`/item/${this.props.item._id}`}>
-        <li className="item-card clean-line">
-          <img alt="img-item" src={this.props.item.imgs[0]} />
-          <h3>{this.props.item.title}</h3>
-          <p>{this.props.item.price}</p>
 
-        </li>
+    return (<React.Fragment>
+      <div className="item-card clean-line flex justify-space-between">
+        <Link className="flex justify-space-between column" style={{height:"100%"}} 
+          to={`/item/${this.props.item._id}`}>
+        <div style={{height:"100%"}}  >
+          <img style={{height:"70%"}}  alt="img-item" src={this.props.item.imgs[0]} />
+          <h3>{this.props.item.itemOwner.name}</h3>
+          <h3 style={{ fontSize: "15px" }}>{this.props.item.title}</h3>
+        </div>
+        <div className="flex justify-space-around">
+          <p>${this.props.item.price}</p>
+          <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
+        </div>
       </Link>
       <div >
-        {this.generateBtns()}
       </div>
-    </React.Fragment>
-
+      {this.generateBtns()}
+      </div>
+    </React.Fragment >
     )
   }
 }
