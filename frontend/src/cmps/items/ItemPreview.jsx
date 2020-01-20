@@ -61,14 +61,12 @@ class ItemPreview extends Component {
           <img alt="img-item" src={this.props.item.imgs[0]} />
           <h3>{this.props.item.title}</h3>
           <p>{this.props.item.price}</p>
-
         </li>
       </Link>
       <div >
         {this.generateBtns()}
       </div>
     </React.Fragment>
-
     )
   }
 }

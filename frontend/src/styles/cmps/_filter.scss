@@ -1,11 +1,20 @@
+
+.filters-panel{
+    justify-content:center;
+//  background-color: lightgrey;
+ 
+}
+  
+
 .checkbox-dropdown {
     width: 200px;
     border: 1px solid #aaa;
     padding: 10px;
     position: relative;
-    margin: 0 auto;
-    
+    // margin: 0 auto;
     user-select: none;
+    margin: 10px 0 0 15px;
+
 }
 
 /* Display CSS arrow to the right of the dropdown text */
