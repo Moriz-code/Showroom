@@ -6,6 +6,7 @@ import { addToWishList } from '../actions/UserActions'
 import OrderService from '../services/OrderService';
 import ReviewList from '../cmps/reviews/ReviewList'
 import ReviewRating from '../cmps/reviews/ReviewRating'
+
 class ItemDetails extends Component {
 
     state = {
@@ -32,6 +33,19 @@ class ItemDetails extends Component {
 
     setMainImg = (imgIndex) => {
         this.setState({ imgIndex })
+    }
+    changeImg = (diff) => {
+        console.log(diff);
+        
+        const currIdx = this.state.imgIndex
+        console.log(currIdx);
+        ((currIdx === 2) && (diff > 0)) ? this.setState({ imgIndex: 0 }):
+        ((currIdx === 0) && (diff < 0)) ? this.setState({ imgIndex: 2 }) : this.setState({ imgIndex: currIdx + diff }) 
+        
+            // (currIdx == 2 && diff > 0) ? this.setState({ imgIndex: 0 }) : (currIdx == 0 && diff < 0) ? this.setState({ imgIndex: 2 }) : console.log(diff)
+            
+            // this.setState({ imgIndex: currIdx + diff }) 
+
     }
 
     onAddToCart = () => {
@@ -95,23 +109,25 @@ class ItemDetails extends Component {
 
     render() {
         const { item } = this.props
-
+        item && console.log(item.reviews, 'reviews')
         return (
             item &&
             <React.Fragment>
                 <section className="item-container flex justify-space-around">
-                    <div className="item-img container flex">
+                    <div className="item-img flex">
                         <div className="item-secondary-image flex column justify-space-between">
                             <img className="secondary-img" onClick={() => this.setMainImg(0)} src={item.imgs[0]} alt="itemImg1" />
                             <img className="secondary-img" onClick={() => this.setMainImg(1)} src={item.imgs[1]} alt="itemImg2" />
                             <img className="secondary-img" onClick={() => this.setMainImg(2)} src={item.imgs[2]} alt="itemImg3" />
                         </div>
                         <div className="item-main-image flex">
+                            <a onClick={() => this.changeImg(-1)} href="#" className="previous-img">&laquo;</a>
+                            <a onClick={() => this.changeImg(1)} href="#" className="next-img">&raquo;</a>
                             <img className="main-img" src={item.imgs[this.state.imgIndex]} alt="mainImg" />
                         </div>
                     </div>
-                    <div className="item-side-details flex column">
-                        <h1> {item.title}</h1>
+                    <div className="item-side-details flex column justify-space-between">
+                        <h1 className="item-details-title"> {item.title}</h1>
                         <Link to={`/shop/${item.itemOwner.id}`}>
                             <div className="store-details flex">
                                 <label >Seller:</label>
@@ -119,21 +135,28 @@ class ItemDetails extends Component {
                                 <img style={{ height: "80px", width: "80px" }} src={item.itemOwner.logoUrl} alt="brandImg" />
                             </div>
                         </Link>
-                            <ReviewRating rating={this.calculateAvgRating()}></ReviewRating>
+
                         <div> {item.price}$</div>
                         <div>Size:{item.size}</div>
+                        <ReviewRating rating={this.calculateAvgRating()}></ReviewRating>
+
                         <div className="item-buttons flex">
                             <button className="item-details-btn add-to-cart" onClick={this.onAddToCart}>Add to cart</button>
                             <button className="item-details-btn buy-now" onClick={this.onBuyNow}>Buy Now</button>
-                            <button className="item-details-btn" onClick={this.onAddToWishList}>WishList</button>
-                            <button className="item-details-btn" onClick={this.onAddReview}>Add Review</button>
+                            <button className="item-details-btn add-to-wishList" onClick={this.onAddToWishList}>WishList</button>
+                            <button className="item-details-btn add-review" onClick={this.onAddReview}>Add Review</button>
                             <i className="far fa-heart"></i>
                         </div>
                         <div>
+                            <h3> Item description:
+                    <p>{item.description}</p>
+                            </h3>
                             {this.state.reviewMode &&
                                 <form onSubmit={this.handleSubmit}>
-                                    <input onChange={this.handleInput} type="txt" value={this.state.review.txt} name="txt" placeholder="What do you think about this product?"></input>
-                                    <button>Submit</button>
+                                    <div>
+                                        <input onChange={this.handleInput} type="txt" value={this.state.review.txt} name="txt" placeholder="What do you think about this product?"></input>
+                                    </div>
+
                                     <fieldset className="rating" onChange={this.handleInput}>
                                         <legend>Please rate:</legend>
                                         <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
@@ -142,28 +165,28 @@ class ItemDetails extends Component {
                                         <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
                                         <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
                                     </fieldset>
-
+                                    <button>Submit</button>
                                 </form>
                             }
                         </div>
                         <h5>{item.sizeFit}</h5>
                     </div>
                 </section>
-                <h3> Item description:
-                    <p>{item.description}</p>
-                </h3>
-                <section>
-                    <div>Reviews</div>
-                </section>
-                Customers Reviews
-                <ReviewList item={this.props.item}></ReviewList>
+                {item.reviews.length > 0 &&
+                    <div>
+                        < section >
+                            <div>Reviews</div>
+                        </section>
+                        <ReviewList item={this.props.item}></ReviewList>
+                    </div>
+                }
                 <section>
                     <div>you may also like</div>
                 </section>
                 <section>
                     <div>Recently viewd</div>
                 </section>
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 
