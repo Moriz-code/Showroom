@@ -6,7 +6,7 @@ import { addToWishList } from '../actions/UserActions'
 import OrderService from '../services/OrderService';
 import ReviewList from '../cmps/reviews/ReviewList'
 import ReviewRating from '../cmps/reviews/ReviewRating'
-
+import Avatar from '@material-ui/core/Avatar';
 class ItemDetails extends Component {
 
     state = {
@@ -36,15 +36,11 @@ class ItemDetails extends Component {
     }
     changeImg = (diff) => {
         console.log(diff);
-        
+
         const currIdx = this.state.imgIndex
         console.log(currIdx);
-        ((currIdx === 2) && (diff > 0)) ? this.setState({ imgIndex: 0 }):
-        ((currIdx === 0) && (diff < 0)) ? this.setState({ imgIndex: 2 }) : this.setState({ imgIndex: currIdx + diff }) 
-        
-            // (currIdx == 2 && diff > 0) ? this.setState({ imgIndex: 0 }) : (currIdx == 0 && diff < 0) ? this.setState({ imgIndex: 2 }) : console.log(diff)
-            
-            // this.setState({ imgIndex: currIdx + diff }) 
+        ((currIdx === 2) && (diff > 0)) ? this.setState({ imgIndex: 0 }) :
+            ((currIdx === 0) && (diff < 0)) ? this.setState({ imgIndex: 2 }) : this.setState({ imgIndex: currIdx + diff })
 
     }
 
@@ -129,17 +125,19 @@ class ItemDetails extends Component {
                     <div className="item-side-details flex column justify-space-between">
                         <h1 className="item-details-title"> {item.title}</h1>
                         <Link to={`/shop/${item.itemOwner.id}`}>
-                            <div className="store-details flex">
+                            <div className="store-details flex column">
                                 <label >Seller:</label>
                                 <h4> {item.itemOwner.name}</h4>
-                                <img style={{ height: "80px", width: "80px" }} src={item.itemOwner.logoUrl} alt="brandImg" />
+                                <Avatar alt="" src={item.itemOwner.logoUrl} style={{ backgroundColor: "lightgray" }} />
+                                {/* <img style={{ height: "80px", width: "80px" }} src={item.itemOwner.logoUrl} alt="brandImg" /> */}
                             </div>
                         </Link>
 
-                        <div> {item.price}$</div>
+                        <div>${item.price}</div>
                         <div>Size:{item.size}</div>
-                        <ReviewRating rating={this.calculateAvgRating()}></ReviewRating>
+                        <h2>Average Rating {Math.round((this.calculateAvgRating()/100*5)*100)/100||""}</h2>
 
+                        <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
                         <div className="item-buttons flex">
                             <button className="item-details-btn add-to-cart" onClick={this.onAddToCart}>Add to cart</button>
                             <button className="item-details-btn buy-now" onClick={this.onBuyNow}>Buy Now</button>
