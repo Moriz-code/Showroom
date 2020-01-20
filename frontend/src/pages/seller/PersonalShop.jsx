@@ -215,9 +215,9 @@ class PersonalShop extends Component {
                         </div>
                         </div>
                         :''}
-                        {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id===this.props.loggedInUser._id ?"adminMode":"customerMode"} items={this.props.items} /> : 'There is No Items'}
-                    </div>
-                    : 'this shop is not availble'}
+                        {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode="adminMode" items={this.props.items} /> : 'There is No Items'}
+                  
+                  
 
             </React.Fragment>)
     }
@@ -246,3 +246,5 @@ export default connect(
 )(PersonalShop);
 
 
+
+// listMode={this.props.shop.selectedShop.owner.id===this.props.loggedInUser._id ?"adminMode":"customerMode"}
