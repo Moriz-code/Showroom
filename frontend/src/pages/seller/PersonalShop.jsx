@@ -67,6 +67,8 @@ class PersonalShop extends Component {
     }
 
     async componentDidMount() {
+
+       
         console.log('did mount')
         this.props.loadShop(this.props.match.params.id)
         this.props.loadItems();
@@ -228,17 +230,19 @@ class PersonalShop extends Component {
                                 </a>
                             </div>
                         </div>
-
+                        {this.props.loggedInUser&&this.props.shop.selectedShop&&(this.props.shop.selectedShop.owner.id===this.props.loggedInUser._id)?
+                        <div>
                         <button onClick={this.onEditSettings}>Edit Shop Style</button>
                         <div className={this.state.isOnEditSettigs ? 'modal' : 'display-none'}>
                             <ShopSettings onSaveSettings={this.onSaveSettings} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
                         </div>
-
                         <button onClick={this.onEditMode}>Add Item</button>
                         <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
                             <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
                         </div>
-                        {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode="adminMode" items={this.props.items} /> : 'There is No Items'}
+                        </div>
+                        :''}
+                        {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id===this.props.loggedInUser._id ?"adminMode":"customerMode"} items={this.props.items} /> : 'There is No Items'}
                     </div>
                     : 'this shop is not availble'}
 
@@ -250,6 +254,7 @@ const mapStateToProps = state => {
     return {
         shop: state.shop,
         items: state.item.items,
+        loggedInUser: state.user.loggedInUser
     };
 };
 
@@ -266,6 +271,5 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(PersonalShop);
-
 
 

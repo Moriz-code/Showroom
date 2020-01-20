@@ -54,6 +54,7 @@ async function update(item) {
     try {
         await collection.replaceOne({"_id":item._id}, {$set : item})
         return item
+        
     } catch (err) {
         console.log(`ERROR: cannot update item ${item._id}`)
         throw err;

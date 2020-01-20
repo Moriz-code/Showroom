@@ -45,9 +45,9 @@ export function saveItem(item) {
     return async dispatch => {
         try {
             if (!item._id) {
-                item._id = _makeId();
+                // item._id = _makeId();
+                delete item._id
                 const addedItem = await ItemService.add(item);
-                console.log(addedItem)
                 dispatch({type: 'ITEM_ADD', addedItem})
             } else {
                 console.log('edit item');
@@ -97,4 +97,5 @@ function _makeId(length = 5) {
     }
     return text;
 }
+
 

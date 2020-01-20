@@ -29,6 +29,7 @@ async function get(itemId) {
 
 async function put(editedItem) {  
     const itemToEdit = await HttpService.put(`item/${editedItem._id}` , editedItem);
+    console.log(itemToEdit,'updated');
      return itemToEdit
 }
 
