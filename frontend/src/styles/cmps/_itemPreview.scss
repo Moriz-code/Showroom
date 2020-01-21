@@ -1,10 +1,53 @@
+
+.cards-container {
+  column-count: 3;
+   display: flex;
+  // justify-content: flex-start;
+}
+
+
 .item-card {
+  max-width:250px;
   display: flex;
   flex-direction: column;
+  // justify-content: flex-start;
+  align-items:flex-start;
   padding:10px;
-  width:200px;
-  height:400px;
+  break-inside: avoid;
   margin-top:10px;
-  border: 1px lightgrey solid;
+  // border: 1px lightgrey solid;
   padding: 10px;
+  color:$clr1; 
+  font-size: 0.8rem;
+
+  .heart-icon{
+    width:35px;
+  transform: scaleX(-1);
+   align-self: flex-end;
+   margin-bottom: -45px;
+   margin-right: 5px;
+   margin-top:5px;
+   
+  }
+
+  // i created an avatar but we dont have the data
+  // .item-avatr{
+  //   width:30px;
+  //   height:30px;
+  //   border-radius: 1200px;
+  // }
+
+  .item-seller{
+  color: $clr2;
+  font-style: italic;
+ }
+
+ h3{
+   color: $clr4;
+ }
+
+ .item-stars{
+    align-self: flex-end;
+    margin-top: -22%;
+ }
 }

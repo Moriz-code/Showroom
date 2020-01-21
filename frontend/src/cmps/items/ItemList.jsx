@@ -7,7 +7,7 @@ function ItemList({ items, listMode, deleteItem, editItem, addToCart }) {
   // console.log(items)
   return <React.Fragment>
 
-    <div className="cards-container">
+    <div className="cards-container container">
       {items ? items.map(item =>
         <ItemPreview editItem={editItem} deleteItem={deleteItem} addToCart={addToCart} listMode={listMode} key={item._id} item={item}  >
         </ItemPreview>) : 'No items'}  </div>
