@@ -11,7 +11,6 @@ import HeaderShop from '../../cmps/shop/HeaderShop';
 import Utils from '../../services/UtilService';
 
 
-
 class PersonalShop extends Component {
     state = {
         isOnEditMode: false,
@@ -32,16 +31,7 @@ class PersonalShop extends Component {
             },
             labels: [],
             imgs: [],
-            reviews: [
-                {
-                    byUser: {
-                        name: '',
-                        id: ''
-                    },
-                    txt: '',
-                    rate: ''
-                }
-            ]
+            reviews: []
         },
 
         shop: {
@@ -68,8 +58,6 @@ class PersonalShop extends Component {
     }
 
     async componentDidMount() {
-
-
         console.log('did mount')
         await this.props.loadShop(this.props.match.params.id)
         await this.props.loadItems();
@@ -77,7 +65,6 @@ class PersonalShop extends Component {
         // await new Promise(resolve => { setTimeout(resolve, 1000); })
         this.setState({ shop: this.props.shop.selectedShop })
         // return Promise.resolve();
-
     }
 
 

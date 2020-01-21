@@ -24,7 +24,7 @@ class Cart extends Component {
 
     calculateTotal = () => {
         const totalPrice = this.state.items.reduce((acc, item) => {
-            return acc += item.price
+            return acc += +item.price
         }, 0)
         return totalPrice
     }

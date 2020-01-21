@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Search from '../cmps/items/Search';
 
 
 class ShopApp extends Component {
@@ -8,11 +9,27 @@ class ShopApp extends Component {
 
     render() {
         return <React.Fragment>
+
+
+
+
+            <div className="container home-categories">
+                <Search></Search>
+                <div className="category-a">
+                    <p>Buy and sell local fashion good</p>
+                    <Link to="/item"><button>Shop Now</button></Link>
+
+<!--             {/* <div className="btn1">Hello</div>
+            <div className="btn2">Hello</div>
+            <div className="btn3">Hello</div>
+            <div className="btn4"></div> */}
+
             <div className="hero">
                     <p className="hero-title">Buy and sell local fashion goods</p>
                     <input className="hero-search" type="text" id="search-bar" placeholder="Looking for something specific?" />
                     {/* <button className="searchBtn">Search</button> */}
-                    {/* <Link to="/item"><button>Shop Now</button></Link> */}
+                    {/* <Link to="/item"><button>Shop Now</button></Link> */} -->
+
                 </div>
             <div className="container home-categories">
                 <div className="category-b">BEST SELLER</div>
@@ -21,7 +38,7 @@ class ShopApp extends Component {
                 <div className="category-e">BECOME A SELLER</div>
             </div>
 
-            <div>
+            <div className="container">
                 <h3>
                     Title
                 </h3>

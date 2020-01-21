@@ -37,7 +37,7 @@ function App() {
         <Route component={Cart} path="/cart" exact></Route>
       </Switch>
     </Router>
-    <Footer></Footer>
+    {/* <Footer></Footer> */}
   </React.Fragment>
 }
 

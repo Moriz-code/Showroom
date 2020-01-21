@@ -33,6 +33,7 @@ function _createOrder(miniUser, order) {
             product: {
                 id: item._id,
                 title: item.title,
+                size:item.size,
                 price: item.price,
                 imgUrl: item.imgs[0],
             },
