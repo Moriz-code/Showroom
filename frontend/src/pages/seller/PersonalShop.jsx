@@ -7,9 +7,9 @@ import { loadItems, deleteItem, saveItem } from '../../actions/ItemActions';
 import ItemsList from '../../cmps/items/ItemList';
 import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
+import HeaderShop from '../../cmps/shop/HeaderShop';
+import Utils from '../../services/UtilService';
 
-import InstgaramIcon from '../../styles/assets/logo/insta.png';
-import FacebookIcon from '../../styles/assets/logo/facebook.png';
 
 class PersonalShop extends Component {
     state = {
@@ -31,16 +31,7 @@ class PersonalShop extends Component {
             },
             labels: [],
             imgs: [],
-            reviews: [
-                {
-                    byUser: {
-                        name: '',
-                        id: ''
-                    },
-                    txt: '',
-                    rate: ''
-                }
-            ]
+            reviews: []
         },
 
         shop: {
@@ -68,22 +59,22 @@ class PersonalShop extends Component {
 
     async componentDidMount() {
         console.log('did mount')
-        this.props.loadShop(this.props.match.params.id)
-        this.props.loadItems();
+        await this.props.loadShop(this.props.match.params.id)
+        await this.props.loadItems();
 
-        await new Promise(resolve => { setTimeout(resolve, 1000); })
+        // await new Promise(resolve => { setTimeout(resolve, 1000); })
         this.setState({ shop: this.props.shop.selectedShop })
-        return Promise.resolve();
-
-    }
-
-    componentDidUpdate() {
-        //this.props.loadItems();
+        // return Promise.resolve();
     }
 
 
     handleSettingChange = (ev) => {
-        const { name, value, alt } = ev.target;
+        let { name, value, alt } = ev.target;
+
+        if (name === 'videoUrl') {
+            value = Utils.getEmbdedUrl(value);
+        }
+
         this.setState(prevState => ({
             ...prevState,
             shop: {
@@ -110,7 +101,6 @@ class PersonalShop extends Component {
             }
             else {
                 value = list.concat(value);
-                // console.log('check');
             }
         }
 
@@ -121,7 +111,6 @@ class PersonalShop extends Component {
             }
         }))
 
-        console.log(this.state.item);
 
     }
 
@@ -147,12 +136,8 @@ class PersonalShop extends Component {
         ev.preventDefault();
         await this.props.saveItem(this.state.item);
         this.clearItemState();
-        //  this.props.loadItems();
+        this.props.loadItems();
 
-        // await new Promise(resolve => { setTimeout(resolve, 1000); })
-        // this.props.saveItem(this.state.item);
-        // this.clearItemState();
-        // return Promise.resolve();
     }
 
     editItem = (item) => {
@@ -198,51 +183,28 @@ class PersonalShop extends Component {
 
 
     render() {
-        const { selectedShop } = this.props.shop;
+        console.log('shop:', this.state.shop)
+        const { shop } = this.state;
         return (
             <React.Fragment>
-                {this.props.shop.selectedShop ?
-                    <div className="shop-container" style={{ backgroundColor: selectedShop.style.bgColor }}>
-                        <div className="shop-header">
-                            {/* settings */}
-                            <div className="coverImg" style={{ backgroundImage: 'url(' + selectedShop.style.coverImgUrl + ')' }}></div>
-                            <img className="shop-logo" src={selectedShop.style.logoUrl} />
-                            <h1 className="title">{selectedShop.info.name}</h1>
-                            <h2 className="description">{selectedShop.info.description}</h2>
-                            <h2 className="designer-name">
-                                Shop Owner <br></br>{selectedShop.owner.name}</h2>
-
-                            <iframe title="video" className="shop-video" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                            </iframe>
-
-
-                            <div className="insta-icon">
-                                <a href={selectedShop.info.instagram}>
-                                    <img src={InstgaramIcon} alt="icon" />
-                                </a>
-                            </div>
-
-                            <div className="fb-icon">
-                                <a href={selectedShop.info.facebook}>
-                                    <img src={FacebookIcon} alt="icon" />
-                                </a>
-                            </div>
-                        </div>
+                {this.state.shop ?
+                    <div className="shop-container" style={{ backgroundColor: shop.style.bgColor }}>
+                        <HeaderShop selectedShop={shop}></HeaderShop>
 
                         <button onClick={this.onEditSettings}>Edit Shop Style</button>
                         <div className={this.state.isOnEditSettigs ? 'modal' : 'display-none'}>
                             <ShopSettings onSaveSettings={this.onSaveSettings} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
                         </div>
-
                         <button onClick={this.onEditMode}>Add Item</button>
                         <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
                             <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
                         </div>
-                        {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode="adminMode" items={this.props.items} /> : 'There is No Items'}
                     </div>
-                    : 'this shop is not availble'}
-
-            </React.Fragment>)
+                    : ''}
+                {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
+                {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
+                   
+            </React.Fragment >)
     }
 }
 
@@ -250,6 +212,7 @@ const mapStateToProps = state => {
     return {
         shop: state.shop,
         items: state.item.items,
+        loggedInUser: state.user.loggedInUser
     };
 };
 
@@ -269,3 +232,4 @@ export default connect(
 
 
 
+// listMode={this.props.shop.selectedShop.owner.id===this.props.loggedInUser._id ?"adminMode":"customerMode"}

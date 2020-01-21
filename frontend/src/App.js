@@ -2,6 +2,8 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
+import './styles/global.scss';
+
 import ShopApp from './pages/ShopApp'
 import SignUp from './pages/SignUp'
 import ShopItems from './pages/ShopItems'
@@ -15,7 +17,6 @@ import Cart from './pages/customer/Cart'
 import Header from './cmps/Header'
 import Footer from './cmps/Footer'
 
-import './styles/global.scss'
 const history = createBrowserHistory();
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
         <Route component={Cart} path="/cart" exact></Route>
       </Switch>
     </Router>
-    <Footer></Footer>
+    {/* <Footer></Footer> */}
   </React.Fragment>
 }
 

@@ -36,8 +36,10 @@ async function getById(itemId) {
         return item
     } catch (err) {
         console.log(`ERROR: while finding item ${itemId}`)
+
         throw err;
-    }
+
+         }
 }
 
 async function remove(itemId) {
@@ -57,6 +59,7 @@ async function update(item) {
     try {
         await collection.replaceOne({ "_id": item._id }, { $set: item })
         return item
+        
     } catch (err) {
         console.log(`ERROR: cannot update item ${item._id}`)
         throw err;
@@ -81,6 +84,7 @@ async function add(item) {
 function _buildCriteria(filterBy) {
 
     const criteria = {};
+
     //     if (filterBy.gender) {
     //         let str = [];
     //         if (typeof filterBy.gender === 'string') {

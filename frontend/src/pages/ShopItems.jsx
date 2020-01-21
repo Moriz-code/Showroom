@@ -38,6 +38,7 @@ class ShopItems extends Component {
         ...prevState.filterBy, [name]: value
       }
     }), () => this.props.loadItems(this.state.filterBy))
+
   }
 
   render() {
