@@ -13,11 +13,14 @@ module.exports = {
 
 
 async function query(filterBy = {}) {
-    const criteria = _buildCriteria(filterBy)
+    const criteria = await _buildCriteria(filterBy)
+
     const collection = await dbService.getCollection('item')
     try {
-        const items = await collection.find(criteria).toArray();
-        items.forEach(item => delete item.password);
+        let items;
+        items = await collection.find(criteria).toArray();
+
+        // items.forEach(item => delete item.password);
 
         return items
     } catch (err) {
@@ -29,18 +32,18 @@ async function query(filterBy = {}) {
 async function getById(itemId) {
     const collection = await dbService.getCollection('item')
     try {
-        const item = await collection.findOne({"_id":ObjectId(itemId)})
+        const item = await collection.findOne({ "_id": ObjectId(itemId) })
         return item
     } catch (err) {
         console.log(`ERROR: while finding item ${itemId}`)
         throw err;
     }
-    }
+}
 
 async function remove(itemId) {
     const collection = await dbService.getCollection('item')
     try {
-        await collection.deleteOne({"_id":ObjectId(itemId)})
+        await collection.deleteOne({ "_id": ObjectId(itemId) })
     } catch (err) {
         console.log(`ERROR: cannot remove item ${itemId}`)
         throw err;
@@ -52,7 +55,7 @@ async function update(item) {
     item._id = ObjectId(item._id);
 
     try {
-        await collection.replaceOne({"_id":item._id}, {$set : item})
+        await collection.replaceOne({ "_id": item._id }, { $set: item })
         return item
     } catch (err) {
         console.log(`ERROR: cannot update item ${item._id}`)
@@ -71,15 +74,96 @@ async function add(item) {
     }
 }
 
-function _buildCriteria(filterBy) {
-    const criteria = {};
-    if (filterBy.txt) {
-        criteria.itemname = filterBy.txt
-    }
-    if (filterBy.minBalance) {
-        criteria.balance = {$gte : +filterBy.minBalance}
-    }
-    return criteria;
-}
 
+
+
+
+function _buildCriteria(filterBy) {
+
+    const criteria = {};
+    //     if (filterBy.gender) {
+    //         let str = [];
+    //         if (typeof filterBy.gender === 'string') {
+    //             criteria.gender = filterBy.gender
+    //         }
+    //         else {
+    //             filterBy.gender.forEach((value) => {
+    //                 str.push({ 'gender': value })
+    //             })
+    //             criteria["$or"] = str
+    //         }
+    //     }
+    //     if (filterBy.size) {
+    //         let str = [];
+    //         if (typeof filterBy.size === 'string') {
+    //             criteria.size = filterBy.size
+    //         }
+    //         else {
+    //             filterBy.size.forEach((value) => {
+    //                 str.push({ 'size': value })
+    //             })
+    //             criteria["$or"] = str
+    //         }
+    //     }
+    //     if (filterBy.shop) {
+    //         let str = [];
+    //         if (typeof filterBy.shop === 'string') {
+    //             criteria.shop = filterBy.shop
+    //         }
+    //         else {
+    //             filterBy.shop.forEach((value) => {
+    //                 str.push({ 'shop': value })
+    //             })
+    //             criteria["$or"] = str
+    //         }
+    //     }
+    //     if (filterBy.price) {
+    //         if (Array.isArray(filterBy.price) && filterBy.price.length > 1) {
+
+    //             // filterBy.price.splice(1, filterBy.price-1)
+    //             console.log('filterBy.pricefilterBy.pricefilterBy.price',filterBy.price.splice(1, (filterBy.price)));
+
+    //         }
+    //         let res = (filterBy.price).split(' ')
+    //         criteria["$and"] = [{ 'price': { "$gte": parseInt(res[0]) } }, { 'price': { "$lte": parseInt(res[1]) } }]
+    //     }
+    //     if (filterBy.txt) {
+    //         criteria.username = filterBy.txt
+    //     }
+    //     return criteria;
+    // }
+
+
+    for (let key in filterBy) {
+        switch (key) {
+            case 'gender':
+            case 'size':
+            case 'shop':
+                if (filterBy[key]) {
+                    let str = [];
+                    if (typeof filterBy[key] === 'string') {
+                        criteria[key] = filterBy[key]
+                    }
+                    else {
+                        filterBy[key].forEach((value) => {
+                            str.push({ [key]: value })
+                        })
+                        criteria["$or"] = str
+                    }
+                }
+            case 'price':
+                if (filterBy.price) {
+                    if (Array.isArray(filterBy.price) && filterBy.price.length > 1) {
+                        filterBy.price.splice(1, filterBy.price - 1)
+                        console.log('filterBy.pricefilterBy.pricefilterBy.price', filterBy.price.splice(1, (filterBy.price)));
+                    } else {
+                        let res = (filterBy.price).split(' ')
+                        res = [res]
+                    }
+                    criteria["$and"] = [{ 'price': { "$gte": parseInt(res[0]) } }, { 'price': { "$lte": parseInt(res[1]) } }]
+                }
+        }
+        return criteria;
+    }
+}
 

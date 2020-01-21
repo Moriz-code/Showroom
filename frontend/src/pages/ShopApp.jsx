@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Search from '../cmps/items/Search';
 
 
 class ShopApp extends Component {
@@ -12,7 +13,7 @@ class ShopApp extends Component {
 
 
             <div className="container home-categories">
-
+                <Search></Search>
                 <div className="category-a">
                     <p>Buy and sell local fashion good</p>
                     <Link to="/item"><button>Shop Now</button></Link>

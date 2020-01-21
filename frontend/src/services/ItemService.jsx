@@ -9,9 +9,36 @@ export default {
 };
 
 function query(filterBy = null) {
-
-    return HttpService.get('item', `?gender=men`);
+    if (filterBy === null) return HttpService.get('item');
+    else {
+        // debugger;
+        let str = '';
+        console.log('filterBy-coral', filterBy);
+        for (const key in filterBy) {
+            console.log('key-coral', key);
+            console.log('filterBy-coral', filterBy);
+            console.log('filterBy[key]-coral', filterBy[key]);
+            
+            if (filterBy[key].length === 0) continue
+            else {
+                if (filterBy[key].length === 1) {
+                    if (str !== '') str += '&'
+                    str += key + '=' + filterBy[key][0]
+                }
+                else {
+                    filterBy[key].forEach((value) => {
+                        if (str !== '') str += '&'
+                        str += key + '=' + value
+                    })
+                }
+            }
+        }
+        console.log('str-coral', `item?${str}`);
+        return HttpService.get(`item?${str}`);
+        // return HttpService.get('item', `?gender=men`);
+    }
 }
+
 
 function remove(itemId) {
     return HttpService.delete(`item/${itemId}`);
@@ -28,9 +55,9 @@ async function get(itemId) {
     return item
 }
 
-async function put(editedItem) {  
-    const itemToEdit = await HttpService.put(`item/${editedItem._id}` , editedItem);
-     return itemToEdit
+async function put(editedItem) {
+    const itemToEdit = await HttpService.put(`item/${editedItem._id}`, editedItem);
+    return itemToEdit
 }
 
 // async function put(shop){
