@@ -26,11 +26,8 @@ async function removeItemFromCart(item) {
 }
 
 async function add(order) {
-  
     const savedOrder =await HttpService.post(`order`,order)
-
     return savedOrder
-
 }
 
 async function clearCart() {

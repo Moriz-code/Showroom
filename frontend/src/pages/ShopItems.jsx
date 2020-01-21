@@ -20,7 +20,6 @@ class ShopItems extends Component {
 
 
   selectFilter = (ev) => {
-
     let { name, value } = ev.target;
     var list = [...this.state.filterBy[name]]
     var idx = list.indexOf(value)

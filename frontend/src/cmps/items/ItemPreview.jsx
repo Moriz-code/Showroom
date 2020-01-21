@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { withRouter } from "react-router";
 import ReviewRating from '../reviews/ReviewRating';
+import heart from '../../styles/assets/imgs/icons/002-heart.png';
+import avatar from '../../styles/assets/imgs/covertexture.jpg';
 
 
 class ItemPreview extends Component {
@@ -70,22 +72,21 @@ class ItemPreview extends Component {
   render() {
 
     return (<React.Fragment>
-      <div className="item-card clean-line flex justify-space-between">
-        <Link className="flex justify-space-between column" style={{height:"100%"}} 
-          to={`/item/${this.props.item._id}`}>
-        <div style={{height:"100%"}}  >
-          <img style={{height:"70%"}}  alt="img-item" src={this.props.item.imgs[0]} />
-          <h3>{this.props.item.itemOwner.name}</h3>
-          <h3 style={{ fontSize: "15px" }}>{this.props.item.title}</h3>
-        </div>
-        <div className="flex justify-space-around">
+
+      <div className="item-card">
+        <img className="heart-icon" alt="heart" src={heart} />
+        <Link to={`/item/${this.props.item._id}`}>
+          <img className="item-img" alt="img-item" src={this.props.item.imgs[0]} />
+          {/* <img className="item-avatr" alt="img-item" src={avatar} /> */}
+          <span className="item-seller">{this.props.item.itemOwner.name}</span>
+          <h3>{this.props.item.title}</h3>
           <p>${this.props.item.price}</p>
-          <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
-        </div>
-      </Link>
-      <div >
-      </div>
-      {this.generateBtns()}
+          </Link>
+          <span className="item-stars">
+            {this.props.item.reviews &&
+              <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>}
+            </span>
+        {this.generateBtns()}
       </div>
     </React.Fragment >
     )
@@ -93,3 +94,4 @@ class ItemPreview extends Component {
 }
 
 export default withRouter(ItemPreview)
+
