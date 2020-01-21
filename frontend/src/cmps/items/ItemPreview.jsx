@@ -80,7 +80,7 @@ class ItemPreview extends Component {
         </div>
         <div className="flex justify-space-around">
           <p>${this.props.item.price}</p>
-          <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
+         {this.props.item.reviews&& <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>}
         </div>
       </Link>
       <div >
