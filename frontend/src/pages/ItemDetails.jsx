@@ -7,6 +7,8 @@ import OrderService from '../services/OrderService';
 import ReviewList from '../cmps/reviews/ReviewList'
 import ReviewRating from '../cmps/reviews/ReviewRating'
 import Avatar from '@material-ui/core/Avatar';
+import Modal from '../cmps/Modal'
+
 class ItemDetails extends Component {
 
     state = {
@@ -15,7 +17,9 @@ class ItemDetails extends Component {
         review: {
             txt: '',
             rating: ''
-        }
+        },
+        modalMode: false,
+        modalMsg: ""
     }
 
     componentDidMount() {
@@ -34,19 +38,18 @@ class ItemDetails extends Component {
     setMainImg = (imgIndex) => {
         this.setState({ imgIndex })
     }
-    changeImg = (diff) => {
-        console.log(diff);
+    changeImg = async (diff) => {
+        let currIdx = await this.state.imgIndex
 
-        const currIdx = this.state.imgIndex
-        console.log(currIdx);
-        ((currIdx === 2) && (diff > 0)) ? this.setState({ imgIndex: 0 }) :
-            ((currIdx === 0) && (diff < 0)) ? this.setState({ imgIndex: 2 }) : this.setState({ imgIndex: currIdx + diff })
-
+        const newIdx = ((currIdx === 2) && (diff > 0)) ? 0 :
+            ((currIdx === 0) && (diff < 0)) ? 2 : (currIdx + diff)
+        this.setState({ imgIndex: newIdx })
     }
 
-    onAddToCart = () => {
-
+    onAddToCart = async () => {
         OrderService.addItemtoCart(this.props.item)
+        await this.setState({ modalMode: true, modalMsg: "Added To Cart" })
+        this.setState({ modalMode: false, modalMsg: "" })
     }
 
     onBuyNow = async () => {
@@ -57,6 +60,9 @@ class ItemDetails extends Component {
 
     onAddToWishList = async () => {
         const wishList = await this.props.addToWishList(this.props.item, this.props.loggedInUser)
+        await this.setState({ modalMode: true, modalMsg: "Added To Wishlist" })
+        this.setState({ modalMode: false, modalMsg: "" })
+
     }
 
     onAddReview = async () => {
@@ -73,6 +79,8 @@ class ItemDetails extends Component {
         const updatedItem = { ...itemToUpdate, reviews }
         await this.props.saveItem(updatedItem)
         this.props.setCurrentItem(this.props.match.params.id)
+        await this.setState({ modalMode: true, modalMsg: "Thank you for your review" })
+        this.setState({ modalMode: false, modalMsg: "" })
     }
 
 
@@ -105,10 +113,11 @@ class ItemDetails extends Component {
 
     render() {
         const { item } = this.props
-        item && console.log(item.reviews, 'reviews')
+
         return (
             item &&
             <React.Fragment>
+                <Modal item={this.state.modalMode} msg={this.state.modalMsg}></Modal>
                 <section className="item-container flex justify-space-around">
                     <div className="item-img flex">
                         <div className="item-secondary-image flex column justify-space-between">
@@ -135,7 +144,13 @@ class ItemDetails extends Component {
 
                         <div>${item.price}</div>
                         <div>Size:{item.size}</div>
-                        <h2>Average Rating {Math.round((this.calculateAvgRating()/100*5)*100)/100||""}</h2>
+                        <select className="size-select">
+                            {item.size === "S" ? <option value="S">S</option> : <option disabled value="S">S - Out of stock</option>}
+                            {item.size === "M" ? <option value="M">M</option> : <option disabled value="M">M - Out of stock</option>}
+                            {item.size === "L" ? <option value="L">L</option> : <option disabled value="L">L - Out of stock</option>}
+                            {item.size === "XL" ? <option value="XL">XL</option> : <option disabled value="XL">XL - Out of stock</option>}
+                        </select>
+                        <h2>Average Rating {Math.round((this.calculateAvgRating() / 100 * 5) * 100) / 100 || ""}</h2>
 
                         <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
                         <div className="item-buttons flex">
@@ -146,15 +161,14 @@ class ItemDetails extends Component {
                             <i className="far fa-heart"></i>
                         </div>
                         <div>
-                            <h3> Item description:
-                    <p>{item.description}</p>
+                            <h3 className="item-desctription"> Item description:
+                             <p>{item.description}</p>
                             </h3>
                             {this.state.reviewMode &&
-                                <form onSubmit={this.handleSubmit}>
-                                    <div>
-                                        <input onChange={this.handleInput} type="txt" value={this.state.review.txt} name="txt" placeholder="What do you think about this product?"></input>
+                                <form className="review-section" onSubmit={this.handleSubmit}>
+                                    <div className="review-input">
+                                        <input onChange={this.handleInput} type="txt" value={this.state.review.txt} name="txt" placeholder="Tell us what's on your mind?"></input>
                                     </div>
-
                                     <fieldset className="rating" onChange={this.handleInput}>
                                         <legend>Please rate:</legend>
                                         <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>

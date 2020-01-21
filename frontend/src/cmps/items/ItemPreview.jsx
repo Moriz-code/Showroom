@@ -81,12 +81,14 @@ class ItemPreview extends Component {
           <span className="item-seller">{this.props.item.itemOwner.name}</span>
           <h3>{this.props.item.title}</h3>
           <p>${this.props.item.price}</p>
+
           </Link>
           <span className="item-stars">
             {this.props.item.reviews &&
               <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>}
             </span>
         {this.generateBtns()}
+
       </div>
     </React.Fragment >
     )
