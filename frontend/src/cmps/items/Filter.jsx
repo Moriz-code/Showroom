@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setFilters, removeFilter, setSorts } from '../../actions/ItemActions'
+// import { setFilters, removeFilter, setSorts } from '../../actions/ItemActions'
 
 
-import InputRange from 'react-input-range';
+// import InputRange from 'react-input-range';
 
 
 
@@ -14,18 +14,9 @@ class Filter extends Component {
     isToggle: ''
   }
 
-  // onSelectFilter = (ev) => {
-  //   if (ev.target.checked) {
-  //     this.props.setFilters({ [ev.target.name]: ev.target.value })
-  //   } else this.props.removeFilter({ [ev.target.name]: ev.target.value })
-  // }
-
   onSelectFilter = (ev) => {
     this.props.selectFilter(ev)
   }
-
-
-
 
   onToggleActive = () => {
     this.setState((prevState) => {
@@ -104,28 +95,25 @@ class Filter extends Component {
         </div>
 
 
-        {/* SortBy */}
+
+        {/* Price */}
         <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
-          Sort By
+          price
   <ul className="checkbox-dropdown-list" >
             <li>
               <label>
-                <input type="radio" value="high-low" name="sortBy" onChange={this.onSelectSort} />Price (low to high)</label>
+                <input type="radio" value="0 100" name="price" onChange={this.onSelectFilter} />0-100</label>
             </li>
             <li>
               <label>
-                <input type="radio" value="low-high" name="sortBy" onChange={this.onSelectSort} />Price (high to low)</label>
+                <input type="radio" value="101 300" name="price" onChange={this.onSelectFilter} />101-300</label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" value="301 600" name="price" onChange={this.onSelectFilter} /> 301-600</label>
             </li>
           </ul>
         </div>
-
-
-
-        {/* Price */}
-        <div>
-          <input type="range" name="price" min="0" max="300" onChange={this.onSelectPriceRange} step="1" ></input>
-        </div>
-
 
 
 
@@ -139,14 +127,11 @@ class Filter extends Component {
 }
 const mapStateToProps = state => {
   return {
-    filter: state.filter
   };
 };
 
 const mapDispatchToProps = {
-  // setFilters,
-  removeFilter,
-  setSorts
+
 };
 
 export default connect(
