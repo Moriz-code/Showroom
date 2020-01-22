@@ -61,7 +61,7 @@
 
 .btn1{
     width:200px;
-    height:50px;
+    height:40px;
     background-color: $clr4;
     font-size: 1.3rem;
     color: $clr1;
@@ -69,7 +69,7 @@
 
 .btn2 {
     width:200px;
-    height:50px;
+    height:40px;
     background-color: $clr3;
     font-size: 1.3rem;
     color: $clr1;
@@ -77,13 +77,19 @@
 
 .btn3 {
     width:200px;
-    height:50px;
+    height:40px;
     background-color: $clr1;
     font-size: 1.3rem;
     color: $clr4;
     border: 2px solid $clr4;
 }
 
+.btn-style-none{
+  background-color: transparent;
+  border:none;
+
+    }
+    
 // <div className="btn1"></div>
 // <div className="btn2"></div>
 // <div className="btn3"></div>
