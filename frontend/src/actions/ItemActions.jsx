@@ -1,7 +1,7 @@
 import ItemService from '../services/ItemService'
 
 export function loadItems(filterBy) {
-    console.log('loadItems',filterBy);
+    console.log('loadItems-check',filterBy);
     
     return async dispatch => {
         try {
@@ -14,7 +14,6 @@ export function loadItems(filterBy) {
 }
 
 function setItems(items) {
-    // console.log('items',items);
     
     return {
         type: 'SET_ITEMS',
@@ -22,26 +21,26 @@ function setItems(items) {
     }
 }
 
-export function removeFilter(filter){
-    return{
-        type: 'REMOVE_FILTER',
-        filter
-    }
-}
+// export function removeFilter(filter){
+//     return{
+//         type: 'REMOVE_FILTER',
+//         filter
+//     }
+// }
 
-export function setFilters(filters) {
-    return {
-        type: 'SET_FILTERS',
-        filters
-    }
-}
+// export function setFilters(filters) {
+//     return {
+//         type: 'SET_FILTERS',
+//         filters
+//     }
+// }
 
-export function setSorts(sorts) {
-    return {
-        type: 'SET_SORTS',
-        sorts
-    }
-}
+// export function setSorts(sorts) {
+//     return {
+//         type: 'SET_SORTS',
+//         sorts
+//     }
+// }
 
 export function saveItem(item) {
     return async dispatch => {
@@ -52,8 +51,6 @@ export function saveItem(item) {
                 // item._id = _makeId();
                 delete item._id
                 const addedItem = await ItemService.add(item);
-
-
                 dispatch({type: 'ITEM_ADD', addedItem})
             } else {
                 // console.log('edit item');
@@ -94,14 +91,5 @@ export function deleteItem(itemId) {
 }
 
 
-
-function _makeId(length = 5) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-}
 
 
