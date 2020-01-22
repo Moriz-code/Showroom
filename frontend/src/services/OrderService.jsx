@@ -31,5 +31,5 @@ async function add(order) {
 }
 
 async function clearCart() {
-    StorageService.clearStorage()
+    StorageService.clearStorage('order')
 }

@@ -4,7 +4,7 @@ import ItemPreview from '../items/ItemPreview'
 import { withRouter } from "react-router";
 
 function ItemList({ items, listMode, deleteItem, editItem, addToCart }) {
-  // console.log(items)
+ 
   return <React.Fragment>
 
     <div className="cards-container container">

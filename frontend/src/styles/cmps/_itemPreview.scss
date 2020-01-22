@@ -1,8 +1,10 @@
 
 .cards-container {
-  column-count: 3;
-   display: flex;
+  //  display: flex;
   // justify-content: flex-start;
+  // column-count: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
 }
 
 
