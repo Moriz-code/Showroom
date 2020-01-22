@@ -1,10 +1,14 @@
 import HttpService from './HttpService';
 import Login from '../pages/Login';
+import StorageService from '../services/StorageService'
+
 
 export default {
     login,
     updateWishList,
-    removeItemFromWishList
+    removeItemFromWishList,
+    updateRecentlyViewd,
+    getRecntlyViewd
 };
 
 
@@ -30,8 +34,31 @@ async function updateWishList(item, user) {
 
 async function removeItemFromWishList(itemId, user) {
     const userWishList = user.wishlist
-    const wishlist = userWishList.filter(item=>item._id!==itemId)
+    const wishlist = userWishList.filter(item => item._id !== itemId)
     let updatedUser = { ...user, wishlist }
     const newUser = await HttpService.put(`user/${updatedUser._id}`, updatedUser)
     return newUser
+}
+
+async function updateRecentlyViewd(entitiy, item) {
+    let recentlyViewd = ''
+    const currData = await getRecntlyViewd()
+
+
+    if (currData.length === 4) {
+
+        currData.shift()
+        currData.push(item)
+        StorageService.clearStorage('recently')
+        return recentlyViewd = await StorageService.postMany(entitiy, currData)
+    }
+    else return recentlyViewd = await StorageService.post(entitiy, item)
+
+}
+
+async function getRecntlyViewd() {
+    const reventlyViewd = await StorageService.query('recently')
+    return reventlyViewd
+
+
 }

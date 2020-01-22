@@ -7,7 +7,6 @@ export function placeOrder(loggedInUser) {
         const order = await orderService.getOrder()
         
         const orderToSave = _createOrder(miniUser, order)
-        console.log(orderToSave,'order');
         
         try {
             

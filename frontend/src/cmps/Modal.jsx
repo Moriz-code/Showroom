@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
 function MyApp(props) {
-  // console.log(props);
-  
+
   const { enqueueSnackbar } = useSnackbar();
-  const {item,msg} = props
-  
-  item && handleClickVariant("success")
+  const {msg } = props
+
+  msg.length>0 && handleClickVariant("success")
 
   function handleClickVariant(variant) {
     // variant could be success, error, warning, info, or default
@@ -26,14 +25,14 @@ export default class IntegrationNotistack extends Component {
   render() {
 
     return (
-      <SnackbarProvider item={this.props.item} msg={this.props.msg}  maxSnack={1}
+      <SnackbarProvider msg={this.props.msg} maxSnack={1}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
       >
-        <MyApp item={this.props.item} msg={this.props.msg} ></MyApp> />
-    </SnackbarProvider>
+        <MyApp msg={this.props.msg} ></MyApp>
+      </SnackbarProvider>
     );
   }
 

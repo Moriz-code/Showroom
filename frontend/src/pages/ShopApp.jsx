@@ -34,6 +34,7 @@ class ShopApp extends Component {
 }
 
 
+
 const mapStateToProps = state => {
     return {
         //state
