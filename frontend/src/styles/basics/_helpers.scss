@@ -33,8 +33,10 @@
     &.justify-space-between { 
         justify-content: space-between;
     }
-    &.justify-space-evenly { 
-        justify-content: space-evenly;
+
+    &.end{
+        justify-content: flex-end;
+
     }
 }
 

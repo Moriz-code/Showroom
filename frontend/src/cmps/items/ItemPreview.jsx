@@ -104,9 +104,11 @@ class ItemPreview extends Component {
 
     return (<React.Fragment>
       <div className="item-card">
+
         <img onClick={this.onAddToWishList} className="heart-icon" alt="heart" src={this.getHeartIcon} />
         <Link to={`/item/${this.props.item._id}`}>
           <img className="item-img" alt="img-item" src={this.props.item.imgs[0]}></img>
+
           {/* <img className="item-avatr" alt="img-item" src={avatar} /> */}
           <span className="item-seller">{this.props.item.itemOwner.name}</span>
           <h3>{this.props.item.title}</h3>
