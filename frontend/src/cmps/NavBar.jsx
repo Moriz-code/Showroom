@@ -12,7 +12,7 @@ export default function NavBar() {
     return <React.Fragment>
         <div className="container">
         <a herf='/' class="logo">LOGO</a>
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <input class="menu-btn" type="checkbox" id="menu-btn"></input>
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <span><NavLink to='/item' exact>Shop</NavLink></span>
         <ul className="menu">

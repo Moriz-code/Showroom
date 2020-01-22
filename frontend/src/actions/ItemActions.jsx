@@ -14,7 +14,6 @@ export function loadItems(filterBy) {
 }
 
 function setItems(items) {
-    // console.log('items',items);
     
     return {
         type: 'SET_ITEMS',

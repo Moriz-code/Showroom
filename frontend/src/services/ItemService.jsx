@@ -45,8 +45,10 @@ function remove(itemId) {
 }
 
 async function add(item) {
-    // console.log('Items action' , item);
-    const addeditem = await HttpService.post(`item`, item);
+
+ 
+    const addeditem = await HttpService.post('item', item);
+
     return addeditem
 }
 

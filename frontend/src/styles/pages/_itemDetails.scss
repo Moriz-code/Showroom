@@ -1,25 +1,57 @@
 
 .item-main-image{
     position: relative;
+    
+}
+
+.item-details-title{
+    max-width: 30ch
+}
+
+.store-details{
+    align-items: center;
+
+}
+
+.brand-name{
+    margin-bottom: 0px;
+    margin-left:10px
+}
+
+.wishlist-icon{
+    position: absolute;
+    width: 35px;
+    transform: scaleX(-1);
+    align-self: flex-end;
+    margin-bottom: -45px;
+    margin-right: 5px;
+    margin-top: 5px;
+    top: -1px;
+    right: 17px;
+    &:hover{
+        cursor: pointer;
+        
+    }
 }
 
 
 
 .main-img {
     display: block;
-    max-width:510px;
-    max-height:652px;
+    max-width:357px;
+    max-height:456.4px;
     width: auto;
     height: auto;
-    margin-left:40px;
+    margin: 0 15px
 
   }
 
 
   .secondary-img{
     display: block;
-    max-width:153px;
-    max-height:196px;
+    max-width:107.1px;
+    max-height:100.2px;
+    margin-bottom: 15px;
     width: auto;
     height: auto;
     &:hover{
@@ -29,14 +61,12 @@
   }
 
   .item-details-btn {
-    border-radius: 8px;
-    border: 1px solid #2e6933;
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
     font-family: cursive;
     font-size: 12px;
-    padding: 10px 8px;
+    padding: 10px 46px;
     /* text-decoration: none; */
     text-shadow: 0px -2px 11px #2f6627;
     margin:2px;
@@ -80,8 +110,8 @@
 }
 
 .item-side-details{
-
-    max-width: 35%;
+    max-height: 456.4px;
+    // max-width: 35%;
 }
 
 .previous-img{
@@ -93,8 +123,8 @@ display: inline-block;
 padding: 8px 16px;
 height: 42px;
 position: absolute;
-left: 46px;
-top: 50%;
+left: 22px;
+top: 43%;
 z-index: 1;
 &:hover{
     background-color: darkgray;
@@ -111,11 +141,38 @@ z-index: 1;
     padding: 8px 16px;
     height: 42px;
     position: absolute;
-    right: 6px;
-    top: 50%;
+    right: 22px;
+    top: 43%;
     z-index: 1;
     &:hover{
         background-color: darkgray;
     
     }
     }
+.item-price{
+    letter-spacing: 2px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.size-select {
+    max-width: 35%;
+    padding: 3px;
+}
+
+.average-rating{
+    align-items: center;
+}
+
+.num-of-rates{
+
+    margin-left: 10px;
+
+}
+
+.item-details-main{
+
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 18px;
+
+}

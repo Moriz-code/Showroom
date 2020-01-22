@@ -31,11 +31,13 @@ class ShopApp extends Component {
                     Title
                 </h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda provident officia neque sequi. Explicabo reprehenderit unde, cumque quos iure excepturi velit dicta aliquid ab. Voluptas consequatur vero officia ea cum.</p>
-
             </div>
         </React.Fragment>
     }
 }
+
+
+
 
 
 

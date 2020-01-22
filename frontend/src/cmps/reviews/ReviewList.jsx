@@ -1,15 +1,16 @@
 import React from 'react'
 import ReviewPrivew from './ReviewPreview'
+
 export default function ReviewList(props) {
   return (<React.Fragment>
     <table>
-    <thead>
+    {/* <thead>
     <tr>
     <th>Name</th>
     <th>Review</th>
     <th>Rating</th>
     </tr>
-    </thead>
+    </thead> */}
     <tbody>
       {props.item.reviews.map(review =>
         <ReviewPrivew review={review}></ReviewPrivew>

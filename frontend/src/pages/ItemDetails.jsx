@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setCurrentItem, saveItem } from '../actions/ItemActions';
-import { addToWishList } from '../actions/UserActions'
+import { addToWishList, removeFromWishList } from '../actions/UserActions'
 import OrderService from '../services/OrderService';
 import ReviewList from '../cmps/reviews/ReviewList'
 import ReviewRating from '../cmps/reviews/ReviewRating'
 import Avatar from '@material-ui/core/Avatar';
 import Modal from '../cmps/Modal'
+import heart from '../styles/assets/imgs/icons/002-heart.png';
+import heartfilled from '../styles/assets/imgs/icons/003-heart-1.png';
 
+import ItemList from '../cmps/items/ItemList'
+import UserService from '../services/UserService';
 class ItemDetails extends Component {
 
     state = {
@@ -18,17 +22,20 @@ class ItemDetails extends Component {
             txt: '',
             rating: ''
         },
-        modalMode: false,
-        modalMsg: ""
+        modalMsg: "",
+        wishListStatus: heart,
+        recentlyViewd:''
+
     }
 
     componentDidMount() {
         this.props.setCurrentItem(this.props.match.params.id)
+        this.setRecentlyViewd()
     }
 
     componentWillUnmount = () => {
+        UserService.updateRecentlyViewd('recently', this.props.item)
         this.props.setCurrentItem(null)
-
     }
 
     onBack = () => {
@@ -59,9 +66,20 @@ class ItemDetails extends Component {
 
 
     onAddToWishList = async () => {
-        const wishList = await this.props.addToWishList(this.props.item, this.props.loggedInUser)
-        await this.setState({ modalMode: true, modalMsg: "Added To Wishlist" })
-        this.setState({ modalMode: false, modalMsg: "" })
+
+        if (this.state.wishListStatus === heart) {
+            await this.props.addToWishList(this.props.item, this.props.loggedInUser)
+            await this.setState({ modalMsg: "Added to Wishlist", wishListStatus: heartfilled })
+            await this.setState({ modalMsg: "" })
+
+
+        }
+        else {
+            await this.props.removeFromWishList(this.props.item._id, this.props.loggedInUser)
+            await this.setState({ modalMsg: "Removed from Wishlist", wishListStatus: heart })
+            await this.setState({ modalMsg: "" })
+        }
+
 
     }
 
@@ -79,8 +97,8 @@ class ItemDetails extends Component {
         const updatedItem = { ...itemToUpdate, reviews }
         await this.props.saveItem(updatedItem)
         this.props.setCurrentItem(this.props.match.params.id)
-        await this.setState({ modalMode: true, modalMsg: "Thank you for your review" })
-        this.setState({ modalMode: false, modalMsg: "" })
+        await this.setState({ modalMsg: "Thank you for your review" })
+        this.setState({ modalMsg: "" })
     }
 
 
@@ -98,7 +116,6 @@ class ItemDetails extends Component {
         const { reviews } = this.props.item
         const ratingSum = reviews.reduce((acc, review) => {
 
-
             return acc += +review.rate
         }, 0)
         const avgRating = Math.floor(ratingSum / reviews.length / 5 * 100)
@@ -107,20 +124,25 @@ class ItemDetails extends Component {
     }
 
 
+    setRecentlyViewd = async () => {
+        const recentlyViewd = await UserService.getRecntlyViewd()
+        this.setState({ recentlyViewd })
 
+
+    }
 
 
 
     render() {
         const { item } = this.props
-
+        const recentlyViewd = this.state.recentlyViewd
         return (
             item &&
             <React.Fragment>
-                <Modal item={this.state.modalMode} msg={this.state.modalMsg}></Modal>
-                <section className="item-container flex justify-space-around">
+                <Modal msg={this.state.modalMsg}></Modal>
+                <section className="container flex item-details-main">
                     <div className="item-img flex">
-                        <div className="item-secondary-image flex column justify-space-between">
+                        <div className="item-secondary-image flex column">
                             <img className="secondary-img" onClick={() => this.setMainImg(0)} src={item.imgs[0]} alt="itemImg1" />
                             <img className="secondary-img" onClick={() => this.setMainImg(1)} src={item.imgs[1]} alt="itemImg2" />
                             <img className="secondary-img" onClick={() => this.setMainImg(2)} src={item.imgs[2]} alt="itemImg3" />
@@ -129,41 +151,38 @@ class ItemDetails extends Component {
                             <a onClick={() => this.changeImg(-1)} href="#" className="previous-img">&laquo;</a>
                             <a onClick={() => this.changeImg(1)} href="#" className="next-img">&raquo;</a>
                             <img className="main-img" src={item.imgs[this.state.imgIndex]} alt="mainImg" />
+                            <img className="wishlist-icon" onClick={this.onAddToWishList} src={`${this.state.wishListStatus}`}></img>
                         </div>
                     </div>
                     <div className="item-side-details flex column justify-space-between">
                         <h1 className="item-details-title"> {item.title}</h1>
                         <Link to={`/shop/${item.itemOwner.id}`}>
-                            <div className="store-details flex column">
-                                <label >Seller:</label>
-                                <h4> {item.itemOwner.name}</h4>
+                            <div className="store-details flex">
                                 <Avatar alt="" src={item.itemOwner.logoUrl} style={{ backgroundColor: "lightgray" }} />
+                                <h4 className="brand-name"> {item.itemOwner.name}</h4>
                                 {/* <img style={{ height: "80px", width: "80px" }} src={item.itemOwner.logoUrl} alt="brandImg" /> */}
                             </div>
                         </Link>
-
-                        <div>${item.price}</div>
-                        <div>Size:{item.size}</div>
-                        <select className="size-select">
+                        <div className="item-price">${item.price}</div>
+                        <select className="size-select" placeholder="Select Size">
                             {item.size === "S" ? <option value="S">S</option> : <option disabled value="S">S - Out of stock</option>}
                             {item.size === "M" ? <option value="M">M</option> : <option disabled value="M">M - Out of stock</option>}
                             {item.size === "L" ? <option value="L">L</option> : <option disabled value="L">L - Out of stock</option>}
                             {item.size === "XL" ? <option value="XL">XL</option> : <option disabled value="XL">XL - Out of stock</option>}
                         </select>
-                        <h2>Average Rating {Math.round((this.calculateAvgRating() / 100 * 5) * 100) / 100 || ""}</h2>
+                        {/* <h4>Average Rating {Math.round((this.calculateAvgRating() / 100 * 5) * 100) / 100 || ""}</h4> */}
 
                         <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
                         <div className="item-buttons flex">
                             <button className="item-details-btn add-to-cart" onClick={this.onAddToCart}>Add to cart</button>
                             <button className="item-details-btn buy-now" onClick={this.onBuyNow}>Buy Now</button>
-                            <button className="item-details-btn add-to-wishList" onClick={this.onAddToWishList}>WishList</button>
-                            <button className="item-details-btn add-review" onClick={this.onAddReview}>Add Review</button>
                             <i className="far fa-heart"></i>
                         </div>
                         <div>
-                            <h3 className="item-desctription"> Item description:
+                            <h3 className="item-desctription">
                              <p>{item.description}</p>
                             </h3>
+                            <h5>{item.sizeFit}</h5>
                             {this.state.reviewMode &&
                                 <form className="review-section" onSubmit={this.handleSubmit}>
                                     <div className="review-input">
@@ -181,22 +200,22 @@ class ItemDetails extends Component {
                                 </form>
                             }
                         </div>
-                        <h5>{item.sizeFit}</h5>
                     </div>
                 </section>
                 {item.reviews.length > 0 &&
-                    <div>
-                        < section >
-                            <div>Reviews</div>
-                        </section>
+                    <div className="container">
+                    <button className="item-details-btn add-review" onClick={this.onAddReview}>Add Review</button>
                         <ReviewList item={this.props.item}></ReviewList>
                     </div>
                 }
-                <section>
-                    <div>you may also like</div>
+                <section className="container">
+                    <div>You may also like</div>
                 </section>
-                <section>
+                <section className="container">
                     <div>Recently viewd</div>
+                    {(recentlyViewd.length>0) ? <ItemList items={recentlyViewd}></ItemList> :''
+                        
+                    }
                 </section>
             </React.Fragment >
         )
@@ -215,6 +234,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     setCurrentItem,
     addToWishList,
+    removeFromWishList,
     saveItem
 };
 
