@@ -75,7 +75,7 @@ class ItemPreview extends Component {
 
       <div className="item-card">
         <img className="heart-icon" alt="heart" src={heart} />
-        <Link to={`/item/${this.props.item._id}`}>
+        <Link to={`/itemDetails/${this.props.item._id}`}>
           <img className="item-img" alt="img-item" src={this.props.item.imgs[0]} />
           {/* <img className="item-avatr" alt="img-item" src={avatar} /> */}
           <span className="item-seller">{this.props.item.itemOwner.name}</span>

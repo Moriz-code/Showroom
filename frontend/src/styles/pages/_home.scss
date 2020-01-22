@@ -1,37 +1,45 @@
-.home-categories{
-    
+.main-section {
+  height: 450px;
+  position: relative;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+  h1 {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+.home-categories {
   div {
-      border-radius: 5px;
-      background-color: lightcyan;
+    border-radius: 5px;
+    background-color: lightcyan;
   }
   display: grid;
-  grid-gap:2.5vh;
+  grid-gap: 2.5vh;
   min-height: 100vh;
   grid-template-columns: auto;
   grid-template-rows: 50px 50px;
   grid-template-areas:
-
-  'b b c c c'
-  'b b c c c'
-  'b b c c c'
-  'd d c c c'
-  'd d c c c'
-  'd d c c c'
-  'd d c c c'
-  'e e e e e'
-  'e e e e e'
-  ;
+    "b b c c c"
+    "b b c c c"
+    "b b c c c"
+    "d d c c c"
+    "d d c c c"
+    "d d c c c"
+    "d d c c c"
+    "e e e e e"
+    "e e e e e";
 }
 
-
-
-.category-c{
+.category-c {
   grid-area: c;
   background-image: url("../assets/imgs/womenn.jpg");
-  background-size: 100%;  
+  background-size: 100%;
 }
-
-
 
 .category-a {
   grid-area: a;
@@ -46,8 +54,6 @@
   grid-area: b;
 }
 
-
-
 .category-d {
   background-image: url("../assets/imgs/accori.jpg");
   background-size: 100% 100%;
@@ -61,7 +67,6 @@
   grid-area: e;
 }
 
-
 .hero {
   height: 40vh;
   display: flex;
@@ -69,15 +74,15 @@
   justify-content: center;
   align-items: center;
   background-image: url("../assets/imgs/cover2.jpg");
-  margin-bottom:20px;
+  margin-bottom: 20px;
   background-size: 100% 600px;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.hero-title{
+.hero-title {
   display: flex;
-  color:white;
+  color: white;
   align-items: center;
   font-family: Zcool;
   font-size: 2.8em;
@@ -87,7 +92,7 @@
   // margin: 150px 150px 150px 150px;
 }
 
-.hero-search{
+.hero-search {
   font-family: Lato;
   display: flex;
   margin: 0 auto;
@@ -95,21 +100,17 @@
   height: 45px;
   padding: 0 20px;
   font-size: 1rem;
-  border: 1px solid #D0CFCE;
+  border: 1px solid #d0cfce;
   border-radius: 5px;
   outline: none;
-  &:focus{
-    border: 1px solid #73585B;
+  &:focus {
+    border: 1px solid #73585b;
     transition: 0.35s ease;
     color: black;
-}
+  }
 }
 
-.home-categories{
+.home-categories {
   font-family: Lato;
   font-size: 1.5rem;
-
 }
-
-
-

@@ -15,6 +15,8 @@ class Filter extends Component {
   }
 
   onSelectFilter = (ev) => {
+        console.log(ev.target.value);
+
     this.props.selectFilter(ev)
   }
 
@@ -25,10 +27,10 @@ class Filter extends Component {
     })
   }
 
-  onSelectPriceRange = (ev) => {
-    console.log(ev.target.value);
-    this.props.setFilters({ [ev.target.name]: ev.target.value })
-  }
+  // onSelectPriceRange = (ev) => {
+  //   console.log(ev.target.value);
+  //   this.props.setFilters(ev)
+  // }
 
 
   onSelectSort = (ev) => {
@@ -39,7 +41,7 @@ class Filter extends Component {
 
   render() {
     return <React.Fragment>
-      <div className="flex filters-panel">
+      <div className="flex">
         {/* sizes */}
         <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
           Size
@@ -97,7 +99,7 @@ class Filter extends Component {
 
 
         {/* Price */}
-        <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
+        {/* <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
           price
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -113,7 +115,12 @@ class Filter extends Component {
                 <input type="radio" value="301 600" name="price" onChange={this.onSelectFilter} /> 301-600</label>
             </li>
           </ul>
+        </div> */}
+
+        <div>
+          <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
         </div>
+
 
 
 
@@ -127,11 +134,14 @@ class Filter extends Component {
 }
 const mapStateToProps = state => {
   return {
+    // filter: state.filter
   };
 };
 
 const mapDispatchToProps = {
-
+  // setFilters,
+  // removeFilter,
+  // setSorts
 };
 
 export default connect(

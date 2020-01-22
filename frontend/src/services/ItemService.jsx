@@ -9,21 +9,24 @@ export default {
 };
 
 function query(filterBy = null) {
+    console.log('check filter3', filterBy);
+
     if (filterBy === null) return HttpService.get('item');
     else {
         // debugger;
         let str = '';
-        console.log('filterBy-coral', filterBy);
         for (const key in filterBy) {
-            console.log('key-coral', key);
-            console.log('filterBy-coral', filterBy);
-            console.log('filterBy[key]-coral', filterBy[key]);
-            
+            console.log('filterby-theend', filterBy);
+
+            console.log('coral is checking', filterBy[key]);
+            // if(key==='txt'||key==='price') return HttpService.get(`item?${key}=${filterBy[key]}`);
             if (filterBy[key].length === 0) continue
             else {
-                if (filterBy[key].length === 1) {
+                if (filterBy[key].length === 1||typeof filterBy[key]==='string') {
                     if (str !== '') str += '&'
-                    str += key + '=' + filterBy[key][0]
+                    if (key === 'txt' || key === 'price') {
+                        str += key + '=' + filterBy[key]
+                    } else str += key + '=' + filterBy[key][0]
                 }
                 else {
                     filterBy[key].forEach((value) => {
@@ -33,9 +36,9 @@ function query(filterBy = null) {
                 }
             }
         }
-        console.log('str-coral', `item?${str}`);
+        console.log("`item?${str}`",`item?${str}`);
+        
         return HttpService.get(`item?${str}`);
-        // return HttpService.get('item', `?gender=men`);
     }
 }
 
@@ -45,7 +48,7 @@ function remove(itemId) {
 }
 
 async function add(item) {
-    console.log('Items action' , item);
+    console.log('Items action', item);
     const addeditem = await HttpService.post(`item`, item);
     return addeditem
 }
@@ -57,10 +60,10 @@ async function get(itemId) {
 }
 
 
-async function put(editedItem) {  
-    const itemToEdit = await HttpService.put(`item/${editedItem._id}` , editedItem);
-    console.log(itemToEdit,'updated');
-     return itemToEdit
+async function put(editedItem) {
+    const itemToEdit = await HttpService.put(`item/${editedItem._id}`, editedItem);
+    console.log(itemToEdit, 'updated');
+    return itemToEdit
 
 }
 
