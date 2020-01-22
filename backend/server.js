@@ -14,6 +14,8 @@ const shopRoutes = require('./api/shop/shop.routes')
 const orderRoutes = require('./api/order/order.routes')
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
+const connectSockets = require('./api/socket/socket.routes')
+
 
 app.use(cookieParser())
 app.use(bodyParser.json());
@@ -41,7 +43,7 @@ app.use('/api/shop', shopRoutes)
 app.use('/api/order', orderRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
-// connectSockets(io)
+connectSockets(io)
 
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030;

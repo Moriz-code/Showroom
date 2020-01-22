@@ -6,7 +6,7 @@ function getEmbdedUrl(url) {
     let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     let match = url.match(regExp)
     if (match && match[2].length == 11) {
-        return 'https://www.youtube.com/embed/' + match[2] + '?autoplay=1">'
+        return 'https://www.youtube.com/embed/' + match[2] + '?playsinline=1&autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&widgetid=2">'
     }
     else {
         return 'Not yet..'
@@ -14,6 +14,11 @@ function getEmbdedUrl(url) {
 
 }
 
+
+
+function getNewItem(){
+    
+}
 
 // let url = this.props.cmp.info;
 

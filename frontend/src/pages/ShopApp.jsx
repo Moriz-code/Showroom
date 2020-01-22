@@ -5,14 +5,13 @@ import Search from '../cmps/items/Search';
 
 
 class ShopApp extends Component {
-
-
     render() {
         return <React.Fragment>
             {/* <div className="btn1">Hello</div>
             <div className="btn2">Hello</div>
             <div className="btn3">Hello</div>
             <div className="btn4"></div> */}
+
             <Search></Search>
             <div className="hero">
                 <p className="hero-title">Buy and sell local fashion goods</p>
@@ -26,6 +25,7 @@ class ShopApp extends Component {
                 <div className="category-d">ACCESSORIES</div>
                 <div className="category-e">BECOME A SELLER</div>
             </div>
+
             <div>
                 <h3>
                     Title

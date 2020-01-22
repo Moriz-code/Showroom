@@ -26,7 +26,7 @@ class Filter extends Component {
   }
 
   onSelectPriceRange = (ev) => {
-    console.log(ev.target.value);
+    // console.log(ev.target.value);
     this.props.setFilters({ [ev.target.name]: ev.target.value })
   }
 
