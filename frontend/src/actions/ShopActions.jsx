@@ -26,9 +26,25 @@ export function updateShopSettings(shop) {
     return async dispatch => {
         try {
             const shopToUpdate = await ShopService.put(shop);
-            await dispatch({ type: 'SET_SETTINGS', shopToUpdate})
+            await dispatch({ type: 'SET_SETTINGS', shopToUpdate })
         } catch (err) {
             console.log(`cant get shop - shop action ${shop._id}`);
+        }
+    }
+
+}
+
+
+export function saveComment(comment) {
+
+    return async dispatch => {
+        try {
+            const commentToAdd = await ShopService.post(comment);
+            await dispatch({type: 'ADD_COMMENT',commentToAdd })
+        }
+
+        catch {
+            console.log(`cant add Comment`);
         }
     }
 
