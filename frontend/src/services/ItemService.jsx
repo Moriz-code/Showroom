@@ -48,7 +48,7 @@ function remove(itemId) {
 }
 
 async function add(item) {
-    console.log('Items action', item);
+
     const addeditem = await HttpService.post(`item`, item);
     return addeditem
 }
@@ -60,12 +60,15 @@ async function get(itemId) {
 }
 
 
-async function put(editedItem) {
-    const itemToEdit = await HttpService.put(`item/${editedItem._id}`, editedItem);
-    console.log(itemToEdit, 'updated');
-    return itemToEdit
+
+async function put(editedItem) {  
+    const itemToEdit = await HttpService.put(`item/${editedItem._id}` , editedItem);
+    // console.log(itemToEdit,'updated');
+     return itemToEdit
 
 }
+
+
 
 // async function put(shop){
 //     const shopUpdate = await HttpService.put(`shop/${shop._id}` , shop)

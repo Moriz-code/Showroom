@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
 function MyApp(props) {
-  console.log(props);
+  // console.log(props);
   
   const { enqueueSnackbar } = useSnackbar();
   const {item,msg} = props

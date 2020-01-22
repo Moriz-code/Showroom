@@ -36,7 +36,7 @@ export default function EditItem(props) {
     <input type="text" name="imgs" value={props.item.imgs[1]} onChange={props.handleFormChange} />
 
     <br/>
-    <button onClick={props.onSaveItem}>Save the new ITEM</button>
+    <button className="btn2" onClick={props.onSaveItem}>Save the new ITEM</button>
   </React.Fragment>
 }
 

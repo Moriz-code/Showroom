@@ -5,6 +5,7 @@ import Header from '../cmps/Header'
 
 class ShopApp extends Component {
 
+
     render() {
         return <React.Fragment>
             <Header></Header>
@@ -14,12 +15,14 @@ class ShopApp extends Component {
             {/* <button className="searchBtn">Search</button> */}
             {/* <Link to="/item"><button>Shop Now</button></Link> */}
             {/* </div> */}
+
             <div className="container home-categories">
                 <div className="category-b">BEST SELLER</div>
                 <div className="category-c">WOMEN  & MEN</div>
                 <div className="category-d">ACCESSORIES</div>
                 <div className="category-e">BECOME A SELLER</div>
             </div>
+
             <div>
                 <h3>
                     Title
