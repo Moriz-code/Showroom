@@ -44,7 +44,9 @@ async function updateRecentlyViewd(entitiy, item) {
     let recentlyViewd = ''
     const currData = await getRecntlyViewd()
 
-
+    const found=currData.find(itemWatched=>itemWatched._id===item._id)
+    if (found) return
+    
     if (currData.length === 4) {
 
         currData.shift()
