@@ -4,29 +4,21 @@
 }
 
 .menu-icons {
-  .wishlist-icon {
-    width: 28px;
-    height: 28px;
-    // fill:red;
-  }
-  .cart-icon {
-    width:28px;
-    height: 28px;
-    // fill:$clr1;
-
-  }
+  width: 60px;
+  height: 60px;
 }
 .cover-photo {
   object-fit: cover;
   object-position: top;
-  height: 400px;
-  filter: brightness(20%);
+  height: 500px;
+  filter: brightness(40%);
 }
 
 .header-text-search {
   position: absolute;
   bottom: 340px;
-  right: 320px;
+  right: 410px;
+  color: white;
 }
 
 .search {
@@ -45,3 +37,20 @@
     color: $clr4;
   }
 }
+.nav-icon {
+  // background-color: black;
+  // height: 50px;
+  padding: 10px;
+  position: absolute;
+  opacity: 65%;
+  z-index: 1;
+  padding: 10px;
+  // bottom: 340px;
+  // right: 320px;
+}
+
+.nav-text{
+  color:$clr3
+}
+
+

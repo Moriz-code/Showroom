@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import orderService from '../../services/OrderService'
 import ItemsList from '../../cmps/items/ItemList'
 import { placeOrder } from '../../actions/OrderActions'
+import InnerNavBar from '../../cmps/InnerNavBar';
 
 class Cart extends Component {
 
@@ -40,6 +41,7 @@ class Cart extends Component {
     }
     render() {
         return (<div>
+            <InnerNavBar></InnerNavBar>
             <div>
                 Total: {this.calculateTotal()}$
             <button onClick={this.onPlaceOrder}>PLACE ORDER</button>

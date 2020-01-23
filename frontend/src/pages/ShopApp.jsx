@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Header from '../cmps/Header'
+import { loadItems } from '../actions/ItemActions'
+import ItemsList from '../cmps/items/ItemList'
+
 
 class ShopApp extends Component {
 
+    componentDidMount() {
+        this.props.loadItems()
+    }
 
     render() {
+        let { items } = this.props;
+        items = items.splice(0, 3)
         return <React.Fragment>
             <Header></Header>
             {/* <div className="hero"> */}
@@ -15,20 +23,26 @@ class ShopApp extends Component {
             {/* <button className="searchBtn">Search</button> */}
             {/* <Link to="/item"><button>Shop Now</button></Link> */}
             {/* </div> */}
-
-            <div className="container home-categories">
-                <div className="category-b">BEST SELLER</div>
-                <div className="category-c">WOMEN  & MEN</div>
-                <div className="category-d">ACCESSORIES</div>
-                <div className="category-e">BECOME A SELLER</div>
+               
+            <div className=" home-categories">
+                <div className="category-b">
+                    <span className="home-page-text">BEST SELLER</span>
+                </div>
+                <div className="category-c">
+                    <span className="home-page-text">WOMEN</span>
+                </div>
+                <div className="category-d">
+                    <span className="home-page-text">MEN</span>
+                </div>
+                <div className="category-e">
+                    <span className="home-page-text">HATS</span>
+                </div>
             </div>
+            <span className="home-page-text">HOT PRODUCTS</span>
+                {items.length !== 0 ? <ItemsList items={items}>
+                </ItemsList> : 'NO ITEMS!'}
 
-            <div>
-                <h3>
-                    Title
-                </h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda provident officia neque sequi. Explicabo reprehenderit unde, cumque quos iure excepturi velit dicta aliquid ab. Voluptas consequatur vero officia ea cum.</p>
-            </div>
+
         </React.Fragment>
     }
 }
@@ -37,12 +51,12 @@ class ShopApp extends Component {
 
 const mapStateToProps = state => {
     return {
-        //state
+        items: state.item.items,
     };
 };
 
 const mapDispatchToProps = {
-    //functions
+    loadItems
 };
 
 export default connect(
