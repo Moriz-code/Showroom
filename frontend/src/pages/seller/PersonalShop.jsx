@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { loadShop, updateShopSettings,  } from '../../actions/ShopActions';
+import { loadShop, updateShopSettings, } from '../../actions/ShopActions';
 import { loadItems, deleteItem, saveItem } from '../../actions/ItemActions';
 
 import ItemsList from '../../cmps/items/ItemList';
@@ -16,14 +16,14 @@ import Utils from '../../services/UtilService';
 
 //icons
 import settingsIcon from '../../styles/assets/imgs/icons/settings.png';
-// import chat from '../../styles/assets/imgs/icons/chat.jpg';
+import chat from '../../styles/assets/imgs/icons/chat.png';
 
 class PersonalShop extends Component {
     state = {
         isOnEditMode: false,
-        isOnEditSettigs: false,
+        isOnEditSettigs: true,
         isOnChat: false,
-       
+
         //create empty item from the service
         item: {
             _id: '',
@@ -51,7 +51,7 @@ class PersonalShop extends Component {
                 name: '',
                 description: '',
                 instagram: '',
-                facebook: ''
+                facebook: '',
             },
             owner: {
                 id: '',
@@ -65,7 +65,7 @@ class PersonalShop extends Component {
                 logoUrl: '',
                 darkMode: ''
             },
-          
+
         }
     }
 
@@ -112,7 +112,6 @@ class PersonalShop extends Component {
         if (name === 'labels' || name === 'imgs') {
             var list = [...this.state.item[name]];
             var i = list.indexOf(value)
-            // console.log('handle form'  , i);
 
             if (i >= 0) {
                 list.splice(i, 1)
@@ -155,9 +154,9 @@ class PersonalShop extends Component {
     //     SocketService.emit('chat newMsg', { user: { userName: "Guest" }, text });
     // };
 
-    // addComment = newMsg => {
+    // onAddComment = (newMsg) => {
     //     this.setState(prevState => ({ comments: [...prevState.comments, newMsg] }));
-    // };
+    // }
 
 
     onSaveSettings = (ev) => {
@@ -178,13 +177,11 @@ class PersonalShop extends Component {
         }))
     }
 
-    onChat = () =>{ 
+    onChat = () => {
         this.setState(state => ({
             isOnChat: !state.isOnChat
         }))
 
-        console.log(this.state);
-        
     }
 
     onSaveItem = async (ev) => {
@@ -195,7 +192,7 @@ class PersonalShop extends Component {
 
     }
 
-    
+
 
     editItem = (item) => {
         this.setState(prevState => ({
@@ -245,7 +242,7 @@ class PersonalShop extends Component {
         // SocketService.terminate()
     }
 
-  
+
 
     render() {
         // console.log('shop:', this.state.shop)
@@ -253,30 +250,34 @@ class PersonalShop extends Component {
         return (
             <React.Fragment>
                 {this.state.shop ?
-                    <div className="shop-container" style={{ backgroundColor: shop.style.bgColor }}>
-                        <HeaderShop selectedShop={shop}></HeaderShop>
+                    <div className="shop-page">
+                        <div className="shop-container">
+                            <HeaderShop selectedShop={shop}></HeaderShop>
 
-                        <button className="btn-style-none" onClick={this.onEditSettings}><img className="shop-edit-btn" src={settingsIcon} /></button>
-                        <div className={this.state.isOnEditSettigs ? 'modal-settings' : 'display-none'}>
-                            <ShopSettings onSaveSettings={this.onSaveSettings} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
+                            <button className="btn-style-none" onClick={this.onEditSettings}><img className="shop-edit-btn" src={settingsIcon} /></button>
+                            <div className={this.state.isOnEditSettigs ? 'modal-settings' : 'display-none'}>
+                                <ShopSettings onSaveSettings={this.onSaveSettings} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
+                            </div>
+
+                           <div style={{ backgroundColor: shop.style.bgColor }}>
+                            <button className="add-item-btn" onClick={this.onEditMode}>Add Item</button>
+                            <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
+                                <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
+                            </div>
+
+                            <button className="chat-icon" onClick={this.onChat}> <img src={chat} alt="icon" /></button>
+                            <div className={this.state.isOnChat ? 'modal-chat' : 'display-none'}>
+                                <Comments addComment={this.onAddComment} comments={shop.comments}></Comments>
+                            </div>
+
+
+                            {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
+                            {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
+
+                            {/* socket */}
+
+                            </div>
                         </div>
-                        <button className="btn3" onClick={this.onEditMode}>Add Item</button>
-                        <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
-                            <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
-                        </div>
-
-                         <button className="chat-icon" onClick={this.onChat}>Chat</button>
-                         <div className={this.state.isOnChat ? 'modal-chat' : 'display-none'}>
-                             <Comments comments={shop.comments}></Comments>
-                         </div>
-
-
-                        {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
-                        {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
-                           
-                           {/* socket */}
-
-
                     </div>
                     : ''}
             </React.Fragment >)
@@ -296,7 +297,7 @@ const mapDispatchToProps = {
     loadItems,
     deleteItem,
     updateShopSettings,
-    saveItem, 
+    saveItem,
 };
 
 export default connect(
