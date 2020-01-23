@@ -24,13 +24,38 @@ class ItemDetails extends Component {
         },
         modalMsg: "",
         wishListStatus: heart,
-        recentlyViewd:''
+        recentlyViewd: ''
 
     }
 
     componentDidMount() {
+        this.loadItems()
+    }
+
+    loadItems = () => {
         this.props.setCurrentItem(this.props.match.params.id)
         this.setRecentlyViewd()
+        this.setWishListStatus()
+
+    }
+
+    setWishListStatus = () => {
+        const { wishlist } = this.props.loggedInUser
+
+        const { item } = this.props
+        console.log(wishlist,item,'123123123');
+        
+       const found = wishlist.find(currItem => currItem._id === item._id)
+        console.log(found,'asdasdgea')
+    }
+
+
+
+
+    componentDidUpdate(prevProps) {
+        // (this.props.match.params.id===state.item.selectedItem._id)?
+        if (prevProps.match.params.id !== this.props.match.params.id) this.loadItems()
+
     }
 
     componentWillUnmount = () => {
@@ -110,6 +135,7 @@ class ItemDetails extends Component {
         const field = ev.target.name
 
         this.setState(prevState => ({ review: { ...prevState.review, [field]: value } }))
+
     }
 
     calculateAvgRating = () => {
@@ -180,41 +206,43 @@ class ItemDetails extends Component {
                         </div>
                         <div>
                             <h3 className="item-desctription">
-                             <p>{item.description}</p>
+                                <p>{item.description}</p>
                             </h3>
                             <h5>{item.sizeFit}</h5>
-                            {this.state.reviewMode &&
-                                <form className="review-section" onSubmit={this.handleSubmit}>
-                                    <div className="review-input">
-                                        <input onChange={this.handleInput} type="txt" value={this.state.review.txt} name="txt" placeholder="Tell us what's on your mind?"></input>
-                                    </div>
-                                    <fieldset className="rating" onChange={this.handleInput}>
-                                        <legend>Please rate:</legend>
-                                        <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
-                                        <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
-                                        <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
-                                        <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
-                                        <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
-                                    </fieldset>
-                                    <button>Submit</button>
-                                </form>
-                            }
                         </div>
                     </div>
                 </section>
-                {item.reviews.length > 0 &&
-                    <div className="container">
+                <div className="container reviews">
+                    {item.reviews.length > 0 &&
+                        <div className="container">
+                            <ReviewList item={this.props.item}></ReviewList>
+                        </div>
+                    }
                     <button className="item-details-btn add-review" onClick={this.onAddReview}>Add Review</button>
-                        <ReviewList item={this.props.item}></ReviewList>
-                    </div>
+                </div>
+                {this.state.reviewMode &&
+                    <form className="review-section container flex" onSubmit={this.handleSubmit}>
+                        <div className="review-input">
+                            <textarea rows="4" cols="50" className="review-textarea" onChange={this.handleInput} type="txt" value={this.state.review.txt} name="txt" placeholder="Tell us what's on your mind?"></textarea>
+                        </div>
+                        <fieldset className="rating" onChange={this.handleInput} >
+                            {/* <legend>Please rate:</legend> */}
+                            <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
+                        </fieldset>
+                        <button>Submit</button>
+                    </form>
                 }
-                <section className="container">
+                {/* <section className="container">
                     <div>You may also like</div>
-                </section>
-                <section className="container">
+                </section> */}
+                <section className="container recently-viewed">
                     <div>Recently viewd</div>
-                    {(recentlyViewd.length>0) ? <ItemList items={recentlyViewd}></ItemList> :''
-                        
+                    {(recentlyViewd.length > 0) ? <ItemList items={recentlyViewd}></ItemList> : ''
+
                     }
                 </section>
             </React.Fragment >
