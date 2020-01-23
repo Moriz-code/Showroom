@@ -106,19 +106,21 @@ class ItemPreview extends Component {
       <div className="item-card">
 
         <img onClick={this.onAddToWishList} className="heart-icon" alt="heart" src={this.getHeartIcon} />
+
         <Link to={`/itemDetails/${this.props.item._id}`}>
+
           <img className="item-img" alt="img-item" src={this.props.item.imgs[0]}></img>
 
           {/* <img className="item-avatr" alt="img-item" src={avatar} /> */}
           <span className="item-seller">{this.props.item.itemOwner.name}</span>
           <h3>{this.props.item.title}</h3>
-          <p>${this.props.item.price}</p>
 
-        </Link>
-        <span className="item-stars">
+        <span className="item-stars flex justify-space-around">
+          <p className="item-price">${this.props.item.price}</p>
           {this.props.item.reviews &&
             <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>}
         </span>
+        </Link>
         {this.generateBtns()}
 
       </div>

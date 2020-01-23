@@ -4,6 +4,7 @@ import { loadItems } from '../actions/ItemActions'
 import Filter from '../cmps/items/Filter'
 
 import ItemsList from '../cmps/items/ItemList'
+import InnerNavBar from '../cmps/InnerNavBar';
 
 class ShopItems extends Component {
   state = {
@@ -18,8 +19,6 @@ class ShopItems extends Component {
   componentDidMount() {
 
     var params = this.props.match.params.searchTerm
-    console.log('params-mazal', this.props.match);
-    // params = params.substring(1, params.length)
     if (params) this.props.loadItems({ 'txt': params })
     else this.props.loadItems()
   }
@@ -52,6 +51,7 @@ class ShopItems extends Component {
     const { items } = this.props;
     return (
       <React.Fragment>
+        <InnerNavBar></InnerNavBar>
         <Filter selectFilter={this.selectFilter}></Filter>
         {items.length !== 0 ? <ItemsList items={items}>
         </ItemsList> : 'NO ITEMS!'}
