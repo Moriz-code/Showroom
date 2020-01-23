@@ -2,41 +2,44 @@ import React from 'react';
 // import { connect } from 'react-redux';
 
 export default function EditItem(props) {
-  
+
   return <React.Fragment>
-    {/* <input type="text" name="name" value={props.shop.info.name} alt="info" onChange={props.handleChange} /> */}
-    Title:
+    <div className="edit-item container">
+      {/* <input type="text" name="name" value={props.shop.info.name} alt="info" onChange={props.handleChange} /> */}
+      Title
     <input type="text" name="title" value={props.item.title} onChange={props.handleFormChange} />
-  <br/>
-    Price:
+    
+      Price
     <input type="text" name="price" value={props.item.price} onChange={props.handleFormChange} />
-    <br/>
-    Description:
+  
+      Description
     <input type="text" name="description" value={props.item.description} onChange={props.handleFormChange} />
-    <br/>
-    size and fit:
-    <input type="text" name="sizeFit" value={props.item.sizeFit} onChange={props.handleFormChange} />
-    <br/>
-    size:
+   
+      Size and Fit
+    <input type="text" name="sizeFit" value={props.item.sizeFit} placeholder=" What size the model wears? " onChange={props.handleFormChange} />
+    
+      Size
     <input type="text" name="size" value={props.item.size} onChange={props.handleFormChange} />
-    <br/>
-    gender:
-    <input type="text" name="gender" value={props.item.gender} onChange={props.handleFormChange} />
-    <br/>
-{/* array */}
-    labels:
+ 
+  
 
-   Summer <input type="checkbox" name="labels" value="summer" onChange={props.handleFormChange}/>
-   dress  <input type="checkbox" name="labels" value="dress" onChange={props.handleFormChange}/>
-   Fun <input type="checkbox" name="labels" value="Fun" onChange={props.handleFormChange}/>
-   Winter  <input type="checkbox" name="labels" value="Winter" onChange={props.handleFormChange}/>
-    <br/>
-    Images URL:
+    {/* <input type="text" name="gender" value={props.item.gender} onChange={props.handleFormChange} /> */}
+     
+      {/* array */}
+      Labels:
+  
+   Summer <input type="checkbox" name="labels" value="summer" onChange={props.handleFormChange} />
+      dress  <input type="checkbox" name="labels" value="dress" onChange={props.handleFormChange} />
+      Fun <input type="checkbox" name="labels" value="Fun" onChange={props.handleFormChange} />
+      Winter  <input type="checkbox" name="labels" value="Winter" onChange={props.handleFormChange} />
+    
+      Images URL:
     <input type="text" name="imgs" value={props.item.imgs[0]} onChange={props.handleFormChange} />
-    <input type="text" name="imgs" value={props.item.imgs[1]} onChange={props.handleFormChange} />
+      <input type="text" name="imgs" value={props.item.imgs[1]} onChange={props.handleFormChange} />
 
-    <br/>
-    <button className="btn2" onClick={props.onSaveItem}>Save the new ITEM</button>
+    <br></br>
+      <button className="save-item" onClick={props.onSaveItem}>Save the ITEM</button>
+    </div>
   </React.Fragment>
 }
 
