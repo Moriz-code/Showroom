@@ -4,15 +4,19 @@ import { Link } from 'react-router-dom';
 import { setCurrentItem, saveItem } from '../actions/ItemActions';
 import { addToWishList, removeFromWishList } from '../actions/UserActions'
 import OrderService from '../services/OrderService';
-import ReviewList from '../cmps/reviews/ReviewList'
+import ReviewList from '../cmps/reviews/ReviewList';
+import InnerNavBar from '../cmps/InnerNavBar';
+
 import ReviewRating from '../cmps/reviews/ReviewRating'
 import Avatar from '@material-ui/core/Avatar';
 import Modal from '../cmps/Modal'
 import heart from '../styles/assets/imgs/icons/002-heart.png';
 import heartfilled from '../styles/assets/imgs/icons/003-heart-1.png';
 
+
 import ItemList from '../cmps/items/ItemList'
 import UserService from '../services/UserService';
+
 class ItemDetails extends Component {
 
     state = {
@@ -24,7 +28,7 @@ class ItemDetails extends Component {
         },
         modalMsg: "",
         wishListStatus: heart,
-        recentlyViewd:''
+        recentlyViewd: ''
 
     }
 
@@ -139,8 +143,10 @@ class ItemDetails extends Component {
         return (
             item &&
             <React.Fragment>
+                <InnerNavBar></InnerNavBar>
                 <Modal msg={this.state.modalMsg}></Modal>
                 <section className="container flex item-details-main">
+
                     <div className="item-img flex">
                         <div className="item-secondary-image flex column">
                             <img className="secondary-img" onClick={() => this.setMainImg(0)} src={item.imgs[0]} alt="itemImg1" />
@@ -180,7 +186,7 @@ class ItemDetails extends Component {
                         </div>
                         <div>
                             <h3 className="item-desctription">
-                             <p>{item.description}</p>
+                                <p>{item.description}</p>
                             </h3>
                             <h5>{item.sizeFit}</h5>
                             {this.state.reviewMode &&
@@ -204,7 +210,7 @@ class ItemDetails extends Component {
                 </section>
                 {item.reviews.length > 0 &&
                     <div className="container">
-                    <button className="item-details-btn add-review" onClick={this.onAddReview}>Add Review</button>
+                        <button className="item-details-btn add-review" onClick={this.onAddReview}>Add Review</button>
                         <ReviewList item={this.props.item}></ReviewList>
                     </div>
                 }
@@ -213,8 +219,8 @@ class ItemDetails extends Component {
                 </section>
                 <section className="container">
                     <div>Recently viewd</div>
-                    {(recentlyViewd.length>0) ? <ItemList items={recentlyViewd}></ItemList> :''
-                        
+                    {(recentlyViewd.length > 0) ? <ItemList items={recentlyViewd}></ItemList> : ''
+
                     }
                 </section>
             </React.Fragment >

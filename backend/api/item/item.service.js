@@ -77,46 +77,54 @@ async function add(item) {
     }
 }
 
-
-
-
-
 function _buildCriteria(filterBy) {
-
+    let filters;
     const criteria = {};
-
-    for (let key in filterBy) {
-
-
-
-        switch (key) {
-            case 'gender':
-            case 'size':
-            case 'shop':
-                if (filterBy[key]) {
-                    let str = [];
-                    if (typeof filterBy[key] === 'string') {
-                        criteria[key] = filterBy[key]
-                    }
-                    else {
-                        filterBy[key].forEach((value) => {
-                            str.push({ [key]: value })
-                        })
-                        criteria["$or"] = str
-                    }
-                }
-            case 'price':
-                if (filterBy.price) {
-                    criteria['price'] = { $lte: +filterBy.price }
-                }
-            case 'txt': 
-                if (filterBy.txt) {
-                    criteria["$or"] = [{ 'title': {$regex:filterBy.txt}},{'description':{$regex:filterBy.txt} }]
-                }
+    if (filterBy.gender) {
+        filters = [];
+        if (typeof filterBy.gender === 'string') {
+            criteria.gender = filterBy.gender
         }
-        console.log('criteriacriteria', criteria);
-
-        return criteria;
+        else {
+            filterBy.gender.forEach((value) => {
+                filters.push({ 'gender': value })
+                console.log('corcorcor',filters);
+                
+            })
+            criteria["$or"] = filters
+        }
     }
-}
+    if (filterBy.size) {
+        filters = [];
+        if (typeof filterBy.size === 'string') {
+            criteria.size = filterBy.size
+        }
+        else {
+            filterBy.size.forEach((value) => {
+                filters.push({ 'size': value })
+            })
+            criteria["$or"] = filters
+        }
+    }
+    if (filterBy.shop) {
+        filters = [];
+        if (typeof filterBy.shop === 'string') {
+            criteria.shop = filterBy.shop
+        }
+        else {
+            filterBy.shop.forEach((value) => {
+                filters.push({ 'shop': value })
+            })
+            criteria["$or"] = filters
+        }
+    }
+    if (filterBy.price) {
+        criteria['price'] = { $lte: +filterBy.price }
+    }
+    if (filterBy.txt) {
+        criteria["$or"] = [{ 'title': { $regex: filterBy.txt } }, { 'description': { $regex: filterBy.txt } }]
+    }
+    console.log('criteriacriteria', criteria);
 
+    return criteria;
+}
