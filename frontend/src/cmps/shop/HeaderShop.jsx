@@ -13,7 +13,7 @@ export default function ShopSettings(props) {
                 <div className="details">
                     <h1 className="title">{props.selectedShop.info.name}</h1>
                     <div className="description">{props.selectedShop.info.description}</div>
-                    <div className="designer-name">by: 
+                    <div className="designer-name"> 
                         {props.selectedShop.owner.name}</div>
 
                     <div className="shop-social">

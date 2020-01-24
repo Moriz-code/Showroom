@@ -38,6 +38,11 @@
   background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/370-mj-0972-a-l.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=7b4e821cfb2bea399f11708275796720");
   background-repeat: no-repeat;
   background-size: cover;
+
+  &:hover {
+    background-blend-mode: luminosity;
+
+  }
 }
 
 .category-a {
@@ -51,13 +56,20 @@
   background-position: center;
   background-size: cover;
   grid-area: b;
-
+  &:hover {
+    background-blend-mode: luminosity;
+  }
 }
 
 .category-d {
   background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/393-mckinsey-21a3921-jir_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=8d214bc588282e34255fbd1e08aedb78");
   background-size: 100% 100%;
   grid-area: d;
+
+  &:hover {
+    background-blend-mode: luminosity;
+
+  }
 }
 
 .category-e {
@@ -66,6 +78,10 @@
   background-repeat: no-repeat;
   grid-area: e;
   background-position: center;
+  &:hover {
+    background-blend-mode: luminosity;
+    
+  }
 }
 
 .hero {
@@ -74,7 +90,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("../assets/imgs/cover2.jpg");
+  // background-image: url("../assets/imgs/cover2.jpg");
   margin-bottom: 20px;
   background-size: 100% 600px;
   background-size: cover;
@@ -112,14 +128,14 @@
 }
 
 .home-categories {
-  // font-family: Roboto;
   font-size: 1.5rem;
+
 }
 
-.home-page-text{
-background-color: $clr5;
-padding: 18px;
-color:$clr3;
-position: relative;
-top:25px
+.home-page-text {
+  background-color: $clr1;
+  padding: 18px;
+  color: $clr4;
+  position: relative;
+  top: 25px;
 }

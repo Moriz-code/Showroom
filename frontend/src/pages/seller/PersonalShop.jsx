@@ -9,7 +9,7 @@ import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
 import Comments from '../../pages/seller/Comments';
-
+import InnerNavbar from '../../cmps/InnerNavBar'
 
 import Utils from '../../services/UtilService';
 // import SocketService from '../../services/SocketService';
@@ -249,6 +249,7 @@ class PersonalShop extends Component {
         const { shop } = this.state;
         return (
             <React.Fragment>
+                <InnerNavbar></InnerNavbar>
                 {this.state.shop ?
                     <div className="shop-page">
                         <div className="shop-container">

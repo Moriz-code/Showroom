@@ -197,10 +197,10 @@ class ItemDetails extends Component {
                         </Link>
                         <div className="item-price">${item.price}</div>
                         <select className="size-select" placeholder="Select Size">
-                            {item.size === "S" ? <option value="S">S</option> : <option disabled value="S">S - Out of stock</option>}
-                            {item.size === "M" ? <option value="M">M</option> : <option disabled value="M">M - Out of stock</option>}
-                            {item.size === "L" ? <option value="L">L</option> : <option disabled value="L">L - Out of stock</option>}
-                            {item.size === "XL" ? <option value="XL">XL</option> : <option disabled value="XL">XL - Out of stock</option>}
+                            {item.size === "s" ? <option value="s">S</option> : <option disabled value="S">S - Out of stock</option>}
+                            {item.size === "m" ? <option value="m">M</option> : <option disabled value="M">M - Out of stock</option>}
+                            {item.size === "l" ? <option value="l">L</option> : <option disabled value="L">L - Out of stock</option>}
+                            {item.size === "xl" ? <option value="xl">XL</option> : <option disabled value="XL">XL - Out of stock</option>}
                         </select>
                         {/* <h4>Average Rating {Math.round((this.calculateAvgRating() / 100 * 5) * 100) / 100 || ""}</h4> */}
 
