@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import orderService from '../../services/OrderService'
 import ItemsList from '../../cmps/items/ItemList'
-import { placeOrder } from '../../actions/OrderActions'
+import { placeOrder , clearCart,removeFromCart } from '../../actions/OrderActions'
 import InnerNavBar from '../../cmps/InnerNavBar';
 
 class Cart extends Component {
@@ -19,6 +19,7 @@ class Cart extends Component {
     deleteItem = async (itemId) => {
         await orderService.removeItemFromCart(itemId)
         const cart = await orderService.getOrder()
+        this.props.removeFromCart()
         this.setState({ items: cart })
     }
 
@@ -33,6 +34,7 @@ class Cart extends Component {
     onPlaceOrder = async () => {
         await this.props.placeOrder(this.props.loggedInUser)
         await this.clearCart()
+        this.props.clearCart()
         this.props.history.push("/")
     }
 
@@ -69,7 +71,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    placeOrder
+    placeOrder,
+    clearCart,
+    removeFromCart
 };
 
 export default connect(
