@@ -24,8 +24,15 @@ async function addOrder(req, res) {
 }
 
 
+async function getOrders(req,res) {
+    console.log(req.params.id,'asdadvhkdsvk');
+    
+    const orders = await orderService.query(req.params.id)
+    res.send(orders)
+
+}
+
 module.exports = {
-    // getItems,
-    // getItem,
-    addOrder
+    addOrder,
+    getOrders
 }

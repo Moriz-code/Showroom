@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId
 
 
 module.exports = {
-    // query,
+    query,
     // getById,
     // getByEmail,
     // remove,
@@ -24,19 +24,19 @@ async function add(order) {
 }
 
 
-// async function query(filterBy = {}) {
-//     const criteria = _buildCriteria(filterBy)
-//     const collection = await dbService.getCollection('order')
-//     try {
-//         const orders = await collection.find(criteria).toArray();
-//         orders.forEach(order => delete order.password);
-
-//         return orders
-//     } catch (err) {
-//         console.log('ERROR: cannot find orders')
-//         throw err;
-//     }
-// }
+async function query(shopId) {
+    const criteria = {"fromShop.id":`${shopId}`}
+    console.log('criteria',criteria);
+    
+    const collection = await dbService.getCollection('order')
+    try {
+        const orders = await collection.find(criteria).toArray();
+        return orders
+    } catch (err) {
+        console.log('ERROR: cannot find orders')
+        throw err;
+    }
+}
 
 // async function getById(orderId) {
 //     console.log('orderid',orderId)
