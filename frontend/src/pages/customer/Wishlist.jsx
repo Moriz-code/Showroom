@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import ItemsList from '../../cmps/items/ItemList'
 import { removeFromWishList } from '../../actions/UserActions'
+import { addToCart } from '../../actions/OrderActions'
 import OrderService from '../../services/OrderService';
 import InnerNavBar from '../../cmps/InnerNavBar';
 class Wishlist extends Component {
@@ -16,6 +17,7 @@ class Wishlist extends Component {
 
     addToCart=(item)=> {
         this.deleteItem(item._id)
+        this.props.addToCart()
         OrderService.addItemtoCart(item)
 
     }
@@ -40,7 +42,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    removeFromWishList
+    removeFromWishList,
+    addToCart
 
 };
 

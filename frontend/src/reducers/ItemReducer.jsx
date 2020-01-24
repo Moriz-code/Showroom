@@ -4,6 +4,7 @@ const initalState = {
     selectedItem: null,
     filter: [],
     sorts:[]
+  
 }
 
 export default function (state = initalState, action = {}) {
