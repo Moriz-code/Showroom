@@ -5,25 +5,51 @@ import logo from '../styles/imgs/logo-red.png';
 import { NavLink } from 'react-router-dom'
 import Search from '../cmps/items/Search';
 
-import wishlist from '../styles/imgs/heart (4).svg'
-import bag from '../styles/imgs/shopping-bag (1).svg'
-
+import wishlist from '../styles/assets/imgs/heart-white.png'
+import cart from '../styles/assets/imgs/shopping-cart-white.png'
+import cover from '../styles/assets/imgs/coverPhoto.jpg'
 
 
 class Header extends Component {
+
+  state = {
+    isTop: true,
+  };
+
+
+  
+  componentDidMount() {
+    document.addEventListener('scroll', () => {
+      const isTop = window.scrollY < 100;
+      if (isTop !== this.state.isTop) {
+          this.setState({ isTop })
+      }
+    });
+  }
+
+
   render() {
     return <React.Fragment>
-      <div>
-        <div className="nav-icon flex">
+      <div className="main-header" >
+        <div className= {this.state.isTop ? 'down nav-icon flex end align-center' : 'up nav-icon flex end align-center'} >
+
+          <div className="nav-text">
           <span><NavLink to='/item' className="nav-text" exact>Shop</NavLink></span>
-          <ul className="menu-icons flex">
+          <span><NavLink to='/' className="nav-text" exact>Become a seller</NavLink></span>
+          </div>
+          
+
+          <ul className="menu-icons flex align-center">
             <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
-            <li><NavLink activeClassName="active" to='/cart' exact><img src={bag} /> <span></span></NavLink></li>
+            <li><NavLink activeClassName="active" to='/cart' exact><img src={cart} /> <span></span></NavLink></li>
           </ul>
         </div>
-        <img className="cover-photo" src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/385-mj-0324.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=4e003af73294b12d4235a8afe34379aa" />
+        <img className="cover-photo" src={cover}/>
         <div className="header-text-search flex column justify-center align-center">
-          <img className="main-logo" src={logo} />
+          <div className="headlines ">
+          <h1 className="showRoom-title text-flicker-in-glow">ShowRoom</h1>
+          <h3 className="marketplace-title text-flicker-in-glow">Marketplace</h3>
+          </div>
           <Search></Search>
         </div>
       </div>

@@ -1,5 +1,7 @@
 .inner-nav {
+  margin-bottom: 10px;
   background-color: $clr4;
+  margin-bottom: 20px;
   .inner-nav-icons {
     width: 60px;
     height: 60px;
@@ -10,6 +12,19 @@
     padding-top:5px
   }
   .inner-nav-text{
-   color:$clr5
+   color:$clr1
+  }
+
+  .notification-badge {
+    position: relative;
+    top: 12px;
+    right: -24px;
+    padding: 2px 5px;
+    border-radius: 87%;
+    background: red;
+    color: white;
+    font-size: 10px;
+
+ 
   }
 }

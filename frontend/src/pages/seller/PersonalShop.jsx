@@ -8,7 +8,9 @@ import ItemsList from '../../cmps/items/ItemList';
 import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
+
 import Comments from '../../pages/seller/Comments';
+import InnerNavbar from '../../cmps/InnerNavBar'
 
 
 import Utils from '../../services/UtilService';
@@ -87,7 +89,31 @@ class PersonalShop extends Component {
     //     this.props.loadItems();
     // }
 
+
+
+    handleColorChange = (ev) => {
+
+        const name = "bgColor";
+        const alt = "style";
+        let value = ev.hex;
+
+  
+
+        this.setState(prevState => ({
+            ...prevState,
+            shop: {
+                ...prevState.shop,
+                [alt]: {
+                    ...prevState.shop[alt],
+                    [name]: value
+                }
+            }
+        }))
+    }
+
     handleSettingChange = (ev) => {
+        console.log(ev);
+
         let { name, value, alt } = ev.target;
 
         if (name === 'videoUrl') {
@@ -107,6 +133,8 @@ class PersonalShop extends Component {
     }
 
     handleFormChange = (ev) => {
+
+
         let { name, value } = ev.target;
 
         if (name === 'labels' || name === 'imgs') {
@@ -249,32 +277,33 @@ class PersonalShop extends Component {
         const { shop } = this.state;
         return (
             <React.Fragment>
+                <InnerNavbar></InnerNavbar>
                 {this.state.shop ?
-                    <div className="shop-page">
-                        <div className="shop-container">
+                    <div className='shop-page'>
+                        <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
                             <HeaderShop selectedShop={shop}></HeaderShop>
 
-                            <button className="btn-style-none" onClick={this.onEditSettings}><img className="shop-edit-btn" src={settingsIcon} /></button>
+                            <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button>
                             <div className={this.state.isOnEditSettigs ? 'modal-settings' : 'display-none'}>
-                                <ShopSettings onSaveSettings={this.onSaveSettings} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
+                                <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
                             </div>
 
-                           <div style={{ backgroundColor: shop.style.bgColor }}>
-                            <button className="add-item-btn" onClick={this.onEditMode}>Add Item</button>
-                            <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
-                                <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
-                            </div>
+                            <div style={{ backgroundColor: shop.style.bgColor }}>
+                                <button className="add-item-btn" onClick={this.onEditMode}>Add Item</button>
+                                <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
+                                    <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
+                                </div>
 
-                            <button className="chat-icon" onClick={this.onChat}> <img src={chat} alt="icon" /></button>
-                            <div className={this.state.isOnChat ? 'modal-chat' : 'display-none'}>
-                                <Comments addComment={this.onAddComment} comments={shop.comments}></Comments>
-                            </div>
+                                <button className="chat-icon" onClick={this.onChat}> <img src={chat} alt="icon" /></button>
+                                <div className={this.state.isOnChat ? 'modal-chat' : 'display-none'}>
+                                    {/* <Comments addComment={this.onAddComment} comments={shop.comments}></Comments> */}
+                                </div>
 
 
-                            {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
-                            {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
+                                {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
+                                {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
 
-                            {/* socket */}
+                                {/* socket */}
 
                             </div>
                         </div>

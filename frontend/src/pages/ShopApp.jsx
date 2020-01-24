@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from '../cmps/Header'
 import { loadItems } from '../actions/ItemActions'
 import ItemsList from '../cmps/items/ItemList'
+import Footer from '../cmps/Footer';
 
 
 class ShopApp extends Component {
@@ -17,32 +18,28 @@ class ShopApp extends Component {
         items = items.splice(0, 3)
         return <React.Fragment>
             <Header></Header>
-            {/* <div className="hero"> */}
-            {/* <p className="hero-title">Buy and sell local fashion goods</p> */}
-            {/* <input className="hero-search" type="text" id="search-bar" placeholder="Looking for something specific?" /> */}
-            {/* <button className="searchBtn">Search</button> */}
-            {/* <Link to="/item"><button>Shop Now</button></Link> */}
-            {/* </div> */}
-               
+
+
             <div className=" home-categories">
                 <div className="category-b">
-                    <span className="home-page-text">BEST SELLER</span>
+                <Link to={`/item/clearance`}> <span className="home-page-text">Clearance</span> </Link>
                 </div>
                 <div className="category-c">
-                    <span className="home-page-text">WOMEN</span>
+                    <Link to={`/item/women`}> <span className="home-page-text">WOMEN</span></Link>
                 </div>
+
                 <div className="category-d">
-                    <span className="home-page-text">MEN</span>
+                    <Link to={`/item/men`}>  <span className="home-page-text">MEN</span></Link>
                 </div>
                 <div className="category-e">
-                    <span className="home-page-text">HATS</span>
+                <Link to={`/item/petit`}> <span className="home-page-text">PETIT</span></Link>
                 </div>
             </div>
             <span className="home-page-text">HOT PRODUCTS</span>
-                {items.length !== 0 ? <ItemsList items={items}>
-                </ItemsList> : 'NO ITEMS!'}
+            {items.length !== 0 ? <ItemsList items={items}>
+            </ItemsList> : 'NO ITEMS!'}
 
-
+            <Footer></Footer>
         </React.Fragment>
     }
 }
