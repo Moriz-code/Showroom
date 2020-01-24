@@ -9,17 +9,12 @@ export default {
 };
 
 function query(filterBy = null) {
-    console.log('check filter3', filterBy);
-
+    console.log('filterBy2',filterBy);
+    
     if (filterBy === null) return HttpService.get('item');
     else {
-        // debugger;
         let str = '';
         for (const key in filterBy) {
-            console.log('filterby-theend', filterBy);
-
-            console.log('coral is checking', filterBy[key]);
-            // if(key==='txt'||key==='price') return HttpService.get(`item?${key}=${filterBy[key]}`);
             if (filterBy[key].length === 0) continue
             else {
                 if (filterBy[key].length === 1||typeof filterBy[key]==='string') {

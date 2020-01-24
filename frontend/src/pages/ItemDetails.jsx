@@ -217,6 +217,7 @@ class ItemDetails extends Component {
                         </div>
                     </div>
                     <div className="item-side-details flex column justify-space-between">
+
                         <div className="container item-shop-details-container">
                             <Link to={`/shop/${item.itemOwner.id}`}>
                                 <div className="store-details flex">
@@ -241,6 +242,7 @@ class ItemDetails extends Component {
                             <button className="item-sizes" id="btn-l" value="L" onClick={this.handleSizeSelect}>L</button>
                             <button className="item-sizes size-xl" id="btn-xl" value="XL" onClick={this.handleSizeSelect}>XL</button>
                         </div>
+
 
                         <div className="item-buttons flex">
                             <button className="item-details-btn buy-now" onClick={this.onBuyNow}>Buy Now</button>

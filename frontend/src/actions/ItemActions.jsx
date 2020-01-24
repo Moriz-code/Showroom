@@ -1,7 +1,7 @@
 import ItemService from '../services/ItemService'
 
 export function loadItems(filterBy) {
-    console.log('loadItems-check',filterBy);
+    console.log('filterBy1',filterBy);
     
     return async dispatch => {
         try {
@@ -20,27 +20,6 @@ function setItems(items) {
         items
     }
 }
-
-// export function removeFilter(filter){
-//     return{
-//         type: 'REMOVE_FILTER',
-//         filter
-//     }
-// }
-
-// export function setFilters(filters) {
-//     return {
-//         type: 'SET_FILTERS',
-//         filters
-//     }
-// }
-
-// export function setSorts(sorts) {
-//     return {
-//         type: 'SET_SORTS',
-//         sorts
-//     }
-// }
 
 export function saveItem(item) {
     return async dispatch => {

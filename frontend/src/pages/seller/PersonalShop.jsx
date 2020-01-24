@@ -8,7 +8,9 @@ import ItemsList from '../../cmps/items/ItemList';
 import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
-// import Comments from '../../pages/seller/Comments';
+
+import Comments from '../../pages/seller/Comments';
+import InnerNavbar from '../../cmps/InnerNavBar'
 
 
 import Utils from '../../services/UtilService';
@@ -275,6 +277,7 @@ class PersonalShop extends Component {
         const { shop } = this.state;
         return (
             <React.Fragment>
+                <InnerNavbar></InnerNavbar>
                 {this.state.shop ?
                     <div className='shop-page'>
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>

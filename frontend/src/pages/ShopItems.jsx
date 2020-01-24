@@ -19,7 +19,13 @@ class ShopItems extends Component {
   componentDidMount() {
 
     var params = this.props.match.params.searchTerm
-    if (params) this.props.loadItems({ 'txt': params })
+
+    if (params) {
+      if (params === 'women' || params === 'men') this.props.loadItems({ 'gender': [params] })
+      if (params === 'petit') this.props.loadItems({ 'size': ['xs', 's'] })
+      if (params === 'clearance') this.props.loadItems({ 'price': 40 })
+      else this.props.loadItems({ 'txt': params })
+    }
     else this.props.loadItems()
   }
 
