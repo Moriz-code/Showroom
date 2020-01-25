@@ -14,11 +14,17 @@ import InnerNavbar from '../../cmps/InnerNavBar'
 
 
 import Utils from '../../services/UtilService';
-// import SocketService from '../../services/SocketService';
+
+////sockets try///
+import SocketService from '../../services/SocketService'
+import { addToCart } from '../../actions/OrderActions'
+
+/// end of socket try////
 
 //icons
-import settingsIcon from '../../styles/assets/imgs/edit.png';
 import chat from '../../styles/assets/imgs/icons/chat.png';
+import addBtn from '../../styles/assets/imgs/add.png';
+
 
 class PersonalShop extends Component {
     state = {
@@ -75,6 +81,8 @@ class PersonalShop extends Component {
         console.log('did mount');
         await this.props.loadShop(this.props.match.params.id)
         await this.props.loadItems();
+        SocketService.setup()
+        SocketService.on('complete',this.notifciation)
         this.setState({ shop: this.props.shop.selectedShop })
 
         // //sockets
@@ -85,6 +93,9 @@ class PersonalShop extends Component {
         // SocketService.on('user send msg', this.addComment)
     }
 
+    notifciation=()=>{
+       this.props.addToCart()
+    }
     //  componentDidUpdate() {
     //      this.props.loadItems();
     // }
@@ -112,10 +123,7 @@ class PersonalShop extends Component {
     }
 
     handleSettingChange = (ev) => {
-        console.log(ev);
-
         let { name, value, alt } = ev.target;
-
         if (name === 'videoUrl') {
             value = Utils.getEmbdedUrl(value);
         }
@@ -158,31 +166,6 @@ class PersonalShop extends Component {
 
     }
 
-    // handleCommentAdd = (ev) =>{
-    //     // let {name , comment} = ev.target;
-
-    // console.log(ev.target);
-
-    // //     else {
-    // //         value = list.concat(value);
-    // //     }
-    // // }
-
-    // // this.setState(prevState => ({
-    // //     ...prevState,
-    // //     item: {
-    // //         ...prevState.item, [name]: value
-    // //     }
-    // // }))
-    // }
-
-    // sendComment = (text) => {
-    //     SocketService.emit('chat newMsg', { user: { userName: "Guest" }, text });
-    // };
-
-    // onAddComment = (newMsg) => {
-    //     this.setState(prevState => ({ comments: [...prevState.comments, newMsg] }));
-    // }
 
 
     onSaveSettings = (ev) => {
@@ -271,6 +254,8 @@ class PersonalShop extends Component {
 
 
     render() {
+
+     
         // console.log('shop:', this.state.shop)
         const { shop } = this.state;
         return (
@@ -279,14 +264,14 @@ class PersonalShop extends Component {
                 {this.state.shop ?
                     <div className='shop-page'>
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
-                            <HeaderShop selectedShop={shop}></HeaderShop>
-                            <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button>
+                            <HeaderShop onEditSettings={this.onEditSettings} selectedShop={shop}></HeaderShop>
+                            {/* <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button> */}
 
                             <div className={this.state.isOnEditSettigs ? 'modal-settings' : 'display-none'}>
                                 <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
                             </div>
 
-                            <div style={{ backgroundColor: shop.style.bgColor }}>
+                            <div className="shop-main" style={{ backgroundColor: shop.style.bgColor }}>
                                 <div className={this.state.isOnEditMode ? '' : 'display-none'}>
                                     <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
                                 </div>
@@ -298,8 +283,8 @@ class PersonalShop extends Component {
 
 
 
-                                    <button className="add-item-btn" onClick={this.onEditMode}>Add Item</button>
-                                <div className="cards-container container">
+                                <button className="add-item-btn" onClick={this.onEditMode}><img src={addBtn} alt="icon-add" /></button>
+                                <div className="cards-shop-container">
                                     {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
                                     {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
                                 </div>
@@ -327,6 +312,7 @@ const mapDispatchToProps = {
     deleteItem,
     updateShopSettings,
     saveItem,
+    addToCart
 };
 
 export default connect(

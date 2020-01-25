@@ -32,6 +32,7 @@
     }
     .cart{
       padding-left: 15px;
+      display: block;
     }
     .inner-nav-text {
       padding-left:15px;
@@ -55,14 +56,18 @@
 
   }
 }
-  // .notification-badge {
-  //   position: relative;
-  //   top: 12px;
-  //   right: -24px;
-  //   padding: 2px 5px;
-  //   border-radius: 87%;
-  //   background: $clr1;
-  //   color: white;
-  //   font-size: 10px;
-  // }
+  .notification-badge {
+    position: absolute;
+    top: 28px;
+    right:  18px;
+    // right: -24px;
+    padding: 2px 5px;
+   
+    color: green;
+    font-size: 12px;
+    z-index: 23;
+    font-weight: bolder;
+  }
 }
+
+
