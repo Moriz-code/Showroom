@@ -191,9 +191,10 @@
 }
 
 .rating {
-  margin-right: 131px;
+  // margin-right: 131px;
   padding-left: 0px;
   margin-left: 0px;
+  margin-bottom: 10px;
 }
 
 
@@ -210,6 +211,11 @@
       resize: none;
     }
   }
+}
+
+.review-submit{
+  max-width: 65px;
+    align-self: flex-end;
 }
 
 .InnerNavBar {
@@ -299,6 +305,10 @@
     color: $clr4;
     cursor: pointer;
   }
+ &.selected{
+  background-color: $clr1;
+
+ }
 }
 
 .size-select {
@@ -339,44 +349,7 @@
   margin-left: 10px;
 }
 
-/////sale badge////
 
-// .sale {
-// 	position: relative;
-// 	display: inline-block;
-// 	background: orange;
-// 	color: white;
-// 	height: 2.5rem;
-// 	width: 2.5rem;
-// 	text-align: center;
-// 	vertical-align: middle;
-// 	line-height: 2.5rem;
-// 	// margin: 45vh 45vw;
-// 	transform: rotate(-20deg);
-// 	animation: beat 1s ease infinite alternate;
-// 	&:before,
-// 	&:after {
-// 		content:"";
-// 		position: absolute;
-// 		background: inherit;
-// 		height: inherit;
-// 		width: inherit;
-// 		top: 0;
-// 		left: 0;
-// 		z-index: -1;
-// 		transform: rotate(30deg);
-// 	}
-// 	&:after {
-// 		transform: rotate(60deg);
-// 	}
-// }
-
-// @keyframes beat {
-// 	from {	transform: rotate(-20deg) scale(1); }
-// 	to {	transform: rotate(-20deg) scale(1.1); }
-// }
-
-///sale badge end////
 
 //////ribbon////
 .ribbon {

@@ -19,6 +19,7 @@ import ItemList from '../cmps/items/ItemList'
 import UserService from '../services/UserService';
 
 
+
 class ItemDetails extends Component {
 
     state = {
@@ -41,10 +42,12 @@ class ItemDetails extends Component {
 
 
     componentDidMount() {
+   
+       
         this.loadItems()
     }
 
-
+    
 
     loadItems = async () => {
         await this.props.setCurrentItem(this.props.match.params.id)
@@ -96,6 +99,7 @@ class ItemDetails extends Component {
     }
 
     onAddToCart = async () => {
+
         OrderService.addItemtoCart(this.props.item)
         this.props.addToCart()
         await this.setState({ modalMode: true, modalMsg: "Added To Cart" })
@@ -104,6 +108,7 @@ class ItemDetails extends Component {
     }
 
     onBuyNow = async () => {
+
         await OrderService.addItemtoCart(this.props.item)
         this.props.addToCart()
         this.props.history.push('/cart')
@@ -130,6 +135,11 @@ class ItemDetails extends Component {
 
     onAddReview = async () => {
         await this.setState({ reviewMode: true })
+
+    }
+
+    reviewClose=()=>{
+        this.setState({reviewMode:false})
 
     }
 
@@ -178,8 +188,10 @@ class ItemDetails extends Component {
     }
 
     handleSizeSelect = (ev) => {
-        let size = ev.target.value
-        this.setState({ size })
+        let selectedSize = ev.target.value
+        if(selectedSize===this.state.size)  this.setState({ size:'' })
+        else this.setState({ size:selectedSize })
+     
     }
 
     setDeliveryDate = () => {
@@ -252,10 +264,10 @@ class ItemDetails extends Component {
                         </h3>
 
                         <div className="size-select">
-                            <button className="item-sizes" id="btn-s" value="S" onClick={this.handleSizeSelect}>S</button>
-                            <button className="item-sizes" id="btn-m" value="M" onClick={this.handleSizeSelect}>M</button>
-                            <button className="item-sizes" id="btn-l" value="L" onClick={this.handleSizeSelect}>L</button>
-                            <button className="item-sizes size-xl" id="btn-xl" value="XL" onClick={this.handleSizeSelect}>XL</button>
+                            <button className={(this.state.size==="S")?"item-sizes selected":"item-sizes"} id="btn-s" value="S" onClick={this.handleSizeSelect}>S</button>
+                            <button className={(this.state.size==="M")?"item-sizes selected":"item-sizes"} id="btn-m" value="M" onClick={this.handleSizeSelect}>M</button>
+                            <button className={(this.state.size==="L")?"item-sizes selected":"item-sizes"} id="btn-l" value="L" onClick={this.handleSizeSelect}>L</button>
+                            <button className={(this.state.size==="XL")?"item-sizes selected size-xl":"item-sizes size-xl"} id="btn-xl" value="XL" onClick={this.handleSizeSelect}>XL</button>
                         </div>
 
 
@@ -288,6 +300,7 @@ class ItemDetails extends Component {
                         <button className="btn1" onClick={this.onAddReview}>Add Review</button>}
                     {this.state.reviewMode &&
                         <form className="review-section flex column justify-space-between" onSubmit={this.handleSubmit}>
+                        <div className="review-cancel" onClick={this.reviewClose}>X</div>
                             <div onChange={this.handleInput} className="review-input flex column justify-space-between">
 
                                 <TextField style={{ marginBottom: "20px" }} name="title" required id="standard-required" label="Title" />
@@ -309,6 +322,7 @@ class ItemDetails extends Component {
                             
                             <button className="btn2">Submit</button>
                         </form>}
+                       
                 </div>
 
                 {/* } */}
