@@ -1,7 +1,7 @@
 const itemService = require('./item.service')
 
 async function getItems(req, res) {
-console.log('getItems',req.query);
+
 
     const items = await itemService.query(req.query)
 

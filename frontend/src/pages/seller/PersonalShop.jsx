@@ -14,7 +14,12 @@ import InnerNavbar from '../../cmps/InnerNavBar'
 
 
 import Utils from '../../services/UtilService';
-// import SocketService from '../../services/SocketService';
+
+////sockets try///
+import SocketService from '../../services/SocketService'
+import { addToCart } from '../../actions/OrderActions'
+
+/// end of socket try////
 
 //icons
 import settingsIcon from '../../styles/assets/imgs/edit.png';
@@ -75,6 +80,8 @@ class PersonalShop extends Component {
         console.log('did mount');
         await this.props.loadShop(this.props.match.params.id)
         await this.props.loadItems();
+        SocketService.setup()
+        SocketService.on('complete',this.notifciation)
         this.setState({ shop: this.props.shop.selectedShop })
 
         // //sockets
@@ -85,6 +92,9 @@ class PersonalShop extends Component {
         // SocketService.on('user send msg', this.addComment)
     }
 
+    notifciation=()=>{
+       this.props.addToCart()
+    }
     //  componentDidUpdate() {
     //      this.props.loadItems();
     // }
@@ -327,6 +337,7 @@ const mapDispatchToProps = {
     deleteItem,
     updateShopSettings,
     saveItem,
+    addToCart
 };
 
 export default connect(

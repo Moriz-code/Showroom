@@ -4,7 +4,7 @@ import orderService from '../../services/OrderService'
 import ItemsList from '../../cmps/items/ItemList'
 import { placeOrder , clearCart,removeFromCart } from '../../actions/OrderActions'
 import InnerNavBar from '../../cmps/InnerNavBar';
-
+import SocketService from '../../services/SocketService'
 class Cart extends Component {
 
     state = {
@@ -12,6 +12,7 @@ class Cart extends Component {
     }
 
     componentDidMount = async () => {
+        SocketService.setup()
         const cart = await orderService.getOrder()
         this.setState({ items: cart })
     }
@@ -32,6 +33,7 @@ class Cart extends Component {
     }
 
     onPlaceOrder = async () => {
+        SocketService.emit('buy',this.props.item)
         await this.props.placeOrder(this.props.loggedInUser)
         await this.clearCart()
         this.props.clearCart()

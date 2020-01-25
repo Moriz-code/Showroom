@@ -18,7 +18,7 @@ class InnerNavBar extends Component {
                 <Link to={`/`} ><p className="inner-logo">ShowRoom</p></Link>
 
                 <Search></Search>
-                
+
                 <div className="nav-right-side flex align-center">
 
                     <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
@@ -28,8 +28,10 @@ class InnerNavBar extends Component {
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
 
                         <li className="cart"><NavLink activeClassName="active" to='/cart' exact>
-                            {/* <span class="notification-badge">{itemsInCart}</span>  */}
-                            <img src={cart} /> </NavLink></li>
+                  <span class="notification-badge">{itemsInCart}</span>
+                            <img className="cart-icon" src={cart} />
+                        </NavLink>
+                        </li>
 
                     </ul>
                 </div>
