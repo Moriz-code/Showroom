@@ -5,6 +5,9 @@ import ItemsList from '../../cmps/items/ItemList'
 import { placeOrder, clearCart, removeFromCart } from '../../actions/OrderActions'
 import InnerNavBar from '../../cmps/InnerNavBar';
 import SocketService from '../../services/SocketService'
+import { Link } from 'react-router-dom'
+import Footer from'../../cmps/Footer'
+
 class Cart extends Component {
 
     state = {
@@ -33,7 +36,7 @@ class Cart extends Component {
     }
 
     onPlaceOrder = async () => {
-        SocketService.emit('buy',this.props.item)
+        SocketService.emit('buy', this.props.item)
         await this.props.placeOrder(this.props.loggedInUser)
         await this.clearCart()
         this.props.clearCart()
@@ -47,15 +50,16 @@ class Cart extends Component {
         return (<div className="cart ">
             <InnerNavBar></InnerNavBar>
             <div className="container">
-                <p className="cart-title flex justify-center">SHOPPING CART</p>
                 <div className="cart-body flex justify-space-between">
                     <div>
                         {this.state.items && this.state.items.length > 0 ?
                             <div>
-                                <div className="cart-list">
+                                <p className="cart-title">SHOPPING CART</p>
+
+                                <div className="cart-list flex justify-center align-center">
                                     <ItemsList deleteItem={this.deleteItem} listMode="cartMode" items={this.state.items}></ItemsList>
                                 </div>
-                                <div className="cart-price flex column justify-center ">
+                                <div className="cart-price  ">
                                     <div className="flex justify-space-between ">
                                         <p> Subtotal:</p>
                                         <p className="price"> {this.calculateTotal()}$</p>
@@ -66,16 +70,16 @@ class Cart extends Component {
                             </div> :
                             <div className="cart-no-items container flex column justify-center">
                                 <p className="oops">OOPS!</p>
-                                <p>We know that you want to checkout quickly but you forgot something vart important...</p>
-                                <p>YOUR SHOPPING CART IS EMPTY</p>
-                                <button className="btn1">Go shopping</button>
+                                <p className="cart-paragraph">We know that you want to checkout quickly but you forgot something vary important...</p>
+                                <p className="empty-line">YOUR SHOPPING CART IS EMPTY</p>
+                                <Link to={`/item`}> <button className="btn1">Go shopping</button> </Link>
                             </div>
                         }
                     </div>
 
                 </div>
             </div>
-
+            <Footer></Footer>
         </div >
         )
     }
