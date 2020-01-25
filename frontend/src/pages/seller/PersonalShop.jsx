@@ -12,8 +12,6 @@ import HeaderShop from '../../cmps/shop/HeaderShop';
 import Comments from '../../pages/seller/Comments';
 
 import InnerNavbar from '../../cmps/InnerNavBar';
-
-import InnerNavbar from '../../cmps/InnerNavBar';
 import Footer from '../../cmps/Footer';
 
 import Utils from '../../services/UtilService';
