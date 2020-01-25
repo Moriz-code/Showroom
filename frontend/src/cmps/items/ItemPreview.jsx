@@ -6,7 +6,10 @@ import ReviewRating from '../reviews/ReviewRating';
 import heart from '../../styles/assets/imgs/icons/002-heart.png';
 import heartfilled from '../../styles/assets/imgs/icons/003-heart-1.png';
 
-import { addToWishList,removeFromWishList} from '../../actions/UserActions'
+import { addToWishList, removeFromWishList } from '../../actions/UserActions';
+
+import editIcon from '../../styles/assets/imgs/edit _icon.png';
+import deleteIcon from '../../styles/assets/imgs/trash.png';
 
 class ItemPreview extends Component {
 
@@ -27,9 +30,9 @@ class ItemPreview extends Component {
 
       case "adminMode":
         return (
-          <div>
-            <button onClick={() => this.handleDelete(this.props.item._id)}>delete</button>
-            <button onClick={() => this.handleEdit(this.props.item)}>edit</button>
+          <div className="item-edit-panel">
+            <button onClick={() => this.handleDelete(this.props.item._id)}><img src={deleteIcon} /></button>
+            <button onClick={() => this.handleEdit(this.props.item)}><img src={editIcon} /></button>
           </div>
         )
       case "customerMode":
@@ -71,12 +74,12 @@ class ItemPreview extends Component {
 
   onAddToWishList = async () => {
     const { wishlist } = this.props.loggedInUser
-    const itemIdx = wishlist.find(item => 
-       this.props.item._id ===item._id)
-       if (itemIdx === undefined) {
-       await this.props.addToWishList(this.props.item, this.props.loggedInUser)
-       }
-       else  await this.props.removeFromWishList(this.props.item._id, this.props.loggedInUser)
+    const itemIdx = wishlist.find(item =>
+      this.props.item._id === item._id)
+    if (itemIdx === undefined) {
+      await this.props.addToWishList(this.props.item, this.props.loggedInUser)
+    }
+    else await this.props.removeFromWishList(this.props.item._id, this.props.loggedInUser)
     // await this.setState({ modalMode: true, modalMsg: "Added To Wishlist" })
     // this.setState({ modalMode: false, modalMsg: "" })
 
@@ -84,19 +87,18 @@ class ItemPreview extends Component {
   }
   get getHeartIcon() {
     const { wishlist } = this.props.loggedInUser
-    
-    const itemIdx = wishlist.find(item => 
-      
-       this.props.item._id ===item._id)
-    
+
+    const itemIdx = wishlist.find(item =>
+
+      this.props.item._id === item._id)
+
     if (itemIdx === undefined) {
-     
+
       return heart
     }
-    else
-    {
-       return heartfilled
-      }
+    else {
+      return heartfilled
+    }
 
   }
 
@@ -111,19 +113,28 @@ class ItemPreview extends Component {
 
           <img className="item-img" alt="img-item" src={this.props.item.imgs[0]}></img>
 
+          {/* <div className="card-desc"> */}
           {/* <img className="item-avatr" alt="img-item" src={avatar} /> */}
-          <span className="item-seller">{this.props.item.itemOwner.name}</span>
-          <h3>{this.props.item.title}</h3>
+          <div className="details">
+            <span className="item-seller">{this.props.item.itemOwner.name}</span>
+            <h3>{this.props.item.title}</h3>
 
-        <span className="item-stars flex justify-space-around">
-          <p className="item-price">${this.props.item.price}</p>
-          {this.props.item.reviews &&
-            <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>}
-        </span>
+
+            <div class="price-star">
+
+              <p className="item-price">${this.props.item.price}</p>
+              {this.props.item.reviews &&
+                <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>}
+
+              {/* </div> */}
+
+
+            </div>
+          </div>
         </Link>
         {this.generateBtns()}
-
       </div>
+
     </React.Fragment >
     )
   }

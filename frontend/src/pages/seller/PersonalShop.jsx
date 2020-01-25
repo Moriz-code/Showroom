@@ -17,13 +17,13 @@ import Utils from '../../services/UtilService';
 // import SocketService from '../../services/SocketService';
 
 //icons
-import settingsIcon from '../../styles/assets/imgs/icons/settings.png';
+import settingsIcon from '../../styles/assets/imgs/edit.png';
 import chat from '../../styles/assets/imgs/icons/chat.png';
 
 class PersonalShop extends Component {
     state = {
         isOnEditMode: false,
-        isOnEditSettigs: true,
+        isOnEditSettigs: false,
         isOnChat: false,
 
         //create empty item from the service
@@ -85,8 +85,8 @@ class PersonalShop extends Component {
         // SocketService.on('user send msg', this.addComment)
     }
 
-    // componentDidUpdate() {
-    //     this.props.loadItems();
+    //  componentDidUpdate() {
+    //      this.props.loadItems();
     // }
 
 
@@ -97,7 +97,7 @@ class PersonalShop extends Component {
         const alt = "style";
         let value = ev.hex;
 
-  
+
 
         this.setState(prevState => ({
             ...prevState,
@@ -133,8 +133,6 @@ class PersonalShop extends Component {
     }
 
     handleFormChange = (ev) => {
-
-
         let { name, value } = ev.target;
 
         if (name === 'labels' || name === 'imgs') {
@@ -282,15 +280,14 @@ class PersonalShop extends Component {
                     <div className='shop-page'>
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
                             <HeaderShop selectedShop={shop}></HeaderShop>
-
                             <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button>
+
                             <div className={this.state.isOnEditSettigs ? 'modal-settings' : 'display-none'}>
                                 <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
                             </div>
 
                             <div style={{ backgroundColor: shop.style.bgColor }}>
-                                <button className="add-item-btn" onClick={this.onEditMode}>Add Item</button>
-                                <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
+                                <div className={this.state.isOnEditMode ? '' : 'display-none'}>
                                     <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
                                 </div>
 
@@ -300,9 +297,12 @@ class PersonalShop extends Component {
                                 </div>
 
 
-                                {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
-                                {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
 
+                                    <button className="add-item-btn" onClick={this.onEditMode}>Add Item</button>
+                                <div className="cards-container container">
+                                    {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
+                                    {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
+                                </div>
                                 {/* socket */}
 
                             </div>
