@@ -62,6 +62,7 @@ export function deleteItem(itemId) {
         try {
             const item = await ItemService.remove(itemId);
             await dispatch({ type: 'DELETE_ITEM', item })
+            
         } catch (err) {
             console.log('ItemsActions: err in loadReviews', err);
         }
