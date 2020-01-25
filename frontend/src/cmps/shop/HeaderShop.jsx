@@ -2,7 +2,7 @@ import React from 'react';
 
 import InstgaramIcon from '../../styles/assets/logo/insta.png';
 import FacebookIcon from '../../styles/assets/logo/facebook.png';
-import settingsIcon from '../../styles/assets/imgs/icons/paintbrush.png';
+import settingsIcon from '../../styles/assets/imgs/paintbrush_2.png';
 
 export default function ShopSettings(props) {
     return <React.Fragment>

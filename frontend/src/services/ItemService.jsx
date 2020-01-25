@@ -5,7 +5,8 @@ export default {
     query,
     remove,
     get,
-    put
+    put,
+    getNewItem
 };
 
 function query(filterBy = null) {
@@ -62,6 +63,28 @@ async function put(editedItem) {
     // console.log(itemToEdit,'updated');
      return itemToEdit
 
+}
+
+
+function getNewItem() {
+    return {
+        _id: '',
+        title: '',
+        price: '',
+        description: '',
+        sizeFit: '',
+        size: '',
+        gender: '',
+        itemOwner: {
+            //need to change the source that it came from - keep in session. ask tal.
+            id: '',
+            name: '',
+            logoUrl: ''
+        },
+        labels: [],
+        imgs: [],
+        reviews: []
+    }
 }
 
 
