@@ -33,9 +33,9 @@ class Cart extends Component {
     }
 
     onPlaceOrder = async () => {
-        SocketService.emit('buy',this.props.item)
         await this.props.placeOrder(this.props.loggedInUser)
         await this.clearCart()
+        SocketService.emit('buy',this.state.items)
         this.props.clearCart()
         this.props.history.push("/")
     }

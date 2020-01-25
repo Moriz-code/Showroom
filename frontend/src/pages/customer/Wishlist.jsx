@@ -30,7 +30,7 @@ class Wishlist extends Component {
                 <InnerNavBar></InnerNavBar>
                 <div className=" container flex column">
                     <p className="wishlist-title flex justify-center">WISHLIST</p>
-                    {this.props.loggedInUser ? <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>
+                    {(this.props.loggedInUser && this.props.loggedInUser.wishlist.length>0) ? <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>
                      : 
                      <p>OOPS</p>}
                 </div>
