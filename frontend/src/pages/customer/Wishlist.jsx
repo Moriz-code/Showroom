@@ -5,6 +5,9 @@ import { removeFromWishList } from '../../actions/UserActions'
 import { addToCart } from '../../actions/OrderActions'
 import OrderService from '../../services/OrderService';
 import InnerNavBar from '../../cmps/InnerNavBar';
+import { Link } from 'react-router-dom'
+import Footer from '../../cmps/Footer'
+
 class Wishlist extends Component {
 
     componentDidMount = () => {
@@ -29,11 +32,21 @@ class Wishlist extends Component {
             <div className="wishlist">
                 <InnerNavBar></InnerNavBar>
                 <div className=" container flex column">
-                    <p className="wishlist-title flex justify-center">WISHLIST</p>
-                    {this.props.loggedInUser ? <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>
-                     : 
-                     <p>OOPS</p>}
+
+                    {this.props.loggedInUser&& this.props.loggedInUser.wishlist.length>0 ?
+                        <div>
+                            <p className="wishlist-title flex justify-center">WISHLIST</p>
+                            <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}></ItemsList>
+                        </div>
+                        :
+                        <div className="wishlist-txt">
+                            <p>It seems nothingin here😭</p>
+                            <p>Make a wish!</p>
+                            <Link to={`/item`}> <button className="btn1">GO SHOPPING</button></Link>
+
+                        </div>}
                 </div>
+                <Footer></Footer>
             </div>
         )
     }

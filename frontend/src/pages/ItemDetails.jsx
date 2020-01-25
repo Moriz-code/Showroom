@@ -17,7 +17,7 @@ import TextField from '@material-ui/core/TextField';
 
 import ItemList from '../cmps/items/ItemList'
 import UserService from '../services/UserService';
-
+import Footer from '../cmps/Footer';
 
 
 class ItemDetails extends Component {
@@ -335,6 +335,7 @@ class ItemDetails extends Component {
 
                     }
                 </section>
+                <Footer></Footer>
             </React.Fragment >
         )
     }
