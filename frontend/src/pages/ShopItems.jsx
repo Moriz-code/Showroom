@@ -4,7 +4,9 @@ import { loadItems } from '../actions/ItemActions'
 import Filter from '../cmps/items/Filter'
 
 import ItemsList from '../cmps/items/ItemList'
+import emptyCart from '../styles/assets/imgs/emptyCart.png'
 import InnerNavBar from '../cmps/InnerNavBar';
+import Footer from '../cmps/Footer'
 
 class ShopItems extends Component {
   state = {
@@ -60,7 +62,18 @@ class ShopItems extends Component {
         <InnerNavBar></InnerNavBar>
         <Filter selectFilter={this.selectFilter}></Filter>
         {items.length !== 0 ? <ItemsList items={items}>
-        </ItemsList> : 'NO ITEMS!'}
+        </ItemsList> :
+          <div class="noitems flex">
+            <img src={emptyCart}></img>
+            <div className="noitems-txt">
+              <p className="oops">OOPS!</p>
+              <p className="noitems-p">There’re no products matching your search, we’ll do better next time😎 </p>
+              <button className="btn1">Back to the shop</button>
+            </div>
+
+
+          </div>}
+        <Footer></Footer>
       </React.Fragment>)
   }
 }

@@ -1,30 +1,68 @@
 .inner-nav {
+
   margin-bottom: 10px;
-  background-color: $clr4;
+  background-color: $clr1;
   margin-bottom: 20px;
-  .inner-nav-icons {
-    width: 60px;
-    height: 60px;
-  }
+  height: 90px;
+
+  // .down-border {
+  //   position: relative;
+  //   top:20px;
+  //   width:30px;
+  //   border-bottom: 1px solid $clr1;
+  // }
   .inner-logo {
-    width: 20%;
-    height: 74%;
-    padding-top:5px
-  }
-  .inner-nav-text{
-   color:$clr1
-  }
-
-  .notification-badge {
+    padding-top: 5px;
+    padding-left: 10px;
+    font-family: Lobster;
+    color: $clr4;
+    font-size: 60px;
+    line-height: 0px;
     position: relative;
-    top: 12px;
-    right: -24px;
-    padding: 2px 5px;
-    border-radius: 87%;
-    background: red;
-    color: white;
-    font-size: 10px;
-
- 
+    bottom: 22px;
   }
+
+  .nav-right-side {
+    padding-right: 15px;
+    .inner-nav-icons {
+      padding-left: 10px;
+      width: 80px;
+      height: 80px;
+  
+    }
+    .cart{
+      padding-left: 15px;
+    }
+    .inner-nav-text {
+      padding-left:15px;
+      color: $clr4;
+    }
+  }
+
+
+
+  
+.search {
+  z-index: 3;
+  position: relative;
+  top:30px;
+  input {
+    height: 90px;
+  }
+  button {
+    height: 30px;
+    bottom:55px;
+
+  }
+}
+  // .notification-badge {
+  //   position: relative;
+  //   top: 12px;
+  //   right: -24px;
+  //   padding: 2px 5px;
+  //   border-radius: 87%;
+  //   background: $clr1;
+  //   color: white;
+  //   font-size: 10px;
+  // }
 }
