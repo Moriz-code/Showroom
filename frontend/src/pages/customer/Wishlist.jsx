@@ -15,7 +15,7 @@ class Wishlist extends Component {
         this.props.removeFromWishList(itemId, this.props.loggedInUser)
     }
 
-    addToCart=(item)=> {
+    addToCart = (item) => {
         this.deleteItem(item._id)
         this.props.addToCart()
         OrderService.addItemtoCart(item)
@@ -26,9 +26,14 @@ class Wishlist extends Component {
 
         return (
 
-            <div>
-              <InnerNavBar></InnerNavBar>  
-               {  this.props.loggedInUser? <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>:'No wishlist items'}
+            <div className="wishlist">
+                <InnerNavBar></InnerNavBar>
+                <div className=" container flex column">
+                    <p className="wishlist-title flex justify-center">WISHLIST</p>
+                    {this.props.loggedInUser ? <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>
+                     : 
+                     <p>OOPS</p>}
+                </div>
             </div>
         )
     }
