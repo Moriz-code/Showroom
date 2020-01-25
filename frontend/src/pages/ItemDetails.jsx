@@ -17,7 +17,7 @@ import TextField from '@material-ui/core/TextField';
 
 import ItemList from '../cmps/items/ItemList'
 import UserService from '../services/UserService';
-
+import Footer from '../cmps/Footer';
 
 
 class ItemDetails extends Component {
@@ -42,12 +42,10 @@ class ItemDetails extends Component {
 
 
     componentDidMount() {
-   
-       
         this.loadItems()
     }
 
-    
+
 
     loadItems = async () => {
         await this.props.setCurrentItem(this.props.match.params.id)
@@ -138,8 +136,8 @@ class ItemDetails extends Component {
 
     }
 
-    reviewClose=()=>{
-        this.setState({reviewMode:false})
+    reviewClose = () => {
+        this.setState({ reviewMode: false })
 
     }
 
@@ -189,9 +187,9 @@ class ItemDetails extends Component {
 
     handleSizeSelect = (ev) => {
         let selectedSize = ev.target.value
-        if(selectedSize===this.state.size)  this.setState({ size:'' })
-        else this.setState({ size:selectedSize })
-     
+        if (selectedSize === this.state.size) this.setState({ size: '' })
+        else this.setState({ size: selectedSize })
+
     }
 
     setDeliveryDate = () => {
@@ -264,10 +262,10 @@ class ItemDetails extends Component {
                         </h3>
 
                         <div className="size-select">
-                            <button className={(this.state.size==="S")?"item-sizes selected":"item-sizes"} id="btn-s" value="S" onClick={this.handleSizeSelect}>S</button>
-                            <button className={(this.state.size==="M")?"item-sizes selected":"item-sizes"} id="btn-m" value="M" onClick={this.handleSizeSelect}>M</button>
-                            <button className={(this.state.size==="L")?"item-sizes selected":"item-sizes"} id="btn-l" value="L" onClick={this.handleSizeSelect}>L</button>
-                            <button className={(this.state.size==="XL")?"item-sizes selected size-xl":"item-sizes size-xl"} id="btn-xl" value="XL" onClick={this.handleSizeSelect}>XL</button>
+                            <button className={(this.state.size === "S") ? "item-sizes selected" : "item-sizes"} id="btn-s" value="S" onClick={this.handleSizeSelect}>S</button>
+                            <button className={(this.state.size === "M") ? "item-sizes selected" : "item-sizes"} id="btn-m" value="M" onClick={this.handleSizeSelect}>M</button>
+                            <button className={(this.state.size === "L") ? "item-sizes selected" : "item-sizes"} id="btn-l" value="L" onClick={this.handleSizeSelect}>L</button>
+                            <button className={(this.state.size === "XL") ? "item-sizes selected size-xl" : "item-sizes size-xl"} id="btn-xl" value="XL" onClick={this.handleSizeSelect}>XL</button>
                         </div>
 
 
@@ -300,7 +298,7 @@ class ItemDetails extends Component {
                         <button className="btn1" onClick={this.onAddReview}>Add Review</button>}
                     {this.state.reviewMode &&
                         <form className="review-section flex column justify-space-between" onSubmit={this.handleSubmit}>
-                        <div className="review-cancel" onClick={this.reviewClose}>X</div>
+                            <div className="review-cancel" onClick={this.reviewClose}>X</div>
                             <div onChange={this.handleInput} className="review-input flex column justify-space-between">
 
                                 <TextField style={{ marginBottom: "20px" }} name="title" required id="standard-required" label="Title" />
@@ -319,10 +317,10 @@ class ItemDetails extends Component {
                                 <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
                                 <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
                             </fieldset>
-                            
+
                             <button className="btn2">Submit</button>
                         </form>}
-                       
+
                 </div>
 
                 {/* } */}
@@ -335,6 +333,7 @@ class ItemDetails extends Component {
 
                     }
                 </section>
+                <Footer></Footer>
             </React.Fragment >
         )
     }

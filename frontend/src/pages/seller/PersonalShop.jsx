@@ -10,7 +10,11 @@ import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
 
 import Comments from '../../pages/seller/Comments';
+
 import InnerNavbar from '../../cmps/InnerNavBar';
+
+import InnerNavbar from '../../cmps/InnerNavBar';
+import Footer from '../../cmps/Footer';
 
 import Utils from '../../services/UtilService';
 import ItemService from '../../services/ItemService';
@@ -30,6 +34,8 @@ class PersonalShop extends Component {
         isOnEditMode: false,
         isOnEditSettigs: false,
         isOnChat: false,
+        isOwner: false,
+
         //create empty item from the service
 
         item: '',
@@ -60,15 +66,12 @@ class PersonalShop extends Component {
     }
 
     async componentDidMount() {
-        console.log('did mount');
         await this.props.loadShop(this.props.match.params.id)
         await this.props.loadItems();
-        SocketService.setup()
-        SocketService.on('complete',this.notifciation)
+       
         this.setState({ shop: this.props.shop.selectedShop })
         this.clearItemState();
-
-
+        this.checkIfOwner();
 
 
         // //sockets
@@ -78,6 +81,7 @@ class PersonalShop extends Component {
         // SocketService.on('chat addMsg', this.addComment)
         // SocketService.on('user send msg', this.addComment)
     }
+
 
 
     clearItemState() {
@@ -98,6 +102,15 @@ class PersonalShop extends Component {
     notifciation=()=>{
        this.props.addToCart()
     }
+
+
+    
+
+    checkIfOwner = () => {
+        const user=(this.props.loggedInUser && this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id) ? this.setState({ isOwner: true }) : null
+
+    }
+
 
     //  componentDidUpdate() {
     //      this.props.loadItems();
@@ -238,7 +251,7 @@ class PersonalShop extends Component {
         const { shop } = this.state;
         return (
             <React.Fragment>
-                <InnerNavbar></InnerNavbar>
+                <InnerNavbar isOwner={this.state.isOwner}></InnerNavbar>
                 {this.state.shop ?
                     <div className='shop-page'>
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
@@ -273,6 +286,7 @@ class PersonalShop extends Component {
                         </div>
                     </div>
                     : ''}
+                    <Footer></Footer>
             </React.Fragment >)
     }
 }

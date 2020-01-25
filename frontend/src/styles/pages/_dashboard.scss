@@ -9,7 +9,7 @@
   .container-table100 {
     width: 100%;
     min-height: 100vh;
-    background: $clr2;
+    background: white;
   
     display: -webkit-box;
     display: -webkit-flex;
@@ -20,18 +20,22 @@
     justify-content: center;
     flex-wrap: wrap;
     padding: 33px 30px;
+   
   }
   
   .wrap-table100 {
     width: 960px;
-    border-radius: 10px;
+    // border-radius: 10px;
     overflow: hidden;
+    
   }
   
   .table {
     width: 100%;
     display: table;
     margin: 0;
+    border: 2px solid $clr1;
+    margin-bottom:300px
   }
   
   @media screen and (max-width: 768px) {
