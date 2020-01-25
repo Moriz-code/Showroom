@@ -1,5 +1,5 @@
 import React from 'react';
-import { TwitterPicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 
 import InstgaramIcon from '../../styles/assets/logo/insta.png';
 import FacebookIcon from '../../styles/assets/logo/facebook.png';
@@ -10,22 +10,29 @@ class ShopSettings extends React.Component {
   // export default function ShopSettings(props) 
 
   state = {
-    displayColorPicker: false
+    displayColorPicker: false,
+    color: {
+      r: '241',
+      g: '112',
+      b: '19',
+      a: '0.5'
+    }
   }
 
   handleClick = () => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
   }
 
-  handleClose = () => {
-    console.log(this.state.displayColorPicker);
-
-    this.setState({ displayColorPicker: false })
-  }
+  // handleClose = () => {
+  //   this.setState({ displayColorPicker: false })
+  // }
 
 
   // <iframe width="420" height="315" src="https://www.youtube.com/embed/A6XUVjK9W4o" frameborder="0" allowfullscreen></iframe>
   render() {
+
+    console.log(this.props);
+
 
 
     // const cover = {
@@ -61,6 +68,14 @@ class ShopSettings extends React.Component {
         </div>
 
         <div class="field">
+          <input id="bgColor" type="text" style={{ backgroundColor: props.shop.style.bgColor }} value={props.shop.style.bgColorr} onClick={this.handleClick}></input>
+          <label for="bgColor">Color</label>
+          <div onClick={this.handleClose} className={this.state.displayColorPicker ? '' : 'display-none'}>
+            <SketchPicker  color={props.shop.style.bgColor} onChange={props.handleColorChange} />
+          </div>
+        </div>
+
+        <div class="field">
           <input type="text" name="coverImgUrl" value={props.shop.style.coverImgUrl} alt="style" onChange={props.handleSettingChange} />
           <label for="coverImgUrl">Cover Url</label>
         </div>
@@ -81,15 +96,6 @@ class ShopSettings extends React.Component {
         </div>
 
 
-        <div class="field">
-          <input id="bgColor" type="text" style={{ backgroundColor: props.shop.style.bgColor }} value={props.shop.style.bgColorr} onClick={this.handleClick}></input>
-          <label for="bgColor">Color</label>
-
-
-          <div onClick={this.handleClose} className={this.state.displayColorPicker ? '' : 'display-none'}>
-            <TwitterPicker onChange={props.handleColorChange} />
-          </div>
-        </div>
 
       </div>
       <button className="save-btn" onClick={props.onSaveSettings}>Save the Magic!</button>
