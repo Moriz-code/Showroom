@@ -10,6 +10,7 @@ import Footer from '../cmps/Footer'
 
 class ShopItems extends Component {
   state = {
+    isOwner:false,
     filterBy: {
       size: [],
       gender: [],
@@ -21,7 +22,7 @@ class ShopItems extends Component {
   componentDidMount() {
 
     var params = this.props.match.params.searchTerm
-
+    this.checkIfOwner()
     if (params) {
       if (params === 'women' || params === 'men') this.props.loadItems({ 'gender': [params] })
       if (params === 'petit') this.props.loadItems({ 'size': ['xs', 's'] })
@@ -31,6 +32,10 @@ class ShopItems extends Component {
     else this.props.loadItems()
   }
 
+  checkIfOwner = () => {
+    const user=(this.props.loggedInUser &&  this.props.loggedInUser.shopId) ? this.setState({ isOwner: true }) : null
+
+}
 
   selectFilter = (ev) => {
     let { name, value } = ev.target;
@@ -59,7 +64,7 @@ class ShopItems extends Component {
     const { items } = this.props;
     return (
       <React.Fragment>
-        <InnerNavBar></InnerNavBar>
+        <InnerNavBar isOwner={this.state.isOwner}></InnerNavBar>
         <Filter selectFilter={this.selectFilter}></Filter>
         {items.length !== 0 ? <ItemsList items={items}>
         </ItemsList> :
@@ -82,7 +87,8 @@ const mapStateToProps = state => {
   return {
     items: state.item.items,
     filter: state.item.filter,
-    sort: state.item.sorts
+    sort: state.item.sorts,
+    loggedInUser: state.user.loggedInUser,
   };
 };
 

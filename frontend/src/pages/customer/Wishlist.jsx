@@ -33,6 +33,7 @@ class Wishlist extends Component {
                 <InnerNavBar></InnerNavBar>
                 <div className=" container flex column">
 
+
                     {this.props.loggedInUser&& this.props.loggedInUser.wishlist.length>0 ?
                         <div>
                             <p className="wishlist-title flex justify-center">WISHLIST</p>
@@ -45,6 +46,7 @@ class Wishlist extends Component {
                             <Link to={`/item`}> <button className="btn1">GO SHOPPING</button></Link>
 
                         </div>}
+
                 </div>
                 <Footer></Footer>
             </div>

@@ -16,9 +16,9 @@ function connectSockets(io) {
             socket.join(topic)
             socket.myTopic = topic;
         })
-        socket.on('buy',userMessage=>{
+        socket.on('buy',items=>{
             // io.sockets.emit('complete',userMessage)
-            socket.broadcast.emit('complete',userMessage)
+            socket.broadcast.emit('order-complete',items)
         })
     })
 }
