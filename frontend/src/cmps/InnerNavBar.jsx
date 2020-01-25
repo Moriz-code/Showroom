@@ -2,24 +2,37 @@
 import { NavLink, Link } from 'react-router-dom'
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import wishlist from '../styles/imgs/heart (4).svg'
-import bag from '../styles/imgs/shopping-bag (1).svg'
+import wishlist from '../styles/assets/imgs/heart-white.png'
+import cart from '../styles/assets/imgs/shopping-cart-white.png'
 import innerLogo from '../styles/imgs/logo-innerNav.png'
+import Search from '../cmps/items/Search'
 
 class InnerNavBar extends Component {
     render() {
-        const {itemsInCart}=this.props
+        const { itemsInCart } = this.props
         return <React.Fragment>
 
 
-            <div className="inner-nav flex align-center">
-                <Link to={`/`} ><img className="inner-logo" src={innerLogo} /></Link>
-                <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
-                <ul className="inner-nav-icons flex align-center">
-                    <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
-                    <li><NavLink activeClassName="active" to='/cart' exact><span class="notification-badge">{itemsInCart}</span> <img src={bag} />  </NavLink></li>
+            <div className="inner-nav flex justify-space-between">
 
-                </ul>
+                <Link to={`/`} ><p className="inner-logo">ShowRoom</p></Link>
+
+                <Search></Search>
+                
+                <div className="nav-right-side flex align-center">
+
+                    <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
+                    <span><NavLink to='/' className="inner-nav-text" exact>Become a seller</NavLink></span>
+
+                    <ul className="inner-nav-icons flex align-center">
+                        <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
+
+                        <li className="cart"><NavLink activeClassName="active" to='/cart' exact>
+                            {/* <span class="notification-badge">{itemsInCart}</span>  */}
+                            <img src={cart} /> </NavLink></li>
+
+                    </ul>
+                </div>
             </div>
 
 
@@ -32,7 +45,7 @@ class InnerNavBar extends Component {
 
 const mapStateToProps = state => {
     return {
-        itemsInCart:state.order.itemsInCart
+        itemsInCart: state.order.itemsInCart
     };
 };
 

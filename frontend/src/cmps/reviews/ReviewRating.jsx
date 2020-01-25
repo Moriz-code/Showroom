@@ -11,7 +11,7 @@ export default function ReviewRating({amount,rate}) {
                         <div className="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
 
                     </div>
-                {amount&& <span className="num-of-rates">({amount})</span>}
+                {/* {amount&& <span className="num-of-rates">({amount})</span>} */}
                 </div>) : ''
      
     )

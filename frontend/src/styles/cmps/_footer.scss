@@ -8,11 +8,13 @@
 // }
 
 .main-footer {
+  // position: fixed;
+  z-index: 100;
   color: $clr4;
   bottom:0;
   width: 100%;
   background-color: $clr1;
-  height:60px;
+  height:50px;
   .footer-logo{
       font-family: Lobster;
       font-size: rem(20px);

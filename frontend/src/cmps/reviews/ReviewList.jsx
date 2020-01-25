@@ -3,7 +3,7 @@ import ReviewPrivew from './ReviewPreview'
 
 export default function ReviewList(props) {
   return (<React.Fragment>
-    <div className="flex column space-around">
+    <div className=" flex space-around">
    
       {props.item.reviews.map(review =>
         <ReviewPrivew review={review}></ReviewPrivew>

@@ -11,21 +11,40 @@ class Filter extends Component {
 
 
   state = {
-    isToggle: ''
+    isToggleSize: '',
+    isToggleGender: '',
+    isToggleShop: '',
+    priceValue: 0
   }
 
   onSelectFilter = (ev) => {
-        console.log(ev.target.value);
-
+    if (ev.target.name === 'price') this.setState({ 'priceValue': ev.target.value })
     this.props.selectFilter(ev)
   }
 
-  onToggleActive = () => {
+  onToggleActiveSize = (ev) => {
+    console.log('mormormor', ev.target);
+
     this.setState((prevState) => {
-      if (prevState.isToggle === '') return this.state.isToggle = 'is-active'
-      return this.state.isToggle = ''
+      if (prevState.isToggleSize === '') return this.state.isToggleSize = 'is-active'
+      return this.state.isToggleSize = ''
     })
   }
+
+  onToggleActiveGender = () => {
+    this.setState((prevState) => {
+      if (prevState.isToggleGender === '') return this.state.isToggleGender = 'is-active'
+      return this.state.isToggleGender = ''
+    })
+  }
+
+  onToggleActiveShop = () => {
+    this.setState((prevState) => {
+      if (prevState.isToggleShop === '') return this.state.isToggleShop = 'is-active'
+      return this.state.isToggleShop = ''
+    })
+  }
+
 
 
   // onSelectPriceRange = (ev) => {
@@ -42,9 +61,9 @@ class Filter extends Component {
 
   render() {
     return <React.Fragment>
-      <div className="flex" style={{}}>
+      <div className="flex justify-center" style={{}}>
         {/* sizes */}
-        <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
+        <div className={`checkbox-dropdown ${this.state.isToggleSize}`} onClick={this.onToggleActiveSize} >
           Size
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -64,7 +83,7 @@ class Filter extends Component {
 
 
         {/* Gender */}
-        <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
+        <div className={`checkbox-dropdown ${this.state.isToggleGender}`} onClick={this.onToggleActiveGender}>
           Gender
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -83,7 +102,7 @@ class Filter extends Component {
         </div>
 
         {/* Shops */}
-        <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
+        <div className={`checkbox-dropdown ${this.state.isToggleShop}`} onClick={this.onToggleActiveShop}>
           Shops
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -98,28 +117,10 @@ class Filter extends Component {
         </div>
 
 
-
         {/* Price */}
-        {/* <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
-          price
-  <ul className="checkbox-dropdown-list" >
-            <li>
-              <label>
-                <input type="radio" value="0 100" name="price" onChange={this.onSelectFilter} />0-100</label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" value="101 300" name="price" onChange={this.onSelectFilter} />101-300</label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" value="301 600" name="price" onChange={this.onSelectFilter} /> 301-600</label>
-            </li>
-          </ul>
-        </div> */}
-
-        <div>
+        <div className="flex">
           <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
+          <p>{this.state.priceValue}$</p>
         </div>
 
 
