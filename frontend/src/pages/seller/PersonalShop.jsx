@@ -10,10 +10,13 @@ import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
 
 import Comments from '../../pages/seller/Comments';
-import InnerNavbar from '../../cmps/InnerNavBar'
+import InnerNavbar from '../../cmps/InnerNavBar';
+
 
 
 import Utils from '../../services/UtilService';
+import ItemService from '../../services/ItemService';
+
 // import SocketService from '../../services/SocketService';
 
 //icons
@@ -26,26 +29,9 @@ class PersonalShop extends Component {
         isOnEditMode: false,
         isOnEditSettigs: false,
         isOnChat: false,
-
         //create empty item from the service
-        item: {
-            _id: '',
-            title: '',
-            price: '',
-            description: '',
-            sizeFit: '',
-            size: '',
-            gender: '',
-            itemOwner: {
-                //need to change the source that it came from - keep in session. ask tal.
-                id: this.props.match.params.id,
-                name: '',
-                logoUrl: ''
-            },
-            labels: [],
-            imgs: [],
-            reviews: []
-        },
+
+        item: '',
 
         shop: {
             _id: '',
@@ -77,6 +63,10 @@ class PersonalShop extends Component {
         await this.props.loadShop(this.props.match.params.id)
         await this.props.loadItems();
         this.setState({ shop: this.props.shop.selectedShop })
+        this.clearItemState();
+
+
+
 
         // //sockets
         // SocketService.setup();
@@ -86,19 +76,33 @@ class PersonalShop extends Component {
         // SocketService.on('user send msg', this.addComment)
     }
 
+    clearItemState() {
+        let newItem = ItemService.getNewItem();
+        newItem.itemOwner.id = this.props.match.params.id;
+        newItem.itemOwner.name = this.state.shop.info.name;
+        newItem.itemOwner.logoUrl = this.state.shop.style.logoUrl;
+        // this.setState({ item: newItem })
+
+        this.setState(prevState => ({
+            // isOnEditMode: false,
+            item: newItem
+        }))
+    }
+
+
+
     //  componentDidUpdate() {
     //      this.props.loadItems();
     // }
 
 
+    //ask how can i do ir with one function
 
     handleColorChange = (ev) => {
 
         const name = "bgColor";
         const alt = "style";
         let value = ev.hex;
-
-
 
         this.setState(prevState => ({
             ...prevState,
@@ -171,9 +175,16 @@ class PersonalShop extends Component {
     }
 
     onEditMode = () => {
+
         this.setState(state => ({
             isOnEditMode: !state.isOnEditMode,
         }))
+
+    }
+
+    onAdd = () => {
+        this.clearItemState();
+        this.onEditMode();
     }
 
     onChat = () => {
@@ -186,8 +197,8 @@ class PersonalShop extends Component {
     onSaveItem = async (ev) => {
         ev.preventDefault();
         await this.props.saveItem(this.state.item);
-        this.clearItemState();
         this.props.loadItems();
+        this.clearItemState();
 
     }
 
@@ -201,38 +212,7 @@ class PersonalShop extends Component {
         this.onEditMode();
     }
 
-    clearItemState() {
-        this.setState(prevState => ({
-            isOnEditMode: false,
-            item: {
-                _id: '',
-                title: '',
-                price: '',
-                description: '',
-                sizeFit: '',
-                size: '',
-                gender: '',
-                itemOwner: {
-                    id: this.props.match.params.id,
-                    name: '',
-                    logoUrl: ''
-                },
-                labels: [],
-                imgs: [],
-                reviews: [
-                    {
-                        byUser: {
-                            name: '',
-                            id: ''
-                        },
-                        txt: '',
-                        rate: ''
-                    }
-                ]
 
-            }
-        }))
-    }
 
     componentWillUnmount = () => {
         // if (!this.props.loggedInUser) return
@@ -245,7 +225,7 @@ class PersonalShop extends Component {
 
     render() {
 
-     
+
         // console.log('shop:', this.state.shop)
         const { shop } = this.state;
         return (
@@ -263,7 +243,8 @@ class PersonalShop extends Component {
 
                             <div className="shop-main" style={{ backgroundColor: shop.style.bgColor }}>
                                 <div className={this.state.isOnEditMode ? '' : 'display-none'}>
-                                    <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
+                                    {this.state.item ?
+                                        <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem> : null}
                                 </div>
 
                                 <button className="chat-icon" onClick={this.onChat}> <img src={chat} alt="icon" /></button>
@@ -273,7 +254,7 @@ class PersonalShop extends Component {
 
 
 
-                                <button className="add-item-btn" onClick={this.onEditMode}><img src={addBtn} alt="icon-add" /></button>
+                                <button className="add-item-btn" onClick={this.onAdd}><img src={addBtn} alt="icon-add" /></button>
                                 <div className="cards-shop-container">
                                     {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
                                     {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}

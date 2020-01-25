@@ -10,7 +10,8 @@
     transition: width .8s;
 
     .shop-main{
-      display: flex;
+      position:relative;
+      // display: flex;
       // flex-direction: column;
       // justify-content:flex-start;
     }
@@ -111,7 +112,11 @@
   width: 50px;
   padding: 5px;
   background: transparent;
-    border: none;
+  filter: contrast(200%) brightness(50%) drop-shadow(5px 5px 5px gray);
+ border:none;
+
+  
+    
   }
   
   
@@ -131,7 +136,7 @@
     
     align-items: center;
     justify-content: space-between;
-    height:100vh;
+    // max-height:100%;
     transform: translate(-100% , 0);
     width:330px;
     .modal-content{
@@ -206,7 +211,9 @@ img{
   color: $clr4;
   border:none;
   height: rem(50px);
-  font-size: rem(20px)
+  font-size: rem(20px);
+  margin-top: 20px;
+
   
 }
 
@@ -260,10 +267,12 @@ img{
 
   .chat-icon{
     position: fixed;
-    right:3px;
-    bottom:3px;
-    width:70px;
-    border-radius: 9000px;
+    right: 20px;
+    bottom: 20px;
+    width: 70px;
+    background: none;
+    border: none;
+    filter:contrast(200%) brightness(70%);
   }
 
   .add-item-btn{
@@ -274,7 +283,11 @@ img{
     // margin-top:-27px;
 
     img{
-      filter:contrast(200%);
+      filter: contrast(200%);
+      position: absolute;
+      width: 81px;
+      top: -20px;
+      left: 145px;
       // filter:drop-shadow(0.8px 0.8px 0.8px whitesmoke);
     }
 
@@ -311,13 +324,38 @@ img{
 
   .edit-item{
     display: flex;
-    flex-direction: column;
-    
-    
+    flex-direction: row;
    
+    .save-item{
+      background-color: #64485c;
+    color: #ffffff;
+    border: none;
+    height: 50px;
+    margin-bottom:10px;
+    font-size: rem(20px);
+    display: flex;
+    justify-content: center;
+
+  
+    }
 
     .img{
       flex-basis:30%;
+    }
+
+    .price-size{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+    
+      // justify-content: space-between;
+    }
+
+    .gender{
+      display: flex; 
+      flex-direction: row;
+      // margin-left:  5%;
     }
 
     .details{
@@ -329,15 +367,25 @@ img{
     }
 
     background-color: $clr4;
-    padding:22px;
+    // padding:30px;
+    padding-right:50px;
  
     input[type="text"] {
       height: 25px;
       font-size: 1rem;
-      border: none;
+      margin-right:2px;
+      // border: none;
     }
 
-   
+    .form-labels .checkbox{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .uploadImage input{
+      border: 1px solid black;
+    }
     .item-card{
       background-color: white;
    

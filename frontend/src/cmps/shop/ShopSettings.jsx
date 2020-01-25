@@ -71,7 +71,7 @@ class ShopSettings extends React.Component {
           <input id="bgColor" type="text" style={{ backgroundColor: props.shop.style.bgColor }} value={props.shop.style.bgColorr} onClick={this.handleClick}></input>
           <label for="bgColor">Color</label>
           <div onClick={this.handleClose} className={this.state.displayColorPicker ? '' : 'display-none'}>
-            <SketchPicker  color={props.shop.style.bgColor} onChange={props.handleColorChange} />
+            <SketchPicker color={props.shop.style.bgColor} onChange={props.handleColorChange} />
           </div>
         </div>
 
@@ -95,13 +95,17 @@ class ShopSettings extends React.Component {
           <label for="videoUrl"><img src={YoutubeIcon} className="fb-icon" alt="icon" /></label>
         </div>
 
+        {/* <div class="field"> */}
+        {/* </div> */}
+
 
 
       </div>
-      <button className="save-btn" onClick={props.onSaveSettings}>Save the Magic!</button>
+        <button className="save-btn" onClick={props.onSaveSettings}>Save the Magic!</button>
       <div>
 
       </div>
+
     </React.Fragment>
   }
 

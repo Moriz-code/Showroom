@@ -11,7 +11,7 @@ fieldset {
 .form-group {
   position: relative;
   margin-top: 2.25rem;
-  margin-bottom: 2.25rem;
+  // margin-bottom: 2.25rem;
 }
 
 .form-inline > .form-group,
@@ -151,7 +151,7 @@ fieldset {
 .form-radio label {
   position: relative;
   cursor: pointer;
-  padding-left: 2rem;
+  padding-left: 1.4rem;
   text-align: left;
   color: $clr2;
   display: block;
@@ -166,6 +166,7 @@ fieldset {
 
 .radio {
   margin-bottom: 1rem;
+  margin-left: 0.5rem;
 }
 .radio .helper {
   position: absolute;
@@ -276,9 +277,9 @@ fieldset {
           transition-delay: 0.28s;
 }
 
-.radio + .radio,
-.checkbox + .checkbox {
-  margin-top: 1rem;
-}
+// .radio + .radio,
+// .checkbox + .checkbox {
+//   margin-top: 1rem;
+// }
 
 
