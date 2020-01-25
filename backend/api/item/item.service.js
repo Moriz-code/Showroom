@@ -13,11 +13,14 @@ module.exports = {
 
 
 async function query(filterBy = {}) {
-    const criteria = _buildCriteria(filterBy)
+    const criteria = await _buildCriteria(filterBy)
+
     const collection = await dbService.getCollection('item')
     try {
-        const items = await collection.find(criteria).toArray();
-        items.forEach(item => delete item.password);
+        let items;
+        items = await collection.find(criteria).toArray();
+
+        // items.forEach(item => delete item.password);
 
         return items
     } catch (err) {
@@ -33,7 +36,9 @@ async function getById(itemId) {
         return item
     } catch (err) {
         console.log(`ERROR: while finding item ${itemId}`)
-        
+
+        throw err;
+
     }
 }
 
@@ -54,7 +59,7 @@ async function update(item) {
     try {
         await collection.replaceOne({ "_id": item._id }, { $set: item })
         return item
-        
+
     } catch (err) {
         console.log(`ERROR: cannot update item ${item._id}`)
         throw err;
@@ -73,14 +78,53 @@ async function add(item) {
 }
 
 function _buildCriteria(filterBy) {
+    let filters;
     const criteria = {};
+    if (filterBy.gender) {
+        filters = [];
+        if (typeof filterBy.gender === 'string') {
+            criteria.gender = filterBy.gender
+        }
+        else {
+            filterBy.gender.forEach((value) => {
+                filters.push({ 'gender': value })
+                console.log('corcorcor',filters);
+                
+            })
+            criteria["$or"] = filters
+        }
+    }
+    if (filterBy.size) {
+        filters = [];
+        if (typeof filterBy.size === 'string') {
+            criteria.size = filterBy.size
+        }
+        else {
+            filterBy.size.forEach((value) => {
+                filters.push({ 'size': value })
+            })
+            criteria["$or"] = filters
+        }
+    }
+    if (filterBy.shop) {
+        filters = [];
+        if (typeof filterBy.shop === 'string') {
+            criteria.shop = filterBy.shop
+        }
+        else {
+            filterBy.shop.forEach((value) => {
+                filters.push({ 'shop': value })
+            })
+            criteria["$or"] = filters
+        }
+    }
+    if (filterBy.price) {
+        criteria['price'] = { $lte: +filterBy.price }
+    }
     if (filterBy.txt) {
-        criteria.itemname = filterBy.txt
+        criteria["$or"] = [{ 'title': { $regex: filterBy.txt } }, { 'description': { $regex: filterBy.txt } }]
     }
-    if (filterBy.minBalance) {
-        criteria.balance = { $gte: +filterBy.minBalance }
-    }
+    console.log('criteriacriteria', criteria);
+
     return criteria;
 }
-
-

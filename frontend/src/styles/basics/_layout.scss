@@ -3,6 +3,8 @@
   margin: 0 auto;
   padding-left: 10px;
   padding-right: 10px;
+  // min-height: 100vh;
+  // position:relative;
   
   @include for-narrow-layout {
       max-width: $mobile-breakpoint;
@@ -18,17 +20,6 @@
 
 //modal
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  color:white;
-  font-size:20px;
-  height: 50%;
-  background: rgba(0, 0, 0, 0.8);
-
-}
 
 .display-block {
   display: block;

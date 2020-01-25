@@ -4,21 +4,9 @@ const INITIAL_STATE = {
       "userName" : "roy",
       "fullName" : "roy amar",
       "email" : "roy@gmail.com",
+      "imgUrl":"https://scontent.ftlv1-2.fna.fbcdn.net/v/t1.0-9/10559713_10153073749172830_4028919375654008823_n.jpg?_nc_cat=110&_nc_ohc=ZSXUpO9enJcAX8_90u2&_nc_ht=scontent.ftlv1-2.fna&oh=88224c80c2a320270ff66a197828934b&oe=5E8DD8EF",
       "password" : "123",
-      "wishlist" : [ 
-          {
-              "_id" : "5e22e7d51a0d5feaa843e501",
-              "title" : "grenn-hat!!!!",
-              "price" : "200",
-              "imgs" : [ 
-                  "https://res-2.cloudinary.com/adikastyle/image/upload/c_fit,dpr_1.0,f_auto,q_90/media/catalog/product/0/i/0i4a0475_2.jpg"
-              ],
-              "itemOwner" : {
-                  "id" : "5e230e471a0d5feaa843e503",
-                  "name" : "MyBrand"
-              }
-          }
-      ],
+      "wishlist" : [],
       "shopId" : "5e230e471a0d5feaa843e503"
   }
 };

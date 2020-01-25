@@ -1,15 +1,18 @@
 import React from 'react'
 
-export default function ReviewRating(props) {
-    console.log(props.rating);
+export default function ReviewRating({amount,rate}) {
+   
     
     return (
-            <div className="flex">
-            <h2>Average Rating {Math.round((props.rating/100*5)*100)/100}</h2>
-            <div className="star-ratings-css">
-                <div className="star-ratings-css-top" style={{width:`${props.rating}%`}}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                <div className="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-            </div>
-            </div>
+            (rate) ?
+                (<div className="average-rating flex">
+                    <div className="item-star star-ratings-css">
+            <div className="star-ratings-css-top" style={{ width: `${rate || ""}%` }}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        <div className="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+
+                    </div>
+                {amount&& <span className="num-of-rates">({amount})</span>}
+                </div>) : ''
+     
     )
 }

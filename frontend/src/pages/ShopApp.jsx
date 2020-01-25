@@ -1,31 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Header from '../cmps/Header'
+import { loadItems } from '../actions/ItemActions'
+import ItemsList from '../cmps/items/ItemList'
+import Footer from '../cmps/Footer';
 
 
 class ShopApp extends Component {
 
+    componentDidMount() {
+        this.props.loadItems()
+    }
 
     render() {
+        let { items } = this.props;
+        items = items.splice(0, 3)
         return <React.Fragment>
-            <div className="hero">
-                    <p className="hero-title">Buy and sell local fashion goods</p>
-                    {/* <Link to="/item"><button>Shop Now</button></Link> */}
+            <Header></Header>
+
+
+            <div className=" home-categories">
+                <div className="category-b">
+                <Link to={`/item/clearance`}> <span className="home-page-text">CLEARANCE</span> </Link>
                 </div>
-            <div className="container home-categories">
-                <div className="category-b">MEN</div>
-                <div className="category-c">WOMEN</div>
-                <div className="category-d">SUMMER SALE</div>
-                <div className="category-e">LAST CHANCE</div>
-            </div>
+                <div className="category-c">
+                    <Link to={`/item/women`}> <span className="home-page-text">WOMEN</span></Link>
+                </div>
 
-            <div>
-                <h3>
-                    Title
-                </h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda provident officia neque sequi. Explicabo reprehenderit unde, cumque quos iure excepturi velit dicta aliquid ab. Voluptas consequatur vero officia ea cum.</p>
-
+                <div className="category-d">
+                    <Link to={`/item/men`}>  <span className="home-page-text">MEN</span></Link>
+                </div>
+                <div className="category-e">
+                <Link to={`/item/petit`}> <span className="home-page-text">PETIT</span></Link>
+                </div>
             </div>
+            <span className="home-page-text">HOT PRODUCTS</span>
+            {items.length !== 0 ? <ItemsList items={items}>
+            </ItemsList> : 'NO ITEMS!'}
+
+            <Footer></Footer>
         </React.Fragment>
     }
 }
@@ -34,12 +48,12 @@ class ShopApp extends Component {
 
 const mapStateToProps = state => {
     return {
-        //state
+        items: state.item.items,
     };
 };
 
 const mapDispatchToProps = {
-    //functions
+    loadItems
 };
 
 export default connect(

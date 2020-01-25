@@ -1,11 +1,18 @@
+
+.filters-panel{
+    // justify-content:center;
+//  background-color: lightgrey;
+ 
+}
+  
 .checkbox-dropdown {
     width: 200px;
-    border: 1px solid #aaa;
+    border: 0.1px solid $clr1;
     padding: 10px;
     position: relative;
-    margin: 0 auto;
-    
+    // margin: 0 auto;
     user-select: none;
+    margin: 10px 0 0 15px;
 }
 
 /* Display CSS arrow to the right of the dropdown text */
@@ -15,7 +22,7 @@
     position: absolute;
     width: 0;
     border: 6px solid transparent;
-    border-top-color: #000;
+    border-top-color: $clr1;
     top: 50%;
     right: 10px;
     margin-top: -3px;
@@ -23,12 +30,13 @@
 
 /* Reverse the CSS arrow when the dropdown is active */
 .checkbox-dropdown.is-active:after {
-    border-bottom-color: #000;
+    border-bottom-color: $clr1;
     border-top-color: #fff;
     margin-top: -9px;
 }
 
 .checkbox-dropdown-list {
+   
     list-style: none;
     margin: 0;
     padding: 0;
@@ -38,9 +46,8 @@
     border-top: none;
     left: -1px; /* align the dropdown to the left */
     right: -1px; /* align the dropdown to the right */
-    opacity: 0; /* hide the dropdown */
-   
-    transition: opacity 0.4s ease-in-out;
+    opacity: 0%; /* hide the dropdown */
+    // transition: opacity 0.4s ease-in-out;
     height: 100px;
     overflow: scroll;
     overflow-x: hidden;
@@ -55,30 +62,39 @@
     display: block;
     border-bottom: 1px solid silver;
     padding: 10px;
-   
-    transition: all 0.2s ease-out;
+    // transition: all 0.2s ease-out;
+    background-color: $clr3;
 }
 
 .checkbox-dropdown-list li label:hover {
-    background-color: #555;
+    background-color: $clr1;
     color: white;
+}
+
+.price{
+    input{
+        appearance: none;
+          background-color: $clr1;
+          height: 10px;
+    }
+  
+      
+      
 }
 
 
 
 .star-ratings-css {
     unicode-bidi: bidi-override;
-    color: #c5c5c5;
-    font-size: 25px;
-    height: 25px;
-    width: 100px;
-    margin: 0 auto;
+    // color: #c5c5c5;
+    font-size: 18px;
+    // width: 100px;
     position: relative;
     padding: 0;
-    text-shadow: 0px 1px 0 #a2a2a2;
+    // text-shadow: 0px 1px 0 #a2a2a2;
     
     &-top {
-      color: #e7711b;
+      color: $clr2;
       padding: 0;
       position: absolute;
       z-index: 1;

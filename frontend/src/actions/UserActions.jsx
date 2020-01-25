@@ -22,7 +22,7 @@ export function setUser(user) {
 export function addToWishList(item, user) {
   return async dispatch => {
    
-    const miniItem = await { _id: item._id, title: item.title, price: item.price, imgs: [item.imgs[0]],itemOwner:{id:item.itemOwner.id,name:item.itemOwner.name} }
+    const miniItem = await { _id: item._id,size:item.size, title: item.title, price: item.price, imgs: [item.imgs[0]],itemOwner:{id:item.itemOwner.id,name:item.itemOwner.name} }
     const updatedUser = await UserService.updateWishList(miniItem, user);
     dispatch(_updateUser(updatedUser))
 

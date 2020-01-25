@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setFilters, removeFilter, setSorts } from '../../actions/ItemActions'
+// import { setFilters, removeFilter, setSorts } from '../../actions/ItemActions'
 
 
-import InputRange from 'react-input-range';
+// import InputRange from 'react-input-range';
 
 
 
@@ -11,33 +11,46 @@ class Filter extends Component {
 
 
   state = {
-    isToggle: ''
+    isToggleSize: '',
+    isToggleGender: '',
+    isToggleShop: '',
+    priceValue: 0
   }
 
-  // onSelectFilter = (ev) => {
-  //   if (ev.target.checked) {
-  //     this.props.setFilters({ [ev.target.name]: ev.target.value })
-  //   } else this.props.removeFilter({ [ev.target.name]: ev.target.value })
-  // }
-
   onSelectFilter = (ev) => {
+    if (ev.target.name === 'price') this.setState({ 'priceValue': ev.target.value })
     this.props.selectFilter(ev)
   }
 
+  onToggleActiveSize = (ev) => {
+    console.log('mormormor', ev.target);
 
-
-
-  onToggleActive = () => {
     this.setState((prevState) => {
-      if (prevState.isToggle === '') return this.state.isToggle = 'is-active'
-      return this.state.isToggle = ''
+      if (prevState.isToggleSize === '') return this.state.isToggleSize = 'is-active'
+      return this.state.isToggleSize = ''
     })
   }
 
-  onSelectPriceRange = (ev) => {
-    console.log(ev.target.value);
-    this.props.setFilters({ [ev.target.name]: ev.target.value })
+  onToggleActiveGender = () => {
+    this.setState((prevState) => {
+      if (prevState.isToggleGender === '') return this.state.isToggleGender = 'is-active'
+      return this.state.isToggleGender = ''
+    })
   }
+
+  onToggleActiveShop = () => {
+    this.setState((prevState) => {
+      if (prevState.isToggleShop === '') return this.state.isToggleShop = 'is-active'
+      return this.state.isToggleShop = ''
+    })
+  }
+
+
+
+  // onSelectPriceRange = (ev) => {
+  //   console.log(ev.target.value);
+  //   this.props.setFilters(ev)
+  // }
 
 
   onSelectSort = (ev) => {
@@ -48,9 +61,9 @@ class Filter extends Component {
 
   render() {
     return <React.Fragment>
-      <div className="flex">
+      <div className="flex justify-center" style={{}}>
         {/* sizes */}
-        <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
+        <div className={`checkbox-dropdown ${this.state.isToggleSize}`} onClick={this.onToggleActiveSize} >
           Size
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -70,7 +83,7 @@ class Filter extends Component {
 
 
         {/* Gender */}
-        <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
+        <div className={`checkbox-dropdown ${this.state.isToggleGender}`} onClick={this.onToggleActiveGender}>
           Gender
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -89,7 +102,7 @@ class Filter extends Component {
         </div>
 
         {/* Shops */}
-        <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
+        <div className={`checkbox-dropdown ${this.state.isToggleShop}`} onClick={this.onToggleActiveShop}>
           Shops
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -104,26 +117,10 @@ class Filter extends Component {
         </div>
 
 
-        {/* SortBy */}
-        <div className={`checkbox-dropdown ${this.state.isToggle}`} onClick={this.onToggleActive}>
-          Sort By
-  <ul className="checkbox-dropdown-list" >
-            <li>
-              <label>
-                <input type="radio" value="high-low" name="sortBy" onChange={this.onSelectSort} />Price (low to high)</label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" value="low-high" name="sortBy" onChange={this.onSelectSort} />Price (high to low)</label>
-            </li>
-          </ul>
-        </div>
-
-
-
         {/* Price */}
-        <div>
-          <input type="range" name="price" min="0" max="300" onChange={this.onSelectPriceRange} step="1" ></input>
+        <div className="flex">
+          <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
+          <p>{this.state.priceValue}$</p>
         </div>
 
 
@@ -139,14 +136,14 @@ class Filter extends Component {
 }
 const mapStateToProps = state => {
   return {
-    filter: state.filter
+    // filter: state.filter
   };
 };
 
 const mapDispatchToProps = {
   // setFilters,
-  removeFilter,
-  setSorts
+  // removeFilter,
+  // setSorts
 };
 
 export default connect(

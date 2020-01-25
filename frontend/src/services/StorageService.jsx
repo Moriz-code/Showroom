@@ -65,8 +65,8 @@ function _save(entityType, entities) {
 }
 
 
-function clearStorage(){
-    localStorage.removeItem('order');
+function clearStorage(entity){
+    localStorage.removeItem(entity);
 
 }
 

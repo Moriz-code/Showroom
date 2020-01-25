@@ -1,37 +1,49 @@
-.home-categories{
-    
+.main-section {
+  height: 450px;
+  position: relative;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+  h1 {
+    // position: absolute;
+    // bottom: 20px;
+    // right: 20px;
+  }
+}
+
+.home-categories {
   div {
-      border-radius: 5px;
-      background-color: lightcyan;
+    background-color: lightcyan;
   }
   display: grid;
-  grid-gap:2.5vh;
   min-height: 100vh;
   grid-template-columns: auto;
   grid-template-rows: 50px 50px;
   grid-template-areas:
-
-  'b b c c c'
-  'b b c c c'
-  'b b c c c'
-  'd d c c c'
-  'd d c c c'
-  'd d c c c'
-  'd d c c c'
-  'e e e e e'
-  'e e e e e'
-  ;
+    "b b c c c"
+    "b b c c c"
+    "b b c c c"
+    "d d c c c"
+    "d d c c c"
+    "d d c c c"
+    "d d c c c"
+    "e e e e e"
+    "e e e e e";
 }
 
-
-
-.category-c{
+.category-c {
   grid-area: c;
-  background-image: url("../assets/imgs/womenn.jpg");
-  background-size: 100%;  
+  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/370-mj-0972-a-l.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=7b4e821cfb2bea399f11708275796720");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &:hover {
+    background-blend-mode: luminosity;
+
+  }
 }
-
-
 
 .category-a {
   grid-area: a;
@@ -39,47 +51,91 @@
 }
 
 .category-b {
-  background-image: url("../assets/imgs/heart.jpg");
+  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/383-jir9305-jir_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=794b8342a8c4ad28e3f4a87483d2bfbb");
   // background-image: url("../assets/imgs/ment.jpg");
   background-position: center;
-  background-size: 300px;
+  background-size: cover;
   grid-area: b;
-}
-
-.hero {
-
-  background-image: url("../assets/imgs/cover.jpg");
-  height: 400px;
-  display: flex;
-  margin-bottom:20px;
-  background-size: 100%;
-   background-position: 30% 50%;
-  background-repeat: no-repeat;
- 
+  &:hover {
+    background-blend-mode: luminosity;
+  }
 }
 
 .category-d {
-  background-image: url("../assets/imgs/accori.jpg");
+  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/393-mckinsey-21a3921-jir_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=8d214bc588282e34255fbd1e08aedb78");
   background-size: 100% 100%;
   grid-area: d;
+
+  &:hover {
+    background-blend-mode: luminosity;
+
+  }
 }
 
 .category-e {
-  background-image: url("../assets/imgs/enjoy.jpg");
-  background-size: 70% 100%;
+  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/383-jir9259-jir-l_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=d4f6458396ac8d5e2c9c63ffd7c47e16");
+  background-size: 100% auto;
   background-repeat: no-repeat;
   grid-area: e;
+  background-position: center;
+  &:hover {
+    background-blend-mode: luminosity;
+    
+  }
 }
 
-.hero-title{
+.hero {
+  height: 40vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Lato;
-  font-size: 3rem;
-  text-align: center;
+  // background-image: url("../assets/imgs/cover2.jpg");
+  margin-bottom: 20px;
+  background-size: 100% 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-title {
+  display: flex;
+  color: white;
+  align-items: center;
+  font-family: Zcool;
+  font-size: 2.8em;
+  -webkit-text-stroke-width: 1px;
+  letter-spacing: 1px;
+  -webkit-text-stroke-color: black;
   // margin: 150px 150px 150px 150px;
+}
+
+.hero-search {
+  // font-family: Lato;
+  display: flex;
+  margin: 0 auto;
+  width: 60%;
+  height: 45px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid #d0cfce;
+  border-radius: 5px;
+  outline: none;
+  &:focus {
+    border: 1px solid #73585b;
+    transition: 0.35s ease;
+    color: black;
+  }
+}
+
+.home-categories {
+  font-size: 1.5rem;
 
 }
 
-
+.home-page-text {
+  background-color: $clr1;
+  padding: 18px;
+  color: $clr4;
+  position: relative;
+  top: 25px;
+}

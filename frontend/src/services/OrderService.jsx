@@ -5,7 +5,8 @@ export default {
     getOrder,
     removeItemFromCart,
     add,
-    clearCart
+    clearCart,
+    getMyOrders
 };
 
 
@@ -26,13 +27,16 @@ async function removeItemFromCart(item) {
 }
 
 async function add(order) {
-  
-    const savedOrder =await HttpService.post(`order`,order)
-
+    const savedOrder =await HttpService.post('order',order)
     return savedOrder
-
 }
 
 async function clearCart() {
-    StorageService.clearStorage()
+    StorageService.clearStorage('order')
+}
+
+async function getMyOrders(shopId) {
+    
+    const myOrders=await  HttpService.get(`order/${shopId}`)
+    return  myOrders
 }

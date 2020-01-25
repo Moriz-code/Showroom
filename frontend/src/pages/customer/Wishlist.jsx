@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import ItemsList from '../../cmps/items/ItemList'
 import { removeFromWishList } from '../../actions/UserActions'
+import { addToCart } from '../../actions/OrderActions'
 import OrderService from '../../services/OrderService';
+import InnerNavBar from '../../cmps/InnerNavBar';
 class Wishlist extends Component {
 
     componentDidMount = () => {
@@ -15,6 +17,7 @@ class Wishlist extends Component {
 
     addToCart=(item)=> {
         this.deleteItem(item._id)
+        this.props.addToCart()
         OrderService.addItemtoCart(item)
 
     }
@@ -22,9 +25,10 @@ class Wishlist extends Component {
     render() {
 
         return (
-            this.props.loggedInUser&&
+
             <div>
-                <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>
+              <InnerNavBar></InnerNavBar>  
+               {  this.props.loggedInUser? <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}>></ItemsList>:'No wishlist items'}
             </div>
         )
     }
@@ -38,7 +42,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    removeFromWishList
+    removeFromWishList,
+    addToCart
 
 };
 
