@@ -12,17 +12,18 @@ import HeaderShop from '../../cmps/shop/HeaderShop';
 import Comments from '../../pages/seller/Comments';
 import InnerNavbar from '../../cmps/InnerNavBar';
 
-
-
 import Utils from '../../services/UtilService';
 import ItemService from '../../services/ItemService';
 
 // import SocketService from '../../services/SocketService';
+////sockets try///
+import SocketService from '../../services/SocketService'
+import { addToCart } from '../../actions/OrderActions'
+/// end of socket try////
 
 //icons
 import chat from '../../styles/assets/imgs/icons/chat.png';
 import addBtn from '../../styles/assets/imgs/add.png';
-
 
 class PersonalShop extends Component {
     state = {
@@ -62,6 +63,8 @@ class PersonalShop extends Component {
         console.log('did mount');
         await this.props.loadShop(this.props.match.params.id)
         await this.props.loadItems();
+        SocketService.setup()
+        SocketService.on('complete',this.notifciation)
         this.setState({ shop: this.props.shop.selectedShop })
         this.clearItemState();
 
@@ -75,6 +78,7 @@ class PersonalShop extends Component {
         // SocketService.on('chat addMsg', this.addComment)
         // SocketService.on('user send msg', this.addComment)
     }
+
 
     clearItemState() {
         let newItem = ItemService.getNewItem();
@@ -90,6 +94,10 @@ class PersonalShop extends Component {
     }
 
 
+
+    notifciation=()=>{
+       this.props.addToCart()
+    }
 
     //  componentDidUpdate() {
     //      this.props.loadItems();
@@ -283,6 +291,7 @@ const mapDispatchToProps = {
     deleteItem,
     updateShopSettings,
     saveItem,
+    addToCart
 };
 
 export default connect(

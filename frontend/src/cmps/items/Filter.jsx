@@ -61,7 +61,7 @@ class Filter extends Component {
 
   render() {
     return <React.Fragment>
-      <div className="flex justify-center" style={{}}>
+      <div className="filters flex justify-center" style={{}}>
         {/* sizes */}
         <div className={`checkbox-dropdown ${this.state.isToggleSize}`} onClick={this.onToggleActiveSize} >
           Size

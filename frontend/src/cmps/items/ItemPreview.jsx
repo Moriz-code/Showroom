@@ -7,7 +7,7 @@ import heart from '../../styles/assets/imgs/icons/002-heart.png';
 import heartfilled from '../../styles/assets/imgs/icons/003-heart-1.png';
 
 import { addToWishList, removeFromWishList } from '../../actions/UserActions';
-
+import Avatar from '@material-ui/core/Avatar';
 import editIcon from '../../styles/assets/imgs/edit _icon.png';
 import deleteIcon from '../../styles/assets/imgs/trash.png';
 
@@ -110,20 +110,29 @@ class ItemPreview extends Component {
         {this.props.listMode !== 'adminMode' ?
           <img onClick={this.onAddToWishList} className="heart-icon" alt="heart" src={this.getHeartIcon} /> : null}
 
+
         <Link to={`/itemDetails/${this.props.item._id}`}>
 
           <img className="item-img" alt="img-item" src={this.props.item.imgs[0]}></img>
 
           {/* <div className="card-desc"> */}
           {/* <img className="item-avatr" alt="img-item" src={avatar} /> */}
+          
           <div className="details">
-            <span className="item-seller">{this.props.item.itemOwner.name}</span>
-            <h3>{this.props.item.title}</h3>
+
+           
+              <div className=" flex align-center ">
+                <Avatar alt="" src={this.props.item.itemOwner.logoUrl} style={{ backgroundColor: "lightgray" }} />
+                <h4 className="brand-name"> {this.props.item.itemOwner.name}</h4>
+              </div>
+          
+
+            <h3 className="item-title">{this.props.item.title}</h3>
 
 
             <div class="price-star">
 
-              <p className="item-price">${this.props.item.price}</p>
+              <p className="item-price">${Number.parseFloat(this.props.item.price).toFixed(2)}</p>
               {this.props.item.reviews &&
                 <ReviewRating amount={this.props.item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>}
 
