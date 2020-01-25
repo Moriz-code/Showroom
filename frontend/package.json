@@ -25,6 +25,7 @@
     "redux-history": "^1.0.2",
     "redux-thunk": "^2.3.0",
     "resolve-url-loader": "^2.3.1",
+    "socket.io-client": "^2.3.0",
     "thunk": "0.0.1"
   },
   "scripts": {

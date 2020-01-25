@@ -12,7 +12,7 @@ import HeaderShop from '../../cmps/shop/HeaderShop';
 import Comments from '../../pages/seller/Comments';
 import InnerNavbar from '../../cmps/InnerNavBar'
 
-
+import Footer from '../../cmps/Footer'
 import Utils from '../../services/UtilService';
 
 ////sockets try///
@@ -299,6 +299,7 @@ class PersonalShop extends Component {
                         </div>
                     </div>
                     : ''}
+                    <Footer></Footer>
             </React.Fragment >)
     }
 }

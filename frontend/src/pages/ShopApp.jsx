@@ -15,7 +15,7 @@ class ShopApp extends Component {
 
     render() {
         let { items } = this.props;
-        items = items.splice(0, 3)
+        var itemsHome = items.splice(0, 4)
         return <React.Fragment>
             <Header></Header>
 
@@ -36,7 +36,8 @@ class ShopApp extends Component {
                 </div>
             </div>
             <span className="home-page-text">HOT PRODUCTS</span>
-            {items.length !== 0 ? <ItemsList items={items}>
+            
+            {items.length !== 0 ? <ItemsList items={itemsHome}>
             </ItemsList> : 'NO ITEMS!'}
 
             <Footer></Footer>
