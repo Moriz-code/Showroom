@@ -22,7 +22,7 @@ class ShopApp extends Component {
 
             <div className=" home-categories">
                 <div className="category-b">
-                <Link to={`/item/clearance`}> <span className="home-page-text">Clearance</span> </Link>
+                <Link to={`/item/clearance`}> <span className="home-page-text">CLEARANCE</span> </Link>
                 </div>
                 <div className="category-c">
                     <Link to={`/item/women`}> <span className="home-page-text">WOMEN</span></Link>

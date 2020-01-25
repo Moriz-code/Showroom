@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setCurrentItem, saveItem } from '../actions/ItemActions';
 import { addToWishList, removeFromWishList } from '../actions/UserActions'
-import { addToCart} from '../actions/OrderActions'
+import { addToCart } from '../actions/OrderActions'
 import OrderService from '../services/OrderService';
 import ReviewList from '../cmps/reviews/ReviewList';
 import InnerNavBar from '../cmps/InnerNavBar';
@@ -17,6 +17,7 @@ import TextField from '@material-ui/core/TextField';
 
 import ItemList from '../cmps/items/ItemList'
 import UserService from '../services/UserService';
+
 
 class ItemDetails extends Component {
 
@@ -37,9 +38,13 @@ class ItemDetails extends Component {
 
     }
 
+
+
     componentDidMount() {
         this.loadItems()
     }
+
+
 
     loadItems = async () => {
         await this.props.setCurrentItem(this.props.match.params.id)
@@ -95,7 +100,7 @@ class ItemDetails extends Component {
         this.props.addToCart()
         await this.setState({ modalMode: true, modalMsg: "Added To Cart" })
         this.setState({ modalMode: false, modalMsg: "" })
-        
+
     }
 
     onBuyNow = async () => {
@@ -220,22 +225,32 @@ class ItemDetails extends Component {
 
                         <div className="container item-shop-details-container">
                             <Link to={`/shop/${item.itemOwner.id}`}>
-                                <div className="store-details flex">
+                                <div className="store-details flex ">
                                     <Avatar alt="" src={item.itemOwner.logoUrl} style={{ backgroundColor: "lightgray" }} />
                                     <h4 className="brand-name"> {item.itemOwner.name}</h4>
                                     {/* <img style={{ height: "80px", width: "80px" }} src={item.itemOwner.logoUrl} alt="brandImg" /> */}
                                 </div>
                             </Link>
 
-                            <h1 className="item-details-title"> {item.title}
-                                <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating></h1>
+                            <h1 className="item-details-title">{item.title}</h1>
+                                <div className="flex justify-space-between">
+                                    <div className="item-price flex">
+                                        ${Number.parseFloat(item.price).toFixed(2)}
+                                        <div className="was-price">
+                                            ${Number.parseFloat(Math.floor(item.price / 0.9)).toFixed(2)}</div>
+                                        {/* <div className="discount">-10%</div> */}
+                                    </div>
+                                    <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
+                                </div>
+                            
                         </div>
-                        <div className="item-price flex">
-                            ${item.price}
-                            <div className="was-price">${Math.floor(item.price / 0.9)}</div>
-                            <div className="discount">-10%</div>
 
-                        </div>
+                        <h3 className="item-description">
+                                <p>{item.description}</p>
+                                <h5>{item.sizeFit}</h5>
+
+                            </h3>
+
                         <div className="size-select">
                             <button className="item-sizes" id="btn-s" value="S" onClick={this.handleSizeSelect}>S</button>
                             <button className="item-sizes" id="btn-m" value="M" onClick={this.handleSizeSelect}>M</button>
@@ -245,25 +260,23 @@ class ItemDetails extends Component {
 
 
                         <div className="item-buttons flex">
-                            <button className="item-details-btn buy-now" onClick={this.onBuyNow}>Buy Now</button>
-                            <button className="item-details-btn add-to-cart" onClick={this.onAddToCart}>Add to cart</button>
+                            <button className="btn1" onClick={this.onBuyNow}>Buy Now</button>
+                            <button className="btn2 add-to-cart" onClick={this.onAddToCart}>Add to cart</button>
                         </div>
                         <div className="general-information">
                             <div className="buyer-protection flex">
-                                <div>35-Day Buyer Protection - Money back guarantee </div>
+                                <div>35-Day Buyer Protection </div>
                             </div>
                             <div className="free-shipping flex">
-                                <div>Free Shipping - Get it by - <span className="delivery-date">{this.state.date}</span></div>
+                                <div>Free Shipping - Get it at: <span className="delivery-date">{this.state.date}</span></div>
                             </div>
-                            <h3 className="item-description">
-                                <p>{item.description}</p>
-                            </h3>
-                            <h5>{item.sizeFit}</h5>
+                            
                         </div>
                     </div>
                 </section>
 
-                <div className="container reviews flex justify-space-between">
+                <div className="container reviews ">
+                    {/* ////coral//// */}
                     <div className="reviews-items">
                         {item.reviews.length > 0 &&
                             <div className="container">
@@ -273,12 +286,12 @@ class ItemDetails extends Component {
 
                     </div>
                     {!this.state.reviewMode &&
-                        <button className="btn2" onClick={this.onAddReview}>Add Review</button>}
+                        <button className="btn1" onClick={this.onAddReview}>Add Review</button>}
                     {this.state.reviewMode &&
                         <form className="review-section flex column justify-space-between" onSubmit={this.handleSubmit}>
                             <div onChange={this.handleInput} className="review-input flex column justify-space-between">
-                                
-                                <TextField style={{marginBottom:"20px"}} name="title" required id="standard-required" label="Title" />
+
+                                <TextField style={{ marginBottom: "20px" }} name="title" required id="standard-required" label="Title" />
                                 <TextField id="outlined-multiline-static"
                                     label="Multiline"
                                     multiline
