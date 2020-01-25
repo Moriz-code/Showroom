@@ -1,13 +1,16 @@
-
+.filters{
+    margin-bottom: 20px;
+}
 .filters-panel{
     // justify-content:center;
 //  background-color: lightgrey;
  
 }
-  
+
 .checkbox-dropdown {
     width: 200px;
-    border: 0.1px solid $clr1;
+    color:$clr3;
+    border: 0.1px solid rgb(212, 212, 212);
     padding: 10px;
     position: relative;
     // margin: 0 auto;
@@ -22,21 +25,22 @@
     position: absolute;
     width: 0;
     border: 6px solid transparent;
-    border-top-color: $clr1;
+    border-top-color: $clr3;
     top: 50%;
     right: 10px;
     margin-top: -3px;
+
 }
 
 /* Reverse the CSS arrow when the dropdown is active */
 .checkbox-dropdown.is-active:after {
-    border-bottom-color: $clr1;
+    border-bottom-color: $clr3;
     border-top-color: #fff;
     margin-top: -9px;
 }
 
 .checkbox-dropdown-list {
-   
+   z-index: 100;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -48,9 +52,9 @@
     right: -1px; /* align the dropdown to the right */
     opacity: 0%; /* hide the dropdown */
     // transition: opacity 0.4s ease-in-out;
-    height: 100px;
-    overflow: scroll;
-    overflow-x: hidden;
+    // height: 100px;
+    // overflow: scroll;
+    // overflow-x: hidden;
     pointer-events: none; /* avoid mouse click events inside the dropdown */
 }
 .is-active .checkbox-dropdown-list {
@@ -60,10 +64,10 @@
 
 .checkbox-dropdown-list li label {
     display: block;
-    border-bottom: 1px solid silver;
+    border-bottom: 1px solid rgb(236, 236, 236);
     padding: 10px;
     // transition: all 0.2s ease-out;
-    background-color: $clr3;
+    background-color: $clr4;
 }
 
 .checkbox-dropdown-list li label:hover {

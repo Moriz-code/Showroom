@@ -6,7 +6,7 @@ export default function ReviewPreview(props) {
   
 
   return  <React.Fragment>
-    <ul className="review-item  ">
+    <ul className="review-item flex ">
 
     <li className="review-avatar ">
      <Avatar className="avatar" src={props.review.byUser.imgUrl}></Avatar>

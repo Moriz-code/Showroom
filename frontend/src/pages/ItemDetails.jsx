@@ -232,24 +232,24 @@ class ItemDetails extends Component {
                                 </div>
                             </Link>
 
-                            <h1 className="item-details-title">{item.title}</h1>
-                                <div className="flex justify-space-between">
-                                    <div className="item-price flex">
-                                        ${Number.parseFloat(item.price).toFixed(2)}
-                                        <div className="was-price">
-                                            ${Number.parseFloat(Math.floor(item.price / 0.9)).toFixed(2)}</div>
-                                        {/* <div className="discount">-10%</div> */}
-                                    </div>
-                                    <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
+                            <h1 className=" container item-details-title">{item.title}</h1>
+                            <div className="flex justify-space-between">
+                                <div className="item-price flex">
+                                    ${Number.parseFloat(item.price).toFixed(2)}
+                                    <div className="was-price">
+                                        ${Number.parseFloat(Math.floor(item.price / 0.9)).toFixed(2)}</div>
+                                    {/* <div className="discount">-10%</div> */}
                                 </div>
-                            
+                                <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
+                            </div>
+
                         </div>
 
                         <h3 className="item-description">
-                                <p>{item.description}</p>
-                                <h5>{item.sizeFit}</h5>
+                            <p>{item.description}</p>
+                            <h5 className="size-fit">{item.sizeFit}</h5>
 
-                            </h3>
+                        </h3>
 
                         <div className="size-select">
                             <button className="item-sizes" id="btn-s" value="S" onClick={this.handleSizeSelect}>S</button>
@@ -270,13 +270,12 @@ class ItemDetails extends Component {
                             <div className="free-shipping flex">
                                 <div>Free Shipping - Get it at: <span className="delivery-date">{this.state.date}</span></div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </section>
 
                 <div className="container reviews ">
-                    {/* ////coral//// */}
                     <div className="reviews-items">
                         {item.reviews.length > 0 &&
                             <div className="container">
@@ -298,15 +297,17 @@ class ItemDetails extends Component {
                                     rows="4"
                                     variant="outlined" name="txt" required id="standard-required" label="Review" />
                             </div>
+
                             <fieldset className="rating" onChange={this.handleInput} >
 
-                                <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
+                                <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" className="radio-lable" title="Rocks!">5 stars</label>
                                 <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
                                 <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
                                 <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
                                 <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
                             </fieldset>
-                            <button>Submit</button>
+                            
+                            <button className="btn2">Submit</button>
                         </form>}
                 </div>
 

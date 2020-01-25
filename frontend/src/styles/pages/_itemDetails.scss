@@ -6,7 +6,7 @@
   font-weight: bold;
   margin-bottom: 0;
   font-size: 1.2rem;
-  max-width: 40ch;
+  // max-width: 25ch;
   //    border-bottom: 0.5px solid rgb(241, 241, 241);
 }
 
@@ -22,6 +22,10 @@
   margin-bottom: 0px;
   margin-left: 10px;
   color: gray;
+}
+
+.size-fit {
+  font-size: rem(16px);
 }
 
 .wishlist-icon {
@@ -60,8 +64,8 @@
   }
 }
 
-.add-to-cart{
-    margin-left: 20px;
+.add-to-cart {
+  margin-left: 20px;
 }
 // .item-details-btn {
 //   border: none;
@@ -174,7 +178,7 @@
 
 .reviews {
   padding-bottom: 43px;
-//   border-bottom: 0.5px solid lightgray;
+  //   border-bottom: 0.5px solid lightgray;
   margin-bottom: 23px;
 
   tr {
@@ -191,6 +195,9 @@
   padding-left: 0px;
   margin-left: 0px;
 }
+
+
+
 
 .review-section {
   max-height: 300px;
@@ -220,7 +227,7 @@
     display: inline-block;
     background: url(../assets/imgs/shipping.png) no-repeat;
     width: 35px;
-    height:40px;
+    height: 40px;
     background-size: 30px 30px;
     // margin-right: 10px;
   }
@@ -265,10 +272,9 @@
 }
 
 .item-sizes {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
   &:not(first-child) {
     margin-left: 15px;
-    
   }
   &.size-xl {
     // padding: 0 7px;
@@ -303,25 +309,28 @@
 }
 
 .review-item {
-  min-height: 90px;
+  min-height: 180px;
+  max-width: 25ch;
   align-items: center;
   font-size: rem(18px);
-
+  &:not(first-child) {
+    margin-left: 20px;
+  }
 }
 
-.reviews-items{
-    margin-top: 20px;
-    margin-bottom: 20px;
-
+.item-buttons {
+  margin-bottom: 15px;
 }
 
+.reviews-items {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 .review-txt {
-  font-size: 12px;
-//   max-width: 70ch;
+  font-size: rem(16px);
+  //   max-width: 70ch;
 }
-
-
 
 .review-content {
   flex-direction: column;

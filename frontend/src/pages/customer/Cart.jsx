@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import orderService from '../../services/OrderService'
 import ItemsList from '../../cmps/items/ItemList'
-import { placeOrder , clearCart,removeFromCart } from '../../actions/OrderActions'
+import { placeOrder, clearCart, removeFromCart } from '../../actions/OrderActions'
 import InnerNavBar from '../../cmps/InnerNavBar';
 
 class Cart extends Component {
@@ -38,28 +38,51 @@ class Cart extends Component {
         this.props.history.push("/")
     }
 
-    clearCart=async()=>{
+    clearCart = async () => {
         orderService.clearCart()
     }
     render() {
-        return (<div>
+        return (<div className="cart ">
             <InnerNavBar></InnerNavBar>
-            <div>
-                Total: {this.calculateTotal()}$
-            <button onClick={this.onPlaceOrder}>PLACE ORDER</button>
-            </div>
-            {this.state.items ?
-                <div>
-                    <ItemsList deleteItem={this.deleteItem} listMode="cartMode" items={this.state.items}></ItemsList>
+            <div className="container">
+                <p className="cart-title flex justify-center">SHOPPING CART</p>
+                <div className="cart-body flex justify-space-between">
+                    <div>
+                        {this.state.items && this.state.items.length > 0 ?
+                            <div>
+                                <div className="cart-list">
+                                    <ItemsList deleteItem={this.deleteItem} listMode="cartMode" items={this.state.items}></ItemsList>
+                                </div>
+                                <div className="cart-price flex column justify-center ">
+                                    <div className="flex justify-space-between ">
+                                        <p> Subtotal:</p>
+                                        <p className="price"> {this.calculateTotal()}$</p>
+                                    </div>
+
+                                    <button className="btn1" onClick={this.onPlaceOrder}>PLACE ORDER</button>
+                                </div>
+                            </div> :
+                            <div className="cart-no-items container flex column justify-center">
+                                <p className="oops">OOPS!</p>
+                                <p>We know that you want to checkout quickly but you forgot something vart important...</p>
+                                <p>YOUR SHOPPING CART IS EMPTY</p>
+                                <button className="btn1">Go shopping</button>
+                            </div>
+                        }
+                    </div>
 
                 </div>
-                : "You dont have any items yet..."}
-        </div>
+            </div>
+
+        </div >
         )
     }
 
 
 }
+
+
+
 
 
 
