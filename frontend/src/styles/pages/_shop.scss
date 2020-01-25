@@ -8,6 +8,23 @@
     position:relative;
     align-self: flex-end;
     transition: width .8s;
+
+    .shop-main{
+      display: flex;
+      // flex-direction: column;
+      // justify-content:flex-start;
+    }
+
+    .cards-shop-container{
+      padding:15px;
+    }
+
+    .item-card{
+      background-color: white;
+    }
+
+
+   
 }
 
 .full-width{
@@ -93,6 +110,8 @@
   top: 0;
   width: 50px;
   padding: 5px;
+  background: transparent;
+    border: none;
   }
   
   
@@ -248,29 +267,54 @@ img{
   }
 
   .add-item-btn{
-    background-color: white;
+    background-color: transparent;
     border:none;
     margin: auto;
+    width:120px;
+    // margin-top:-27px;
+
+    img{
+      filter:contrast(200%);
+      // filter:drop-shadow(0.8px 0.8px 0.8px whitesmoke);
+    }
+
+    
     
   
   }
 
 
-  .item-edit-panel{
-    background-color:white;
 
+
+  .item-edit-panel{
+    // background-color:white;
+
+    // float: right;
+    position: absolute;
+    filter: grayscale(100%);
+  
     button {
       width:30px;
       background-color: transparent;
       border:none;
       padding:3px;
+      opacity: 0.5;
     }
+
+    img:hover{
+      border-radius: 5px;
+      box-shadow:inset 1px 1px 1px 1px #E0E0E0;
+    }
+
+   
   }
 
   .edit-item{
     display: flex;
     flex-direction: column;
     
+    
+   
 
     .img{
       flex-basis:30%;
@@ -294,6 +338,10 @@ img{
     }
 
    
-  
+    .item-card{
+      background-color: white;
+   
+    }
+
   }
 

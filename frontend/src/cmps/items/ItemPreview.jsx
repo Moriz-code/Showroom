@@ -107,7 +107,8 @@ class ItemPreview extends Component {
     return (<React.Fragment>
       <div className="item-card">
 
-        <img onClick={this.onAddToWishList} className="heart-icon" alt="heart" src={this.getHeartIcon} />
+        {this.props.listMode !== 'adminMode' ?
+          <img onClick={this.onAddToWishList} className="heart-icon" alt="heart" src={this.getHeartIcon} /> : null}
 
         <Link to={`/itemDetails/${this.props.item._id}`}>
 
