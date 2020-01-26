@@ -1,11 +1,19 @@
 * {
     box-sizing: border-box;
+
 }
 
 html {
     line-height: 1.6;
     min-height: 100%;
     font-family: Roboto;
+
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 body {

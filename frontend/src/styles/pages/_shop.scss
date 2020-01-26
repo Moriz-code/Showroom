@@ -109,10 +109,10 @@
 .shop-edit-btn{
   position: absolute;
   top: 0;
-  width: 50px;
+  width: 40px;
   padding: 5px;
   background: transparent;
-  filter: contrast(200%) brightness(50%) drop-shadow(5px 5px 5px gray);
+  filter: contrast(200%) brightness(150%) drop-shadow(5px 5px 5px white);
  border:none;
 
   
@@ -128,8 +128,9 @@
     left: 0;
     background: rgba(255, 255, 255, 0.4);
     box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
-    border-top: $clr2 solid 10px;
+    // border-top: $clr2 solid 10px;
     font-size:1rem;
+    text-align:center;
     
     display: flex;
     flex-direction: column;
@@ -151,7 +152,7 @@
     
     .field{
       position: relative;
-  margin-top: 50px;
+  margin-top: 45px;
   
   input[type="text"]{
     display: inline-block;
@@ -206,11 +207,11 @@ img{
 
 .save-btn{
   
-  width:95%;
+  width:100%;
   background-color: $clr2;
   color: $clr4;
   border:none;
-  height: rem(50px);
+  height: rem(30px);
   font-size: rem(20px);
   margin-top: 20px;
 
@@ -266,13 +267,15 @@ img{
   }
 
   .chat-icon{
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 70px;
-    background: none;
-    border: none;
-    filter:contrast(200%) brightness(70%);
+    display: none;
+
+    // position: fixed;
+    // right: 20px;
+    // bottom: 20px;
+    // width: 70px;
+    // background: none;
+    // border: none;
+    // filter:contrast(200%) brightness(70%);
   }
 
   .add-item-btn{
@@ -281,13 +284,14 @@ img{
     margin: auto;
     width:120px;
     // margin-top:-27px;
+    
 
     img{
-      filter: contrast(200%);
-      position: absolute;
-      width: 81px;
-      top: -20px;
-      left: 145px;
+
+      position: fixed;
+      width: 55px;
+      bottom: 20px;
+      right: 20px;
       // filter:drop-shadow(0.8px 0.8px 0.8px whitesmoke);
     }
 
@@ -300,23 +304,25 @@ img{
 
 
   .item-edit-panel{
-    // background-color:white;
-
-    // float: right;
-    position: absolute;
-    filter: grayscale(100%);
-  
+    display: flex;
+    position: relative;
+    bottom: 226px;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.5);
+    
     button {
-      width:30px;
+      width:32px;
       background-color: transparent;
       border:none;
       padding:3px;
       opacity: 0.5;
     }
 
+
+    //icon hover
     img:hover{
-      border-radius: 5px;
-      box-shadow:inset 1px 1px 1px 1px #E0E0E0;
+      // border-radius: 1px;
+      // box-shadow: 1px 1px 1px 1px white;
     }
 
    
@@ -330,7 +336,7 @@ img{
       background-color: #64485c;
     color: #ffffff;
     border: none;
-    height: 50px;
+    height: 30px;
     margin-bottom:10px;
     font-size: rem(20px);
     display: flex;

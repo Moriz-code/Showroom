@@ -7,10 +7,11 @@ import ItemsList from '../cmps/items/ItemList'
 import emptyCart from '../styles/assets/imgs/emptyCart.png'
 import InnerNavBar from '../cmps/InnerNavBar';
 import Footer from '../cmps/Footer'
+import { Link } from 'react-router-dom'
 
 class ShopItems extends Component {
   state = {
-    isOwner:false,
+    isOwner: false,
     filterBy: {
       size: [],
       gender: [],
@@ -33,9 +34,9 @@ class ShopItems extends Component {
   }
 
   checkIfOwner = () => {
-    const user=(this.props.loggedInUser &&  this.props.loggedInUser.shopId) ? this.setState({ isOwner: true }) : null
+    const user = (this.props.loggedInUser && this.props.loggedInUser.shopId) ? this.setState({ isOwner: true }) : null
 
-}
+  }
 
   selectFilter = (ev) => {
     let { name, value } = ev.target;
@@ -66,18 +67,20 @@ class ShopItems extends Component {
       <React.Fragment>
         <InnerNavBar isOwner={this.state.isOwner}></InnerNavBar>
         <Filter selectFilter={this.selectFilter}></Filter>
-        {items.length !== 0 ? <ItemsList items={items}>
-        </ItemsList> :
-          <div class="noitems flex">
-            <img src={emptyCart}></img>
-            <div className="noitems-txt">
-              <p className="oops">OOPS!</p>
-              <p className="noitems-p">There’re no products matching your search, we’ll do better next time😎 </p>
-              <button className="btn1">Back to the shop</button>
-            </div>
+        <div className="flex grow">
+          {items.length !== 0 ? <ItemsList items={items}>
+          </ItemsList> :
+            <div class="noitems flex grow">
+              <img src={emptyCart}></img>
+              <div className="noitems-txt">
+                <p className="oops">OOPS!</p>
+                <p className="noitems-p">There’re no products matching your search, we’ll do better next time😎 </p>
+                <Link to={`/item`}> <button className="btn1">Back to the shop</button></Link>
+              </div>
 
 
-          </div>}
+            </div>}
+        </div>
         <Footer></Footer>
       </React.Fragment>)
   }

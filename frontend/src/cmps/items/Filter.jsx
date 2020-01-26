@@ -120,7 +120,7 @@ class Filter extends Component {
         {/* Price */}
         <div className="flex">
           <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
-          <p>{this.state.priceValue}$</p>
+          <p className="price-filter">{this.state.priceValue}$</p>
         </div>
 
 

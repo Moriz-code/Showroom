@@ -6,12 +6,22 @@ import { loadItems } from '../actions/ItemActions'
 import ItemsList from '../cmps/items/ItemList'
 import Footer from '../cmps/Footer';
 
+import { SetloggedInUser } from '../actions/UserActions'
 
 class ShopApp extends Component {
 
     componentDidMount() {
         this.props.loadItems()
     }
+
+
+    setUser=(ev)=>{
+
+        console.log(ev.target.name,ev.target.value);
+        this.props.SetloggedInUser(ev.target.value)
+
+    }
+
 
     render() {
         let { items } = this.props;
@@ -22,7 +32,7 @@ class ShopApp extends Component {
 
             <div className=" home-categories">
                 <div className="category-b">
-                <Link to={`/item/clearance`}> <span className="home-page-text">CLEARANCE</span> </Link>
+                    <Link to={`/item/clearance`}> <span className="home-page-text">CLEARANCE</span> </Link>
                 </div>
                 <div className="category-c">
                     <Link to={`/item/women`}> <span className="home-page-text">WOMEN</span></Link>
@@ -32,14 +42,17 @@ class ShopApp extends Component {
                     <Link to={`/item/men`}>  <span className="home-page-text">MEN</span></Link>
                 </div>
                 <div className="category-e">
-                <Link to={`/item/petit`}> <span className="home-page-text">PETIT</span></Link>
+                    <Link to={`/item/petit`}> <span className="home-page-text">PETIT</span></Link>
                 </div>
             </div>
             <span className="home-page-text">HOT PRODUCTS</span>
-            
+
             {items.length !== 0 ? <ItemsList items={itemsHome}>
             </ItemsList> : 'NO ITEMS!'}
-
+            <select onChange={this.setUser} name="User" >
+                <option value="Shop Owner">Shop Owner</option>
+                <option value="Customer">Customer</option>
+            </select>
             <Footer></Footer>
         </React.Fragment>
     }
@@ -54,7 +67,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    loadItems
+    loadItems,
+    SetloggedInUser
 };
 
 export default connect(
