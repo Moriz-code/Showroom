@@ -13,7 +13,6 @@ import Comments from '../../pages/seller/Comments';
 
 import InnerNavbar from '../../cmps/InnerNavBar';
 
-import InnerNavbar from '../../cmps/InnerNavBar';
 import Footer from '../../cmps/Footer';
 
 import Utils from '../../services/UtilService';
@@ -21,8 +20,8 @@ import ItemService from '../../services/ItemService';
 
 // import SocketService from '../../services/SocketService';
 ////sockets try///
-import SocketService from '../../services/SocketService'
-import { addToCart } from '../../actions/OrderActions'
+import SocketService from '../../services/SocketService';
+import { addToCart } from '../../actions/OrderActions';
 /// end of socket try////
 
 //icons
@@ -68,7 +67,7 @@ class PersonalShop extends Component {
     async componentDidMount() {
         await this.props.loadShop(this.props.match.params.id)
         await this.props.loadItems();
-       
+
         this.setState({ shop: this.props.shop.selectedShop })
         this.clearItemState();
         this.checkIfOwner();
@@ -99,15 +98,15 @@ class PersonalShop extends Component {
 
 
 
-    notifciation=()=>{
-       this.props.addToCart()
+    notifciation = () => {
+        this.props.addToCart()
     }
 
 
-    
+
 
     checkIfOwner = () => {
-        const user=(this.props.loggedInUser && this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id) ? this.setState({ isOwner: true }) : null
+        const user = (this.props.loggedInUser && this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id) ? this.setState({ isOwner: true }) : null
 
     }
 
@@ -169,6 +168,10 @@ class PersonalShop extends Component {
             else {
                 value = list.concat(value);
             }
+        }
+
+        if (name === 'price') {
+            value = parseInt(value)
         }
 
         this.setState(prevState => ({
@@ -255,7 +258,7 @@ class PersonalShop extends Component {
                 {this.state.shop ?
                     <div className='shop-page'>
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
-                            <HeaderShop onEditSettings={this.onEditSettings} selectedShop={shop}></HeaderShop>
+                            <HeaderShop onEditSettings={this.onEditSettings} isOnEditSettigs={this.state.isOnEditSettigs} selectedShop={shop}></HeaderShop>
                             {/* <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button> */}
 
                             <div className={this.state.isOnEditSettigs ? 'modal-settings' : 'display-none'}>
@@ -286,7 +289,7 @@ class PersonalShop extends Component {
                         </div>
                     </div>
                     : ''}
-                    <Footer></Footer>
+                <Footer></Footer>
             </React.Fragment >)
     }
 }
