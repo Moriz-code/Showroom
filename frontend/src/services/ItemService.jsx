@@ -70,7 +70,7 @@ function getNewItem() {
     return {
         _id: '',
         title: '',
-        price: '',
+        price: null,
         description: '',
         sizeFit: '',
         size: '',

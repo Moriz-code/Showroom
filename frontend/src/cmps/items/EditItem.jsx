@@ -32,7 +32,7 @@ export default function EditItem(props) {
 
         <div className="price-size">
           <div class="form-group">
-            <input required="required" type="text" name="price" value={item.Price} onChange={props.handleFormChange} />
+            <input required="required" type="number" name="price" value={item.Price} onChange={props.handleFormChange} />
             <label for="input" class="control-label">$ Price</label><i class="bar"></i>
           </div>
 
