@@ -35,7 +35,8 @@ class ItemDetails extends Component {
         wishListStatus: heart,
         recentlyViewd: '',
         date: '',
-        size: ''
+        size: '',
+        errorMsgClass:'hide'
 
     }
 
@@ -97,19 +98,24 @@ class ItemDetails extends Component {
     }
 
     onAddToCart = async () => {
-
+        if (!this.state.size) this.setState({errorMsgClass:"show"})
+        else{
         OrderService.addItemtoCart(this.props.item)
         this.props.addToCart()
         await this.setState({ modalMode: true, modalMsg: "Added To Cart" })
         this.setState({ modalMode: false, modalMsg: "" })
+        this.setState({errorMsgClass:"hide"})
+    }
 
     }
 
     onBuyNow = async () => {
-
+       if (!this.state.size) this.setState({errorMsgClass:"show"}) 
+        else {
         await OrderService.addItemtoCart(this.props.item)
         this.props.addToCart()
         this.props.history.push('/cart')
+    }
     }
 
 
@@ -189,7 +195,7 @@ class ItemDetails extends Component {
         let selectedSize = ev.target.value
         if (selectedSize === this.state.size) this.setState({ size: '' })
         else this.setState({ size: selectedSize })
-
+        this.setState({errorMsgClass:"hide"})
     }
 
     setDeliveryDate = () => {
@@ -243,7 +249,7 @@ class ItemDetails extends Component {
                             </Link>
 
                             <h1 className=" container item-details-title">{item.title}</h1>
-                            <div className="flex justify-space-between">
+                            <div className="flex">
                                 <div className="item-price flex">
                                     ${Number.parseFloat(item.price).toFixed(2)}
                                     <div className="was-price">
@@ -266,6 +272,7 @@ class ItemDetails extends Component {
                             <button className={(this.state.size === "M") ? "item-sizes selected" : "item-sizes"} id="btn-m" value="M" onClick={this.handleSizeSelect}>M</button>
                             <button className={(this.state.size === "L") ? "item-sizes selected" : "item-sizes"} id="btn-l" value="L" onClick={this.handleSizeSelect}>L</button>
                             <button className={(this.state.size === "XL") ? "item-sizes selected size-xl" : "item-sizes size-xl"} id="btn-xl" value="XL" onClick={this.handleSizeSelect}>XL</button>
+                            <small className={this.state.errorMsgClass}>*Please select a size first</small>
                         </div>
 
 
@@ -309,7 +316,7 @@ class ItemDetails extends Component {
                                     variant="outlined" name="txt" required id="standard-required" label="Review" />
                             </div>
 
-                            <fieldset className="rating" onChange={this.handleInput} >
+                            <fieldset  className="rating" onChange={this.handleInput} >
 
                                 <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" className="radio-lable" title="Rocks!">5 stars</label>
                                 <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>

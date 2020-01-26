@@ -73,8 +73,8 @@ class Cart extends Component {
                             </div> :
                             <div className="cart-no-items container flex column justify-center">
                                 <p className="oops">OOPS!</p>
-                                <p className="cart-paragraph">We know that you want to checkout quickly but you forgot something vary important...</p>
                                 <p className="empty-line">YOUR SHOPPING CART IS EMPTY</p>
+                                <p className="cart-paragraph">We know that you want to checkout quickly but you forgot something very important...</p>
                                 <Link to={`/item`}> <button className="btn1">Go shopping</button> </Link>
                             </div>
                         }

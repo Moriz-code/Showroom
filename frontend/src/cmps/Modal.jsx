@@ -6,7 +6,7 @@ function MyApp(props) {
   const { enqueueSnackbar } = useSnackbar();
   const {msg } = props
 
-  msg.length>0 && handleClickVariant("success")
+  msg.length>0 && handleClickVariant("default")
 
   function handleClickVariant(variant) {
     // variant could be success, error, warning, info, or default

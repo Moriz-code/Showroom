@@ -19,7 +19,7 @@ import Footer from './cmps/Footer'
 const history = createBrowserHistory();
 
 function App() {
-  //this is my test
+  
   return <React.Fragment>
     <Router history={history}>
       
