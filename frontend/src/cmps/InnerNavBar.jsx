@@ -39,9 +39,9 @@ class InnerNavBar extends Component {
 
             <div className="inner-nav flex justify-space-between">
 
-                <Link to={`/`} ><p className="inner-logo">ShowRoom</p></Link>
+                <Link to={`/`} ><p className="inner-logo">ShowRoom.</p></Link>
 
-                <Search></Search>
+               <Search></Search>
 
                 <div className="nav-right-side flex align-center">
 
