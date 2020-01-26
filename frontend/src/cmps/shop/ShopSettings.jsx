@@ -48,7 +48,7 @@ class ShopSettings extends React.Component {
     return <React.Fragment>
       <div className="modal-content">
         <br></br>
-        <h2>Make your Shop unique</h2>
+        <h2>Make Your Shop Unique</h2>
 
         <div class="field">
           <input type="text" id="field-value" className="field-value" name="name" value={props.shop.info.name} alt="info" onChange={props.handleSettingChange} />
@@ -58,7 +58,7 @@ class ShopSettings extends React.Component {
 
         <div class="field">
           <input type="text" id="description" name="description" value={props.shop.info.description} alt="info" onChange={props.handleSettingChange} />
-          <label for="description">Description</label>
+          <label for="description">Slogan</label>
         </div>
 
 
