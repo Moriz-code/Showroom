@@ -8,8 +8,9 @@ import ItemsList from '../../cmps/items/ItemList';
 import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
-
+import InnerNavbar from '../../cmps/InnerNavBar'
 import Comments from '../../pages/seller/Comments';
+
 
 
 import Footer from '../../cmps/Footer';
