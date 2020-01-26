@@ -50,7 +50,10 @@
   width: auto;
   height: auto;
   margin: 0 15px;
+ 
 }
+
+
 
 .secondary-img {
   display: block;
@@ -162,6 +165,7 @@
 
 .average-rating {
   align-items: center;
+  margin-left: 14px;
 }
 
 .num-of-rates {
@@ -174,6 +178,7 @@
   border-bottom: 0.5px solid rgb(240, 240, 240);
   padding-bottom: 18px;
   margin-bottom: 10px;
+  margin-top: 15px;
 }
 
 .reviews {
@@ -279,7 +284,7 @@
 
 .item-sizes {
   margin-bottom: 15px;
-  &:not(first-child) {
+  &:not(:first-child) {
     margin-left: 15px;
   }
   &.size-xl {
@@ -307,6 +312,7 @@
   }
  &.selected{
   background-color: $clr1;
+  color: white;
 
  }
 }
@@ -349,6 +355,19 @@
   margin-left: 10px;
 }
 
+
+.show{
+
+  display: block;
+  margin-left: 10px;
+  color: red;
+  margin-top: 6px;
+}
+
+.hide{
+
+  display: none;
+}
 
 
 //////ribbon////

@@ -47,7 +47,7 @@ class Header extends Component {
         <img className="cover-photo" src={cover}/>
         <div className="header-text-search flex column justify-center align-center">
           <div className="headlines ">
-          <h1 className="showRoom-title text-flicker-in-glow">ShowRoom</h1>
+          <h1 className="showRoom-title text-flicker-in-glow">ShowRoom.</h1>
           <h3 className="marketplace-title text-flicker-in-glow">Marketplace</h3>
           </div>
           <Search></Search>
