@@ -284,7 +284,7 @@
 
 .item-sizes {
   margin-bottom: 15px;
-  &:not(first-child) {
+  &:not(:first-child) {
     margin-left: 15px;
   }
   &.size-xl {

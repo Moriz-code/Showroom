@@ -2,8 +2,10 @@
 
   // margin-bottom: 10px;
   background-color: $clr1;
-  // margin-bottom: 20px;
-  height: 90px;
+
+  margin-bottom: 20px;
+  height: 72px;
+
 
   // .down-border {
   //   position: relative;
@@ -12,14 +14,14 @@
   //   border-bottom: 1px solid $clr1;
   // }
   .inner-logo {
-    padding-top: 5px;
+    // padding-top: 5px;
     padding-left: 10px;
     font-family: Lobster;
     color: $clr4;
-    font-size: 60px;
+    font-size: 40px;
     line-height: 0px;
     position: relative;
-    bottom: 22px;
+    bottom: 8px;
   }
 
 
@@ -54,19 +56,23 @@
 .search {
   z-index: 3;
   position: relative;
-  top:30px;
+  top:25px;
   input {
     height: 90px;
+    width:400px;
+
   }
   button {
-    height: 30px;
-    bottom:55px;
+    height:20px;
+    bottom:45px;
+    left:140px;
+    font-size: 14px;
 
   }
 }
   .notification-badge {
     position: absolute;
-    top: 28px;
+    top: 20px;
     right:  18px;
     // right: -24px;
     padding: 2px 5px;
@@ -80,9 +86,9 @@
   .notification-seller-badge{
 
     position: absolute;
-    top: 31px;
+    top: 23px;
     
-    right: 101px;
+    right: 102px;
     padding: 2px 5px;
    
     color: black;

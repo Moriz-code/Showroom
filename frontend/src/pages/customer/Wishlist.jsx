@@ -29,11 +29,11 @@ class Wishlist extends Component {
 
         return (
 
-            <div className="wishlist">
+            <div className="wishlist flex column">
                 <InnerNavBar></InnerNavBar>
-                <div className=" container flex column">
 
 
+                <div className=" container flex grow">
                     {this.props.loggedInUser&& this.props.loggedInUser.wishlist.length>0 ?
                         <div>
                             <p className="wishlist-title flex justify-center">WISHLIST</p>
@@ -41,13 +41,13 @@ class Wishlist extends Component {
                         </div>
                         :
                         <div className="wishlist-txt">
-                            <p>It seems nothingin here😭</p>
+                            <p>It seems nothing in here😭</p>
                             <p>Make a wish!</p>
                             <Link to={`/item`}> <button className="btn1">GO SHOPPING</button></Link>
 
                         </div>}
-
                 </div>
+                
                 <Footer></Footer>
             </div>
         )
