@@ -6,7 +6,7 @@ import { placeOrder, clearCart, removeFromCart } from '../../actions/OrderAction
 import InnerNavBar from '../../cmps/InnerNavBar';
 import SocketService from '../../services/SocketService'
 import { Link } from 'react-router-dom'
-import Footer from'../../cmps/Footer'
+import Footer from '../../cmps/Footer'
 
 class Cart extends Component {
 
@@ -41,7 +41,7 @@ class Cart extends Component {
 
         await this.props.placeOrder(this.props.loggedInUser)
         await this.clearCart()
-        SocketService.emit('buy',this.state.items)
+        SocketService.emit('buy', this.state.items)
         this.props.clearCart()
         this.props.history.push("/")
     }
