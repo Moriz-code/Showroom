@@ -2,10 +2,13 @@ import React from 'react';
 // import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 
-export default function EditItem(props) {
-  console.log(props);
 
+export default function EditItem(props) {
+
+  
   const { item } = props
+  console.log('item-edit' , item);
+  
   return <React.Fragment>
 
 
@@ -27,8 +30,6 @@ export default function EditItem(props) {
           <input required="required" type="text" name="description" value={item.description} onChange={props.handleFormChange} />
           <label for="input" class="control-label">Description</label><i class="bar"></i>
         </div>
-
-
 
         <div className="price-size">
           <div class="form-group">
@@ -65,17 +66,8 @@ export default function EditItem(props) {
         </label>
 
             </div>
-
-
           </div>
 
-
-
-
-
-
-
-          {/* <button className="save-item" onClick={props.onSaveItem}>Save the ITEM</button> */}
         </div>
 
 
@@ -84,20 +76,19 @@ export default function EditItem(props) {
           <label for="input" class="control-label">Size and Fit</label><i class="bar"></i>
         </div>
 
-    
         <div class="form-group">
-          <input type="text" name="imgs" value={item.imgs[0]} onChange={props.handleFormChange} /><i class="bar"></i>
+          <input name="imgs" id="0" onChange={props.handleFormChange} type="file" /> 
+          <input name="imgs" id="1" onChange={props.handleFormChange} type="file" /> 
+          <input name="imgs" id="2" onChange={props.handleFormChange} type="file" /> 
+          {/* <input type="text" name="imgs" value={item.imgs[0]} onChange={props.handleFormChange} /><i class="bar"></i>
           <input type="text" name="imgs" value={item.imgs[1]} onChange={props.handleFormChange} /><i class="bar"></i>
-          <input type="text" name="imgs" value={item.imgs[2]} onChange={props.handleFormChange} /><i class="bar"></i>
-        <label for="input" class="control-label">Images Url</label>
-        
-        </div>
+          <input type="text" name="imgs" value={item.imgs[2]} onChange={props.handleFormChange} /><i class="bar"></i> */}
+          <label for="input" class="control-label">Images Url</label>
+
+        </div> 
 
         <div className="form-labels" onChange={props.handleFormChange}>
-          
-          
-       
-          {/* <label for="input" class="control-label">Labels</label> */}
+
           <div class="checkbox">
 
             <label>
@@ -126,58 +117,19 @@ export default function EditItem(props) {
       </label>
           </div>
 
-      
+
         </div>
 
-      <div className="form-group save-item"  onClick={props.onSaveItem}>
-    
-        <button className="save-item">Save Item</button>
+        <div className="form-group save-item" onClick={props.onSaveItem}>
+
+          <button className="save-item">Save Item</button>
         </div>
 
       </div>
-
-      {/* <input type="text" name="gender" value={item.gender} onChange={props.handleFormChange} /> */}
-
-      {/* array */}
-
-
-      {/* Summer <input type="checkbox" name="labels" value="summer" onChange={props.handleFormChange} />
-        dress  <input type="checkbox" name="labels" value="dress" onChange={props.handleFormChange} />
-        Fun <input type="checkbox" name="labels" value="Fun" onChange={props.handleFormChange} />
-        Winter  <input type="checkbox" name="labels" value="Winter" onChange={props.handleFormChange} />
-
   
-        <br></br> */}
+        <br></br> 
     </div>
 
   </React.Fragment>
 }
 
-
-
-// item: {
-//   _id: '',
-//   title: '',
-//   price: '',
-//   description: '',
-//   sizeFit: '',
-//   size: '',
-//   gender: '',
-//   itemOwner: {
-//       id: '',
-//       name: '',
-//       logoUrl: ''
-//   },
-//   labels: [],
-//   imgs: [],
-//   reviews: [
-//       {
-//           byUser: {
-//               name: '',
-//               id: ''
-//           },
-//           txt: '',
-//           reate: ''
-//       }
-//   ]
-// },
