@@ -6,7 +6,8 @@ export default {
     removeItemFromCart,
     add,
     clearCart,
-    getMyOrders
+    getMyOrders,
+    setOrdersAsRead
 };
 
 
@@ -27,7 +28,7 @@ async function removeItemFromCart(item) {
 }
 
 async function add(order) {
-    const savedOrder =await HttpService.post('order',order)
+    const savedOrder = await HttpService.post('order', order)
     return savedOrder
 }
 
@@ -36,7 +37,19 @@ async function clearCart() {
 }
 
 async function getMyOrders(shopId) {
+
+    const myOrders = await HttpService.get(`order/${shopId}`)
+    return myOrders
+}
+
+async function setOrdersAsRead(orders) {
+    console.log(orders);
     
-    const myOrders=await  HttpService.get(`order/${shopId}`)
-    return  myOrders
+    await orders.forEach(order => {
+        order.isRead = true
+        const savedOrder = HttpService.put(`order/${order._id}`, order)
+    })
+
+    return
+
 }

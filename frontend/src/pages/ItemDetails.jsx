@@ -43,6 +43,7 @@ class ItemDetails extends Component {
 
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         this.loadItems()
     }
 
@@ -256,7 +257,6 @@ class ItemDetails extends Component {
                                     ${Number.parseFloat(item.price).toFixed(2)}
                                     <div className="was-price">
                                         ${Number.parseFloat(Math.floor(item.price / 0.9)).toFixed(2)}</div>
-                                    {/* <div className="discount">-10%</div> */}
                                 </div>
                                 <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
                             </div>
@@ -284,7 +284,7 @@ class ItemDetails extends Component {
                         </div>
                         <div className="general-information">
                             <div className="buyer-protection flex">
-                                <div>35-Day Buyer Protection </div>
+                                <div className="buyer-protection-txt">35-Day Buyer Protection </div>
                             </div>
                             <div className="free-shipping flex">
                                 <div>Free Shipping - Get it at: <span className="delivery-date">{this.state.date}</span></div>
@@ -337,7 +337,7 @@ class ItemDetails extends Component {
                     <div>You may also like</div>
                 </section> */}
                 <section className="container recently-viewed">
-                    <h2>Recently viewed</h2>
+                    <h2 className="recently-title">Recently viewed</h2>
                     {(recentlyViewd.length > 0) ? <ItemList items={recentlyViewd}></ItemList> : ''
 
                     }

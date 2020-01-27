@@ -14,27 +14,32 @@ class Dashboard extends Component {
         this.setState({ orders })
     }
 
-    // goBack=()=>{
-    //   this.props.history.goBack()
-    // }
+    componentWillUnmount = () => {
+        OrderService.setOrdersAsRead(this.state.orders)
+ 
+    }
 
     renderOrders = () => {
+        const sortedOrders=this.state.orders.reverse()
+        console.log(sortedOrders);
+        
+        
         const data = this.state.orders.map(order => {
 
-            return (<div class="row">
-                <div class="cell" data-title="Product title">
+            return (<div className={order.isRead? "row" : "row newOrder"}>
+                <div className="cell" data-title="Product title">
                     {order.product.title}
                 </div>
-                <div class="cell" data-title="Price">
+                <div className="cell" data-title="Price">
                     ${order.product.price}
                 </div>
                 {/* <div class="cell" data-title="Age">
                     <img style={{ width: 100, height: 100 }} src={order.product.imgUrl} />
                 </div> */}
-                <div class="cell" data-title="Customer Name">
+                <div className="cell" data-title="Customer Name">
                     {order.byUser.name}
                 </div>
-                <div class="cell" data-title="Order Date">
+                <div className="cell" data-title="Order Date">
                     {order.boughtAt}
                 </div>
             </div>
@@ -52,26 +57,26 @@ class Dashboard extends Component {
         return (
             < React.Fragment>
             <InnerNavBar></InnerNavBar>
-                <div class="limiter">
-                    <div class="container-table100">
+                <div className="limiter">
+                    <div className="container-table100">
                 {/* <button className="btn1" onClick={this.goBack}>back</button> */}
-                        <div class="wrap-table100">
-                            <div class="table">
+                        <div className="wrap-table100">
+                            <div className="table">
 
-                                <div class="row header">
-                                    <div class="cell">
+                                <div className="row header">
+                                    <div className="cell">
                                         Title
 							</div>
-                                    <div class="cell">
+                                    <div className="cell">
                                         Price
 							</div>
                                     {/* <div class="cell">
                                     Item Image
 							</div> */}
-                                    <div class="cell">
+                                    <div className="cell">
                                         Customer Name
 							</div>
-                                    <div class="cell">
+                                    <div className="cell">
                                         Order date
 							</div>
                                 </div>

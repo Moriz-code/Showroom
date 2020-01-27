@@ -4,21 +4,25 @@ import { Link } from 'react-router-dom'
 import logo from '../styles/imgs/logo-red.png';
 import { NavLink } from 'react-router-dom'
 import Search from '../cmps/items/Search';
-
+import cover from '../styles/assets/imgs/coverPhoto.jpg'
+import bell from '../styles/assets/imgs/icons/notification.png'
 import wishlist from '../styles/assets/imgs/heart-white.png'
 import cart from '../styles/assets/imgs/shopping-cart-white.png'
-import cover from '../styles/assets/imgs/coverPhoto.jpg'
+import SocketService from '../services/SocketService'
+import OrderService from '../services/OrderService'
 
 
 class Header extends Component {
 
   state = {
     isTop: true,
+ 
   };
 
 
   
   componentDidMount() {
+  
     document.addEventListener('scroll', () => {
       const isTop = window.scrollY < 100;
       if (isTop !== this.state.isTop) {
@@ -26,6 +30,20 @@ class Header extends Component {
       }
     });
   }
+
+ 
+
+loadMyOrders = async () => {
+    
+    
+    const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
+    
+    console.log('MyOrders',orders);
+    
+    await this.setState({ newOrders: 1})
+
+}
+
 
 
   render() {
@@ -35,6 +53,7 @@ class Header extends Component {
 
           <div className="nav-text">
           <span><NavLink to='/item' className="nav-text" exact>Shop</NavLink></span>
+          
           <span><NavLink to='/' className="nav-text" exact>Become a seller</NavLink></span>
           </div>
           

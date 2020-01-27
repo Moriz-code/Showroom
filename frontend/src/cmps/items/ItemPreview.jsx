@@ -132,7 +132,7 @@ class ItemPreview extends Component {
             <h3 className="item-title">{this.props.item.title}</h3>
 
 
-            <div class="price-star">
+            <div className="price-star">
 
               <p className="item-price">${Number.parseFloat(this.props.item.price).toFixed(2)}</p>
               {this.props.item.reviews &&

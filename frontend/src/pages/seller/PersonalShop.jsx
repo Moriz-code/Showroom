@@ -9,7 +9,9 @@ import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
 import InnerNavbar from '../../cmps/InnerNavBar'
-import Comments from '../../pages/seller/Comments';
+
+// import Comments from '../../pages/seller/Comments';
+
 
 
 import Footer from '../../cmps/Footer';
@@ -19,7 +21,7 @@ import ItemService from '../../services/ItemService';
 
 // import SocketService from '../../services/SocketService';
 ////sockets try///
-import SocketService from '../../services/SocketService';
+// import SocketService from '../../services/SocketService';
 import { addToCart } from '../../actions/OrderActions';
 /// end of socket try////
 
@@ -106,7 +108,7 @@ class PersonalShop extends Component {
 
     checkIfOwner = () => {
         const user = (this.props.loggedInUser && this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id) ? this.setState({ isOwner: true }) : null
-
+        return user
     }
 
 
