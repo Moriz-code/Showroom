@@ -10,7 +10,6 @@ class Login extends Component {
             email: '',
             password: ''
         }
-
     }
 
 
@@ -25,9 +24,6 @@ class Login extends Component {
          await this.props.login(userCreds);
           this.setState({ loginCred: { email: '', password: '' } });
          ( sessionStorage.getItem('user'))? this.props.history.push('./item') : this.setState({msg:'Wrong email or password'})
-        
-          
-    
     }
 
     loginHandleChange = ev => {
@@ -45,7 +41,7 @@ class Login extends Component {
             <h2>{this.state.msg}</h2>
             <form onSubmit={this.doLogin}>
                 <input
-                    type="text"
+                    type="email"
                     name="email"
                     value={this.state.loginCred.email}
                     onChange={this.loginHandleChange}
