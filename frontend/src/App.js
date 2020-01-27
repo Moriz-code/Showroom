@@ -25,7 +25,7 @@ function App() {
       
       <Switch>
         <Route component={ShopApp} path="/" exact></Route>
-        <Route component={SignUp} path="/signUp" exact></Route>
+        <Route component={SignUp} path="/signup" exact></Route>
         <Route component={ShopItems} path="/item/:searchTerm?" exact></Route>
         <Route component={Login} path="/login" exact></Route>
         <Route component={Wishlist} path="/wishlist" exact></Route>

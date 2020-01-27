@@ -36,7 +36,7 @@ class ItemDetails extends Component {
         recentlyViewd: '',
         date: '',
         size: '',
-        errorMsgClass:'hide'
+        errorMsgClass: 'hide'
 
     }
 
@@ -58,9 +58,11 @@ class ItemDetails extends Component {
     }
 
     setWishListStatus = () => {
+
+        if (this.props.loggedInUser.wishlist === undefined) return
         const { wishlist } = this.props.loggedInUser
         const { item } = this.props;
-        // if (item===null) return
+
         const { _id } = item;
 
         const isFound = !!wishlist.find(_item => _item._id === _id);
@@ -99,24 +101,24 @@ class ItemDetails extends Component {
     }
 
     onAddToCart = async () => {
-        if (!this.state.size) this.setState({errorMsgClass:"show"})
-        else{
-        OrderService.addItemtoCart(this.props.item)
-        this.props.addToCart()
-        await this.setState({ modalMode: true, modalMsg: "Added To Cart" })
-        this.setState({ modalMode: false, modalMsg: "" })
-        this.setState({errorMsgClass:"hide"})
-    }
+        if (!this.state.size) this.setState({ errorMsgClass: "show" })
+        else {
+            OrderService.addItemtoCart(this.props.item)
+            this.props.addToCart()
+            await this.setState({ modalMode: true, modalMsg: "Added To Cart" })
+            this.setState({ modalMode: false, modalMsg: "" })
+            this.setState({ errorMsgClass: "hide" })
+        }
 
     }
 
     onBuyNow = async () => {
-       if (!this.state.size) this.setState({errorMsgClass:"show"}) 
+        if (!this.state.size) this.setState({ errorMsgClass: "show" })
         else {
-        await OrderService.addItemtoCart(this.props.item)
-        this.props.addToCart()
-        this.props.history.push('/cart')
-    }
+            await OrderService.addItemtoCart(this.props.item)
+            this.props.addToCart()
+            this.props.history.push('/cart')
+        }
     }
 
 
@@ -196,7 +198,7 @@ class ItemDetails extends Component {
         let selectedSize = ev.target.value
         if (selectedSize === this.state.size) this.setState({ size: '' })
         else this.setState({ size: selectedSize })
-        this.setState({errorMsgClass:"hide"})
+        this.setState({ errorMsgClass: "hide" })
     }
 
     setDeliveryDate = () => {
@@ -316,7 +318,7 @@ class ItemDetails extends Component {
                                     variant="outlined" name="txt" required id="standard-required" label="Review" />
                             </div>
 
-                            <fieldset  className="rating" onChange={this.handleInput} >
+                            <fieldset className="rating" onChange={this.handleInput} >
 
                                 <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" className="radio-lable" title="Rocks!">5 stars</label>
                                 <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
