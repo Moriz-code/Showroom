@@ -5,6 +5,7 @@ import StorageService from '../services/StorageService'
 
 export default {
     login,
+    signup,
     updateWishList,
     removeItemFromWishList,
     updateRecentlyViewd,
@@ -17,8 +18,18 @@ async function login(userCred) {
     return _handleLogin(user)
 }
 
+async function signup(userCred) {
+    console.log('check2-signup',userCred);
+
+    const user = await HttpService.post('auth/signup', userCred)
+    return  _handleLogin(user)
+   
+}
+
 
 function _handleLogin(user) {
+    console.log('login',user);
+    
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
 }
