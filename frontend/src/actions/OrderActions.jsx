@@ -10,7 +10,7 @@ export function placeOrder(loggedInUser) {
         
         try {
             
-            const addedOrder = orderService.add(orderToSave) 
+            const addedOrder =await orderService.add(orderToSave) 
             dispatch({
                 type: 'SAVE_ORDER',
                 orderToSave
@@ -21,6 +21,7 @@ export function placeOrder(loggedInUser) {
         }
     }
 }
+
 
 
 
@@ -41,7 +42,8 @@ function _createOrder(miniUser, order) {
                 name: item.itemOwner.name
             },
             byUser: { ...miniUser },
-            boughtAt: _getTime()
+            boughtAt: _getTime(),
+            isRead:false
         }
     })
     return orderToSave

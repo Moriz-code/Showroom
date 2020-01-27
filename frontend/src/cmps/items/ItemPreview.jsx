@@ -88,6 +88,8 @@ class ItemPreview extends Component {
   get getHeartIcon() {
     const { wishlist } = this.props.loggedInUser
 
+    if (this.props.loggedInUser === {}) return heart
+    if (wishlist=== undefined) return heart
     const itemIdx = wishlist.find(item =>
 
       this.props.item._id === item._id)
@@ -117,20 +119,20 @@ class ItemPreview extends Component {
 
           {/* <div className="card-desc"> */}
           {/* <img className="item-avatr" alt="img-item" src={avatar} /> */}
-          
+
           <div className="details">
 
-           
-              <div className=" flex align-center ">
-                <Avatar alt="" src={this.props.item.itemOwner.logoUrl} style={{ backgroundColor: "lightgray" }} />
-                <h4 className="brand-name"> {this.props.item.itemOwner.name}</h4>
-              </div>
-          
+
+            <div className=" flex align-center ">
+              <Avatar alt="" src={this.props.item.itemOwner.logoUrl} style={{ backgroundColor: "lightgray" }} />
+              <h4 className="brand-name"> {this.props.item.itemOwner.name}</h4>
+            </div>
+
 
             <h3 className="item-title">{this.props.item.title}</h3>
 
 
-            <div class="price-star">
+            <div className="price-star">
 
               <p className="item-price">${Number.parseFloat(this.props.item.price).toFixed(2)}</p>
               {this.props.item.reviews &&

@@ -8,18 +8,21 @@ import ItemsList from '../../cmps/items/ItemList';
 import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
+import InnerNavbar from '../../cmps/InnerNavBar'
 
-import Comments from '../../pages/seller/Comments';
-import InnerNavbar from '../../cmps/InnerNavBar';
+// import Comments from '../../pages/seller/Comments';
+
 
 import Footer from '../../cmps/Footer';
 
 import Utils from '../../services/UtilService';
 import ItemService from '../../services/ItemService';
+import CloudinaryService from '../../services/CloudinaryService';
+import InnerNavbar from '../../cmps/InnerNavBar';
 
 // import SocketService from '../../services/SocketService';
 ////sockets try///
-import SocketService from '../../services/SocketService';
+// import SocketService from '../../services/SocketService';
 import { addToCart } from '../../actions/OrderActions';
 /// end of socket try////
 
@@ -33,6 +36,7 @@ class PersonalShop extends Component {
         isOnEditSettigs: false,
         isOnChat: false,
         isOwner: false,
+        isLoadingImg: false,
 
         //create empty item from the service
 
@@ -106,7 +110,7 @@ class PersonalShop extends Component {
 
     checkIfOwner = () => {
         const user = (this.props.loggedInUser && this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id) ? this.setState({ isOwner: true }) : null
-
+        return user
     }
 
 
@@ -153,33 +157,53 @@ class PersonalShop extends Component {
         }))
     }
 
-    handleFormChange = (ev) => {
-        let { name, value } = ev.target;
+    handleFormChange = async (ev) => {
+        console.log('handleFormChange -id ', ev.target.id);
+        let { name, value, id } = ev.target;
 
-        if (name === 'labels' || name === 'imgs') {
-            var list = [...this.state.item[name]];
-            var i = list.indexOf(value)
+        switch (name) {
+            case 'labels':
+                var list = [...this.state.item[name]];
+                var i = list.indexOf(value)
 
-            if (i >= 0) {
-                list.splice(i, 1)
-                value = list
-            }
-            else {
-                value = list.concat(value);
-            }
+                if (i >= 0) {
+                    list.splice(i, 1)
+                    value = list
+                }
+                else {
+                    value = list.concat(value);
+                }
+                break;
+
+            case 'price':
+                value = parseInt(value)
+                break;
+
+            case 'imgs':
+                const id = +ev.target.id
+
+                this.setState({isLoadingImg : true});
+                var list = [...this.state.item[name]];
+                const res = await CloudinaryService.uploadImg(ev);
+                let resUrl = res.url;
+                list[id] = resUrl;
+                value = list;
+                this.setState({isLoadingImg : false})
+
+                break;
+
+
         }
+        console.log(this.state.item);
 
-        if (name === 'price') {
-            value = parseInt(value)
-        }
 
         this.setState(prevState => ({
+
             ...prevState,
             item: {
-                ...prevState.item, [name]: value
+                ...prevState.item, [name]:  value
             }
         }))
-
 
     }
 
@@ -260,6 +284,10 @@ class PersonalShop extends Component {
                             <HeaderShop onEditSettings={this.onEditSettings} isOnEditSettigs={this.state.isOnEditSettigs} selectedShop={shop}></HeaderShop>
                             {/* <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button> */}
 
+                            <p className={this.state.isLoadingImg ?  '' : 'display-none'}>
+                                Loading...
+                            </p>
+
                             <div className={this.state.isOnEditSettigs ? 'modal-settings' : 'display-none'}>
                                 <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
                             </div>
@@ -276,8 +304,8 @@ class PersonalShop extends Component {
                                 </div>
 
 
+                                <button className= { this.state.isOnEditMode ? 'tranform45 add-item-btn' : 'add-item-btn'} onClick={this.onAdd}><img src={addBtn} alt="icon-add" /></button>
 
-                                <button className="add-item-btn" onClick={this.onAdd}><img src={addBtn} alt="icon-add" /></button>
                                 <div className="cards-shop-container">
                                     {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
                                     {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
