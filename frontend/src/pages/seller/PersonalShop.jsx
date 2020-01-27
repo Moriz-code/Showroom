@@ -18,7 +18,7 @@ import Footer from '../../cmps/Footer';
 import Utils from '../../services/UtilService';
 import ItemService from '../../services/ItemService';
 import CloudinaryService from '../../services/CloudinaryService';
-import InnerNavbar from '../../cmps/InnerNavBar';
+
 
 // import SocketService from '../../services/SocketService';
 ////sockets try///
