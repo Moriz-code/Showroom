@@ -56,6 +56,19 @@
     background-color: $clr1;
     transition: background-color 0.4s ease-out;
   }
+
+
+  .bell-icon{
+    width: 30px;
+    height: 30px;
+
+  }
+  .notification-seller-badge{
+    right: 115px;
+    position: absolute;
+    top: 14px;
+    color: black;
+  }
 }
 
 
