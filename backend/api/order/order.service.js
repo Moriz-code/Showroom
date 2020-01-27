@@ -5,11 +5,11 @@ const ObjectId = require('mongodb').ObjectId
 
 module.exports = {
     query,
+    update,
+    add
     // getById,
     // getByEmail,
     // remove,
-    // update,
-    add
 }
 
 async function add(order) {
@@ -37,6 +37,22 @@ async function query(shopId) {
         throw err;
     }
 }
+
+
+async function update(order) {
+    const collection = await dbService.getCollection('order')
+    order._id = ObjectId(order._id);
+
+    try {
+        await collection.replaceOne({"_id":order._id}, {$set : order})
+        return order
+    } catch (err) {
+        console.log(`ERROR: cannot update order ${order._id}`)
+        throw err;
+    }
+}
+
+
 
 // async function getById(orderId) {
 //     console.log('orderid',orderId)
@@ -78,18 +94,6 @@ async function query(shopId) {
 //     }
 // }
 
-// async function update(order) {
-//     const collection = await dbService.getCollection('order')
-//     order._id = ObjectId(order._id);
-
-//     try {
-//         await collection.replaceOne({"_id":order._id}, {$set : order})
-//         return order
-//     } catch (err) {
-//         console.log(`ERROR: cannot update order ${order._id}`)
-//         throw err;
-//     }
-// }
 
 
 // function _buildCriteria(filterBy) {

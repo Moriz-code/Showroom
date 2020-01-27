@@ -10,7 +10,6 @@ export default {
 };
 
 function query(filterBy = null) {
-    console.log('filterBy2',filterBy);
     
     if (filterBy === null) return HttpService.get('item');
     else {
@@ -32,7 +31,6 @@ function query(filterBy = null) {
                 }
             }
         }
-        console.log("`item?${str}`",`item?${str}`);
         
         return HttpService.get(`item?${str}`);
     }
@@ -60,7 +58,7 @@ async function get(itemId) {
 
 async function put(editedItem) {  
     const itemToEdit = await HttpService.put(`item/${editedItem._id}` , editedItem);
-    // console.log(itemToEdit,'updated');
+   
      return itemToEdit
 
 }

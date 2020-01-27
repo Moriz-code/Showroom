@@ -25,14 +25,22 @@ async function addOrder(req, res) {
 
 
 async function getOrders(req,res) {
-    console.log(req.params.id,'asdadvhkdsvk');
     
     const orders = await orderService.query(req.params.id)
     res.send(orders)
 
 }
 
+
+
+async function updateOrder(req,res) {
+    let order = req.body;
+    await orderService.update(order)
+    res.send(order)
+}
+
 module.exports = {
     addOrder,
-    getOrders
+    getOrders,
+    updateOrder
 }
