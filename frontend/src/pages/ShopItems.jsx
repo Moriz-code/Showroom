@@ -70,7 +70,7 @@ class ShopItems extends Component {
         <div className="flex grow">
           {items.length !== 0 ? <ItemsList items={items}>
           </ItemsList> :
-            <div class="noitems flex grow">
+            <div className="noitems flex grow">
               <img src={emptyCart}></img>
               <div className="noitems-txt">
                 <p className="oops">OOPS!</p>

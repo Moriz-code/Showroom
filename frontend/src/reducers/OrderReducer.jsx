@@ -6,7 +6,6 @@ ordersSubmitted:0
 
 export default function orderReducer(state = INITIAL_STATE, action) {
 
-    console.log('here');
     
     switch (action.type) {
         

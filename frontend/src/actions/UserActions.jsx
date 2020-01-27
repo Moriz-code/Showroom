@@ -12,7 +12,16 @@ export function login(userCreds) {
   }
 }
 
+export function signup(userCreds) {
+  return async dispatch => {
+    const user = await UserService.signup(userCreds);
+    dispatch(setUser(user));
+  };
+}
+
 export function setUser(user) {
+  console.log('user2222',user);
+
   return {
     type: 'SET_USER',
     user

@@ -10,14 +10,17 @@ import { SetloggedInUser } from '../actions/UserActions'
 
 class ShopApp extends Component {
 
+   
+
     componentDidMount() {
+   
         this.props.loadItems()
     }
 
 
+
     setUser=(ev)=>{
 
-        console.log(ev.target.name,ev.target.value);
         this.props.SetloggedInUser(ev.target.value)
 
     }
@@ -27,8 +30,7 @@ class ShopApp extends Component {
         let { items } = this.props;
         var itemsHome = items.splice(0, 4)
         return <React.Fragment>
-            <Header></Header>
-
+            <Header ></Header>
 
             <div className=" home-categories">
                 <div className="category-b">
@@ -63,6 +65,7 @@ class ShopApp extends Component {
 const mapStateToProps = state => {
     return {
         items: state.item.items,
+        loggedInUser: state.user.loggedInUser
     };
 };
 

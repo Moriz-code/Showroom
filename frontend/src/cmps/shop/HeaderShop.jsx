@@ -8,7 +8,7 @@ import settingClose from '../../styles/assets/imgs/right-arrow.png';
 import settingOpen from '../../styles/assets/imgs/left-arrow.png'
 
 export default function ShopSettings(props) {
-    console.log('shop settings ' , props);
+
     
     return <React.Fragment>
         <div className="shop-header">
