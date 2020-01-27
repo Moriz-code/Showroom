@@ -285,9 +285,10 @@ img{
     width:120px;
     // margin-top:-27px;
     
-
+    
     img{
-
+      
+      z-index:4;
       position: fixed;
       width: 55px;
       bottom: 20px;
@@ -395,6 +396,10 @@ img{
     .item-card{
       background-color: white;
    
+    }
+
+    .tranform45{
+      transform: rotate(45deg);
     }
 
   }

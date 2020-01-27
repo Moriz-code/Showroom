@@ -55,11 +55,12 @@ export function setCurrentItem(itemId) {
 
 
 export function deleteItem(itemId) {
+    
     return async dispatch => {
         try {
             const item = await ItemService.remove(itemId);
-            await dispatch({ type: 'DELETE_ITEM', item })
-
+            await dispatch({ type: 'DELETE_ITEM', itemId})
+            
         } catch (err) {
             console.log('ItemsActions: err in loadReviews', err);
         }
