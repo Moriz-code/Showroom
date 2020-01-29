@@ -139,8 +139,10 @@ class PersonalShop extends Component {
         }))
     }
 
+    
     handleSettingChange = (ev) => {
         let { name, value, alt } = ev.target;
+
         if (name === 'videoUrl') {
             value = Utils.getEmbdedUrl(value);
         }

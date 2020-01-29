@@ -14,6 +14,7 @@ class Filter extends Component {
     isToggleSize: '',
     isToggleGender: '',
     isToggleShop: '',
+    isTogglePrice: 'hide',
     priceValue: 0
   }
 
@@ -44,6 +45,12 @@ class Filter extends Component {
       return this.state.isToggleShop = ''
     })
   }
+  onToggleActivePrice = () => {
+    this.setState((prevState) => {
+      if (prevState.isTogglePrice === 'show') return this.state.isTogglePrice = 'hide'
+      return this.state.isTogglePrice = 'show'
+    })
+  }
 
 
 
@@ -63,9 +70,9 @@ class Filter extends Component {
     return <React.Fragment>
       <div className="filters flex justify-center" style={{}}>
         {/* sizes */}
-        <div className={`checkbox-dropdown ${this.state.isToggleSize}`} onClick={this.onToggleActiveSize} >
-          Size
-  <ul className="checkbox-dropdown-list" >
+        <div className={`checkbox-dropdown ${this.state.isToggleSize} flex align-center justify-center`} onClick={this.onToggleActiveSize} >
+          <div classname="">Size</div>
+          <ul className="checkbox-dropdown-list" >
             <li>
               <label>
                 <input type="checkbox" value="s" name="size" onChange={this.onSelectFilter} />S</label>
@@ -83,7 +90,7 @@ class Filter extends Component {
 
 
         {/* Gender */}
-        <div className={`checkbox-dropdown ${this.state.isToggleGender}`} onClick={this.onToggleActiveGender}>
+        <div className={`checkbox-dropdown ${this.state.isToggleGender} flex align-center justify-center`} onClick={this.onToggleActiveGender}>
           Gender
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -102,7 +109,7 @@ class Filter extends Component {
         </div>
 
         {/* Shops */}
-        <div className={`checkbox-dropdown ${this.state.isToggleShop}`} onClick={this.onToggleActiveShop}>
+        <div className={`checkbox-dropdown ${this.state.isToggleShop} flex align-center justify-center`} onClick={this.onToggleActiveShop}>
           Shops
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -118,9 +125,20 @@ class Filter extends Component {
 
 
         {/* Price */}
-        <div className="flex">
-          <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
-          <p className="price-filter">{this.state.priceValue}$</p>
+        <div className={`checkbox-dropdown flex align-center justify-center`} onClick={this.onToggleActivePrice}>
+          Price
+  {/* <ul className="checkbox-dropdown-list" >
+            <li>
+              <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
+            </li>
+          </ul> */}
+        </div>
+
+        <div className={`flex align-center justify-center ${this.state.isTogglePrice}`}>
+          <div className="flex scale-in-center ">
+            <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
+            <p className="price-filter">${this.state.priceValue}</p>
+          </div>
         </div>
 
 

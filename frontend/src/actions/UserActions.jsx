@@ -19,9 +19,14 @@ export function signup(userCreds) {
   };
 }
 
-export function setUser(user) {
-  console.log('user2222',user);
+export function logout() {
+  return async dispatch => {
+    await UserService.logout();
+    dispatch(setUser(null));
+  };
+}
 
+export function setUser(user) {
   return {
     type: 'SET_USER',
     user

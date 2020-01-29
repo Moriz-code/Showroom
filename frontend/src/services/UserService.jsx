@@ -6,6 +6,7 @@ import StorageService from '../services/StorageService'
 export default {
     login,
     signup,
+    logout,
     updateWishList,
     removeItemFromWishList,
     updateRecentlyViewd,
@@ -32,6 +33,11 @@ function _handleLogin(user) {
     
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
+}
+
+async function logout() {
+    await HttpService.post('auth/logout');
+    sessionStorage.clear();
 }
 
 

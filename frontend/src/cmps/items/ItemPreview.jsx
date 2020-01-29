@@ -123,7 +123,7 @@ class ItemPreview extends Component {
           <div className="details">
 
 
-            <div className=" flex align-center ">
+            <div className="brand flex align-center ">
               <Avatar alt="" src={this.props.item.itemOwner.logoUrl} style={{ backgroundColor: "lightgray" }} />
               <h4 className="brand-name"> {this.props.item.itemOwner.name}</h4>
             </div>
