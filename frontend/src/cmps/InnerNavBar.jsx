@@ -17,7 +17,15 @@ class InnerNavBar extends Component {
     }
 
     componentDidMount = () => {
+        const listenToOrders=(this.props.loggedInUser&& this.props.loggedInUser.shopId!=='')?
+        this.listenToOrders():null
+    }
 
+    componentWillUnmount=()=>{
+        SocketService.terminate()
+    }
+
+    listenToOrders=()=>{
         SocketService.setup()
         SocketService.on('order-complete', this.loadMyOrders)
     }
@@ -26,10 +34,10 @@ class InnerNavBar extends Component {
         
         
         const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
+        const newOrders=orders.find(order=>!order.isRead)
+        console.log('newOrders',newOrders);
         
-        console.log('MyOrders',orders);
-        
-        await this.setState({ newOrders: 1})
+       if (newOrders) await this.setState({ newOrders: 1})
 
     }
 
@@ -51,7 +59,7 @@ class InnerNavBar extends Component {
                 <div className="nav-right-side flex align-center">
 
                     <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
-                    {isOwner ?
+                    {this.props.loggedInUser&&this.props.loggedInUser.shopId!=="" ?
                         <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
                             <span className="notification-seller-badge">{this.state.newOrders}</span>
                         </NavLink></span>

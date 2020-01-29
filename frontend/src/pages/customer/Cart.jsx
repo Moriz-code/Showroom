@@ -43,7 +43,7 @@ class Cart extends Component {
         await this.clearCart()
         SocketService.emit('buy', this.state.items)
         this.props.clearCart()
-        this.props.history.push("/")
+        // this.props.history.push("/")
     }
 
     clearCart = async () => {
@@ -53,12 +53,12 @@ class Cart extends Component {
         return (<div className="cart ">
             <InnerNavBar></InnerNavBar>
             <div className="container">
+            <p className="cart-title">SHOPPING CART</p>
                 <div className="cart-body flex justify-space-between">
-                    <div>
+              
                         {this.state.items && this.state.items.length > 0 ?
-                            <div>
-                                <p className="cart-title">SHOPPING CART</p>
-
+                            <div className="container">
+                          
                                 <div className="cart-list flex justify-center align-center">
                                     <ItemsList deleteItem={this.deleteItem} listMode="cartMode" items={this.state.items}></ItemsList>
                                 </div>
@@ -78,7 +78,7 @@ class Cart extends Component {
                                 <Link to={`/item`}> <button className="btn1">Go shopping</button> </Link>
                             </div>
                         }
-                    </div>
+                 
 
                 </div>
             </div>
