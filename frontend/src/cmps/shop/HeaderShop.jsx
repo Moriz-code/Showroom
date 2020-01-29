@@ -4,16 +4,16 @@ import InstgaramIcon from '../../styles/assets/logo/insta.png';
 import FacebookIcon from '../../styles/assets/logo/facebook.png';
 
 
-import settingClose from '../../styles/assets/imgs/right-arrow.png';
-import settingOpen from '../../styles/assets/imgs/left-arrow.png'
+import settingOpen from '../../styles/assets/imgs/icons/wizard-open.png';
+import settingClose from '../../styles/assets/imgs/icons/wizard-close.png'
 
 export default function ShopSettings(props) {
 
-    
+
     return <React.Fragment>
         <div className="shop-header">
-            <button className='shop-edit-btn'>
-                <img onClick={props.onEditSettings} src={props.isOnEditSettigs ?  settingOpen : settingClose} />
+            <button onClick={props.onEditSettings} className='shop-edit-btn'>
+                <img src={props.isOnEditSettigs ? settingOpen : settingClose} />
             </button>
             <div className="coverImg" style={{ backgroundImage: 'url(' + props.selectedShop.style.coverImgUrl + ')' }}>
                 <div className="shop-info">
