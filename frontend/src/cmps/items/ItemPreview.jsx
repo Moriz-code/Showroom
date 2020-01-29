@@ -15,7 +15,7 @@ import UserService from '../../services/UserService';
 class ItemPreview extends Component {
   state = {
     heart: heart,
-     hover: false
+    hover: false
   }
 
 
@@ -93,24 +93,10 @@ class ItemPreview extends Component {
 
 
   onAddToWishList = async () => {
-
-    const { wishlist } = this.props.loggedInUser
-    const itemIdx = wishlist.find(item =>
-      this.props.item._id === item._id)
-    if (itemIdx === undefined) {
-      await this.props.addToWishList(this.props.item, this.props.loggedInUser)
-    }
-    else await this.props.removeFromWishList(this.props.item._id, this.props.loggedInUser)
-    // await this.setState({modalMode: true, modalMsg: "Added To Wishlist" })
-    // this.setState({modalMode: false, modalMsg: "" })
-
-
-
     let item = await UserService.toggleWishList(this.props.item)
     let itemIcon = (!item) ? heart : heartfilled
     this.setState({ heart: itemIcon })
-
-    let removedItem =await (this.props.listMode === 'wishListMode') ? this.props.deleteItem(this.props.item._id) : null
+    let removedItem = await (this.props.listMode === 'wishListMode') ? this.props.deleteItem(this.props.item._id) : null
   }
 
   render() {
