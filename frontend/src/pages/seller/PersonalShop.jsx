@@ -140,7 +140,9 @@ class PersonalShop extends Component {
         }))
     }
 
+
     handleSettingChange = async (ev) => {
+
         let { name, value, alt } = ev.target;
 
         if (name === 'videoUrl') {

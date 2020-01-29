@@ -10,9 +10,10 @@ import { SetloggedInUser } from '../actions/UserActions'
 
 class ShopApp extends Component {
 
-   
+
 
     componentDidMount() {
+
       
         this.props.loadItems()
     }
@@ -24,7 +25,7 @@ class ShopApp extends Component {
 
 
 
-    setUser=(ev)=>{
+    setUser = (ev) => {
 
         this.props.SetloggedInUser(ev.target.value)
 
@@ -38,19 +39,18 @@ class ShopApp extends Component {
             <Header ></Header>
 
             <div className=" home-categories">
-                <div className="category-b">
-                    <Link to={`/item/clearance`}> <span className="home-page-text">CLEARANCE</span> </Link>
-                </div>
-                <div className="category-c">
-                    <Link to={`/item/women`}> <span className="home-page-text">WOMEN</span></Link>
-                </div>
 
-                <div className="category-d">
-                    <Link to={`/item/men`}>  <span className="home-page-text">MEN</span></Link>
-                </div>
-                <div className="category-e">
-                    <Link to={`/item/petit`}> <span className="home-page-text">PETIT</span></Link>
-                </div>
+                <Link to={`/item/clearance`} className="category-b">
+                    <span className="home-page-text">CLEARANCE</span> </Link>
+                    
+                <Link to={`/item/women`} className="category-c">
+                    <span className="home-page-text">WOMEN</span></Link>
+
+                <Link to={`/item/men`} className="category-d">
+                    <span className="home-page-text">MEN</span></Link>
+
+                <Link to={`/item/petit`} className="category-e">
+                    <span className="home-page-text">PETIT</span></Link>
             </div>
             <span className="home-page-text">HOT PRODUCTS</span>
 

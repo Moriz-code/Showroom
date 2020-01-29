@@ -34,17 +34,17 @@ async function signup(req, res) {
     }
 }
 
-// async function logout(req, res){
-//     try {
-//         req.session.destroy()
-//         res.send({ message: 'logged out successfully' })
-//     } catch (err) {
-//         res.status(500).send({ error: err })
-//     }
-// }
+async function logout(req, res){
+    try {
+        req.session.destroy()
+        res.send({ message: 'logged out successfully' })
+    } catch (err) {
+        res.status(500).send({ error: err })
+    }
+}
 
 module.exports = {
     login,
-    signup
-    // logout
+    signup,
+    logout
 }

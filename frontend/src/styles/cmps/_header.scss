@@ -9,6 +9,7 @@
   .showRoom-title {
     font-family: Lobster;
     font-size: 120px;
+    color: $clr1;
   }
 
   .marketplace-title {
@@ -17,6 +18,7 @@
     position: relative;
     bottom: 80px;
     left: 160px;
+    color: $clr1;
   }
 
   .menu-icons {
@@ -32,7 +34,6 @@
     height: 80vh;
     // filter: brightness(40%);
   }
-
 
   .nav-text {
     > * {
@@ -51,26 +52,23 @@
     padding: 10px;
     width: 100%;
   }
- 
+
   .up {
     background-color: $clr1;
     transition: background-color 0.4s ease-out;
   }
 
-
-  .bell-icon{
+  .bell-icon {
     width: 30px;
     height: 30px;
-
   }
-  .notification-seller-badge{
+  .notification-seller-badge {
     right: 115px;
     position: absolute;
     top: 14px;
     color: black;
   }
 }
-
 
 .header-text-search {
   position: absolute;
@@ -84,8 +82,13 @@
   input {
     width: 600px;
     height: 50px;
+    padding-left: 10px;
     background-color: $clr4;
     border: 0px;
+  }
+  input::placeholder {
+    font-size: rem(18px);
+    font-style: italic;
   }
   button {
     font-size: rem(18px);
@@ -100,7 +103,6 @@
     color: $clr4;
   }
 }
-
 
 .text-flicker-in-glow {
   animation: text-flicker-in-glow 4s linear both;
