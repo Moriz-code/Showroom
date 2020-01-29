@@ -19,7 +19,7 @@ import Footer from '../../cmps/Footer';
 import Utils from '../../services/UtilService';
 import ItemService from '../../services/ItemService';
 import CloudinaryService from '../../services/CloudinaryService';
-import InnerNavbar from '../../cmps/InnerNavBar';
+
 
 // import SocketService from '../../services/SocketService';
 ////sockets try///
@@ -140,11 +140,20 @@ class PersonalShop extends Component {
         }))
     }
 
-    handleSettingChange = (ev) => {
+    handleSettingChange = async (ev) => {
         let { name, value, alt } = ev.target;
+
         if (name === 'videoUrl') {
             value = Utils.getEmbdedUrl(value);
         }
+
+        if (name === 'coverImgUrl') {
+            this.setState({ isLoadingImg: true });
+            const res = await CloudinaryService.uploadImg(ev);
+            value = res.url;
+            this.setState({ isLoadingImg: false })
+        }
+
 
         this.setState(prevState => ({
             ...prevState,
@@ -183,13 +192,13 @@ class PersonalShop extends Component {
             case 'imgs':
                 const id = +ev.target.id
 
-                this.setState({isLoadingImg : true});
+                this.setState({ isLoadingImg: true });
                 var list = [...this.state.item[name]];
                 const res = await CloudinaryService.uploadImg(ev);
                 let resUrl = res.url;
                 list[id] = resUrl;
                 value = list;
-                this.setState({isLoadingImg : false})
+                this.setState({ isLoadingImg: false })
 
                 break;
 
@@ -202,7 +211,7 @@ class PersonalShop extends Component {
 
             ...prevState,
             item: {
-                ...prevState.item, [name]:  value
+                ...prevState.item, [name]: value
             }
         }))
 
@@ -223,7 +232,6 @@ class PersonalShop extends Component {
     }
 
     onEditMode = () => {
-
         this.setState(state => ({
             isOnEditMode: !state.isOnEditMode,
         }))
@@ -245,9 +253,9 @@ class PersonalShop extends Component {
     onSaveItem = async (ev) => {
         ev.preventDefault();
         await this.props.saveItem(this.state.item);
-        this.props.loadItems();
         this.clearItemState();
-
+        this.props.loadItems();
+        this.onEditMode()
     }
 
 
@@ -280,43 +288,50 @@ class PersonalShop extends Component {
             <React.Fragment>
                 <InnerNavbar isOwner={this.state.isOwner}></InnerNavbar>
                 {this.state.shop ?
-                    <div className='shop-page'>
+                    <div className='shop-page' style={{ backgroundColor: shop.style.bgColor }}>
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
                             <HeaderShop onEditSettings={this.onEditSettings} isOnEditSettigs={this.state.isOnEditSettigs} selectedShop={shop}></HeaderShop>
                             {/* <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button> */}
 
-                            <p className={this.state.isLoadingImg ?  '' : 'display-none'}>
+                            <p className={this.state.isLoadingImg ? '' : 'display-none'}>
                                 Loading...
                             </p>
 
-                            <div className={this.state.isOnEditSettigs ? 'modal-settings' : 'display-none'}>
-                                <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
+                            {this.state.isOnEditSettigs ?
+                                <div className='modal-settings'>
+                                    <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
+                                </div> : ''}
+
+
+                            {this.state.item ?
+                                <div className="shop-main">
+                                    {this.state.isOnEditMode ?
+                                        <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem> : ''}
+                                </div>
+                                : ''}
+
+
+                            <button className="chat-icon" onClick={this.onChat}> <img src={chat} alt="icon" /></button>
+                            <div className={this.state.isOnChat ? 'modal-chat' : 'display-none'}>
+                                {/* <Comments addComment={this.onAddComment} comments={shop.comments}></Comments> */}
                             </div>
 
-                            <div className="shop-main" style={{ backgroundColor: shop.style.bgColor }}>
-                                <div className={this.state.isOnEditMode ? '' : 'display-none'}>
-                                    {this.state.item ?
-                                        <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem> : null}
-                                </div>
 
-                                <button className="chat-icon" onClick={this.onChat}> <img src={chat} alt="icon" /></button>
-                                <div className={this.state.isOnChat ? 'modal-chat' : 'display-none'}>
-                                    {/* <Comments addComment={this.onAddComment} comments={shop.comments}></Comments> */}
-                                </div>
+                            <button className='add-item-btn' onClick={this.onAdd}>
+                                <img src={addBtn} className={this.state.isOnEditMode ? 'tranform45' : ''} alt="icon-add" />
+                            </button>
 
-
-                                <button className= { this.state.isOnEditMode ? 'tranform45 add-item-btn' : 'add-item-btn'} onClick={this.onAdd}><img src={addBtn} alt="icon-add" /></button>
-
-                                <div className="cards-shop-container">
-                                    {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
-                                    {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
-                                </div>
-                                {/* socket */}
-
+                            <div className="cards-shop-container">
+                                {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
+                                {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
                             </div>
+                            {/* socket */}
+
                         </div>
                     </div>
-                    : ''}
+
+                    : ''
+                }
                 <Footer></Footer>
             </React.Fragment >)
     }
@@ -346,4 +361,4 @@ export default connect(
 
 
 
-// listMode={this.props.shop.selectedShop.owner.id===this.props.loggedInUser._id ?"adminMode":"customerMode"}
+// listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"}

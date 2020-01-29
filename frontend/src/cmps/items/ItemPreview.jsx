@@ -13,6 +13,11 @@ import deleteIcon from '../../styles/assets/imgs/trash.png';
 
 class ItemPreview extends Component {
 
+  state = {
+    hover: false
+  }
+
+
 
   generateBtns = () => {
     switch (this.props.listMode) {
@@ -29,12 +34,13 @@ class ItemPreview extends Component {
         )
 
       case "adminMode":
-        return (
-          <div className="item-edit-panel">
-            <button onClick={() => this.handleDelete(this.props.item._id)}><img src={deleteIcon} /></button>
-            <button onClick={() => this.handleEdit(this.props.item)}><img src={editIcon} /></button>
-          </div>
-        )
+        return (<div className={this.state.hover ? "item-edit-panel" : "display-none"} >
+          <button onClick={() => this.handleDelete(this.props.item._id)}><img src={deleteIcon} /></button>
+          <button onClick={() => this.handleEdit(this.props.item)}><img src={editIcon} /></button>
+        </ div>)
+
+
+
       case "customerMode":
         return (
           <div>
@@ -45,6 +51,11 @@ class ItemPreview extends Component {
         break;
     }
   }
+
+  toggleHover = () => {
+    this.setState({ hover: !this.state.hover })
+  }
+
 
   handleDelete = (itemId) => {
     this.props.deleteItem(itemId)
@@ -80,8 +91,8 @@ class ItemPreview extends Component {
       await this.props.addToWishList(this.props.item, this.props.loggedInUser)
     }
     else await this.props.removeFromWishList(this.props.item._id, this.props.loggedInUser)
-    // await this.setState({ modalMode: true, modalMsg: "Added To Wishlist" })
-    // this.setState({ modalMode: false, modalMsg: "" })
+    // await this.setState({modalMode: true, modalMsg: "Added To Wishlist" })
+    // this.setState({modalMode: false, modalMsg: "" })
 
 
   }
@@ -89,7 +100,7 @@ class ItemPreview extends Component {
     const { wishlist } = this.props.loggedInUser
 
     if (this.props.loggedInUser === {}) return heart
-    if (wishlist=== undefined) return heart
+    if (wishlist === undefined) return heart
     const itemIdx = wishlist.find(item =>
 
       this.props.item._id === item._id)
@@ -107,7 +118,7 @@ class ItemPreview extends Component {
   render() {
 
     return (<React.Fragment>
-      <div className="item-card">
+      <div className="item-card" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
 
         {this.props.listMode !== 'adminMode' ?
           <img onClick={this.onAddToWishList} className="heart-icon" alt="heart" src={this.getHeartIcon} /> : null}
