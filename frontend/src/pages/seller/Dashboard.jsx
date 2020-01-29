@@ -10,7 +10,11 @@ class Dashboard extends Component {
     }
 
     componentDidMount = async () => {
+        window.scrollTo(0, 0)
+        if(this.props.loggedInUser===null||this.props.loggedInUser.shopId==='') this.props.history.push('/')
         const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
+        console.log(orders)
+        
         this.setState({ orders })
     }
 
@@ -26,18 +30,15 @@ class Dashboard extends Component {
         
         const data = this.state.orders.map(order => {
 
-            return (<div className={order.isRead? "row" : "row newOrder"}>
+            return (<div  className={order.isRead? "row" : "row newOrder"}>
+                <div className="cell" data-title="Customer Name">
+                    {order.byUser.name}
+                </div>
                 <div className="cell" data-title="Product title">
                     {order.product.title}
                 </div>
                 <div className="cell" data-title="Price">
                     ${order.product.price}
-                </div>
-                {/* <div class="cell" data-title="Age">
-                    <img style={{ width: 100, height: 100 }} src={order.product.imgUrl} />
-                </div> */}
-                <div className="cell" data-title="Customer Name">
-                    {order.byUser.name}
                 </div>
                 <div className="cell" data-title="Order Date">
                     {order.boughtAt}
@@ -65,16 +66,14 @@ class Dashboard extends Component {
 
                                 <div className="row header">
                                     <div className="cell">
-                                        Title
+                                        Customer Name
 							</div>
+                                    <div className="cell">
+                                        Item
+							</div>
+                    
                                     <div className="cell">
                                         Price
-							</div>
-                                    {/* <div class="cell">
-                                    Item Image
-							</div> */}
-                                    <div className="cell">
-                                        Customer Name
 							</div>
                                     <div className="cell">
                                         Order date

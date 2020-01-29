@@ -10,7 +10,11 @@ export default {
     updateWishList,
     removeItemFromWishList,
     updateRecentlyViewd,
-    getRecntlyViewd
+    getRecntlyViewd,
+    toggleWishList,
+    getGeustWishList,
+    itemFromWishList,
+    removeItemFromGuestWishList
 };
 
 
@@ -81,3 +85,40 @@ async function getRecntlyViewd() {
 
 
 }
+
+
+async function toggleWishList(item) {
+   let itemToToggle=await itemFromWishList(item._id)
+
+ let updatedItem= await (!itemToToggle)? StorageService.post('wishlist',item) : StorageService.remove('wishlist',item._id)
+ 
+ 
+return updatedItem
+
+// let wishlist=await StorageService.query('wishlist')
+
+// const itemIdx = wishlist.find(wishListItem =>
+//     wishListItem._id === item._id)
+//     wishlist=(itemIdx === undefined) ?
+    
+   
+//     wishlist=StorageService.query('wishlist')
+//     return wishlist
+
+}
+
+ function getGeustWishList(){
+const wishlist = StorageService.getwishlist('wishlist')
+return wishlist
+}
+
+function itemFromWishList(itemId) {
+const item=StorageService.get('wishlist',itemId)
+return item
+} 
+
+
+function removeItemFromGuestWishList(itemId) {
+const item=StorageService.remove('wishlist',itemId)
+return item
+} 
