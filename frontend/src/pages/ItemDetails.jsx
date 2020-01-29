@@ -57,21 +57,14 @@ class ItemDetails extends Component {
 
     }
 
-    setWishListStatus = () => {
+    setWishListStatus = async () => {
+        let itemInWishList = await UserService.itemFromWishList(this.props.item._id)
+        
+        let itemIcon=(!itemInWishList)? heart :heartfilled
+         this.setState({wishListStatus:itemIcon})
 
-        if (this.props.loggedInUser.wishlist === undefined) return
-        const { wishlist } = this.props.loggedInUser
-        const { item } = this.props;
 
-        const { _id } = item;
-
-        const isFound = !!wishlist.find(_item => _item._id === _id);
-        const wishListStatus = (isFound) ? heartfilled : heart;
-
-        this.setState({ wishListStatus })
     }
-
-
 
 
     componentDidUpdate(prevProps) {
@@ -123,22 +116,14 @@ class ItemDetails extends Component {
 
 
     onAddToWishList = async () => {
-
-        if (this.state.wishListStatus === heart) {
-            await this.props.addToWishList(this.props.item, this.props.loggedInUser)
-            await this.setState({ modalMsg: "Added to Wishlist", wishListStatus: heartfilled })
-            await this.setState({ modalMsg: "" })
+      let item = await UserService.toggleWishList(this.props.item)
+      let itemIcon=(!item)? heart :heartfilled
+      this.setState({wishListStatus:itemIcon})
 
 
         }
-        else {
-            await this.props.removeFromWishList(this.props.item._id, this.props.loggedInUser)
-            await this.setState({ modalMsg: "Removed from Wishlist", wishListStatus: heart })
-            await this.setState({ modalMsg: "" })
-        }
 
-
-    }
+  
 
     onAddReview = async () => {
         await this.setState({ reviewMode: true })
@@ -252,7 +237,7 @@ class ItemDetails extends Component {
                             </Link>
 
                             <h1 className=" container item-details-title">{item.title}</h1>
-                            <div className="flex">
+                            <div className="price-and-rate flex">
                                 <div className="item-price flex">
                                     ${Number.parseFloat(item.price).toFixed(2)}
                                     <div className="was-price">
