@@ -21,7 +21,7 @@ class ShopItems extends Component {
   }
 
   componentDidMount() {
-
+    window.scrollTo(0, 0)
     var params = this.props.match.params.searchTerm
     this.checkIfOwner()
     if (params) {

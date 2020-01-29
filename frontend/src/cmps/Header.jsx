@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import logo from '../styles/imgs/logo-red.png';
 import { NavLink } from 'react-router-dom'
@@ -16,12 +17,14 @@ class Header extends Component {
 
   state = {
     isTop: true,
- 
+    newOrders: 0
   };
 
 
   
   componentDidMount() {
+    const listenToOrders=(this.props.loggedInUser&& this.props.loggedInUser.shopId!=='')?
+        this.listenToOrders():null
   
     document.addEventListener('scroll', () => {
       const isTop = window.scrollY < 100;
@@ -31,18 +34,28 @@ class Header extends Component {
     });
   }
 
+
  
+  componentWillMount=()=>{
+    SocketService.terminate()
+}
+
+listenToOrders=()=>{
+    SocketService.setup()
+    SocketService.on('order-complete', this.loadMyOrders)
+}
 
 loadMyOrders = async () => {
     
     
     const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
+    const newOrders=orders.find(order=>!order.isRead)
+    console.log('newOrders',newOrders);
     
-    console.log('MyOrders',orders);
-    
-    await this.setState({ newOrders: 1})
+   if (newOrders) await this.setState({ newOrders: 1})
 
 }
+
 
 
 
@@ -53,8 +66,13 @@ loadMyOrders = async () => {
 
           <div className="nav-text">
           <span><NavLink to='/item' className="nav-text" exact>Shop</NavLink></span>
-          
+          {this.props.loggedInUser&&this.props.loggedInUser.shopId!=="" ?
+                        <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
+                            <span className="notification-seller-badge">{this.state.newOrders}</span>
+                        </NavLink></span>
+                        :
           <span><NavLink to='/' className="nav-text" exact>Become a seller</NavLink></span>
+        }
           </div>
           
 
@@ -77,6 +95,20 @@ loadMyOrders = async () => {
 }
 
 
-export default (Header)
 
 
+const mapStateToProps = state => {
+  return {
+      loggedInUser: state.user.loggedInUser,
+
+  };
+};
+
+const mapDispatchToProps = {
+
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

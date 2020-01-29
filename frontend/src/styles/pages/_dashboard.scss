@@ -124,16 +124,16 @@
   }
   
   .row .cell:nth-child(1) {
-    width: 360px;
+    width: 218px;
     padding-left: 40px;
   }
   
   .row .cell:nth-child(2) {
-    width: 160px;
+    width: 345px;
   }
   
   .row .cell:nth-child(3) {
-    width: 250px;
+    width: 84px;
   }
   
   .row .cell:nth-child(4) {
@@ -145,10 +145,10 @@
     width: 100% !important;
   }
   
-  .row:hover {
-    background-color: #ececff;
-    cursor: pointer;
-  }
+  // .row:hover {
+  //   background-color: #ececff;
+  //   cursor: pointer;
+  // }
   
   @media (max-width: 768px) {
     .row {

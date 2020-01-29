@@ -7,15 +7,32 @@ import OrderService from '../../services/OrderService';
 import InnerNavBar from '../../cmps/InnerNavBar';
 import { Link } from 'react-router-dom'
 import Footer from '../../cmps/Footer'
+import UserService from '../../services/UserService';
 
 class Wishlist extends Component {
 
-    componentDidMount = () => {
+    state = {
+        wishlist: []
 
     }
 
-    deleteItem = (itemId) => {
-        this.props.removeFromWishList(itemId, this.props.loggedInUser)
+    componentDidMount = () => {
+        this.setWishList()
+    }
+
+  
+
+    setWishList = async() => {
+        let wishlist = await UserService.getGeustWishList()
+
+        this.setState({wishlist})
+      
+    }
+
+    deleteItem =async (itemId) => {
+        console.log(itemId);
+        await UserService.removeItemFromGuestWishList(itemId)
+        this.setWishList()
     }
 
     addToCart = (item) => {
@@ -34,10 +51,10 @@ class Wishlist extends Component {
 
 
                 <div className=" container flex grow">
-                    {this.props.loggedInUser&& this.props.loggedInUser.wishlist.length>0 ?
+                    {this.state.wishlist.length > 0 ?
                         <div>
                             <p className="wishlist-title flex justify-center">WISHLIST</p>
-                            <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.props.loggedInUser.wishlist}></ItemsList>
+                            <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.state.wishlist}></ItemsList>
                         </div>
                         :
                         <div className="wishlist-txt">
@@ -47,7 +64,7 @@ class Wishlist extends Component {
 
                         </div>}
                 </div>
-                
+
                 <Footer></Footer>
             </div>
         )
