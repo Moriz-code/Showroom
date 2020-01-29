@@ -9,6 +9,7 @@ import Search from '../cmps/items/Search'
 import bell from '../styles/assets/imgs/icons/notification.png'
 import OrderService from '../services/OrderService'
 import SocketService from '../services/SocketService'
+import { logout } from '../actions/UserActions'
 class InnerNavBar extends Component {
 
     state = {
@@ -17,23 +18,33 @@ class InnerNavBar extends Component {
     }
 
     componentDidMount = () => {
+        const listenToOrders=(this.props.loggedInUser&& this.props.loggedInUser.shopId!=='')?
+        this.listenToOrders():null
+    }
 
+    componentWillUnmount=()=>{
+        SocketService.terminate()
+    }
+
+    listenToOrders=()=>{
         SocketService.setup()
         SocketService.on('order-complete', this.loadMyOrders)
     }
 
     loadMyOrders = async () => {
-        
-        
+
+
         const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
+
+        const newOrders=orders.find(order=>!order.isRead)
+        console.log('newOrders',newOrders);
         
-        console.log('MyOrders',orders);
-        
-        await this.setState({ newOrders: 1})
+       if (newOrders) await this.setState({ newOrders: 1})
+
 
     }
 
-   
+
 
     render() {
 
@@ -50,13 +61,23 @@ class InnerNavBar extends Component {
 
                 <div className="nav-right-side flex align-center">
 
-                    <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
+                    <NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink>
+                    {/* {this.state.loggedInUser === undefined ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
+                        <button onClick={this.props.logout}>LogOut</button>} */}
+
+                    <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink>
+                    <button onClick={this.props.logout}>LogOut</button>
+
                     {isOwner ?
+
+                    <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
+                    {this.props.loggedInUser&&this.props.loggedInUser.shopId!=="" ?
+
                         <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
                             <span className="notification-seller-badge">{this.state.newOrders}</span>
                         </NavLink></span>
                         :
-                        <span><NavLink to='/' className="inner-nav-text" exact>Become a seller</NavLink></span>
+                        <span><NavLink to='/' className="inner-nav-text" exact>My shop</NavLink></span>
                     }
                     <ul className="inner-nav-icons flex align-center">
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
@@ -88,7 +109,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  
+    logout
 };
 
 export default connect(

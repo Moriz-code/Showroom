@@ -80,7 +80,7 @@ function getNewItem() {
             logoUrl: ''
         },
         labels: [],
-        imgs: [],
+        imgs: [null , null , null],
         reviews: []
     }
 }

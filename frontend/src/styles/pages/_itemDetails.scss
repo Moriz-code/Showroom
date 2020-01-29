@@ -174,10 +174,14 @@
   // font-weight: 600;
 }
 
-.average-rating {
-  align-items: center;
-  margin-left: 14px;
-}
+
+  .average-rating {
+    align-items: center;
+    margin-left: 0px;
+  }
+
+
+
 
 .num-of-rates {
   margin-left: 4px;
@@ -234,6 +238,8 @@
     align-self: flex-end;
 }
 
+
+
 .InnerNavBar {
   margin-bottom: 20px;
 }
@@ -264,7 +270,8 @@
   color: $clr3;
   text-decoration: line-through;
   margin-left: 10px;
-  margin-bottom: 5px
+  margin-bottom: 5px;
+  margin-right: 20px;
 }
 
 .discount {
@@ -340,13 +347,13 @@
 }
 
 .review-item {
-  min-height: 180px;
+  // min-height: 180px;
   max-width: 25ch;
-  align-items: center;
+  // align-items: center;
   font-size: rem(18px);
-  &:not(first-child) {
-    margin-left: 20px;
-  }
+  // &:not(first-child) {
+  //   margin-left: 20px;
+  // }
 }
 
 .item-buttons {
@@ -359,16 +366,27 @@
 }
 
 .review-txt {
-  font-size: rem(16px);
+  font-size: rem(14px);
   //   max-width: 70ch;
 }
 
 .review-content {
   flex-direction: column;
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
   margin-left: 10px;
+
+
 }
+
+.review-rate{
+
+  &.average-rating {
+
+  margin-left: 0px;
+}
+
+  }
 
 .recently-title{
   margin-bottom: 20px;
@@ -441,3 +459,10 @@
 }
 
 //////ribbon//////////////////////////////////////////////
+
+
+.reviews-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 15px;
+}
