@@ -39,32 +39,32 @@ class SignUp extends Component {
         }
         const signupCreds = { email, password, username, fullName, wishlist, shopId };
         this.props.signup(signupCreds);
-        this.setState({ signupCred: { email: '', password: '', username: '', fullName: '', wishlist:[], shopId:'' } });
+        this.setState({ signupCred: { email: '', password: '', username: '', fullName: '', wishlist: [], shopId: '' } });
     };
 
 
     render() {
-        return (
-            <div>
-                <InnerNavBar></InnerNavBar>
-                <form className="flex column align-center" onSubmit={this.doSignup}>
-                    <div>
-                        <lable>User Name</lable>
-                        <input type="text" placeholder="Enter User Name" onChange={this.signupHandleChange} name="username" value={this.state.signupCred.username}></input>
-                    </div>
-                    <div>
-                        <lable>Email</lable>
-                        <input type="email" placeholder="Enter Email Address" onChange={this.signupHandleChange} name="email" value={this.state.signupCred.email}></input>
-                    </div>
-                    <div>
-                        <lable>Password</lable>
-                        <input type="password" placeholder="Enter Password" onChange={this.signupHandleChange} name="password" value={this.state.signupCred.password}></input>
-                    </div>
-                    <div>
-                        <button>Sign Up</button>
-                    </div>
-                </form>
-            </div>
+        return (<React.Fragment>
+
+            <InnerNavBar></InnerNavBar>
+            <form className="signup-form flex column align-center" onSubmit={this.doSignup}>
+                <div>
+                    <lable>User Name</lable>
+                    <input type="text" placeholder="Enter User Name" onChange={this.signupHandleChange} name="username" value={this.state.signupCred.username}></input>
+                </div>
+                <div>
+                    <lable>Email</lable>
+                    <input type="email" placeholder="Enter Email Address" onChange={this.signupHandleChange} name="email" value={this.state.signupCred.email}></input>
+                </div>
+                <div>
+                    <lable>Password</lable>
+                    <input type="password" placeholder="Enter Password" onChange={this.signupHandleChange} name="password" value={this.state.signupCred.password}></input>
+                </div>
+                <div>
+                    <button>Sign Up</button>
+                </div>
+            </form>
+        </React.Fragment>
         )
     }
 }

@@ -15,16 +15,8 @@ import ItemsList from '../../cmps/items/ItemList';
 import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
-<<<<<<< HEAD
-import InnerNavbar from '../../cmps/InnerNavBar'
-
-// import Comments from '../../pages/seller/Comments';
-
-
-=======
 import InnerNavbar from '../../cmps/InnerNavBar';
 import Loading from "../../cmps/Loading";
->>>>>>> 055285c8d4222dca4f4f18ee7c381ec9de3ccabc
 import Footer from '../../cmps/Footer';
 
 import chat from '../../styles/assets/imgs/icons/chat.png';

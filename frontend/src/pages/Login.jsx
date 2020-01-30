@@ -17,15 +17,15 @@ class Login extends Component {
 
     doLogin = async (ev) => {
         ev.preventDefault()
-       
+
         const { email, password } = this.state.loginCred;
         if (!email || !password) {
             return this.setState({ msg: 'Please enter user/password' });
         }
         const userCreds = { email, password };
-         await this.props.login(userCreds);
-          this.setState({ loginCred: { email: '', password: '' } });
-         ( sessionStorage.getItem('user'))? this.props.history.push('./item') : this.setState({msg:'Wrong email or password'})
+        await this.props.login(userCreds);
+        this.setState({ loginCred: { email: '', password: '' } });
+        (sessionStorage.getItem('user')) ? this.props.history.push('./item') : this.setState({ msg: 'Wrong email or password' })
     }
 
     loginHandleChange = ev => {
@@ -62,7 +62,7 @@ class Login extends Component {
             </form>
             <p>Do not have an account yet?
                <Link to={`/signUp`}> <span>Signup</span></Link>
-                </p>
+            </p>
         </React.Fragment>
         )
     }
