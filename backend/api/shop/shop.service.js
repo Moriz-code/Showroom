@@ -9,7 +9,7 @@ module.exports = {
     update,
     // getByEmail,
     // remove,
-    // add
+    add
 }
 
 
@@ -62,6 +62,16 @@ async function getById(shopId) {
         }
     }
 
+    async function add(shop) {
+        const collection = await dbService.getCollection('shop')
+        try {
+            await collection.insert(shop);
+            return shop;
+        } catch (err) {
+            console.log(`ERROR: cannot insert shop`)
+            throw err;
+        }
+    }
 
 
 // async function getByEmail(email) {
