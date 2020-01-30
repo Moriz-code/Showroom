@@ -74,22 +74,25 @@ class InnerNavBar extends Component {
 
                 <div className="nav-right-side flex align-center">
 
-                    <NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink>
-                    {/* {this.state.loggedInUser === undefined ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
-                        <button onClick={this.props.logout}>LogOut</button>} */}
+                    <NavLink to='/item' className="inner-nav-text" exact>Explore</NavLink>
+                    <span><NavLink to='/' className="inner-nav-text" exact>My shop</NavLink></span>
 
-                    <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink>
-                    <button onClick={this.props.logout}>LogOut</button>
+                    {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
+                        <button onClick={this.props.logout}>LogOut</button>}
+
 
 
                     <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
+
                     {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
                         <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
                             <span className="notification-seller-badge">{this.state.newOrders}</span>
                         </NavLink></span>
+
                         :
                         <span><NavLink to='#' onClick={this.getShopId} className="inner-nav-text" exact>My shop</NavLink></span>
+
                     }
                     <ul className="inner-nav-icons flex align-center">
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
