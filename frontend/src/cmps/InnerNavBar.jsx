@@ -10,6 +10,8 @@ import bell from '../styles/assets/imgs/icons/notification.png'
 import OrderService from '../services/OrderService'
 import SocketService from '../services/SocketService'
 import { logout } from '../actions/UserActions'
+import {CreateNewShop} from '../actions/ShopActions'
+
 class InnerNavBar extends Component {
 
     state = {
@@ -45,10 +47,21 @@ class InnerNavBar extends Component {
     }
 
 
+    getShopId=async ()=>{
+        if (!this.props.loggedInUser) return
+        let shopId= (this.props.loggedInUser&&this.props.loggedInUser.shopId!=="")? this.props.loggedInUser.shopId :
+       
+        await this.props.CreateNewShop(this.props.loggedInUser._id,this.props.loggedInUser.fullName)
+        console.log('shopId',shopId);
+        
+
+        
+    }
+
 
     render() {
 
-        const { itemsInCart, isOwner } = this.props
+        const { itemsInCart } = this.props
 
         return <React.Fragment>
 
@@ -61,23 +74,31 @@ class InnerNavBar extends Component {
 
                 <div className="nav-right-side flex align-center">
 
-                    <NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink>
-                    {/* {this.state.loggedInUser === undefined ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
-                        <button onClick={this.props.logout}>LogOut</button>} */}
+                    <NavLink to='/item' className="inner-nav-text" exact>Explore</NavLink>
+                    <span><NavLink to='/' className="inner-nav-text" exact>My shop</NavLink></span>
 
-                    <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink>
-                    <button onClick={this.props.logout}>LogOut</button>
+                    {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
+                        <button onClick={this.props.logout}>LogOut</button>}
 
+
+<<<<<<< HEAD
 
 
                     <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
+=======
+
+                    <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
+
+>>>>>>> 055285c8d4222dca4f4f18ee7c381ec9de3ccabc
                     {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
                         <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
                             <span className="notification-seller-badge">{this.state.newOrders}</span>
                         </NavLink></span>
+
                         :
-                        <span><NavLink to='/' className="inner-nav-text" exact>My shop</NavLink></span>
+                        <span><NavLink to='#' onClick={this.getShopId} className="inner-nav-text" exact>My shop</NavLink></span>
+
                     }
                     <ul className="inner-nav-icons flex align-center">
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
@@ -109,7 +130,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    logout
+    logout,
+    CreateNewShop
 };
 
 export default connect(
