@@ -34,9 +34,9 @@ class ShopApp extends Component {
 
     render() {
         let { items } = this.props;
-        var itemsHome = items.splice(0, 4)
+        var itemsHome = items.splice(0, 3)
         return <React.Fragment>
-            <Header ></Header>
+            <Header></Header>
 
             <div className=" home-categories">
 

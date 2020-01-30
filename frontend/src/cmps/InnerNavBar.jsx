@@ -18,15 +18,15 @@ class InnerNavBar extends Component {
     }
 
     componentDidMount = () => {
-        const listenToOrders=(this.props.loggedInUser&& this.props.loggedInUser.shopId!=='')?
-        this.listenToOrders():null
+        const listenToOrders = (this.props.loggedInUser && this.props.loggedInUser.shopId !== '') ?
+            this.listenToOrders() : null
     }
 
-    componentWillUnmount=()=>{
+    componentWillUnmount = () => {
         SocketService.terminate()
     }
 
-    listenToOrders=()=>{
+    listenToOrders = () => {
         SocketService.setup()
         SocketService.on('order-complete', this.loadMyOrders)
     }
@@ -36,10 +36,10 @@ class InnerNavBar extends Component {
 
         const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
 
-        const newOrders=orders.find(order=>!order.isRead)
-        console.log('newOrders',newOrders);
-        
-       if (newOrders) await this.setState({ newOrders: 1})
+        const newOrders = orders.find(order => !order.isRead)
+        console.log('newOrders', newOrders);
+
+        if (newOrders) await this.setState({ newOrders: 1 })
 
 
     }
@@ -61,23 +61,20 @@ class InnerNavBar extends Component {
 
                 <div className="nav-right-side flex align-center">
 
-                    <NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink>
-                    {/* {this.state.loggedInUser === undefined ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
-                        <button onClick={this.props.logout}>LogOut</button>} */}
+                    <NavLink to='/item' className="inner-nav-text" exact>Explore</NavLink>
+                    <span><NavLink to='/' className="inner-nav-text" exact>My shop</NavLink></span>
 
-                    <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink>
-                    <button onClick={this.props.logout}>LogOut</button>
+                    {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
+                        <button onClick={this.props.logout}>LogOut</button>}
 
-                   
 
-                    <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
-                    {this.props.loggedInUser&&this.props.loggedInUser.shopId!=="" ?
+                    {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
                         <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
                             <span className="notification-seller-badge">{this.state.newOrders}</span>
                         </NavLink></span>
-                        :
-                        <span><NavLink to='/' className="inner-nav-text" exact>My shop</NavLink></span>
+                        :''
+                      
                     }
                     <ul className="inner-nav-icons flex align-center">
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>

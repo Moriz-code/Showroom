@@ -25,9 +25,14 @@ class ShopItems extends Component {
     var params = this.props.match.params.searchTerm
     this.checkIfOwner()
     if (params) {
-      if (params === 'women' || params === 'men') this.props.loadItems({ 'gender': [params] })
-      if (params === 'petit') this.props.loadItems({ 'size': ['xs', 's'] })
-      if (params === 'clearance') this.props.loadItems({ 'price': 40 })
+      if (params === 'women' || params === 'men') {
+        console.log('params',params);
+        
+        this.props.loadItems({ 'gender': [params] })
+        
+      }
+     else if (params === 'petit') this.props.loadItems({ 'size': ['xs', 's'] })
+      else if (params === 'clearance') this.props.loadItems({ 'price': 40 })
       else this.props.loadItems({ 'txt': params })
     }
     else this.props.loadItems()

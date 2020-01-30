@@ -15,7 +15,8 @@ import UserService from '../../services/UserService';
 class ItemPreview extends Component {
   state = {
     heart: heart,
-    hover: false
+    hover: false,
+    heartbeat: ''
   }
 
 
@@ -97,6 +98,10 @@ class ItemPreview extends Component {
     let itemIcon = (!item) ? heart : heartfilled
     this.setState({ heart: itemIcon })
     let removedItem = await (this.props.listMode === 'wishListMode') ? this.props.deleteItem(this.props.item._id) : null
+    if (this.state.heartbeat === 'heartbeat') {
+      this.setState({ heartbeat : '' })
+    }
+    else this.setState({ heartbeat : 'heartbeat' })
   }
 
   render() {
@@ -105,7 +110,7 @@ class ItemPreview extends Component {
       <div className="item-card" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
 
         {this.props.listMode !== 'adminMode' ?
-          <img onClick={this.onAddToWishList} className="heart-icon" alt="heart" src={icon} /> : null}
+          <img onClick={this.onAddToWishList} className={`heart-icon ${this.state.heartbeat}`} alt="heart" src={icon} /> : null}
 
 
         <Link to={`/itemDetails/${this.props.item._id}`}>
