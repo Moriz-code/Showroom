@@ -69,7 +69,6 @@ class InnerNavBar extends Component {
                     <button onClick={this.props.logout}>LogOut</button>
 
 
-
                     <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span>
                     {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
