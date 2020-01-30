@@ -18,10 +18,21 @@ async function updateShop(req, res) {
     res.send(shop)
 }
 
+async function addShop(req, res) {
+    
+    let shop = req.body;
+    
+    shop = await shopService.add(shop)
+    
+    console.log('shop',shop);
+    res.send(shop)
+}
+
 
 
 module.exports = {
     // getShops,
     getShop,
-    updateShop
+    updateShop,
+    addShop
 }

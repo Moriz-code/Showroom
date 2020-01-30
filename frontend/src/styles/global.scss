@@ -11,7 +11,6 @@
 @import "./basics/typography.scss";
 @import "./basics/form.scss";
 
-
 //cmps
 @import "./cmps/header.scss";
 @import "./cmps/footer.scss";
@@ -20,11 +19,12 @@
 @import "./cmps/innerNavbar.scss";
 @import "./cmps/cart.scss";
 @import "./cmps/wishlist.scss";
-
+@import "./cmps/loading.scss";
 
 // //pages
- @import "./pages/home.scss";
- @import "./pages/shop.scss";
- @import "./pages/itemDetails.scss";
- @import "./pages/shopItems.scss";
- @import "./pages/dashboard.scss";
+@import "./pages/home.scss";
+@import "./pages/shop.scss";
+@import "./pages/itemDetails.scss";
+@import "./pages/shopItems.scss";
+@import "./pages/dashboard.scss";
+@import "./pages/signup.scss";

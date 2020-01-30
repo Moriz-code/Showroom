@@ -33,6 +33,19 @@ export function updateShopSettings(shop) {
     }
 
 }
+export function CreateNewShop(userId,userName) {
+    return async dispatch => {
+        try {
+            let shop= createShop(userId,userName)
+            shop = await ShopService.add(shop);
+           dispatch({ type: 'ADD_SHOP', shop });
+            return shop
+        } catch (err) {
+            console.log(`cant add shop - shop action `);
+        }
+    }
+
+}
 
 
 export function saveComment(comment) {
@@ -50,24 +63,32 @@ export function saveComment(comment) {
 
 }
 
-// function setSettings(shop) {
-//     return {
 
-//     }
-// }
+ function createShop(userId,userName){
 
+       let shop= {
+        comments: [],
+        info: {
+            name: '',
+            description: '',
+            instagram: '',
+            facebook: '',
+        },
+        owner: {
+            id: userId,
+            name: userName,
+        },
+        style: {
+            bgColor: '',
+            theme: '',
+            videoUrl: '',
+            coverImgUrl: '',
+            logoUrl: '',
+            darkMode: ''
+        },
 
-
-// export function setCurrentItem(itemId) {
-//     return async dispatch => {
-//         try {
-//             const item = await ItemService.get(itemId);
-//             await dispatch({ type: 'SET_ITEM', item })
-//         } catch (err) {
-//             console.log('ReviewActions: err in loadReviews', err);
-//         }
-
-//     }
-// }
+    }
+    return shop
+}
 
 
