@@ -1,33 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Utils from '../../services/UtilService';
+import ItemService from '../../services/ItemService';
+import CloudinaryService from '../../services/CloudinaryService';
+import UnsplashService from '../../services/UnsplashService';
+
+
 import { loadShop, updateShopSettings, } from '../../actions/ShopActions';
 import { loadItems, deleteItem, saveItem } from '../../actions/ItemActions';
+import { addToCart } from '../../actions/OrderActions';
 
 import ItemsList from '../../cmps/items/ItemList';
 import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
-import InnerNavbar from '../../cmps/InnerNavBar'
-
-// import Comments from '../../pages/seller/Comments';
-
-
-
+import InnerNavbar from '../../cmps/InnerNavBar';
+import Loading from "../../cmps/Loading";
 import Footer from '../../cmps/Footer';
 
-import Utils from '../../services/UtilService';
-import ItemService from '../../services/ItemService';
-import CloudinaryService from '../../services/CloudinaryService';
-
-
-// import SocketService from '../../services/SocketService';
-////sockets try///
-// import SocketService from '../../services/SocketService';
-import { addToCart } from '../../actions/OrderActions';
-/// end of socket try////
-
-//icons
 import chat from '../../styles/assets/imgs/icons/chat.png';
 import addBtn from '../../styles/assets/imgs/add.png';
 
@@ -38,8 +29,6 @@ class PersonalShop extends Component {
         isOnChat: false,
         isOwner: false,
         isLoadingImg: false,
-
-        //create empty item from the service
 
         item: '',
 
@@ -75,14 +64,6 @@ class PersonalShop extends Component {
         this.setState({ shop: this.props.shop.selectedShop })
         this.clearItemState();
         this.checkIfOwner();
-
-
-        // //sockets
-        // SocketService.setup();
-        // SocketService.emit('chat topic', this.props.match.params.id);
-        // SocketService.emit('user send msg', { text: `${this.props.loggedInUser.userName} has joined the chat` });
-        // SocketService.on('chat addMsg', this.addComment)
-        // SocketService.on('user send msg', this.addComment)
     }
 
 
@@ -92,10 +73,8 @@ class PersonalShop extends Component {
         newItem.itemOwner.id = this.props.match.params.id;
         newItem.itemOwner.name = this.state.shop.info.name;
         newItem.itemOwner.logoUrl = this.state.shop.style.logoUrl;
-        // this.setState({ item: newItem })
 
         this.setState(prevState => ({
-            // isOnEditMode: false,
             item: newItem
         }))
     }
@@ -114,13 +93,6 @@ class PersonalShop extends Component {
         return user
     }
 
-
-    //  componentDidUpdate() {
-    //      this.props.loadItems();
-    // }
-
-
-    //ask how can i do ir with one function
 
     handleColorChange = (ev) => {
 
@@ -143,18 +115,26 @@ class PersonalShop extends Component {
 
     handleSettingChange = async (ev) => {
 
+        console.log('handleSettingChange', ev);
+
+
+
+
         let { name, value, alt } = ev.target;
 
         if (name === 'videoUrl') {
             value = Utils.getEmbdedUrl(value);
         }
 
-        if (name === 'coverImgUrl') {
+        if (name === 'coverImgUrl' || name === 'logoUrl') {
+
             this.setState({ isLoadingImg: true });
             const res = await CloudinaryService.uploadImg(ev);
             value = res.url;
             this.setState({ isLoadingImg: false })
         }
+
+
 
 
         this.setState(prevState => ({
@@ -201,13 +181,9 @@ class PersonalShop extends Component {
                 list[id] = resUrl;
                 value = list;
                 this.setState({ isLoadingImg: false })
-
                 break;
 
-
         }
-        console.log(this.state.item);
-
 
         this.setState(prevState => ({
 
@@ -273,6 +249,7 @@ class PersonalShop extends Component {
 
 
     componentWillUnmount = () => {
+        //need to add socket unmount
         // if (!this.props.loggedInUser) return
         // SocketService.off('chat addMsg')
         // SocketService.off('user send msg')
@@ -296,7 +273,7 @@ class PersonalShop extends Component {
                             {/* <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button> */}
 
                             <p className={this.state.isLoadingImg ? '' : 'display-none'}>
-                                Loading...
+                                <Loading></Loading>
                             </p>
 
                             {this.state.isOnEditSettigs ?

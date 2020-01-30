@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from './NavBar';
+// import NavBar from './NavBar';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import logo from '../styles/imgs/logo-red.png';
@@ -65,11 +65,13 @@ class Header extends Component {
         <div className={this.state.isTop ? 'down nav-icon flex end align-center' : 'up nav-icon flex end align-center'} >
 
           <div className="nav-text">
+
             <span><NavLink to='/item' className="nav-text" exact>Explore</NavLink></span>
             <span><NavLink to='/' className="nav-text" exact>My Shop</NavLink></span>
               
           {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
                         <button onClick={this.props.logout}>LogOut</button>}
+
 
             {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
               <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
@@ -77,8 +79,10 @@ class Header extends Component {
               </NavLink></span>
 
 
+
               : ''}
           </div>
+
 
 
 
