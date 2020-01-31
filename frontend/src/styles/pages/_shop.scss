@@ -141,103 +141,90 @@
     color: $clr2;
     // font-family: lobster;
   }
-
-
-  
 }
 
- 
-
-
-
-
-
-.save-btn{
+.save-btn {
   font-family: Lobster;
-  width:100%;
+  width: 100%;
   background-color: $clr2;
   color: $clr4;
-  border:none;
+  border: none;
   height: rem(45px);
   font-size: rem(30px);
   // margin-bottom: 20px;
   border: 1px solid lightgrey;
-
-  
 }
 
-  .field {
-    position: relative;
-    margin-top: 10px;
+.field {
+  position: relative;
+  margin-top: 10px;
 
-    input[type="text"],
-    input[type="file"] {
-      display: inline-block;
-      width: 300px;
-      height: 30px;
-      box-sizing: border-box;
-      outline: none;
-      border: 1px solid rgba(204, 204, 204, 0.5);
-      padding: 5px 5px 5px 70px;
-      transition: all 0.1s ease-out;
-    }
-
-    input[type="text"] + label,
-    input[type="file"] + label {
-      text-align: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      height: 30px;
-      width: 4rem;
-      line-height: 30px;
-      color: $clr2;
-      padding: 0 8px;
-      background: $clr4;
-      border: 1px solid lightgrey;
-      transform: translateZ(0) translateX(0);
-      transition: all 0.3s ease-in;
-      transition-delay: 0.2s;
-    }
-
-    input[type="text"]:focus + label,
-    input[type="file"]:focus + label {
-      // transform: translateY(-110%) translateX(0%);
-      // border-radius: 3px;
-      background: $clr2;
-      color: $clr4;
-      transition: all 0.1s ease-out;
-    }
-
-
-    input[type="text"]:focus,
-    input[type="file"]:focus {
-      transition: all 0.3s ease-out;
-      transition-delay: 0.2s;
-    }
-
-    img {
-      width: 40px;
-      margin-top: -15px;
-    }
+  input[type="text"],
+  input[type="file"] {
+    display: inline-block;
+    width: 300px;
+    height: 30px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid rgba(204, 204, 204, 0.5);
+    padding: 5px 5px 5px 70px;
+    transition: all 0.1s ease-out;
   }
 
-  .save-btn {
-    font-family: Lobster;
-    width: 100%;
-    background-color: $clr2;
-    color: $clr4;
-    border: none;
-    height: rem(45px);
-    font-size: rem(30px);
-    // margin-bottom: 20px;
+  input[type="text"] + label,
+  input[type="file"] + label {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 4rem;
+    line-height: 30px;
+    color: $clr2;
+    padding: 0 8px;
+    background: $clr4;
     border: 1px solid lightgrey;
+    transform: translateZ(0) translateX(0);
+    transition: all 0.3s ease-in;
+    transition-delay: 0.2s;
   }
 
-  .serach-image {
-    color: rgba(204, 204, 204, 0.7);
+  input[type="text"]:focus + label,
+  input[type="file"]:focus + label {
+    // transform: translateY(-110%) translateX(0%);
+    // border-radius: 3px;
+    background: $clr2;
+    color: $clr4;
+    transition: all 0.1s ease-out;
   }
+
+  input[type="text"]:focus,
+  input[type="file"]:focus {
+    transition: all 0.3s ease-out;
+    transition-delay: 0.2s;
+  }
+
+  img {
+    width: 40px;
+    margin-top: -15px;
+  }
+}
+
+.save-btn {
+  font-family: Lobster;
+  width: 100%;
+  background-color: $clr2;
+  color: $clr4;
+  border: none;
+  height: rem(45px);
+  font-size: rem(30px);
+  // margin-bottom: 20px;
+  border: 1px solid lightgrey;
+}
+
+.serach-image {
+  color: rgba(204, 204, 204, 0.7);
 }
 
 .modal-chat {
@@ -373,7 +360,6 @@
   // padding:30px;
   padding-right: 50px;
 
-
   input[type="text"] {
     height: 25px;
     font-size: 1rem;
@@ -389,7 +375,6 @@
 
   .uploadImage input {
     border: 1px solid black;
-
   }
 }
 
