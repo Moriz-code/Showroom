@@ -10,6 +10,7 @@ class ShopSettings extends React.Component {
 
   state = {
     displayColorPicker: false,
+    displaySearchImage: true,
     color: {
       r: '241',
       g: '112',
@@ -18,8 +19,12 @@ class ShopSettings extends React.Component {
     }
   }
 
-  handleClick = () => {
+  toggleColorPicker = () => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
+  }
+
+  toggleSearchImage = () => {
+    this.setState({ displaySearchImage: !this.state.displaySearchImage })
   }
 
   // handleClose = () => {
@@ -27,9 +32,14 @@ class ShopSettings extends React.Component {
   // }
 
   render() {
+    console.log('ShopSettings', this.state.displaySearchImage);
+
     const { props } = this;
 
     return <React.Fragment>
+
+      {/* {this.displaySearchImage ? */}
+
       <div className="content">
 
         <h2>Make Your Shop Unique</h2>
@@ -50,11 +60,11 @@ class ShopSettings extends React.Component {
           <label for="description">Slogan</label>
         </div>
 
-
-        <input type="text" onChange={props.handleSettingChange} />
+        {/* <input type="text" onChange={props.handleSettingChange} /> */}
         <div class="field">
           <input name="imgs" className="uploadImg" name="coverImgUrl" alt="style" onChange={props.handleSettingChange} type="file" />
           <label for="coverImgUrl">Cover</label>
+          <p className="serach-image" onClick={this.toggleSearchImage}>Or search for one...</p>
         </div>
 
 
