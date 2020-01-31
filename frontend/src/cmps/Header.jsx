@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import NavBar from './NavBar';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import logo from '../styles/imgs/logo-red.png';
@@ -89,10 +88,12 @@ class Header extends Component {
 
             <span><NavLink to='/item' className="nav-text" exact>Explore</NavLink></span>
 
+
                  <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
               
           {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
                         <button className="logout" onClick={this.props.logout}>LogOut</button>}
+
 
 
             {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
