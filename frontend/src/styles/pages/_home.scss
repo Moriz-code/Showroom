@@ -35,7 +35,7 @@
 
 .category-c {
   grid-area: c;
-  background-image: url("../assets/imgs/image-from-rawpixel-id-1199613-jpeg.jpg");
+  // background-image: url("../assets/imgs/1111.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -51,8 +51,7 @@
 }
 
 .category-b {
-  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/383-jir9305-jir_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=794b8342a8c4ad28e3f4a87483d2bfbb");
-  // background-image: url("../assets/imgs/ment.jpg");
+  // background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/383-jir9305-jir_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=794b8342a8c4ad28e3f4a87483d2bfbb");
   background-position: center;
   background-size: cover;
   grid-area: b;
@@ -62,7 +61,7 @@
 }
 
 .category-d {
-  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/393-mckinsey-21a3921-jir_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=8d214bc588282e34255fbd1e08aedb78");
+  // background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/393-mckinsey-21a3921-jir_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=8d214bc588282e34255fbd1e08aedb78");
   background-size: 100% 100%;
   grid-area: d;
 
@@ -73,7 +72,7 @@
 }
 
 .category-e {
-  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/383-jir9259-jir-l_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=d4f6458396ac8d5e2c9c63ffd7c47e16");
+  // background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/383-jir9259-jir-l_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=d4f6458396ac8d5e2c9c63ffd7c47e16");
   background-size: 100% auto;
   background-repeat: no-repeat;
   grid-area: e;
@@ -84,48 +83,47 @@
   }
 }
 
-.hero {
-  height: 40vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  // background-image: url("../assets/imgs/cover2.jpg");
-  margin-bottom: 20px;
-  background-size: 100% 600px;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+// .hero {
+//   height: 40vh;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   margin-bottom: 20px;
+//   background-size: 100% 600px;
 
-.hero-title {
-  display: flex;
-  color: white;
-  align-items: center;
-  font-family: Zcool;
-  font-size: 2.8em;
-  -webkit-text-stroke-width: 1px;
-  letter-spacing: 1px;
-  -webkit-text-stroke-color: black;
-  // margin: 150px 150px 150px 150px;
-}
+//   background-repeat: no-repeat;
+// }
 
-.hero-search {
-  // font-family: Lato;
-  display: flex;
-  margin: 0 auto;
-  width: 60%;
-  height: 45px;
-  padding: 0 20px;
-  font-size: 1rem;
-  border: 1px solid #d0cfce;
-  border-radius: 5px;
-  outline: none;
-  &:focus {
-    border: 1px solid #73585b;
-    transition: 0.35s ease;
-    color: black;
-  }
-}
+// .hero-title {
+//   display: flex;
+//   color: white;
+//   align-items: center;
+//   font-family: Zcool;
+//   font-size: 2.8em;
+//   -webkit-text-stroke-width: 1px;
+//   letter-spacing: 1px;
+//   -webkit-text-stroke-color: black;
+//   // margin: 150px 150px 150px 150px;
+// }
+
+// .hero-search {
+//   // font-family: Lato;
+//   display: flex;
+//   margin: 0 auto;
+//   width: 60%;
+//   height: 45px;
+//   padding: 0 20px;
+//   font-size: 1rem;
+//   border: 1px solid #d0cfce;
+//   border-radius: 5px;
+//   outline: none;
+//   &:focus {
+//     border: 1px solid #73585b;
+//     transition: 0.35s ease;
+//     color: black;
+//   }
+// }
 
 .home-categories {
   font-size: 1.5rem;
