@@ -14,14 +14,14 @@ class ShopApp extends Component {
 
     componentDidMount() {
 
-      
+
         this.props.loadItems()
     }
 
-    componentDidUpdate() {
-   
-        this.props.loadItems()
-    }
+    // componentDidUpdate() {
+
+    //     this.props.loadItems()
+    // }
 
 
 
@@ -42,7 +42,7 @@ class ShopApp extends Component {
 
                 <Link to={`/item/clearance`} className="category-b">
                     <span className="home-page-text">CLEARANCE</span> </Link>
-                    
+
                 <Link to={`/item/women`} className="category-c">
                     <span className="home-page-text">WOMEN</span></Link>
 

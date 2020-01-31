@@ -22,7 +22,7 @@ function get(entityType, entityId) {
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 function post(entityType, newEntity) {
-      
+
     // newEntity._id = _makeId() //// turned off because it changes the item id(roy)    
     return query(entityType)
         .then(entities => {
@@ -56,7 +56,7 @@ function remove(entityType, entityId) {
         .then(entities => {
             const idx = entities.findIndex(entity => entity._id === entityId);
             console.log(entities);
-            
+
             entities.splice(idx, 1)
             _save(entityType, entities)
         })
@@ -67,7 +67,7 @@ function _save(entityType, entities) {
 }
 
 
-function clearStorage(entity){
+function clearStorage(entity) {
     localStorage.removeItem(entity);
 
 }
