@@ -1,11 +1,9 @@
 .inner-nav {
-
   // margin-bottom: 10px;
   background-color: $clr1;
 
   // margin-bottom: 20px;
   height: 72px;
-
 
   // .down-border {
   //   position: relative;
@@ -13,6 +11,7 @@
   //   width:30px;
   //   border-bottom: 1px solid $clr1;
   // }
+
   .inner-logo {
     // padding-top: 5px;
     padding-left: 10px;
@@ -24,13 +23,9 @@
     bottom: 8px;
   }
 
-
-
-  .bell-icon{
+  .bell-icon {
     width: 30px;
     height: 30px;
-
-
   }
   .nav-right-side {
     padding-right: 15px;
@@ -38,66 +33,72 @@
       padding-left: 10px;
       width: 80px;
       height: 80px;
-  
     }
-    .cart{
+    .cart {
       padding-left: 15px;
       display: block;
     }
     .inner-nav-text {
-      padding-left:15px;
+      padding-left: 15px;
       color: $clr4;
+      
+      &:hover{
+        cursor: pointer;
+
+      }
+
+      .logout{
+        border: none;
+        color: white;
+        font-size: 16px;
+        background-color: inherit;
+        &:hover{
+          cursor: pointer;
+  
+        }
+      }
+
     }
   }
 
-
-
-  
-.search {
-  z-index: 3;
-  position: relative;
-  top:25px;
-  input {
-    height: 90px;
-    width:400px;
-
+  .search {
+    z-index: 3;
+    position: relative;
+    top: 25px;
+    input {
+      height: 90px;
+      width: 400px;
+    }
+    button {
+      height: 20px;
+      bottom: 45px;
+      left: 140px;
+      font-size: 14px;
+    }
   }
-  button {
-    height:20px;
-    bottom:45px;
-    left:140px;
-    font-size: 14px;
-
-  }
-}
   .notification-badge {
     position: absolute;
     top: 20px;
-    right:  18px;
+    right: 18px;
     // right: -24px;
     padding: 2px 5px;
-   
+
     color: green;
     font-size: 12px;
     z-index: 23;
     font-weight: bolder;
   }
 
-  .notification-seller-badge{
-
+  .notification-seller-badge {
     position: absolute;
     top: 23px;
-    
+
     right: 102px;
     padding: 2px 5px;
-   
+
     color: black;
     font-size: 12px;
     z-index: 23;
     font-weight: bolder;
-
-
   }
 }
-
-

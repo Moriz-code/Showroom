@@ -50,17 +50,14 @@
   width: auto;
   height: auto;
   margin: 0 15px;
- 
 }
-
-
 
 .secondary-img {
   display: block;
   max-width: 100px;
   max-height: 90px;
   margin-bottom: 15px;
-  
+
   width: auto;
   height: auto;
   &:hover {
@@ -70,60 +67,17 @@
 
 .add-to-cart {
   width: 160px;
-    height: 40px;
-    border: 0px;
-    background-color: white;
-    font-size: 1rem;
-    color: black;
-    cursor: pointer;
-    /* border: 1px solid; */
-    border: 1px solid #2e1114;
+  height: 40px;
+  border: 0px;
+  background-color: white;
+  font-size: 1rem;
+  color: black;
+  cursor: pointer;
+  /* border: 1px solid; */
+  border: 1px solid #2e1114;
 
   margin-left: 20px;
 }
-// .item-details-btn {
-//   border: none;
-//   display: inline-block;
-//   cursor: pointer;
-//   color: #ffffff;
-//   font-family: cursive;
-//   font-size: 12px;
-//   padding: 10px 46px;
-//   /* text-decoration: none; */
-//   text-shadow: 0px -2px 11px #2f6627;
-//   margin: 2px;
-//   &.buy-now {
-//     // background:linear-gradient(to bottom, #20c94d 5%, #2cad18 100%);
-//     background-color: $clr1;
-//     &:hover {
-//       background-color: darken($clr1, 10%);
-//     }
-//   }
-//   &.add-to-cart {
-//     background-color: $clr4;
-//     &:hover {
-//       background-color: darken($clr1, 10%);
-//     }
-//   }
-//   &.add-review {
-//     background-color: $clr1;
-//     &:hover {
-//       background-color: darken($clr1, 10%);
-//     }
-//   }
-//   &.add-to-wishList {
-//     background: lightcoral;
-//     background-color: lightcoral;
-//     &:hover {
-//       background: linear-gradient(to bottom, rgb(199, 105, 105) 5%, lightcoral 100%);
-//       background-color: lightcoral;
-//     }
-//   }
-// }
-// .item-details-btn:active {
-//   position: relative;
-//   top: 1px;
-// }
 
 .item-side-details {
   width: 100%;
@@ -174,14 +128,10 @@
   // font-weight: 600;
 }
 
-
-  .average-rating {
-    align-items: center;
-    margin-left: 0px;
-  }
-
-
-
+.average-rating {
+  align-items: center;
+  margin-left: 0px;
+}
 
 .num-of-rates {
   margin-left: 4px;
@@ -217,9 +167,6 @@
   margin-bottom: 10px;
 }
 
-
-
-
 .review-section {
   max-height: 300px;
   min-width: 300px;
@@ -233,12 +180,10 @@
   }
 }
 
-.review-submit{
+.review-submit {
   max-width: 65px;
-    align-self: flex-end;
+  align-self: flex-end;
 }
-
-
 
 .InnerNavBar {
   margin-bottom: 20px;
@@ -250,14 +195,18 @@
   // margin-left: 10px;
   align-self: center;
   color: gray;
-  &:before {
-    content: "";
+  .truck {
+ 
     display: inline-block;
-    background: url(../assets/imgs/shipping.png) no-repeat;
+   
     width: 35px;
     height: 40px;
     background-size: 30px 30px;
-    // margin-right: 10px;
+    margin-right: 10px;
+  }
+  .free-shipping-txt{
+
+    align-self: flex-end;
   }
 }
 
@@ -286,19 +235,16 @@
   align-self: center;
   color: gray;
   margin-bottom: 5px;
-  &:before {
-    content: "";
-    display: inline-block;
-    background: url(../assets/imgs/protcet.png) no-repeat;
+  .protect {
+   
     width: 30px;
-    height: 25px;
-    // margin-right: 10px;
+    height: 30px;
+    margin-right: 10px;
   }
- 
 }
-.buyer-protection-txt{
-  align-self: flex-end;    
-  }
+.buyer-protection-txt {
+  align-self: flex-end;
+}
 .item-shop-details-container {
   margin: 0px;
   padding: 0px;
@@ -332,11 +278,10 @@
     color: $clr4;
     cursor: pointer;
   }
- &.selected{
-  background-color: $clr1;
-  color: white;
-
- }
+  &.selected {
+    background-color: $clr1;
+    color: white;
+  }
 }
 
 .size-select {
@@ -375,36 +320,28 @@
   display: flex;
   // justify-content: space-around;
   margin-left: 10px;
-
-
 }
 
-.review-rate{
-
+.review-rate {
   &.average-rating {
-
-  margin-left: 0px;
+    margin-left: 0px;
+  }
 }
 
-  }
-
-.recently-title{
+.recently-title {
   margin-bottom: 20px;
 }
 
-.show{
-
+.show {
   display: block;
   margin-left: 10px;
   color: red;
   margin-top: 6px;
 }
 
-.hide{
-
+.hide {
   display: none;
 }
-
 
 //////ribbon////
 .ribbon {
@@ -460,8 +397,7 @@
 
 //////ribbon//////////////////////////////////////////////
 
-
-.reviews-container{
+.reviews-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 15px;

@@ -104,6 +104,26 @@
   }
 }
 
+.logout{
+  background-color: inherit;
+ 
+  border: none;
+  color: white;
+  font-size: 16px;
+  &:hover{
+    cursor: pointer;
+
+  }
+}
+
+.inner-nav-text {
+
+  
+  &:hover{
+    cursor: pointer;
+
+  }
+}
 .text-flicker-in-glow {
   animation: text-flicker-in-glow 4s linear both;
 }

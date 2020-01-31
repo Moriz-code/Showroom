@@ -14,7 +14,8 @@ export default {
     toggleWishList,
     getGeustWishList,
     itemFromWishList,
-    removeItemFromGuestWishList
+    removeItemFromGuestWishList,
+    updateUser
 };
 
 
@@ -24,11 +25,15 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-    console.log('check2-signup',userCred);
 
     const user = await HttpService.post('auth/signup', userCred)
     return  _handleLogin(user)
    
+}
+
+async function updateUser(user) {
+    const updatedUser = await HttpService.put(`user/${user._id}`, user)
+    return updatedUser
 }
 
 
@@ -68,7 +73,7 @@ async function updateRecentlyViewd(entitiy, item) {
     const found=currData.find(itemWatched=>itemWatched._id===item._id)
     if (found) return
     
-    if (currData.length === 4) {
+    if (currData.length === 3) {
 
         currData.shift()
         currData.push(item)

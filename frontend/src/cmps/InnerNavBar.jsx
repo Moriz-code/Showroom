@@ -9,9 +9,9 @@ import Search from '../cmps/items/Search'
 import bell from '../styles/assets/imgs/icons/notification.png'
 import OrderService from '../services/OrderService'
 import SocketService from '../services/SocketService'
-import { logout } from '../actions/UserActions'
+import { logout, addShopToUser } from '../actions/UserActions'
 import { CreateNewShop } from '../actions/ShopActions'
-
+import { withRouter } from 'react-router'
 class InnerNavBar extends Component {
 
     state = {
@@ -34,12 +34,10 @@ class InnerNavBar extends Component {
     }
 
     loadMyOrders = async () => {
-
-
+        
         const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
 
         const newOrders = orders.find(order => !order.isRead)
-        console.log('newOrders', newOrders);
 
         if (newOrders) await this.setState({ newOrders: 1 })
 
@@ -49,13 +47,19 @@ class InnerNavBar extends Component {
 
     getShopId = async () => {
         if (!this.props.loggedInUser) return
-        let shopId = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
+        if (this.props.loggedInUser.shopId) { 
+            this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
+            
+            
+    }
+        else{
+            
+        let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
 
-            await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
-        console.log('shopId', shopId);
+        await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
 
-
-
+        let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+        this.props.history.push(`/shop/${newUser.shopId}`)}
     }
 
 
@@ -78,22 +82,22 @@ class InnerNavBar extends Component {
                     {/* <span><NavLink to='/' className="inner-nav-text" exact>My shop</NavLink></span> */}
 
                     {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
-                        <button onClick={this.props.logout}>LogOut</button>}
+                        <button className="logout" onClick={this.props.logout}>LogOut</button>}
 
 
 
                     {/* <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span> */}
 
+                    <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
                     {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
                         <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
                             <span className="notification-seller-badge">{this.state.newOrders}</span>
                         </NavLink></span>
 
-                        :
-                        <span><NavLink to='#' onClick={this.getShopId} className="inner-nav-text" exact>My shop</NavLink></span>
+                        :'' }
 
-                    }
+                   
                     <ul className="inner-nav-icons flex align-center">
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
 
@@ -125,10 +129,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     logout,
-    CreateNewShop
+    CreateNewShop,
+    addShopToUser
 };
 
-export default connect(
+export default withRouter( connect(
     mapStateToProps,
     mapDispatchToProps
-)(InnerNavBar);
+)(InnerNavBar))

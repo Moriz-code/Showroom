@@ -14,9 +14,9 @@ class SignUp extends Component {
             email: '',
             password: '',
             username: '',
-            fullName: "roy amar",
+            fullName: "",
             wishlist: [],
-            shopId: "5e230e471a0d5feaa843e503"
+            shopId: ""
         }
     }
 
@@ -34,7 +34,7 @@ class SignUp extends Component {
     doSignup = async ev => {
         ev.preventDefault();
         const { email, password, username, fullName, wishlist, shopId } = this.state.signupCred;
-        if (!email || !password || !username) {
+        if (!email || !password || !fullName) {
             return this.setState({ msg: 'All inputs are required!' });
         }
         const signupCreds = { email, password, username, fullName, wishlist, shopId };
@@ -50,7 +50,7 @@ class SignUp extends Component {
             <form className="signup-form flex column align-center" onSubmit={this.doSignup}>
                 <div>
                     <lable>User Name</lable>
-                    <input type="text" placeholder="Enter User Name" onChange={this.signupHandleChange} name="username" value={this.state.signupCred.username}></input>
+                    <input type="text" placeholder="Enter Full Name" onChange={this.signupHandleChange} name="fullName" value={this.state.signupCred.fullName}></input>
                 </div>
                 <div>
                     <lable>Email</lable>

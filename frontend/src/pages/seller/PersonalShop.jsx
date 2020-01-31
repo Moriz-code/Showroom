@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Utils from '../../services/UtilService';
 import ItemService from '../../services/ItemService';
 import CloudinaryService from '../../services/CloudinaryService';
-import UnsplashService from '../../services/UnsplashService';
+
 
 
 import { loadShop, updateShopSettings, } from '../../actions/ShopActions';
@@ -17,6 +17,7 @@ import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
 import InnerNavbar from '../../cmps/InnerNavBar';
 import Loading from "../../cmps/Loading";
+import SearchImage from "../../cmps/shop/SearchImage";
 import Footer from '../../cmps/Footer';
 
 import chat from '../../styles/assets/imgs/icons/chat.png';
@@ -74,7 +75,7 @@ class PersonalShop extends Component {
         newItem.itemOwner.name = this.state.shop.info.name;
         newItem.itemOwner.logoUrl = this.state.shop.style.logoUrl;
 
-        this.setState(prevState => ({
+        this.setState(_ => ({
             item: newItem
         }))
     }
@@ -84,8 +85,6 @@ class PersonalShop extends Component {
     notifciation = () => {
         this.props.addToCart()
     }
-
-
 
 
     checkIfOwner = () => {
@@ -134,9 +133,6 @@ class PersonalShop extends Component {
             this.setState({ isLoadingImg: false })
         }
 
-
-
-
         this.setState(prevState => ({
             ...prevState,
             shop: {
@@ -150,8 +146,7 @@ class PersonalShop extends Component {
     }
 
     handleFormChange = async (ev) => {
-        console.log('handleFormChange -id ', ev.target.id);
-        let { name, value, id } = ev.target;
+        let { name, value } = ev.target;
 
         switch (name) {
             case 'labels':
@@ -249,11 +244,7 @@ class PersonalShop extends Component {
 
 
     componentWillUnmount = () => {
-        //need to add socket unmount
-        // if (!this.props.loggedInUser) return
-        // SocketService.off('chat addMsg')
-        // SocketService.off('user send msg')
-        // SocketService.terminate()
+
     }
 
 
@@ -265,13 +256,14 @@ class PersonalShop extends Component {
         const { shop } = this.state;
         return (
             <React.Fragment>
+
                 <InnerNavbar isOwner={this.state.isOwner}></InnerNavbar>
                 {this.state.shop ?
                     <div className='shop-page' style={{ backgroundColor: shop.style.bgColor }}>
+                        {/* <SearchImage></SearchImage> */}
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
                             <HeaderShop onEditSettings={this.onEditSettings} isOnEditSettigs={this.state.isOnEditSettigs} selectedShop={shop}></HeaderShop>
                             {/* <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button> */}
-
                             <p className={this.state.isLoadingImg ? '' : 'display-none'}>
                                 <Loading></Loading>
                             </p>
