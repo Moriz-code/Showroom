@@ -19,16 +19,9 @@ class ShopApp extends Component {
 
     componentDidMount() {
 
-<<<<<<< HEAD
-        this.props.loadItems()
-    }
-
-
-=======
 
         this.props.loadItems()
     }
->>>>>>> coral
 
     // componentDidUpdate() {
 
@@ -55,12 +48,8 @@ class ShopApp extends Component {
                 <Link to={`/item/clearance`}  className="category-b" style={{backgroundImage: `url( ${shoes})`}}>
                     <span className="home-page-text">CLEARANCE</span> </Link>
 
-<<<<<<< HEAD
-                <Link to={`/item/women`} className="category-c">
-=======
                 <Link to={`/item/women`} className="category-c" style={{backgroundImage: `url( ${women})`}}>
                     {/* <img src={women}></img> */}
->>>>>>> coral
                     <span className="home-page-text">WOMEN</span></Link>
 
                 <Link to={`/item/men`} className="category-d" style={{backgroundImage: `url( ${men})`}}>

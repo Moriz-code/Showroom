@@ -487,3 +487,9 @@ Thu, 30 Jan 2020 11:48:27 GMT - Info - Server is running on port: 3030
 =======
 Thu, 30 Jan 2020 12:00:10 GMT - Info - Server is running on port: 3030
 >>>>>>> coral
+Fri, 31 Jan 2020 09:42:28 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
+Fri, 31 Jan 2020 09:43:10 GMT - Debug - coralsolomon179@gmail.com, , 1234,Coral Solomon,,
+Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.service - signup with email: coralsolomon179@gmail.com, username: ,fullName: Coral Solomon,wishlist: 
+Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.route - new account created: {"email":"coralsolomon179@gmail.com","password":"$2b$10$l4fHQY.SKwoLlxGxu0uaKexxz6eARWrGSl3n.9IFPDAzCAPRDMsgS","username":"","fullName":"Coral Solomon","wishlist":[],"shopId":"","_id":"5e33f6ae7a5a234074be8625"}
+Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
+Fri, 31 Jan 2020 09:45:53 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com

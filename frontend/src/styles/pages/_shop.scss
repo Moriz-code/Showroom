@@ -3,51 +3,40 @@
   flex-direction: column;
   min-height: 100%;
 }
-
 .shop-container {
   position: relative;
   align-self: flex-end;
   transition: width 0.5s;
-
   .shop-main {
     position: relative;
   }
-
   .cards-shop-container {
     padding: 15px;
   }
-
   .item-card {
     background-color: white;
   }
-
-
+}
 .full-width {
   width: 100%;
 }
-
 .modal-opened {
   width: calc(100vw - 370px);
 }
-
 .shop-header {
   background-repeat: no-repeat;
   background-size: cover;
   height: 70vh;
-
   .designer-name {
     font-family: Lobster;
   }
-
   // grid-template-columns: minmax(50px, 300px, auto);
   // grid-template-rows: minmax(10% , auto);
 }
-
 // .coverImg{
 //       background-repeat: no-repeat;
 //       background-size: cover;
 // }
-
 .shop-logo {
   width: 100px;
   height: 100px;
@@ -55,12 +44,10 @@
   // margin-left:10%;
   border: 2px solid lightgrey;
 }
-
 .title {
   text-shadow: 1px 1px lightgrey;
   font-family: Lato, sans-serif;
 }
-
 .shop-video {
   grid-column: 2;
   grid-row: 1;
@@ -73,26 +60,22 @@
   right: 0;
   padding: 10px;
 }
-
 .insta-icon {
   max-width: 50px;
   justify-self: start;
   padding: 7px;
 }
-
 .fb-icon {
   max-width: 50px;
   justify-self: end;
   padding: 7px;
 }
-
 .searchBtn {
   border: none;
   padding: 10px;
   font-size: 1.5em;
   background-color: transparent;
 }
-
 .shop-edit-btn {
   position: absolute;
   top: 10px;
@@ -103,12 +86,10 @@
   border-radius: 0px 10px 10px 0px;
   border: none;
   box-shadow: 1px 1px rgba(204, 204, 204, 0.7);
-
   img {
     width: 50%;
   }
 }
-
 .modal-settings {
   position: fixed;
   top: 72px;
@@ -126,7 +107,6 @@
   transition: transform 0.8s;
   z-index: 5;
   font-family: lobster;
-
   .content {
     display: flex;
     flex-direction: column;
@@ -136,113 +116,86 @@
     padding-right: 10px;
     padding-left: 10px;
   }
-
   h2 {
     color: $clr2;
     // font-family: lobster;
   }
-
-
-  
 }
-
- 
-
-
-
-
-
-.save-btn{
+.save-btn {
   font-family: Lobster;
-  width:100%;
+  width: 100%;
   background-color: $clr2;
   color: $clr4;
-  border:none;
+  border: none;
   height: rem(45px);
   font-size: rem(30px);
   // margin-bottom: 20px;
   border: 1px solid lightgrey;
-
-  
 }
-
-<<<<<<< HEAD
-  .field {
-    position: relative;
-    margin-top: 10px;
-
-    input[type="text"],
-    input[type="file"] {
-      display: inline-block;
-      width: 300px;
-      height: 30px;
-      box-sizing: border-box;
-      outline: none;
-      border: 1px solid rgba(204, 204, 204, 0.5);
-      padding: 5px 5px 5px 70px;
-      transition: all 0.1s ease-out;
-    }
-
-    input[type="text"] + label,
-    input[type="file"] + label {
-      text-align: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      height: 30px;
-      width: 4rem;
-      line-height: 30px;
-      color: $clr2;
-      padding: 0 8px;
-      background: $clr4;
-      border: 1px solid lightgrey;
-      transform: translateZ(0) translateX(0);
-      transition: all 0.3s ease-in;
-      transition-delay: 0.2s;
-    }
-
-    input[type="text"]:focus + label,
-    input[type="file"]:focus + label {
-      // transform: translateY(-110%) translateX(0%);
-      // border-radius: 3px;
-      background: $clr2;
-      color: $clr4;
-      transition: all 0.1s ease-out;
-    }
-
-=======
->>>>>>> coral
-
-    input[type="text"]:focus,
-    input[type="file"]:focus {
-      transition: all 0.3s ease-out;
-      transition-delay: 0.2s;
-    }
-
-    img {
-      width: 40px;
-      margin-top: -15px;
-    }
+.field {
+  position: relative;
+  margin-top: 10px;
+  input[type="text"],
+  input[type="file"] {
+    display: inline-block;
+    width: 300px;
+    height: 30px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid rgba(204, 204, 204, 0.5);
+    padding: 5px 5px 5px 70px;
+    transition: all 0.1s ease-out;
   }
-
-  .save-btn {
-    font-family: Lobster;
-    width: 100%;
-    background-color: $clr2;
-    color: $clr4;
-    border: none;
-    height: rem(45px);
-    font-size: rem(30px);
-    // margin-bottom: 20px;
+  input[type="text"] + label,
+  input[type="file"] + label {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 4rem;
+    line-height: 30px;
+    color: $clr2;
+    padding: 0 8px;
+    background: $clr4;
     border: 1px solid lightgrey;
+    transform: translateZ(0) translateX(0);
+    transition: all 0.3s ease-in;
+    transition-delay: 0.2s;
   }
-
-  .serach-image {
-    color: rgba(204, 204, 204, 0.7);
+  input[type="text"]:focus + label,
+  input[type="file"]:focus + label {
+    // transform: translateY(-110%) translateX(0%);
+    // border-radius: 3px;
+    background: $clr2;
+    color: $clr4;
+    transition: all 0.1s ease-out;
+  }
+  input[type="text"]:focus,
+  input[type="file"]:focus {
+    transition: all 0.3s ease-out;
+    transition-delay: 0.2s;
+  }
+  img {
+    width: 40px;
+    margin-top: -15px;
   }
 }
-
+.save-btn {
+  font-family: Lobster;
+  width: 100%;
+  background-color: $clr2;
+  color: $clr4;
+  border: none;
+  height: rem(45px);
+  font-size: rem(30px);
+  // margin-bottom: 20px;
+  border: 1px solid lightgrey;
+}
+.serach-image {
+  color: rgba(204, 204, 204, 0.7);
+}
 .modal-chat {
   background-color: whitesmoke;
   position: fixed;
@@ -252,7 +205,6 @@
   height: 250px;
   font-size: 0.5em;
 }
-
 .shop-info {
   display: flex;
   flex-direction: column;
@@ -266,7 +218,6 @@
   // padding: 13px;
   align-items: flex-start;
   margin-left: 10%;
-
   .details {
     background-color: rgba(255, 255, 255, 0.5);
     height: 100%;
@@ -274,23 +225,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     justify-content: space-evenly;
     .description {
       font-size: rem(30px);
     }
   }
 }
-
 .shop-social {
   display: flex;
   z-index: 2;
 }
-
 .chat-icon {
   display: none;
 }
-
 .add-item-btn {
   background-color: transparent;
   border: none;
@@ -298,7 +245,6 @@
   width: 120px;
   animation: rotate 1s linear;
   // margin-top:-27px;
-
   img {
     z-index: 4;
     position: fixed;
@@ -308,16 +254,13 @@
     // filter:drop-shadow(0.8px 0.8px 0.8px whitesmoke);
   }
 }
-
 // @keyframes rotate {100% {tranform: rotate(45deg); }}
-
 .item-edit-panel {
   display: flex;
   position: absolute;
   bottom: 225px;
   justify-content: space-around;
   background-color: rgba(255, 255, 255, 0.7);
-
   button {
     width: 32px;
     background-color: transparent;
@@ -326,18 +269,15 @@
     opacity: 0.5;
   }
 }
-
 .tranform45 {
   transform: rotate(45deg);
 }
-
 .edit-item {
   display: flex;
   flex-direction: row;
-
   .save-item {
-    background-color: #64485c;
-    color: #ffffff;
+    background-color: #64485C;
+    color: #FFFFFF;
     border: none;
     height: 30px;
     margin-bottom: 10px;
@@ -345,25 +285,20 @@
     display: flex;
     justify-content: center;
   }
-
   .img {
     flex-basis: 30%;
   }
-
   .price-size {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     // justify-content: space-between;
   }
-
   .gender {
     display: flex;
     flex-direction: row;
     // margin-left:  5%;
   }
-
   .details {
     // display: flex;
     flex-direction: column;
@@ -371,31 +306,24 @@
     margin-left: 3%;
     flex-grow: 1;
   }
-
   background-color: $clr4;
   // padding:30px;
   padding-right: 50px;
-
-
   input[type="text"] {
     height: 25px;
     font-size: 1rem;
     margin-right: 2px;
     // border: none;
   }
-
   .form-labels .checkbox {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
-
   .uploadImage input {
     border: 1px solid black;
-
   }
 }
-
 .modal-search-image {
   position: absolute;
   font-family: Lobster;
