@@ -55,6 +55,16 @@ export function removeFromWishList(itemId, user) {
 }
 
 
+export function addShopToUser(shopId,user){
+  user.shopId=shopId
+  return async dispatch => {
+    const updatedUser = await UserService.updateUser(user);
+    dispatch(setUser(updatedUser));
+    return updatedUser
+  };
+}
+
+
 function _updateUser(user) {
   return {
     type: 'UPDATE_USER',

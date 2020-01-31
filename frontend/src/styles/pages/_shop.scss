@@ -142,6 +142,30 @@
     // font-family: lobster;
   }
 
+
+  
+}
+
+ 
+
+
+
+
+
+.save-btn{
+  font-family: Lobster;
+  width:100%;
+  background-color: $clr2;
+  color: $clr4;
+  border:none;
+  height: rem(45px);
+  font-size: rem(30px);
+  // margin-bottom: 20px;
+  border: 1px solid lightgrey;
+
+  
+}
+
   .field {
     position: relative;
     margin-top: 10px;
@@ -185,6 +209,7 @@
       color: $clr4;
       transition: all 0.1s ease-out;
     }
+
 
     input[type="text"]:focus,
     input[type="file"]:focus {
@@ -348,6 +373,7 @@
   // padding:30px;
   padding-right: 50px;
 
+
   input[type="text"] {
     height: 25px;
     font-size: 1rem;
@@ -363,6 +389,7 @@
 
   .uploadImage input {
     border: 1px solid black;
+
   }
 }
 

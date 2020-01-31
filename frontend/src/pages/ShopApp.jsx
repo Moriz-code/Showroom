@@ -14,14 +14,10 @@ class ShopApp extends Component {
 
     componentDidMount() {
 
-
         this.props.loadItems()
     }
 
-    // componentDidUpdate() {
 
-    //     this.props.loadItems()
-    // }
 
 
 

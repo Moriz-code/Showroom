@@ -18,7 +18,8 @@ import TextField from '@material-ui/core/TextField';
 import ItemList from '../cmps/items/ItemList'
 import UserService from '../services/UserService';
 import Footer from '../cmps/Footer';
-
+import truck from '../styles/assets/imgs/shipping.png'
+import protect from '../styles/assets/imgs/protcet.png'
 
 class ItemDetails extends Component {
 
@@ -269,12 +270,14 @@ class ItemDetails extends Component {
                         </div>
                         <div className="general-information">
                             <div className="buyer-protection flex">
+                            <img className="protect" src={protect} alt=""></img>
                                 <div className="buyer-protection-txt">35-Day Buyer Protection </div>
                             </div>
                             <div className="free-shipping flex">
-                                <div>Free Shipping - Get it at: <span className="delivery-date">{this.state.date}</span></div>
+                            <img className="truck" src={truck} alt=""></img>
+                                
+                                <div className="free-shipping-txt">Free Shipping - Get it at: <span className="delivery-date">{this.state.date}</span></div>
                             </div>
-
                         </div>
                     </div>
                 </section>
