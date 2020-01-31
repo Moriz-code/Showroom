@@ -250,14 +250,18 @@
   // margin-left: 10px;
   align-self: center;
   color: gray;
-  &:before {
-    content: "";
+  .truck {
+ 
     display: inline-block;
-    background: url(../assets/imgs/shipping.png) no-repeat;
+   
     width: 35px;
     height: 40px;
     background-size: 30px 30px;
-    // margin-right: 10px;
+    margin-right: 10px;
+  }
+  .free-shipping-txt{
+
+    align-self: flex-end;
   }
 }
 
@@ -286,13 +290,11 @@
   align-self: center;
   color: gray;
   margin-bottom: 5px;
-  &:before {
-    content: "";
-    display: inline-block;
-    background: url(../assets/imgs/protcet.png) no-repeat;
+  .protect {
+   
     width: 30px;
-    height: 25px;
-    // margin-right: 10px;
+    height: 30px;
+    margin-right: 10px;
   }
  
 }

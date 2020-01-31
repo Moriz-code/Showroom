@@ -11,7 +11,9 @@ import wishlist from '../styles/assets/imgs/heart-white.png'
 import cart from '../styles/assets/imgs/shopping-cart-white.png'
 import SocketService from '../services/SocketService'
 import OrderService from '../services/OrderService'
-
+import { addShopToUser } from '../actions/UserActions'
+import { CreateNewShop } from '../actions/ShopActions'
+import { withRouter } from 'react-router'
 
 class Header extends Component {
 
@@ -56,6 +58,25 @@ class Header extends Component {
 
   }
 
+  getShopId = async () => {
+    if (!this.props.loggedInUser) return
+    if (this.props.loggedInUser.shopId) { 
+        this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
+        
+        
+}
+    else{
+     console.log('else');
+     
+        
+    let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
+
+    await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
+
+    let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+    this.props.history.push(`/shop/${newUser.shopId}`)}
+}
+
 
 
 
@@ -67,10 +88,11 @@ class Header extends Component {
           <div className="nav-text">
 
             <span><NavLink to='/item' className="nav-text" exact>Explore</NavLink></span>
-            <span><NavLink to='/' className="nav-text" exact>My Shop</NavLink></span>
+
+                 <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
               
           {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
-                        <button onClick={this.props.logout}>LogOut</button>}
+                        <button className="logout" onClick={this.props.logout}>LogOut</button>}
 
 
             {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
@@ -126,10 +148,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-
+  CreateNewShop,
+  addShopToUser
 };
 
-export default connect(
+export default withRouter (connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(Header))

@@ -18,10 +18,10 @@ class ShopApp extends Component {
         this.props.loadItems()
     }
 
-    componentDidUpdate() {
+    // componentDidUpdate() {
    
-        this.props.loadItems()
-    }
+    //     this.props.loadItems()
+    // }
 
 
 

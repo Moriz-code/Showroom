@@ -47,6 +47,23 @@
     .inner-nav-text {
       padding-left:15px;
       color: $clr4;
+      
+      &:hover{
+        cursor: pointer;
+
+      }
+
+      .logout{
+        border: none;
+        color: white;
+        font-size: 16px;
+        background-color: inherit;
+        &:hover{
+          cursor: pointer;
+  
+        }
+      }
+
     }
   }
 
