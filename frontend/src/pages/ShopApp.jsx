@@ -5,6 +5,11 @@ import Header from '../cmps/Header'
 import { loadItems } from '../actions/ItemActions'
 import ItemsList from '../cmps/items/ItemList'
 import Footer from '../cmps/Footer';
+import women from '../styles/assets/imgs/1111.jpg'
+import shoes from '../styles/assets/imgs/shoes.jpg'
+import men from '../styles/assets/imgs/men.jpg'
+import hat from '../styles/assets/imgs/hat.jpg'
+
 
 import { SetloggedInUser } from '../actions/UserActions'
 
@@ -14,10 +19,21 @@ class ShopApp extends Component {
 
     componentDidMount() {
 
+<<<<<<< HEAD
         this.props.loadItems()
     }
 
 
+=======
+
+        this.props.loadItems()
+    }
+>>>>>>> coral
+
+    // componentDidUpdate() {
+
+    //     this.props.loadItems()
+    // }
 
 
 
@@ -36,16 +52,23 @@ class ShopApp extends Component {
 
             <div className=" home-categories">
 
-                <Link to={`/item/clearance`} className="category-b">
+                <Link to={`/item/clearance`}  className="category-b" style={{backgroundImage: `url( ${shoes})`}}>
                     <span className="home-page-text">CLEARANCE</span> </Link>
 
+<<<<<<< HEAD
                 <Link to={`/item/women`} className="category-c">
+=======
+                <Link to={`/item/women`} className="category-c" style={{backgroundImage: `url( ${women})`}}>
+                    {/* <img src={women}></img> */}
+>>>>>>> coral
                     <span className="home-page-text">WOMEN</span></Link>
 
-                <Link to={`/item/men`} className="category-d">
+                <Link to={`/item/men`} className="category-d" style={{backgroundImage: `url( ${men})`}}>
+                    {/* <img src={men}></img> */}
                     <span className="home-page-text">MEN</span></Link>
 
-                <Link to={`/item/petit`} className="category-e">
+                <Link to={`/item/petit`} className="category-e" style={{backgroundImage: `url( ${hat})`}}>
+                    {/* <img src={hat}></img> */}
                     <span className="home-page-text">PETIT</span></Link>
             </div>
             <span className="home-page-text">HOT PRODUCTS</span>

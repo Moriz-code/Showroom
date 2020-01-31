@@ -480,6 +480,10 @@ Wed, 29 Jan 2020 12:19:07 GMT - Info - Server is running on port: 3030
 Thu, 30 Jan 2020 11:20:00 GMT - Info - Server is running on port: 3030
 Thu, 30 Jan 2020 11:24:11 GMT - Info - Server is running on port: 3030
 Thu, 30 Jan 2020 11:24:22 GMT - Info - Server is running on port: 3030
+<<<<<<< HEAD
 Thu, 30 Jan 2020 11:48:27 GMT - Info - Server is running on port: 3030
 =======
 >>>>>>> cf939ac5382baf611c127e7492d7a0d5230fcd46
+=======
+Thu, 30 Jan 2020 12:00:10 GMT - Info - Server is running on port: 3030
+>>>>>>> coral
