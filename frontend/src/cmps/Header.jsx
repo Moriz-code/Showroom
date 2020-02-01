@@ -63,7 +63,6 @@ class Header extends Component {
         
 }
     else{
-     console.log('else');
      
         
     let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
