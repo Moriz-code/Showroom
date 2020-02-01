@@ -15,20 +15,19 @@ function query(filterBy = null) {
     else {
         let str = '';
         for (const key in filterBy) {
-            console.log('item-service4',filterBy[key].length);
-            console.log('key',key);
-            
+
+
             if (filterBy[key].length === 0) continue
             else {
 
-                if (filterBy[key].length === 1||typeof filterBy[key]==='string'||typeof filterBy[key]==='number') {
+                if (filterBy[key].length === 1 || typeof filterBy[key] === 'string' || typeof filterBy[key] === 'number') {
                     if (str !== '') str += '&'
-                    console.log('trytrytry');
-                    
-                    if (key === 'txt' || key === 'price'||key==='labels'||key==='itemOwner') {
-        str += key + '=' + filterBy[key]
-                        console.log('item-service5',str);
-                        
+
+
+                    if (key === 'txt' || key === 'price' || key === 'labels' || key === 'itemOwner') {
+                        str += key + '=' + filterBy[key]
+
+
                     } else str += key + '=' + filterBy[key][0]
                 }
                 else {

@@ -3,6 +3,7 @@ import Loading from "../../cmps/Loading";
 
 export default function EditItem(props) {
 
+  console.log('edit item', props);
 
   const { item } = props
 
@@ -88,11 +89,11 @@ export default function EditItem(props) {
 
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="labels" value="dress" checked={item.labels.includes('dress') ? 'checked' : null} /><i class="helper"></i>Boho
+              <input type="checkbox" name="labels" value="dress" checked={item.labels.includes('dress') ? 'checked' : null} /><i class="helper"></i>Dress
       </label>
 
             <label>
-              <input type="checkbox" name="labels" value="black" checked={item.labels.includes('black') ? 'checked' : null} /><i class="helper"></i>Boho
+              <input type="checkbox" name="labels" value="black" checked={item.labels.includes('black') ? 'checked' : null} /><i class="helper"></i>Black
       </label>
 
             <label>

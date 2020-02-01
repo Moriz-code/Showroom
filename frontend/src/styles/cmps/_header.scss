@@ -179,6 +179,19 @@
 .header-text-search {
   color: white;
 
+
+//   @include for-narrow-layout {
+//     position: relative;
+//     bottom: 106%;
+//   }
+//   @include for-normal-layout {
+//     position: relative;
+//     bottom: 96%;
+//   }
+//   @include for-wide-layout {
+//     position: relative;
+//     bottom: 90%;
+
   @include for-mobile-layout {
     // position: relative;
     // margin-bottom: 50px;
@@ -190,6 +203,7 @@
   @include for-wide-layout {
     // position: relative;
     // margin-top: 2%;
+
   }
 }
 
@@ -216,7 +230,9 @@
     padding-left: 10px;
     background-color: $clr4;
     border: 0px;
+
     @include for-mobile-layout {
+
       margin-top: 30px;
       width: 300px;
       height: 35px;

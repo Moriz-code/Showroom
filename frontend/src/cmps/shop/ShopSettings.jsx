@@ -38,7 +38,6 @@ class ShopSettings extends React.Component {
 
     return <React.Fragment>
 
-      {/* {this.displaySearchImage ? */}
       {this.state.displaySearchImage ? <SearchImage name="coverImgUrl" alt="style" handleSettingChange={props.handleSettingChange} toggleSearchImage={this.toggleSearchImage} /> : null}
       <div className='modal-settings'>
         <div className="content">
