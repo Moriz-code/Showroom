@@ -493,3 +493,15 @@ Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.service - signup with email: corals
 Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.route - new account created: {"email":"coralsolomon179@gmail.com","password":"$2b$10$l4fHQY.SKwoLlxGxu0uaKexxz6eARWrGSl3n.9IFPDAzCAPRDMsgS","username":"","fullName":"Coral Solomon","wishlist":[],"shopId":"","_id":"5e33f6ae7a5a234074be8625"}
 Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
 Fri, 31 Jan 2020 09:45:53 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
+Fri, 31 Jan 2020 10:26:40 GMT - Debug - roy@gmail.com, , 1234,roy ammar,,
+Fri, 31 Jan 2020 10:26:40 GMT - Debug - auth.service - signup with email: roy@gmail.com, username: ,fullName: roy ammar,wishlist: 
+Fri, 31 Jan 2020 10:26:40 GMT - Debug - auth.route - new account created: {"email":"roy@gmail.com","password":"$2b$10$CclkdNl4WAUYnrmLIyvveOsoELvwtageSamAcDLDb3jJ5HEIM4a6K","username":"","fullName":"roy ammar","wishlist":[],"shopId":"","_id":"5e3400e0c2408b3cc87c05b6"}
+Fri, 31 Jan 2020 10:26:40 GMT - Debug - auth.service - login with email: roy@gmail.com
+Fri, 31 Jan 2020 10:27:10 GMT - Debug - mor@gmail.com, , 1234,mor zeevi,,
+Fri, 31 Jan 2020 10:27:10 GMT - Debug - auth.service - signup with email: mor@gmail.com, username: ,fullName: mor zeevi,wishlist: 
+Fri, 31 Jan 2020 10:27:10 GMT - Debug - auth.route - new account created: {"email":"mor@gmail.com","password":"$2b$10$Bhfd0xLMw7MenMaVfSJ/JeK7BemxLrvl7uA.MMNKb.kEOc3xzf6MO","username":"","fullName":"mor zeevi","wishlist":[],"shopId":"","_id":"5e3400fec2408b3cc87c05b7"}
+Fri, 31 Jan 2020 10:27:10 GMT - Debug - auth.service - login with email: mor@gmail.com
+Fri, 31 Jan 2020 10:27:23 GMT - Debug - coral@gmail.com, , 1234,coral solomon,,
+Fri, 31 Jan 2020 10:27:23 GMT - Debug - auth.service - signup with email: coral@gmail.com, username: ,fullName: coral solomon,wishlist: 
+Fri, 31 Jan 2020 10:27:23 GMT - Debug - auth.route - new account created: {"email":"coral@gmail.com","password":"$2b$10$H6VDlhidTiBoLnRecigr.Ot6Vb0yIU0LA5V3tPRe7LIZF1mqY55Be","username":"","fullName":"coral solomon","wishlist":[],"shopId":"","_id":"5e34010bc2408b3cc87c05b8"}
+Fri, 31 Jan 2020 10:27:23 GMT - Debug - auth.service - login with email: coral@gmail.com

@@ -13,6 +13,7 @@ import OrderService from '../services/OrderService'
 import { addShopToUser } from '../actions/UserActions'
 import { CreateNewShop } from '../actions/ShopActions'
 import { withRouter } from 'react-router'
+import Labels from '../cmps/items/Labels'
 
 class Header extends Component {
 
@@ -59,29 +60,30 @@ class Header extends Component {
 
   getShopId = async () => {
     if (!this.props.loggedInUser) return
-    if (this.props.loggedInUser.shopId) { 
-        this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
-        
-        
-}
-    else{
-     console.log('else');
-     
-        
-    let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
+    if (this.props.loggedInUser.shopId) {
+      this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
 
-    await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
 
-    let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
-    this.props.history.push(`/shop/${newUser.shopId}`)}
-}
+    }
+    else {
+      console.log('else');
+
+
+      let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
+
+        await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
+
+      let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+      this.props.history.push(`/shop/${newUser.shopId}`)
+    }
+  }
 
 
 
 
   render() {
     return <React.Fragment>
-      <div className="main-header" >
+      <div className="main-header flex column" >
         <div className={this.state.isTop ? 'down nav-icon flex end align-center' : 'up nav-icon flex end align-center'} >
 
           <div className="nav-text">
@@ -89,10 +91,10 @@ class Header extends Component {
             <span><NavLink to='/item' className="nav-text" exact>Explore</NavLink></span>
 
 
-                 <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
-              
-          {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
-                        <button className="logout" onClick={this.props.logout}>LogOut</button>}
+            <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
+
+            {this.props.loggedInUser === null ? <NavLink to='/login' className="nav-text" exact> Login</NavLink> :
+              <button className="logout" onClick={this.props.logout}>LogOut</button>}
 
 
 
@@ -106,11 +108,6 @@ class Header extends Component {
               : ''}
           </div>
 
-
-
-
-
-
           <ul className="menu-icons flex align-center">
             <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
             <li><NavLink activeClassName="active" to='/cart' exact><img src={cart} /> <span></span></NavLink></li>
@@ -122,16 +119,10 @@ class Header extends Component {
             <h1 className="showRoom-title text-flicker-in-glow">ShowRoom.</h1>
             <h3 className="marketplace-title text-flicker-in-glow">Marketplace</h3>
           </div>
-          <Search></Search>
-
-          <div className="labels">
-            <button>Dress</button>
-            <button>Black</button>
-            <button>Boho</button>
-            <button>Hipster</button>
-            <button>Accessories</button>
-            <button>Summer</button>
-          </div>
+          
+            <Search></Search>
+            <Labels></Labels>
+          
         </div>
       </div>
     </React.Fragment>
@@ -144,7 +135,6 @@ class Header extends Component {
 const mapStateToProps = state => {
   return {
     loggedInUser: state.user.loggedInUser,
-
   };
 };
 
@@ -153,7 +143,7 @@ const mapDispatchToProps = {
   addShopToUser
 };
 
-export default withRouter (connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(Header))

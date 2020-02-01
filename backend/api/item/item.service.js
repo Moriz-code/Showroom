@@ -78,8 +78,13 @@ async function add(item) {
 }
 
 function _buildCriteria(filterBy) {
+    console.log('_buildCriteria',filterBy);
+    
     let filters;
     const criteria = {};
+    if(filterBy.labels){
+        criteria.labels = filterBy.labels   
+    }
     if (filterBy.gender) {
         filters = [];
         if (typeof filterBy.gender === 'string') {
@@ -105,14 +110,14 @@ function _buildCriteria(filterBy) {
             criteria["$or"] = filters
         }
     }
-    if (filterBy.shop) {
+    if (filterBy.itemOwner) {
         filters = [];
-        if (typeof filterBy.shop === 'string') {
-            criteria.shop = filterBy.shop
+        if (typeof filterBy.itemOwner === 'string') {
+            criteria['itemOwner.id'] = filterBy.itemOwner
         }
         else {
-            filterBy.shop.forEach((value) => {
-                filters.push({ 'shop': value })
+            filterBy.itemOwner.forEach((value) => {
+                filters.push({ 'itemOwner.id': value })
             })
             criteria["$or"] = filters
         }
