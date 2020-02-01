@@ -49,6 +49,10 @@
     position: absolute;
     padding-top: 10px;
     padding-right: 10px;
+    &:hover{
+      cursor: pointer;
+     
+    }
   }
 
   .heartbeat {

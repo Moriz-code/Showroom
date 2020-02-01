@@ -30,7 +30,6 @@ class Wishlist extends Component {
     }
 
     deleteItem =async (itemId) => {
-        console.log(itemId);
         await UserService.removeItemFromGuestWishList(itemId)
         this.setWishList()
     }
@@ -54,7 +53,7 @@ class Wishlist extends Component {
                     {this.state.wishlist.length > 0 ?
                         <div>
                             <p className="wishlist-title flex justify-center">WISHLIST</p>
-                            <ItemsList addToCart={this.addToCart} deleteItem={this.deleteItem} listMode="wishListMode" items={this.state.wishlist}></ItemsList>
+                            <ItemsList addToCart={this.addToCart} deleteItem={this.setWishList} listMode="wishListMode" items={this.state.wishlist}></ItemsList>
                         </div>
                         :
                         <div className="wishlist-txt">

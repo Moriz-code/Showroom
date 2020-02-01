@@ -1,5 +1,9 @@
+let localLoggedinUser = null;
+if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
+
+
 const INITIAL_STATE = {
-  loggedInUser:null
+  loggedInUser:localLoggedinUser
   //  {
   //     "_id" : "5e2364c31a0d5feaa843e505",
   //     "userName" : "roy",

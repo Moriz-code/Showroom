@@ -67,6 +67,7 @@ class ItemPreview extends Component {
 
 
   handleDelete = (itemId) => {
+    
     this.props.deleteItem(itemId)
   }
 

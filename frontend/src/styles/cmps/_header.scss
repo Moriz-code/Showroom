@@ -121,6 +121,23 @@
   }
 }
 
+// .header-text-search {
+//   color: white;
+
+//   @include for-narrow-layout {
+//     position: relative;
+//     bottom: 106%;
+//   }
+//   @include for-normal-layout {
+//     position: relative;
+//     bottom: 96%;
+//   }
+//   @include for-wide-layout {
+//     position: relative;
+//     bottom: 90%;
+//   }
+// }
+
 .search {
   z-index: 3;
   input {

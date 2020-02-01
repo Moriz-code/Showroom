@@ -504,3 +504,68 @@ Fri, 31 Jan 2020 09:45:53 GMT - Debug - auth.service - login with email: coralso
 
 >>>>>>> 241e6ad2413b11d05b7b353a8d40a6cb275bf2a0
 Sat, 01 Feb 2020 08:43:31 GMT - Debug - auth.service - login with email: mor1@gmail.com
+Sat, 01 Feb 2020 09:01:50 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 09:02:26 GMT - Debug - auth.service - login with email: elish@gmail.com
+Sat, 01 Feb 2020 10:42:14 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 13:13:07 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 13:13:22 GMT - Debug - auth.service - login with email: elish@gmail.com
+Sat, 01 Feb 2020 13:20:23 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 13:21:59 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 13:34:22 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 13:41:24 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 15:10:32 GMT - Debug - SHOSI@GMAIL.COM, , 123,SHOSI,,
+Sat, 01 Feb 2020 15:10:32 GMT - Debug - auth.service - signup with email: SHOSI@GMAIL.COM, username: ,fullName: SHOSI,wishlist: 
+Sat, 01 Feb 2020 15:10:32 GMT - Debug - auth.route - new account created: {"email":"SHOSI@GMAIL.COM","password":"$2b$10$HNkUFuijWJiWcPiQeUX5BuQ/M0xvjMaZrz8ZzFt.mdaEOhiuMX/1q","username":"","fullName":"SHOSI","wishlist":[],"shopId":"","_id":"5e3594e86eb2f3d44c40de79"}
+Sat, 01 Feb 2020 15:10:32 GMT - Debug - auth.service - login with email: SHOSI@GMAIL.COM
+Sat, 01 Feb 2020 15:12:53 GMT - Debug - auth.service - login with email: SHOSI@GMAIL.COM
+Sat, 01 Feb 2020 15:34:51 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 15:35:26 GMT - Debug - shosi@gmail.com, , 123,shosi,,
+Sat, 01 Feb 2020 15:35:26 GMT - Debug - auth.service - signup with email: shosi@gmail.com, username: ,fullName: shosi,wishlist: 
+Sat, 01 Feb 2020 15:35:26 GMT - Debug - auth.route - new account created: {"email":"shosi@gmail.com","password":"$2b$10$nY0GEE3BXxmziAEmt2K.0uLrjtPIhgv/hQoQGmf.6SpyBLM14pXQa","username":"","fullName":"shosi","wishlist":[],"imgUrl":"","shopId":"","_id":"5e359abe608c61f660e8dfe2"}
+Sat, 01 Feb 2020 15:35:26 GMT - Debug - auth.service - login with email: shosi@gmail.com
+Sat, 01 Feb 2020 15:43:46 GMT - Debug - shosi@gmail.com, , 123,shoshi,,
+Sat, 01 Feb 2020 15:43:46 GMT - Debug - auth.service - signup with email: shosi@gmail.com, username: ,fullName: shoshi,wishlist: 
+Sat, 01 Feb 2020 15:43:46 GMT - Debug - auth.route - new account created: {"email":"shosi@gmail.com","password":"$2b$10$wVol4t8Ppdgb6I7UaWup2eO5/ktAeRaTqCLQwAv2zEOMuci8yqhqe","username":"","fullName":"shoshi","wishlist":[],"imgUrl":"","shopId":"","_id":"5e359cb2608c61f660e8dfe3"}
+Sat, 01 Feb 2020 15:43:46 GMT - Debug - auth.service - login with email: shosi@gmail.com
+Sat, 01 Feb 2020 15:48:21 GMT - Debug - shosi@gmai.com, , 123,shosi,,
+Sat, 01 Feb 2020 15:48:21 GMT - Debug - auth.service - signup with email: shosi@gmai.com, username: ,fullName: shosi,wishlist: 
+Sat, 01 Feb 2020 15:48:21 GMT - Debug - auth.route - new account created: {"email":"shosi@gmai.com","password":"$2b$10$mpp95233qFShdZD.RE6pEuuABC/KV5rJWj/cRPl50PeEgedb2eVYW","username":"","fullName":"shosi","wishlist":[],"imgUrl":"","shopId":"","_id":"5e359dc5608c61f660e8dfe4"}
+Sat, 01 Feb 2020 15:48:21 GMT - Debug - auth.service - login with email: shosi@gmai.com
+Sat, 01 Feb 2020 16:05:16 GMT - Debug - shosi@gmail.com, , 123,shoshi,,
+Sat, 01 Feb 2020 16:05:16 GMT - Debug - auth.service - signup with email: shosi@gmail.com, username: ,fullName: shoshi,wishlist: 
+Sat, 01 Feb 2020 16:05:16 GMT - Debug - auth.route - new account created: {"email":"shosi@gmail.com","password":"$2b$10$40UXwMiuaboy7LU3I1rv.e3VwibypaHzI7KJa8EzovBDnlDD87166","username":"","fullName":"shoshi","wishlist":[],"imgUrl":"http://res.cloudinary.com/moriz/image/upload/v1580573038/utlfzbbkew7mns0ijcdt.png","shopId":"","_id":"5e35a1bc608c61f660e8dfe5"}
+Sat, 01 Feb 2020 16:05:16 GMT - Debug - auth.service - login with email: shosi@gmail.com
+Sat, 01 Feb 2020 16:10:01 GMT - Debug - Avrasha@gmail.com, , 123,Avrasha Masayt,,
+Sat, 01 Feb 2020 16:10:01 GMT - Debug - auth.service - signup with email: Avrasha@gmail.com, username: ,fullName: Avrasha Masayt,wishlist: 
+Sat, 01 Feb 2020 16:10:01 GMT - Debug - auth.route - new account created: {"email":"Avrasha@gmail.com","password":"$2b$10$756zRuUXaNnDt848DnYbnutK.uMuGZ2erDWULOznmUzP9VhUtwHke","username":"","fullName":"Avrasha Masayt","wishlist":[],"imgUrl":"","shopId":"","_id":"5e35a2d9608c61f660e8dfe7"}
+Sat, 01 Feb 2020 16:10:01 GMT - Debug - auth.service - login with email: Avrasha@gmail.com
+Sat, 01 Feb 2020 16:10:46 GMT - Debug - AvalAval@gmail.com, , 123,Aval,,
+Sat, 01 Feb 2020 16:10:46 GMT - Debug - auth.service - signup with email: AvalAval@gmail.com, username: ,fullName: Aval,wishlist: 
+Sat, 01 Feb 2020 16:10:46 GMT - Debug - auth.route - new account created: {"email":"AvalAval@gmail.com","password":"$2b$10$ktvibAr3jq.XmX7JlaSp.eejSctwPJWaE.KNsqdG0FfKwhdSJwTUu","username":"","fullName":"Aval","wishlist":[],"imgUrl":"","shopId":"","_id":"5e35a306608c61f660e8dfe8"}
+Sat, 01 Feb 2020 16:10:46 GMT - Debug - auth.service - login with email: AvalAval@gmail.com
+Sat, 01 Feb 2020 16:11:20 GMT - Debug - moshe@gmail.com, , 123,Moshe,,
+Sat, 01 Feb 2020 16:11:20 GMT - Debug - auth.service - signup with email: moshe@gmail.com, username: ,fullName: Moshe,wishlist: 
+Sat, 01 Feb 2020 16:11:20 GMT - Debug - auth.route - new account created: {"email":"moshe@gmail.com","password":"$2b$10$VEod4tT7CDvZFm3ZrJJTKu4aNoIJkQ1cMr80M5rNGz5kiUx/ADxpW","username":"","fullName":"Moshe","wishlist":[],"imgUrl":"","shopId":"","_id":"5e35a328608c61f660e8dfe9"}
+Sat, 01 Feb 2020 16:11:20 GMT - Debug - auth.service - login with email: moshe@gmail.com
+Sat, 01 Feb 2020 16:29:15 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 16:39:27 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 16:39:46 GMT - Debug - auth.service - login with email: elish@gmail.com
+Sat, 01 Feb 2020 16:48:15 GMT - Debug - auth.service - login with email: SHOSI@GMAIL.COM
+Sat, 01 Feb 2020 16:49:48 GMT - Debug - auth.service - login with email: shosi@gmail.com
+Sat, 01 Feb 2020 16:54:27 GMT - Debug - keren@gmail.com, , 123,keren,,
+Sat, 01 Feb 2020 16:54:27 GMT - Debug - auth.service - signup with email: keren@gmail.com, username: ,fullName: keren,wishlist: 
+Sat, 01 Feb 2020 16:54:28 GMT - Debug - auth.route - new account created: {"email":"keren@gmail.com","password":"$2b$10$WC0SmpPBnqHalBdgU3zx4uyeXH3YcLN/epuE3/SWADt7/5gD72EO.","username":"","fullName":"keren","wishlist":[],"imgUrl":"http://res.cloudinary.com/moriz/image/upload/v1580576028/khnj3e7ca2dzr7qladgv.png","shopId":"","_id":"5e35ad442cc8512900592d4c"}
+Sat, 01 Feb 2020 16:54:28 GMT - Debug - auth.service - login with email: keren@gmail.com
+Sat, 01 Feb 2020 16:55:56 GMT - Debug - auth.service - login with email: keren@gmail.com
+Sat, 01 Feb 2020 16:59:49 GMT - Debug - keren@gmail.com, , 123,keren,,
+Sat, 01 Feb 2020 16:59:49 GMT - Debug - auth.service - signup with email: keren@gmail.com, username: ,fullName: keren,wishlist: 
+Sat, 01 Feb 2020 16:59:49 GMT - Debug - auth.route - new account created: {"email":"keren@gmail.com","password":"$2b$10$ODgkv5N9xBl5Q3JKnLPenez/W1VRGAFCL8vijpcHPr..7c5rSnv3e","username":"","fullName":"keren","wishlist":[],"imgUrl":"","shopId":"","_id":"5e35ae852cc8512900592d4f"}
+Sat, 01 Feb 2020 16:59:49 GMT - Debug - auth.service - login with email: keren@gmail.com
+Sat, 01 Feb 2020 17:01:29 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 17:01:37 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 17:02:06 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 17:08:26 GMT - Debug - keren@gmail.com, , 123,keren,,
+Sat, 01 Feb 2020 17:08:26 GMT - Debug - auth.service - signup with email: keren@gmail.com, username: ,fullName: keren,wishlist: 
+Sat, 01 Feb 2020 17:08:26 GMT - Debug - auth.route - new account created: {"email":"keren@gmail.com","password":"$2b$10$26Y.xD6ez3aiwaGBu5fwduQSP.s3b39josFyvoNAxg40NYsYMuaVW","username":"","fullName":"keren","wishlist":[],"imgUrl":"http://res.cloudinary.com/moriz/image/upload/v1580576781/dfbqep6gd02jb4bsnf32.png","shopId":"","_id":"5e35b08a2cc8512900592d51"}
+Sat, 01 Feb 2020 17:08:26 GMT - Debug - auth.service - login with email: keren@gmail.com
+Sat, 01 Feb 2020 18:03:35 GMT - Debug - auth.service - login with email: roy@gmail.com
