@@ -125,17 +125,6 @@
     // font-family: lobster;
   }
 }
-.save-btn {
-  font-family: Lobster;
-  width: 100%;
-  background-color: $clr2;
-  color: $clr4;
-  border: none;
-  height: rem(45px);
-  font-size: rem(30px);
-  // margin-bottom: 20px;
-  border: 1px solid lightgrey;
-}
 
 .field {
   position: relative;
@@ -151,7 +140,6 @@
     padding: 5px 5px 5px 70px;
     transition: all 0.1s ease-out;
   }
-
   input[type="text"] + label,
   input[type="file"] + label {
     // text-align: center;
@@ -170,7 +158,6 @@
     transition: all 0.3s ease-in;
     transition-delay: 0.2s;
   }
-
   input[type="text"]:focus + label,
   input[type="file"]:focus + label {
     // transform: translateY(-110%) translateX(0%);
@@ -179,13 +166,11 @@
     color: $clr4;
     transition: all 0.1s ease-out;
   }
-
   input[type="text"]:focus,
   input[type="file"]:focus {
     transition: all 0.3s ease-out;
     transition-delay: 0.2s;
   }
-
   img {
     width: 28px;
     // height: 100%;
@@ -206,19 +191,6 @@
   font-size: rem(30px);
 }
 
-.serach-image {
-  color: rgba(204, 204, 204, 0.7);
-}
-
-.modal-chat {
-  background-color: whitesmoke;
-  position: fixed;
-  bottom: 70px;
-  right: 2px;
-  width: 150px;
-  height: 250px;
-  font-size: 0.5em;
-}
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -332,7 +304,6 @@
     flex-direction: row;
     // margin-left:  5%;
   }
-
   .details {
     // display: flex;
     flex-direction: column;
@@ -356,14 +327,4 @@
   .uploadImage input {
     border: 1px solid black;
   }
-}
-
-.modal-search-image {
-  position: absolute;
-  font-family: Lobster;
-  z-index: 6;
-  width: 250px;
-  height: 250px;
-  background-color: white;
-  color: $clr2;
 }
