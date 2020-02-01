@@ -38,7 +38,6 @@ async function updateUser(user) {
 
 
 function _handleLogin(user) {
-    console.log('login',user);
     
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;

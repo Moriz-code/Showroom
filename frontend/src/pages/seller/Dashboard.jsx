@@ -9,36 +9,47 @@ class Dashboard extends Component {
         orders: null
     }
 
-    componentDidMount = async () => {
+    componentDidMount =  () => {
         window.scrollTo(0, 0)
-        if(this.props.loggedInUser===null||this.props.loggedInUser.shopId==='') this.props.history.push('/')
-        const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
-        console.log(orders)
+        if(this.props.loggedInUser===null||this.props.loggedInUser.shopId==='') return this.props.history.push('/')
+        else this.loadOrders()
         
-        this.setState({ orders })
     }
 
     componentWillUnmount = () => {
-        OrderService.setOrdersAsRead(this.state.orders)
- 
+      if(this.props.loggedInUser===null||this.props.loggedInUser.shopId==='') return
+      OrderService.setOrdersAsRead(this.state.orders)
     }
+
+    loadOrders=async()=>{
+
+        const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
+        this.setState({ orders })
+
+
+    }
+
+
 
     renderOrders = () => {
         const sortedOrders=this.state.orders.reverse()
-        console.log(sortedOrders);
+        
         
         
         const data = this.state.orders.map(order => {
 
             return (<div  className={order.isRead? "row" : "row newOrder"}>
-                <div className="cell" data-title="Customer Name">
-                    {order.byUser.name}
+                <div className="cell" data-title="Product Image">
+                    <img src={order.product.imgUrl} alt=""/>
                 </div>
                 <div className="cell" data-title="Product title">
                     {order.product.title}
                 </div>
                 <div className="cell" data-title="Price">
                     ${order.product.price}
+                </div>
+                <div className="cell" data-title="Customer Name">
+                    {order.byUser.name}
                 </div>
                 <div className="cell" data-title="Order Date">
                     {order.boughtAt}
@@ -66,7 +77,7 @@ class Dashboard extends Component {
 
                                 <div className="row header">
                                     <div className="cell">
-                                        Customer Name
+                                        Item Image
 							</div>
                                     <div className="cell">
                                         Item
@@ -76,7 +87,10 @@ class Dashboard extends Component {
                                         Price
 							</div>
                                     <div className="cell">
-                                        Order date
+                                        Customer Name
+							</div>
+                                    <div className="cell">
+                                        Order Date
 							</div>
                                 </div>
                                 {this.state.orders &&

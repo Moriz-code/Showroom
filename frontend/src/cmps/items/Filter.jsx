@@ -73,7 +73,7 @@ class Filter extends Component {
       <div className="filters flex justify-center" style={{}}>
         {/* sizes */}
         <div className={`checkbox-dropdown ${this.state.isToggleSize} flex align-center justify-center`} onClick={this.onToggleActiveSize} >
-          <div classname="">Size</div>
+          <div className="">Size</div>
           <ul className="checkbox-dropdown-list" >
             <li>
               <label>

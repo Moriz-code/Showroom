@@ -26,7 +26,6 @@ class ShopItems extends Component {
     this.checkIfOwner()
     if (params) {
       if (params === 'women' || params === 'men') {
-        console.log('params', params);
 
         this.props.loadItems({ 'gender': [params] })
 
