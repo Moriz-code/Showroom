@@ -1,10 +1,22 @@
 .inner-nav {
-
-
-
   background-color: $clr1;
   height: 72px;
 
+  .menu-btn {
+    @include for-mobile-layout {
+      background-color: transparent;
+      border: 0px;
+      width: 55px;
+      height: 55px;
+      padding: 15px;
+    }
+    @include for-normal-layout {
+      display: none;
+    }
+    @include for-wide-layout {
+      display: none;
+    }
+  }
 
   .inner-logo {
     // padding-top: 5px;
@@ -15,6 +27,14 @@
     line-height: 0px;
     position: relative;
     bottom: 8px;
+
+    @include for-mobile-layout {
+      font-size: rem(30px);
+    }
+    @include for-normal-layout {
+    }
+    @include for-wide-layout {
+    }
   }
 
   .bell-icon {
@@ -23,6 +43,17 @@
   }
   .nav-right-side {
     padding-right: 15px;
+
+    .nav-texts {
+      @include for-mobile-layout {
+        flex-direction: column;
+      }
+      @include for-normal-layout {
+      }
+      @include for-wide-layout {
+      }
+    }
+
     .inner-nav-icons {
       padding-left: 10px;
       width: 80px;
@@ -35,41 +66,88 @@
     .inner-nav-text {
       padding-left: 15px;
       color: $clr4;
-      
-      &:hover{
-        cursor: pointer;
 
+      &:hover {
+        cursor: pointer;
       }
 
-      
-
-      .logout{
+      .logout {
         border: none;
         color: white;
         font-size: 16px;
         background-color: inherit;
-        &:hover{
+        &:hover {
           cursor: pointer;
-  
         }
       }
+    }
+    .close-btn {
+      @include for-mobile-layout {
+        display: block;
+        width: 10%;
+        height: 10%;
+        margin-top: 10px;
+      }
+      @include for-normal-layout {
+        display: none;
+      }
+      @include for-wide-layout {
+        display: none;
+      }
+    }
 
+    @include for-mobile-layout {
+      z-index: 6;
+      flex-direction: column;
+      justify-content: space-between;
+      background: $clr1;
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100vh;
+      width: 44vh;
+      transform: translate(100%, 0);
+      transition: transform 0.6s;
+    }
+    @include for-normal-layout {
+    }
+    @include for-wide-layout {
+    }
+
+    &.open {
+      @include for-mobile-layout {
+        transform: translate(0, 0);
+      }
+      @include for-normal-layout {
+      }
+      @include for-wide-layout {
+      }
     }
   }
 
   .search {
     z-index: 3;
     position: relative;
-    top: 25px;
     input {
-      height: 90px;
+      height: 40px;
       width: 400px;
+      top: 20px;
     }
     button {
-      height: 20px;
-      bottom: 45px;
-      left: 140px;
+      height: 30px;
+      bottom: 0px;
+      left: -105px;
       font-size: 14px;
+    }
+
+    @include for-mobile-layout {
+      display: none;
+    }
+    @include for-normal-layout {
+      display: none;
+    }
+    @include for-wide-layout {
+      display: block;
     }
   }
   .notification-badge {

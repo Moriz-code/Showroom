@@ -20,6 +20,7 @@
   font-size: 1.125rem;
   overflow-y: auto;
   margin-top: 70px;
+
   .head {
     display: flex;
     flex-direction: column;
@@ -37,7 +38,6 @@
     flex-wrap: wrap;
   }
   img {
-    cursor: pointer;
     width: 290px;
     padding: 10px;
     height: 200px;
@@ -50,6 +50,7 @@
     position: absolute;
 
     img {
+      cursor: pointer;
       width: 50px;
       height: auto;
     }
