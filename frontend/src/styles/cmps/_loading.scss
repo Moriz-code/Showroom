@@ -1,15 +1,13 @@
-.lds-roller {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  height: 150px;
-
-  font-family: Lobster;
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
-.loader-text {
-  font-family: Lobster;
-  color: $clr2;
+.lds-roller {
+  // position: absolute;
+  opacity: 0.8;
 }
 
 .lds-roller div {

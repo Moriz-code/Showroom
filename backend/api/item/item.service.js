@@ -88,7 +88,7 @@ function _buildCriteria(filterBy) {
         else {
             filterBy.gender.forEach((value) => {
                 filters.push({ 'gender': value })
-                
+
             })
             criteria["$or"] = filters
         }
@@ -105,14 +105,14 @@ function _buildCriteria(filterBy) {
             criteria["$or"] = filters
         }
     }
-    if (filterBy.shop) {
+    if (filterBy.itemOwner) {
         filters = [];
-        if (typeof filterBy.shop === 'string') {
-            criteria.shop = filterBy.shop
+        if (typeof filterBy.itemOwner === 'string') {
+            criteria['itemOwner.id'] = filterBy.itemOwner
         }
         else {
-            filterBy.shop.forEach((value) => {
-                filters.push({ 'shop': value })
+            filterBy.itemOwner.forEach((value) => {
+                filters.push({ 'itemOwner.id': value })
             })
             criteria["$or"] = filters
         }
@@ -123,7 +123,8 @@ function _buildCriteria(filterBy) {
     if (filterBy.txt) {
         criteria["$or"] = [{ 'title': { $regex: filterBy.txt } }, { 'description': { $regex: filterBy.txt } }]
     }
-    
+
+    console.log('criteriacriteria', criteria);
 
     return criteria;
 }
