@@ -14,14 +14,23 @@ import { addShopToUser, logout } from '../actions/UserActions'
 import { CreateNewShop } from '../actions/ShopActions'
 import { withRouter } from 'react-router'
 import Labels from '../cmps/items/Labels'
+
+import close from '../styles/assets/imgs/left-arrow-white.png'
+import menu from '../styles/assets/imgs/menu.png'
+
 import Modal from '../cmps/Modal'
+
 
 class Header extends Component {
 
   state = {
     isTop: true,
     newOrders: 0,
+
+    isOpen: '',
+
     modalMsg: "",
+
   };
 
 
@@ -81,35 +90,36 @@ class Header extends Component {
     }
   }
 
-
+  toggleMenu = () => {
+    if (this.state.isOpen === '') this.setState({ 'isOpen': 'open' })
+    else this.setState({ 'isOpen': '' })
+  }
 
   render() {
     return <React.Fragment>
+
       <Modal msg={this.state.modalMsg}></Modal>
+
       <div className="main-header flex column" >
-        <div className={this.state.isTop ? 'down nav-icon flex end align-center' : 'up nav-icon flex end align-center'} >
+        <img class={`menu-btn flex self-end`} onClick={this.toggleMenu} src={menu}></img>
+        <div className={this.state.isTop ? `down nav-icon flex end align-center ${this.state.isOpen}` :
+          `up nav-icon flex end align-center ${this.state.isOpen}`} >
 
           <div className="nav-text">
+            <img className={`close-btn ${this.state.isOpen}`} onClick={this.toggleMenu} src={close}></img>
 
-            <span><NavLink to='/item' className="nav-text" exact>Explore</NavLink></span>
+            <span><NavLink to='/item' exact>Explore</NavLink></span>
 
+            <span onClick={this.getShopId}>My shop</span>
 
-
-            <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
-
-            {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
+            {this.props.loggedInUser === null ? <NavLink to='/login' exact> Sign in</NavLink> :
               <button className="logout" onClick={this.props.logout}>Log out</button>}
-
-
 
 
             {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
               <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
                 <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
               </NavLink></span>
-
-
-
               : ''}
           </div>
 
@@ -118,7 +128,6 @@ class Header extends Component {
             <li><NavLink activeClassName="active" to='/cart' exact><img src={cart} /> <span></span></NavLink></li>
           </ul>
         </div>
-        <img className="cover-photo" src={cover} />
         <div className="header-text-search flex column justify-center align-center">
           <div className="headlines ">
             <h1 className="showRoom-title text-flicker-in-glow">ShowRoom.</h1>
@@ -129,6 +138,8 @@ class Header extends Component {
           <Labels></Labels>
 
         </div>
+        <img className="cover-photo" src={cover} />
+
       </div>
     </React.Fragment>
   }
