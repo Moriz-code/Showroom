@@ -67,7 +67,8 @@ class PersonalShop extends Component {
 
 
     checkIfOwner = () => {
-        if (this.props.loggedInUser.shopId === this.props.match.params.id) this.setState({ isOwner: true })
+        const user = (this.props.loggedInUser && this.props.loggedInUser.shopId === this.props.match.params.id)
+            ? this.setState({ isOwner: true }) : null
     }
 
 
