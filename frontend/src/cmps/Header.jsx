@@ -14,12 +14,14 @@ import { addShopToUser, logout } from '../actions/UserActions'
 import { CreateNewShop } from '../actions/ShopActions'
 import { withRouter } from 'react-router'
 import Labels from '../cmps/items/Labels'
+import Modal from '../cmps/Modal'
 
 class Header extends Component {
 
   state = {
     isTop: true,
-    newOrders: 0
+    newOrders: 0,
+    modalMsg: "",
   };
 
 
@@ -52,32 +54,38 @@ class Header extends Component {
 
     const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
     const newOrders = orders.find(order => !order.isRead)
-    if (newOrders) await this.setState({ newOrders: 1 })
+    if (newOrders) {
+      await this.setState({ newOrders: 1 })
+      await this.setState({ modalMode: true, modalMsg: "You Have a New Order" })
+      this.setState({ modalMode: false, modalMsg: "" })
+    }
 
   }
 
   getShopId = async () => {
     if (!this.props.loggedInUser) return this.props.history.push(`/login`)
-    if (this.props.loggedInUser.shopId) { 
-        this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
-        
-        
-}
-    else{
-     
-        
-    let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
+    if (this.props.loggedInUser.shopId) {
+      this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
 
-    await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
 
-    let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
-    this.props.history.push(`/shop/${newUser.shopId}`)}
-}
+    }
+    else {
+
+
+      let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
+
+        await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
+
+      let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+      this.props.history.push(`/shop/${newUser.shopId}`)
+    }
+  }
 
 
 
   render() {
     return <React.Fragment>
+      <Modal msg={this.state.modalMsg}></Modal>
       <div className="main-header flex column" >
         <div className={this.state.isTop ? 'down nav-icon flex end align-center' : 'up nav-icon flex end align-center'} >
 

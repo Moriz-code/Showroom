@@ -17,11 +17,11 @@ async function signup(req, res) {
     console.log('check3', req.body);
 
     try {
-        const { email, password, username, fullName, wishlist, shopId } = req.body
+        const { email, password, username, fullName, wishlist,imgUrl, shopId } = req.body
         logger.debug(email + ", " + username + ', ' + password + ',' + fullName + ',' + wishlist + ',' + shopId)
-        const account = await authService.signup(email, password, username, fullName, wishlist, shopId)
+        const account = await authService.signup(email, password, username, fullName, wishlist,imgUrl, shopId)
         logger.debug(`auth.route - new account created: ` + JSON.stringify(account))
-        const user = await authService.login(email, password, username, fullName, wishlist, shopId)
+        const user = await authService.login(email, password, username, fullName, wishlist,imgUrl, shopId)
         console.log('user1', user);
 
         req.session.user = user
