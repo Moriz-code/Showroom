@@ -493,3 +493,15 @@ Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.service - signup with email: corals
 Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.route - new account created: {"email":"coralsolomon179@gmail.com","password":"$2b$10$l4fHQY.SKwoLlxGxu0uaKexxz6eARWrGSl3n.9IFPDAzCAPRDMsgS","username":"","fullName":"Coral Solomon","wishlist":[],"shopId":"","_id":"5e33f6ae7a5a234074be8625"}
 Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
 Fri, 31 Jan 2020 09:45:53 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
+Fri, 31 Jan 2020 10:16:22 GMT - Debug - auth.service - login with email: morzavi1@gmail.com
+Fri, 31 Jan 2020 10:16:31 GMT - Debug - morzavi1@gmail.com, , 123,‪Mor Zeevi‬‏,,
+Fri, 31 Jan 2020 10:16:31 GMT - Debug - auth.service - signup with email: morzavi1@gmail.com, username: ,fullName: ‪Mor Zeevi‬‏,wishlist: 
+Fri, 31 Jan 2020 10:16:32 GMT - Debug - auth.route - new account created: {"email":"morzavi1@gmail.com","password":"$2b$10$A5aNvRzUWH6/QEL8ywGMfOfxYX8WrAzvVQaS8gY8UmCdJLe40Povi","username":"","fullName":"‪Mor Zeevi‬‏","wishlist":[],"shopId":"","_id":"5e33fe7f82ee2c2e14546e64"}
+Fri, 31 Jan 2020 10:16:32 GMT - Debug - auth.service - login with email: morzavi1@gmail.com
+Fri, 31 Jan 2020 10:32:22 GMT - Debug - auth.service - login with email: mor@gmail.com
+Fri, 31 Jan 2020 15:36:30 GMT - Debug - auth.service - login with email: morzavi1@gmail.com
+Fri, 31 Jan 2020 15:36:38 GMT - Debug - auth.service - login with email: mor@gmail.com
+Fri, 31 Jan 2020 16:04:01 GMT - Debug - auth.service - login with email: mor1@gmail.com
+Fri, 31 Jan 2020 16:04:59 GMT - Debug - auth.service - login with email: mor@gmail.com
+Fri, 31 Jan 2020 16:06:17 GMT - Debug - auth.service - login with email: mor@gmail.com
+Fri, 31 Jan 2020 21:07:33 GMT - Debug - auth.service - login with email: mor1@gmail.com

@@ -33,12 +33,12 @@ export function updateShopSettings(shop) {
     }
 
 }
-export function CreateNewShop(userId,userName) {
+export function CreateNewShop(userId, userName) {
     return async dispatch => {
         try {
-            let shop= createShop(userId,userName)
+            let shop = createShop(userId, userName)
             shop = await ShopService.add(shop);
-           dispatch({ type: 'ADD_SHOP', shop });
+            dispatch({ type: 'ADD_SHOP', shop });
             return shop
         } catch (err) {
             console.log(`cant add shop - shop action `);
@@ -53,7 +53,7 @@ export function saveComment(comment) {
     return async dispatch => {
         try {
             const commentToAdd = await ShopService.post(comment);
-            await dispatch({type: 'ADD_COMMENT',commentToAdd })
+            await dispatch({ type: 'ADD_COMMENT', commentToAdd })
         }
 
         catch {
@@ -64,12 +64,12 @@ export function saveComment(comment) {
 }
 
 
- function createShop(userId,userName){
+function createShop(userId, userName) {
 
-       let shop= {
+    let shop = {
         comments: [],
         info: {
-            name: '',
+            name: 'My Shop',
             description: '',
             instagram: '',
             facebook: '',
