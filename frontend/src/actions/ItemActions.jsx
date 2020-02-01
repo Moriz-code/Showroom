@@ -1,7 +1,7 @@
 import ItemService from '../services/ItemService'
 
 export function loadItems(filterBy) {
-    console.log('filterBy',filterBy);
+    // console.log('filterBy',filterBy);
     
     return async dispatch => {
         try {

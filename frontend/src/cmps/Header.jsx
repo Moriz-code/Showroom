@@ -10,7 +10,7 @@ import wishlist from '../styles/assets/imgs/heart-white.png'
 import cart from '../styles/assets/imgs/shopping-cart-white.png'
 import SocketService from '../services/SocketService'
 import OrderService from '../services/OrderService'
-import { addShopToUser } from '../actions/UserActions'
+import { addShopToUser,logout } from '../actions/UserActions'
 import { CreateNewShop } from '../actions/ShopActions'
 import { withRouter } from 'react-router'
 
@@ -37,8 +37,8 @@ class Header extends Component {
 
 
 
-  componentWillMount = () => {
-    SocketService.terminate()
+  componentWillUnmount = () => {
+     SocketService.terminate()
   }
 
   listenToOrders = () => {
@@ -51,14 +51,12 @@ class Header extends Component {
 
     const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
     const newOrders = orders.find(order => !order.isRead)
-    console.log('newOrders', newOrders);
-
     if (newOrders) await this.setState({ newOrders: 1 })
 
   }
 
   getShopId = async () => {
-    if (!this.props.loggedInUser) return
+    if (!this.props.loggedInUser) return this.props.history.push(`/login`)
     if (this.props.loggedInUser.shopId) { 
         this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
         
@@ -91,14 +89,14 @@ class Header extends Component {
 
                  <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
               
-          {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Login</NavLink> :
-                        <button className="logout" onClick={this.props.logout}>LogOut</button>}
+          {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
+                        <button className="logout" onClick={this.props.logout}>Log out</button>}
 
 
 
             {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
               <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
-                <span className="notification-seller-badge">{this.state.newOrders}</span>
+                <span className="notification-seller-badge">{this.state.newOrders>0&&this.state.newOrders}</span>
               </NavLink></span>
 
 
@@ -150,7 +148,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   CreateNewShop,
-  addShopToUser
+  addShopToUser,
+  logout
 };
 
 export default withRouter (connect(
