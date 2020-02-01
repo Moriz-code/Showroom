@@ -1,6 +1,57 @@
-.modal-search-image {
+.screen {
   position: absolute;
-  width: 70vh;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(40, 38, 40, 0.7);
+}
+
+.modal-search-image {
+  font-family: Lobster;
+  position: absolute;
+  z-index: 2;
+  width: calc(70vw - 330px);
   height: 70vh;
   background-color: white;
+  color: #64485c;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  overflow-y: auto;
+  margin-top: 70px;
+  .head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      width: 300px;
+    }
+  }
+
+  .images-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  img {
+    cursor: pointer;
+    width: 290px;
+    padding: 10px;
+    height: 200px;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    right: 0;
+    position: absolute;
+
+    img {
+      width: 50px;
+      height: auto;
+    }
+  }
 }

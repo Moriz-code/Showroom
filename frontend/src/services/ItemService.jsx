@@ -10,16 +10,18 @@ export default {
 };
 
 function query(filterBy = null) {
-    
+    console.log('query item service ', filterBy);
+
     if (filterBy === null) return HttpService.get('item');
+
     else {
         let str = '';
         for (const key in filterBy) {
             if (filterBy[key].length === 0) continue
             else {
-                if (filterBy[key].length === 1||typeof filterBy[key]==='string') {
+                if (filterBy[key].length === 1 || typeof filterBy[key] === 'string' || typeof filterBy[key] === 'number') {
                     if (str !== '') str += '&'
-                    if (key === 'txt' || key === 'price') {
+                    if (key === 'txt' || key === 'price' || key === 'itemOwner') {
                         str += key + '=' + filterBy[key]
                     } else str += key + '=' + filterBy[key][0]
                 }
@@ -31,8 +33,10 @@ function query(filterBy = null) {
                 }
             }
         }
-        
+        console.log('shop-test', str);
+
         return HttpService.get(`item?${str}`);
+
     }
 }
 
@@ -56,10 +60,10 @@ async function get(itemId) {
 
 
 
-async function put(editedItem) {  
-    const itemToEdit = await HttpService.put(`item/${editedItem._id}` , editedItem);
-   
-     return itemToEdit
+async function put(editedItem) {
+    const itemToEdit = await HttpService.put(`item/${editedItem._id}`, editedItem);
+
+    return itemToEdit
 
 }
 
@@ -80,7 +84,7 @@ function getNewItem() {
             logoUrl: ''
         },
         labels: [],
-        imgs: [null , null , null],
+        imgs: [null, null, null],
         reviews: []
     }
 }
