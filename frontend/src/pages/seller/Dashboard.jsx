@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import OrderService from '../../services/OrderService'
 import { Divider } from '@material-ui/core';
 import InnerNavBar from '../../cmps/InnerNavBar';
+import Avatar from '@material-ui/core/Avatar';
 class Dashboard extends Component {
 
     state = {
@@ -39,8 +40,11 @@ class Dashboard extends Component {
         const data = this.state.orders.map(order => {
 
             return (<div  className={order.isRead? "row" : "row newOrder"}>
-                <div className="cell" data-title="Product Image">
-                    <img src={order.product.imgUrl} alt=""/>
+                <div className="cell" data-title="Customer Name">
+                    {order.byUser.name}
+                </div>
+                <div className="cell" data-title="Customer Image">
+                <Avatar src={order.byUser.imgUrl} alt=""></Avatar>
                 </div>
                 <div className="cell" data-title="Product title">
                     {order.product.title}
@@ -48,8 +52,8 @@ class Dashboard extends Component {
                 <div className="cell" data-title="Price">
                     ${order.product.price}
                 </div>
-                <div className="cell" data-title="Customer Name">
-                    {order.byUser.name}
+                <div className="cell" data-title="Product Image">
+                    <img src={order.product.imgUrl} alt=""/>
                 </div>
                 <div className="cell" data-title="Order Date">
                     {order.boughtAt}
@@ -77,7 +81,10 @@ class Dashboard extends Component {
 
                                 <div className="row header">
                                     <div className="cell">
-                                        Item Image
+                                        Customer Name
+							</div>
+                                    <div className="cell">
+                                        Customer Image
 							</div>
                                     <div className="cell">
                                         Item
@@ -87,7 +94,7 @@ class Dashboard extends Component {
                                         Price
 							</div>
                                     <div className="cell">
-                                        Customer Name
+                                        Item Image
 							</div>
                                     <div className="cell">
                                         Order Date

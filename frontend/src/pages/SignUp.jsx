@@ -20,6 +20,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import CloudinaryService from '../services/CloudinaryService';
 
 class SignUp extends Component {
 
@@ -31,7 +32,8 @@ class SignUp extends Component {
             username: '',
             fullName: "",
             wishlist: [],
-            shopId: ""
+            imgUrl:'',
+            shopId: ''
         }
     }
 
@@ -48,15 +50,31 @@ class SignUp extends Component {
 
     doSignup = async ev => {
         ev.preventDefault();
-        const { email, password, username, fullName, wishlist, shopId } = this.state.signupCred;
+        const { email, password, username, fullName, wishlist,imgUrl, shopId } = this.state.signupCred;
         if (!email || !password || !fullName) {
             return this.setState({ msg: 'All inputs are required!' });
         }
-        const signupCreds = { email, password, username, fullName, wishlist, shopId };
+        const signupCreds = { email, password, username, fullName, wishlist,imgUrl, shopId };
+        console.log(signupCreds)
         this.props.signup(signupCreds);
-        this.setState({ signupCred: { email: '', password: '', username: '', fullName: '', wishlist: [], shopId: '' } });
+        this.setState({ signupCred: { email: '', password: '', username: '', fullName: '', wishlist: [],imgUrl, shopId: '' } });
+        this.props.history.push('/item')
     };
 
+
+    handleImageUpload=async(ev)=>{
+ 
+      const res = await CloudinaryService.uploadImg(ev);
+      let value = res.url;
+      let name='imgUrl'
+      this.setState(prevState => ({
+        signupCred: {
+            ...prevState.signupCred,
+            [name]: value
+        }
+    }));
+    
+    }
 
 
         
@@ -133,6 +151,17 @@ class SignUp extends Component {
                     autoComplete="current-password"
                     value={this.state.signupCred.password}
                     onChange={this.signupHandleChange}
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                    name="imgUrl"
+                    // label="Upload your Image"
+                    type="file"
+                    id="imgUrl"
+                    // value={this.state.signupCred.imgUrl}
+                    onChange={this.handleImageUpload}
                   />
                   <button
                     type="submit"
