@@ -10,19 +10,25 @@ export default {
 };
 
 function query(filterBy = null) {
-    console.log('query item service ', filterBy);
-
     if (filterBy === null) return HttpService.get('item');
 
     else {
         let str = '';
         for (const key in filterBy) {
+            console.log('item-service4',filterBy[key].length);
+            console.log('key',key);
+            
             if (filterBy[key].length === 0) continue
             else {
-                if (filterBy[key].length === 1 || typeof filterBy[key] === 'string' || typeof filterBy[key] === 'number') {
+
+                if (filterBy[key].length === 1||typeof filterBy[key]==='string'||typeof filterBy[key]==='number') {
                     if (str !== '') str += '&'
-                    if (key === 'txt' || key === 'price' || key === 'itemOwner') {
-                        str += key + '=' + filterBy[key]
+                    console.log('trytrytry');
+                    
+                    if (key === 'txt' || key === 'price'||key==='labels'||key==='itemOwner') {
+        str += key + '=' + filterBy[key]
+                        console.log('item-service5',str);
+                        
                     } else str += key + '=' + filterBy[key][0]
                 }
                 else {
@@ -33,7 +39,6 @@ function query(filterBy = null) {
                 }
             }
         }
-        console.log('shop-test', str);
 
         return HttpService.get(`item?${str}`);
 

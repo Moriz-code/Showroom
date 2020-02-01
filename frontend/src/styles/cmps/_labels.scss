@@ -1,0 +1,23 @@
+.labels {
+  z-index: 3;
+  position: relative;
+  bottom: 45px;
+
+  button {
+    background-color: $clr3;
+    color: $clr4;
+    border-radius: 20px;
+    border: 0px;
+    padding: 10px;
+    @include for-narrow-layout {
+      margin-top: 10px;
+      font-size: rem(6px);
+    }
+    @include for-normal-layout {
+      font-size: rem(14px);
+    }
+    @include for-wide-layout {
+      font-size: rem(16px);
+    }
+  }
+}

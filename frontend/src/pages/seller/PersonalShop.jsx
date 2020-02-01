@@ -40,8 +40,9 @@ class PersonalShop extends Component {
 
     async componentDidMount() {
         await this.props.loadShop(this.props.match.params.id)
-        // this.props.loadItems({ 'gender': [params] })
-        this.props.loadItems({ 'itemOwner': this.props.match.params.id });
+
+        await this.props.loadItems();
+        this.props.loadItems({ 'itemOwner': this.props.match.params.id })
 
         this.setState({ shop: this.props.shop.selectedShop })
         this.clearItemState();

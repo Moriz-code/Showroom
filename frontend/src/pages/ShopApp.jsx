@@ -49,21 +49,20 @@ class ShopApp extends Component {
                     <span className="home-page-text">CLEARANCE</span> </Link>
 
                 <Link to={`/item/women`} className="category-c" style={{backgroundImage: `url( ${women})`}}>
-                    {/* <img src={women}></img> */}
                     <span className="home-page-text">WOMEN</span></Link>
 
                 <Link to={`/item/men`} className="category-d" style={{backgroundImage: `url( ${men})`}}>
-                    {/* <img src={men}></img> */}
                     <span className="home-page-text">MEN</span></Link>
 
                 <Link to={`/item/petit`} className="category-e" style={{backgroundImage: `url( ${hat})`}}>
-                    {/* <img src={hat}></img> */}
                     <span className="home-page-text">PETIT</span></Link>
             </div>
             <span className="home-page-text">HOT PRODUCTS</span>
 
             {items.length !== 0 ? <ItemsList items={itemsHome}>
             </ItemsList> : 'NO ITEMS!'}
+
+            
             <select onChange={this.setUser} name="User" >
                 <option value="Shop Owner">Shop Owner</option>
                 <option value="Customer">Customer</option>

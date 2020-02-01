@@ -78,8 +78,13 @@ async function add(item) {
 }
 
 function _buildCriteria(filterBy) {
+    console.log('_buildCriteria',filterBy);
+    
     let filters;
     const criteria = {};
+    if(filterBy.labels){
+        criteria.labels = filterBy.labels   
+    }
     if (filterBy.gender) {
         filters = [];
         if (typeof filterBy.gender === 'string') {

@@ -2,6 +2,7 @@ import ItemService from '../services/ItemService'
 
 export function loadItems(filterBy) {
 
+
     return async dispatch => {
         try {
             const items = await ItemService.query(filterBy);

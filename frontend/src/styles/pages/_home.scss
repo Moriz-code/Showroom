@@ -18,19 +18,46 @@
     background-color: lightcyan;
   }
   display: grid;
-  min-height: 100vh;
-  grid-template-columns: auto;
-  grid-template-rows: 50px 50px;
-  grid-template-areas:
-    "b b c c c"
-    "b b c c c"
-    "b b c c c"
-    "d d c c c"
-    "d d c c c"
-    "d d c c c"
-    "d d c c c"
-    "e e e e e"
-    "e e e e e";
+
+    @include for-narrow-layout {
+      min-height: 100vh;
+      grid-template-columns:auto;
+      grid-template-rows: 75px 75px;
+      grid-template-areas:
+      "b b b b b"
+      "b b b b b"
+      "c c c c c"
+      "d d d d d "
+      "e e e e e";
+    }
+    @include for-normal-layout {
+      min-height: 100vh;
+      grid-template-columns: auto;
+      grid-template-rows: 5px 5px;
+      grid-template-areas:
+      "b b b b b"
+      "b b b b b"
+      "b b b b b"
+      "c c c c c"
+      "d d d d d "
+      "e e e e e";
+    }
+    @include for-wide-layout {
+      min-height: 100vh;
+      grid-template-columns: auto;
+      grid-template-rows: 50px 50px;
+      grid-template-areas:
+      "b b c c c"
+      "b b c c c"
+      "b b c c c"
+      "d d c c c"
+      "d d c c c"
+      "d d c c c"
+      "d d c c c"
+      "e e e e e"
+      "e e e e e";
+    }
+
 }
 
 .category-c {
@@ -38,10 +65,25 @@
   // background-image: url("../assets/imgs/1111.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  
+  @include for-narrow-layout {
+    background-size:cover;
+    background-position: top;
+  }
+  @include for-normal-layout {
+   
+  }
+  @include for-wide-layout {
+ 
+  }
 
   &:hover {
-    background-blend-mode: luminosity;
+    filter: grayscale(1);
+    transition: 0.6s ease-in-out;
+
+    // box-shadow: inset 0 0 0 25px #53a7ea;
   }
+
 }
 
 .category-a {
@@ -54,8 +96,19 @@
   background-position: center;
   background-size: cover;
   grid-area: b;
+  @include for-narrow-layout {
+    background-size:cover;
+    background-position: center;
+  }
+  @include for-normal-layout {
+   
+  }
+  @include for-wide-layout {
+ 
+  }
   &:hover {
-    background-blend-mode: luminosity;
+    filter: grayscale(1);
+    transition: 0.6s ease-in-out;
   }
 }
 
@@ -63,9 +116,19 @@
   // background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/393-mckinsey-21a3921-jir_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=8d214bc588282e34255fbd1e08aedb78");
   background-size: 100% 100%;
   grid-area: d;
-
+  @include for-narrow-layout {
+    background-size:cover;
+    background-position: center;
+  }
+  @include for-normal-layout {
+   
+  }
+  @include for-wide-layout {
+ 
+  }
   &:hover {
-    background-blend-mode: luminosity;
+    filter: grayscale(1);
+    transition: 0.6s ease-in-out;
   }
 }
 
@@ -75,52 +138,21 @@
   background-repeat: no-repeat;
   grid-area: e;
   background-position: center;
+  @include for-narrow-layout {
+    background-size:cover;
+    background-position: center;
+  }
+  @include for-normal-layout {
+   
+  }
+  @include for-wide-layout {
+ 
+  }
   &:hover {
-    background-blend-mode: luminosity;
+    filter: grayscale(1);
+    transition: 0.6s ease-in-out;
   }
 }
-
-// .hero {
-//   height: 40vh;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   margin-bottom: 20px;
-//   background-size: 100% 600px;
-
-//   background-repeat: no-repeat;
-// }
-
-// .hero-title {
-//   display: flex;
-//   color: white;
-//   align-items: center;
-//   font-family: Zcool;
-//   font-size: 2.8em;
-//   -webkit-text-stroke-width: 1px;
-//   letter-spacing: 1px;
-//   -webkit-text-stroke-color: black;
-//   // margin: 150px 150px 150px 150px;
-// }
-
-// .hero-search {
-//   // font-family: Lato;
-//   display: flex;
-//   margin: 0 auto;
-//   width: 60%;
-//   height: 45px;
-//   padding: 0 20px;
-//   font-size: 1rem;
-//   border: 1px solid #d0cfce;
-//   border-radius: 5px;
-//   outline: none;
-//   &:focus {
-//     border: 1px solid #73585b;
-//     transition: 0.35s ease;
-//     color: black;
-//   }
-// }
 
 .home-categories {
   font-size: 1.5rem;
