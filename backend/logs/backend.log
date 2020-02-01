@@ -439,6 +439,12 @@ Mon, 20 Jan 2020 15:00:17 GMT - Info - Server is running on port: 3030
 Mon, 20 Jan 2020 15:33:02 GMT - Info - Server is running on port: 3030
 <<<<<<< HEAD
 <<<<<<< HEAD
+Fri, 31 Jan 2020 08:37:16 GMT - Info - Server is running on port: 3030
+Fri, 31 Jan 2020 08:38:29 GMT - Info - Server is running on port: 3030
+Fri, 31 Jan 2020 08:40:02 GMT - Info - Server is running on port: 3030
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD
 Mon, 20 Jan 2020 15:33:13 GMT - Info - Server is running on port: 3030
 <<<<<<< HEAD
@@ -493,91 +499,8 @@ Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.service - signup with email: corals
 Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.route - new account created: {"email":"coralsolomon179@gmail.com","password":"$2b$10$l4fHQY.SKwoLlxGxu0uaKexxz6eARWrGSl3n.9IFPDAzCAPRDMsgS","username":"","fullName":"Coral Solomon","wishlist":[],"shopId":"","_id":"5e33f6ae7a5a234074be8625"}
 Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
 Fri, 31 Jan 2020 09:45:53 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
-Fri, 31 Jan 2020 10:45:04 GMT - Debug - yoshi@gmail.com, , 123,yoshi,,
-Fri, 31 Jan 2020 10:45:04 GMT - Debug - auth.service - signup with email: yoshi@gmail.com, username: ,fullName: yoshi,wishlist: 
-Fri, 31 Jan 2020 10:45:04 GMT - Debug - auth.route - new account created: {"email":"yoshi@gmail.com","password":"$2b$10$sXRuPbDMPGL8Jowxs.CHyeAy5xp21NzxQYqcABNugmews2cg56ms.","username":"","fullName":"yoshi","wishlist":[],"shopId":"","_id":"5e34053085a79a2024face98"}
-Fri, 31 Jan 2020 10:45:04 GMT - Debug - auth.service - login with email: yoshi@gmail.com
-Fri, 31 Jan 2020 11:43:22 GMT - Debug - auth.service - login with email: 9@gmail.com
-Fri, 31 Jan 2020 11:43:52 GMT - Debug - auth.service - login with email: 9@gmail.com
-Fri, 31 Jan 2020 11:44:00 GMT - Debug - auth.service - login with email: 9@gmail.com
-Fri, 31 Jan 2020 11:44:28 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 12:23:53 GMT - Debug - yoshi@gmail.com, , 123,yoshi,,
-Fri, 31 Jan 2020 12:23:53 GMT - Debug - auth.service - signup with email: yoshi@gmail.com, username: ,fullName: yoshi,wishlist: 
-Fri, 31 Jan 2020 12:23:53 GMT - Debug - auth.route - new account created: {"email":"yoshi@gmail.com","password":"$2b$10$tpUl2brgDKsnDAM.gLPV8uFxd.72Ju4f.aW3pzd3xMPbl28sRWXHi","username":"","fullName":"yoshi","wishlist":[],"shopId":"","_id":"5e341c59f2e290a6f448a924"}
-Fri, 31 Jan 2020 12:23:53 GMT - Debug - auth.service - login with email: yoshi@gmail.com
-Fri, 31 Jan 2020 12:24:27 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 12:58:58 GMT - Debug - auth.service - login with email: yoshi@gmail.com
-Fri, 31 Jan 2020 12:59:11 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 13:30:06 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 13:38:10 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:02:44 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:06:19 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:07:31 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:09:20 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:10:33 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:11:14 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:13:32 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:14:38 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:15:25 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:17:59 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:21:04 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:35:04 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:48:06 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 14:54:28 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 15:15:52 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 15:20:27 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 15:20:45 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 15:22:32 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 15:48:51 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 15:59:25 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 16:19:17 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 16:19:37 GMT - Debug - auth.service - login with email: roy@gmail.comasdasd
-Fri, 31 Jan 2020 16:20:57 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 16:51:26 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 17:10:19 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 17:10:31 GMT - Debug - auth.service - login with email: yoshi@gmail.com
-Fri, 31 Jan 2020 17:11:01 GMT - Debug - auth.service - login with email: yoshi@gmail.com
-Fri, 31 Jan 2020 19:33:31 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 19:39:36 GMT - Debug - auth.service - login with email: yoshi@gmail.com
-Fri, 31 Jan 2020 20:19:07 GMT - Debug - elish@gmail.com, , 123,Elisheva ben shlush,,
-Fri, 31 Jan 2020 20:19:07 GMT - Debug - auth.service - signup with email: elish@gmail.com, username: ,fullName: Elisheva ben shlush,wishlist: 
-Fri, 31 Jan 2020 20:19:07 GMT - Debug - auth.route - new account created: {"email":"elish@gmail.com","password":"$2b$10$Q8e0QxKTVK9vq6uIu7oE5O4zJ1PmUMx9pYaTQhCNW8Q1xKf8Ijtra","username":"","fullName":"Elisheva ben shlush","wishlist":[],"shopId":"","_id":"5e348bbb891466950ce01752"}
-Fri, 31 Jan 2020 20:19:07 GMT - Debug - auth.service - login with email: elish@gmail.com
-Fri, 31 Jan 2020 20:24:29 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 20:26:29 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 20:27:13 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 20:27:25 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 20:27:51 GMT - Debug - auth.service - login with email: elish@gmail.com
-Fri, 31 Jan 2020 20:28:05 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 20:30:12 GMT - Debug - auth.service - login with email: elish@gmail.com
-Fri, 31 Jan 2020 21:35:24 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:38:48 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:39:54 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:40:43 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:43:27 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:45:36 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:46:22 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:48:39 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:49:26 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:50:42 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 21:53:41 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 22:01:30 GMT - Debug - auth.service - login with email: elish@gmail.com
-Fri, 31 Jan 2020 22:01:53 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 22:25:57 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 22:26:39 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 22:29:26 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 22:29:54 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 22:30:28 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 22:31:25 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 22:37:34 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 23:17:43 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 23:18:06 GMT - Debug - auth.service - login with email: elish@gmail.com
-Fri, 31 Jan 2020 23:20:06 GMT - Debug - auth.service - login with email: roy@gmail.com
-Fri, 31 Jan 2020 23:20:33 GMT - Debug - auth.service - login with email: elis@gmail.com
-Fri, 31 Jan 2020 23:21:17 GMT - Debug - auth.service - login with email: elish@gmail.com
-Sat, 01 Feb 2020 07:30:32 GMT - Debug - auth.service - login with email: elis@gmail.com
-Sat, 01 Feb 2020 07:30:42 GMT - Debug - auth.service - login with email: elish@gmail.com
-Sat, 01 Feb 2020 07:31:01 GMT - Debug - auth.service - login with email: roy@gmail.com
-Sat, 01 Feb 2020 07:38:39 GMT - Debug - auth.service - login with email: elish@gmail.com
-Sat, 01 Feb 2020 07:42:18 GMT - Debug - auth.service - login with email: elish@gmail.com
-Sat, 01 Feb 2020 07:42:54 GMT - Debug - auth.service - login with email: roy@gmail.com
+>>>>>>> f725487094064be2e7c47d83dc16d87ef5183576
+=======
+
+>>>>>>> 241e6ad2413b11d05b7b353a8d40a6cb275bf2a0
+Sat, 01 Feb 2020 08:43:31 GMT - Debug - auth.service - login with email: mor1@gmail.com

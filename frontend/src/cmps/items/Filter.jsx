@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { setFilters, removeFilter, setSorts } from '../../actions/ItemActions'
-
-
 // import InputRange from 'react-input-range';
-
+import { loadItems } from '../../actions/ItemActions'
+import { removeFromWishList } from '../../actions/UserActions';
 
 
 class Filter extends Component {
-
-
   state = {
     isToggleSize: '',
     isToggleGender: '',
@@ -19,13 +16,13 @@ class Filter extends Component {
   }
 
   onSelectFilter = (ev) => {
+    console.log('ev', ev);
+
     if (ev.target.name === 'price') this.setState({ 'priceValue': ev.target.value })
     this.props.selectFilter(ev)
   }
 
-  onToggleActiveSize = (ev) => {
-    console.log('mormormor', ev.target);
-
+  onToggleActiveSize = () => {
     this.setState((prevState) => {
       if (prevState.isToggleSize === '') return this.state.isToggleSize = 'is-active'
       return this.state.isToggleSize = ''
@@ -60,8 +57,12 @@ class Filter extends Component {
   // }
 
 
-  onSelectSort = (ev) => {
-    this.props.setSorts({ [ev.target.name]: ev.target.value })
+  // onSelectSort = (ev) => {
+  //   this.props.setSorts({ [ev.target.name]: ev.target.value })
+  // }
+
+  onClearFilter = () => {
+    this.props.loadItems();
   }
 
 
@@ -114,11 +115,16 @@ class Filter extends Component {
   <ul className="checkbox-dropdown-list" >
             <li>
               <label>
-                <input type="checkbox" value="MyBrand" name="shop" onChange={this.onSelectFilter} />MyBrand</label>
+                <input type="checkbox" value="5e333c471c9d44000097c9f9" name="itemOwner" onChange={this.onSelectFilter} />ICON MEN</label>
             </li>
             <li>
               <label>
-                <input type="checkbox" value="coral" name="shop" onChange={this.onSelectFilter} />Coral</label>
+                <input type="checkbox" value="5e298e5ec82c34ede14ea41a" name="itemOwner" onChange={this.onSelectFilter} />The Ground Round</label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="5e33ffcf8fe37c0bb08eac3a" name="itemOwner" onChange={this.onSelectFilter} />Moriz</label>
+
             </li>
           </ul>
         </div>
@@ -142,7 +148,7 @@ class Filter extends Component {
         </div>
 
 
-
+        <button className="flex clear-all" onClick={this.onClearFilter}>Clear All</button>
 
 
       </div>
@@ -154,14 +160,11 @@ class Filter extends Component {
 }
 const mapStateToProps = state => {
   return {
-    // filter: state.filter
   };
 };
 
 const mapDispatchToProps = {
-  // setFilters,
-  // removeFilter,
-  // setSorts
+  loadItems
 };
 
 export default connect(

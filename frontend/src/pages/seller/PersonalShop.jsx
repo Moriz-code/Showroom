@@ -6,7 +6,6 @@ import ItemService from '../../services/ItemService';
 import CloudinaryService from '../../services/CloudinaryService';
 
 
-
 import { loadShop, updateShopSettings, } from '../../actions/ShopActions';
 import { loadItems, deleteItem, saveItem } from '../../actions/ItemActions';
 import { addToCart } from '../../actions/OrderActions';
@@ -16,8 +15,8 @@ import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
 import InnerNavbar from '../../cmps/InnerNavBar';
-import Loading from "../../cmps/Loading";
-import SearchImage from "../../cmps/shop/SearchImage";
+// import Loading from "../../cmps/Loading";
+
 import Footer from '../../cmps/Footer';
 
 import chat from '../../styles/assets/imgs/icons/chat.png';
@@ -30,37 +29,20 @@ class PersonalShop extends Component {
         isOnChat: false,
         isOwner: false,
         isLoadingImg: false,
+        isOnSearchImage: false,
 
         item: '',
 
-        shop: {
-            _id: '',
-            comments: [],
-            info: {
-                name: '',
-                description: '',
-                instagram: '',
-                facebook: '',
-            },
-            owner: {
-                id: '',
-                name: ''
-            },
-            style: {
-                bgColor: '',
-                theme: '',
-                videoUrl: '',
-                coverImgUrl: '',
-                logoUrl: '',
-                darkMode: ''
-            },
-
-        }
+        shop: ''
     }
+
+
 
     async componentDidMount() {
         await this.props.loadShop(this.props.match.params.id)
+
         await this.props.loadItems();
+        this.props.loadItems({ 'itemOwner': this.props.match.params.id })
 
         this.setState({ shop: this.props.shop.selectedShop })
         this.clearItemState();
@@ -114,24 +96,31 @@ class PersonalShop extends Component {
 
     handleSettingChange = async (ev) => {
 
-        console.log('handleSettingChange', ev);
 
 
+        let { name, value, alt, src } = ev.target;
 
-
-        let { name, value, alt } = ev.target;
 
         if (name === 'videoUrl') {
             value = Utils.getEmbdedUrl(value);
         }
 
-        if (name === 'coverImgUrl' || name === 'logoUrl') {
-
+        if (name === 'coverImgUpload' || name === 'logoUrl') {
+            if (name === 'coverImgUpload') {
+                name = 'coverImgUrl'
+            }
             this.setState({ isLoadingImg: true });
             const res = await CloudinaryService.uploadImg(ev);
             value = res.url;
             this.setState({ isLoadingImg: false })
+        } else {
+            if (name === 'coverImgUrl') {
+                value = src
+            }
         }
+
+
+
 
         this.setState(prevState => ({
             ...prevState,
@@ -208,6 +197,7 @@ class PersonalShop extends Component {
         this.setState(state => ({
             isOnEditMode: !state.isOnEditMode,
         }))
+        window.scrollTo(0, 400)
 
     }
 
@@ -243,11 +233,6 @@ class PersonalShop extends Component {
 
 
 
-    componentWillUnmount = () => {
-
-    }
-
-
 
     render() {
 
@@ -260,33 +245,24 @@ class PersonalShop extends Component {
                 <InnerNavbar isOwner={this.state.isOwner}></InnerNavbar>
                 {this.state.shop ?
                     <div className='shop-page' style={{ backgroundColor: shop.style.bgColor }}>
-                        {/* <SearchImage></SearchImage> */}
+
+
+
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
-                            <HeaderShop onEditSettings={this.onEditSettings} isOnEditSettigs={this.state.isOnEditSettigs} selectedShop={shop}></HeaderShop>
-                            {/* <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button> */}
-                            <p className={this.state.isLoadingImg ? '' : 'display-none'}>
-                                <Loading></Loading>
-                            </p>
+                            <HeaderShop Loading={this.state.isLoadingImg} onEditSettings={this.onEditSettings} isOnEditSettigs={this.state.isOnEditSettigs} selectedShop={shop}></HeaderShop>
+
 
                             {this.state.isOnEditSettigs ?
-                                <div className='modal-settings'>
-                                    <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
-                                </div> : ''}
+                                <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop} />
+                                : ''}
 
 
                             {this.state.item ?
                                 <div className="shop-main">
                                     {this.state.isOnEditMode ?
-                                        <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem> : ''}
+                                        <EditItem Loading={this.state.isLoadingImg} onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem> : ''}
                                 </div>
                                 : ''}
-
-
-                            <button className="chat-icon" onClick={this.onChat}> <img src={chat} alt="icon" /></button>
-                            <div className={this.state.isOnChat ? 'modal-chat' : 'display-none'}>
-                                {/* <Comments addComment={this.onAddComment} comments={shop.comments}></Comments> */}
-                            </div>
-
 
                             <button className='add-item-btn' onClick={this.onAdd}>
                                 <img src={addBtn} className={this.state.isOnEditMode ? 'tranform45' : ''} alt="icon-add" />

@@ -1,5 +1,15 @@
 .filters{
     margin: 20px;
+
+    .clear-all{
+      background-color: transparent;
+      margin-left:15px;
+      border:0px;
+      color:$clr3;
+      text-decoration: underline;
+      font-size: rem(12px);
+      align-self: flex-end;
+    }
 }
 
 
@@ -60,6 +70,8 @@
     // overflow: scroll;
     // overflow-x: hidden;
     pointer-events: none; /* avoid mouse click events inside the dropdown */
+    transition: 0.2s linear ;
+
 }
 .is-active .checkbox-dropdown-list {
     opacity: 1; /* display the dropdown */

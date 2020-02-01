@@ -10,9 +10,10 @@ import wishlist from '../styles/assets/imgs/heart-white.png'
 import cart from '../styles/assets/imgs/shopping-cart-white.png'
 import SocketService from '../services/SocketService'
 import OrderService from '../services/OrderService'
-import { addShopToUser,logout } from '../actions/UserActions'
+import { addShopToUser, logout } from '../actions/UserActions'
 import { CreateNewShop } from '../actions/ShopActions'
 import { withRouter } from 'react-router'
+import Labels from '../cmps/items/Labels'
 
 class Header extends Component {
 
@@ -38,7 +39,7 @@ class Header extends Component {
 
 
   componentWillUnmount = () => {
-     SocketService.terminate()
+    SocketService.terminate()
   }
 
   listenToOrders = () => {
@@ -75,10 +76,9 @@ class Header extends Component {
 
 
 
-
   render() {
     return <React.Fragment>
-      <div className="main-header" >
+      <div className="main-header flex column" >
         <div className={this.state.isTop ? 'down nav-icon flex end align-center' : 'up nav-icon flex end align-center'} >
 
           <div className="nav-text">
@@ -86,27 +86,24 @@ class Header extends Component {
             <span><NavLink to='/item' className="nav-text" exact>Explore</NavLink></span>
 
 
-                 <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
-              
-          {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
-                        <button className="logout" onClick={this.props.logout}>Log out</button>}
+
+            <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
+
+            {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
+              <button className="logout" onClick={this.props.logout}>Log out</button>}
+
 
 
 
             {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
               <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
-                <span className="notification-seller-badge">{this.state.newOrders>0&&this.state.newOrders}</span>
+                <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
               </NavLink></span>
 
 
 
               : ''}
           </div>
-
-
-
-
-
 
           <ul className="menu-icons flex align-center">
             <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
@@ -119,16 +116,10 @@ class Header extends Component {
             <h1 className="showRoom-title text-flicker-in-glow">ShowRoom.</h1>
             <h3 className="marketplace-title text-flicker-in-glow">Marketplace</h3>
           </div>
-          <Search></Search>
 
-          <div className="labels">
-            <button>Dress</button>
-            <button>Black</button>
-            <button>Boho</button>
-            <button>Hipster</button>
-            <button>Accessories</button>
-            <button>Summer</button>
-          </div>
+          <Search></Search>
+          <Labels></Labels>
+
         </div>
       </div>
     </React.Fragment>
@@ -141,7 +132,6 @@ class Header extends Component {
 const mapStateToProps = state => {
   return {
     loggedInUser: state.user.loggedInUser,
-
   };
 };
 
@@ -151,7 +141,7 @@ const mapDispatchToProps = {
   logout
 };
 
-export default withRouter (connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(Header))
