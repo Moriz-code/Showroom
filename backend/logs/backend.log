@@ -438,6 +438,7 @@ Mon, 20 Jan 2020 15:00:04 GMT - Info - Server is running on port: 3030
 Mon, 20 Jan 2020 15:00:17 GMT - Info - Server is running on port: 3030
 Mon, 20 Jan 2020 15:33:02 GMT - Info - Server is running on port: 3030
 <<<<<<< HEAD
+<<<<<<< HEAD
 Fri, 31 Jan 2020 08:37:16 GMT - Info - Server is running on port: 3030
 Fri, 31 Jan 2020 08:38:29 GMT - Info - Server is running on port: 3030
 Fri, 31 Jan 2020 08:40:02 GMT - Info - Server is running on port: 3030
@@ -499,3 +500,6 @@ Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.route - new account created: {"emai
 Fri, 31 Jan 2020 09:43:10 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
 Fri, 31 Jan 2020 09:45:53 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
 >>>>>>> f725487094064be2e7c47d83dc16d87ef5183576
+=======
+
+>>>>>>> 241e6ad2413b11d05b7b353a8d40a6cb275bf2a0

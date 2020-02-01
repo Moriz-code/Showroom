@@ -16,10 +16,12 @@ import Wishlist from './pages/customer/Wishlist';
 import Cart from './pages/customer/Cart';
 import Footer from './cmps/Footer';
 
+
 const history = createBrowserHistory();
 
 function App() {
 
+  
   return <React.Fragment>
     <Router history={history}>
 

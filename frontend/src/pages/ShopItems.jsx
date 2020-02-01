@@ -15,7 +15,7 @@ class ShopItems extends Component {
     filterBy: {
       size: [],
       gender: [],
-      shop: [],
+      itemOwner: [],
       price: ''
     }
   }
@@ -23,16 +23,20 @@ class ShopItems extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
     var params = this.props.match.params.searchTerm
+    console.log('coral-params', params);
+
     this.checkIfOwner()
     if (params) {
       if (params === 'women' || params === 'men') {
-        console.log('params',params);
-        
+
         this.props.loadItems({ 'gender': [params] })
-        
-      }
-     else if (params === 'petit') this.props.loadItems({ 'size': ['xs', 's'] })
+      } else if (params === 'petit') this.props.loadItems({ 'size': ['xs', 's'] })
+
+
       else if (params === 'clearance') this.props.loadItems({ 'price': 40 })
+      else if (params === 'winter' || params === 'boho' || params === 'hipster' || params === 'accessories' || params === 'summer') {
+        this.props.loadItems({ 'labels': [params] })
+      }
       else this.props.loadItems({ 'txt': params })
     }
     else this.props.loadItems()
@@ -45,7 +49,12 @@ class ShopItems extends Component {
 
   selectFilter = (ev) => {
     let { name, value } = ev.target;
+
+    console.log(ev.target.name,ev.target.value);
+    
+
     if (name !== 'price') {
+      
       var list = [...this.state.filterBy[name]]
       var idx = list.indexOf(value)
 

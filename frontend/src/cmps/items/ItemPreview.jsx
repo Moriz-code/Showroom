@@ -32,12 +32,12 @@ class ItemPreview extends Component {
     switch (this.props.listMode) {
       case "cartMode":
         return (<div>
-          <button onClick={() => this.handleDelete(this.props.item._id)}>X</button>
+          < button className="btn2" onClick={() => this.handleDelete(this.props.item._id)}>X</button>
         </div>
         )
       case "wishListMode":
         return (<div>
-          <button onClick={() => this.handleAddToCart(this.props.item)}>Add To Cart</button>
+          <button className="btn1" onClick={() => this.handleAddToCart(this.props.item)}>Add To Cart</button>
         </div>
         )
 

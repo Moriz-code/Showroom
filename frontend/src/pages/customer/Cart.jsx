@@ -7,17 +7,25 @@ import InnerNavBar from '../../cmps/InnerNavBar';
 import SocketService from '../../services/SocketService'
 import { Link } from 'react-router-dom'
 import Footer from '../../cmps/Footer'
+import Modal from '../../cmps/Modal'
+
 
 class Cart extends Component {
 
     state = {
-        items: []
+        items: [],
+        modalMsg: "",
     }
 
     componentDidMount = async () => {
         SocketService.setup()
         const cart = await orderService.getOrder()
         this.setState({ items: cart })
+    }
+
+    componentWillUnmount = () => {
+
+        SocketService.terminate()
     }
 
     deleteItem = async (itemId) => {
@@ -42,6 +50,8 @@ class Cart extends Component {
         await this.props.placeOrder(this.props.loggedInUser)
         await this.clearCart()
         SocketService.emit('buy', this.state.items)
+        await this.setState({ modalMode: true, modalMsg: "Order Submitted" })
+        this.setState({ modalMode: false, modalMsg: "" })
         this.props.clearCart()
         // this.props.history.push("/")
     }
@@ -52,33 +62,46 @@ class Cart extends Component {
     render() {
         return (<div className="cart ">
             <InnerNavBar></InnerNavBar>
+            <Modal msg={this.state.modalMsg}></Modal>
             <div className="container">
-            <p className="cart-title">SHOPPING CART</p>
+                {/* <p className="cart-title">SHOPPING CART</p> */}
+                {this.state.items && this.state.items.length > 0 ?
+                <div className="cart-price">
+                                <div className="flex justify-space-between ">
+                                    <p className="cart-total"> Subtotal</p>
+                                    <p className=" cart-total"> ${this.calculateTotal()}</p>
+                                </div>
+                                <div  className="flex justify-space-between">
+                                    <p className="cart-total">Tax (17%)</p>
+                                    <p className="cart-total">${Math.floor(this.calculateTotal() * 0.17)}</p>
+                                </div>
+                                <div  className="flex justify-space-between total-to-pay">
+                                    <p  className="cart-total">TOTAL</p>
+                                    <p  className="price cart-total">${Math.floor(this.calculateTotal() * 0.17)+this.calculateTotal()}</p>
+                                </div>
+                                <button className="place-order btn1" onClick={this.onPlaceOrder}>PLACE ORDER</button>
+                            </div>
+                     :""}
+
+
                 <div className="cart-body flex justify-space-between">
               
-                        {this.state.items && this.state.items.length > 0 ?
-                            <div className="container">
-                          
-                                <div className="cart-list flex justify-center align-center">
-                                    <ItemsList deleteItem={this.deleteItem} listMode="cartMode" items={this.state.items}></ItemsList>
-                                </div>
-                                <div className="cart-price  ">
-                                    <div className="flex justify-space-between ">
-                                        <p> Subtotal:</p>
-                                        <p className="price"> {this.calculateTotal()}$</p>
-                                    </div>
+                    {this.state.items && this.state.items.length > 0 ?
+                        <div className="container flex justify-space-around">
 
-                                    <button className="btn1" onClick={this.onPlaceOrder}>PLACE ORDER</button>
-                                </div>
-                            </div> :
-                            <div className="cart-no-items container flex column justify-center">
-                                <p className="oops">OOPS!</p>
-                                <p className="empty-line">YOUR SHOPPING CART IS EMPTY</p>
-                                <p className="cart-paragraph">We know that you want to checkout quickly but you forgot something very important...</p>
-                                <Link to={`/item`}> <button className="btn1">Go shopping</button> </Link>
+                            <div className="cart-list flex justify-center align-center">
+                                <ItemsList deleteItem={this.deleteItem} listMode="cartMode" items={this.state.items}></ItemsList>
                             </div>
-                        }
-                 
+                            
+                        </div> :
+                        <div className="cart-no-items container flex column justify-center">
+                            <p className="oops">OOPS!</p>
+                            <p className="empty-line">YOUR SHOPPING CART IS EMPTY</p>
+                            <p className="cart-paragraph">We know that you want to checkout quickly but you forgot something very important...</p>
+                            <Link to={`/item`}> <button className="btn1">Go shopping</button> </Link>
+                        </div>
+                    }
+
 
                 </div>
             </div>
