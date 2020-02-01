@@ -9,10 +9,36 @@
 }
 
 .store-details {
-  align-items: center;
-  margin-bottom: 20px;
+  
+  @include for-narrow-layout {
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  @include for-normal-layout {
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  @include for-wide-layout {
+    align-items: center;
+    margin-bottom: 20px;
+  }
 }
+.item-description-txt{
 
+  @include for-narrow-layout {
+   
+  }
+  @include for-normal-layout {
+   margin-top: 0px;
+  }
+  @include for-wide-layout {
+    
+  }
+
+
+
+
+}
 .item-description {
   font-size: 14px;
 }
@@ -51,7 +77,15 @@
 }
 
 .secondary-img {
-  display: block;
+ 
+  @include for-narrow-layout {
+    display: none;
+  }
+  @include for-normal-layout {
+    display: none;
+  }
+  @include for-wide-layout {
+    display: block;
   max-width: 100px;
   max-height: 90px;
   margin-bottom: 15px;
@@ -60,6 +94,7 @@
   height: auto;
   &:hover {
     cursor: pointer;
+  }
   }
 }
 
@@ -114,8 +149,19 @@
   }
 }
 .item-price {
-  letter-spacing: 2px;
-  font-size: 22px;
+  
+  @include for-narrow-layout {
+    letter-spacing: 2px;
+    font-size: 14px;
+  }
+  @include for-normal-layout {
+    letter-spacing: 2px;
+    font-size: 16px;
+  }
+  @include for-wide-layout {
+    letter-spacing: 2px;
+    font-size: 22px;
+  }
 }
 
 .average-rating {
@@ -130,10 +176,36 @@
 }
 
 .item-details-main {
-  border-bottom: 0.5px solid rgb(240, 240, 240);
-  padding-bottom: 18px;
-  margin-bottom: 10px;
-  margin-top: 15px;
+ 
+  @include for-narrow-layout {
+    border-bottom: 0.5px solid rgb(240, 240, 240);
+    padding-bottom: 18px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+  
+  
+  }
+  @include for-normal-layout {
+    border-bottom: 0.5px solid rgb(240, 240, 240);
+    padding-bottom: 18px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: nowrap;
+  
+  }
+        
+  @include for-wide-layout {
+    border-bottom: 0.5px solid rgb(240, 240, 240);
+    padding-bottom: 18px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: nowrap;
+   
+  }
 }
 
 .reviews {

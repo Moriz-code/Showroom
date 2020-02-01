@@ -250,7 +250,7 @@ class ItemDetails extends Component {
                         </div>
 
                         <h3 className="item-description">
-                            <p>{item.description}</p>
+                            <p className="item-description-txt">{item.description}</p>
                             <p className="size-fit">{item.sizeFit}</p>
 
                         </h3>

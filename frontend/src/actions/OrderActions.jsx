@@ -1,7 +1,7 @@
 import orderService from "../services/OrderService";
 
 export function placeOrder(loggedInUser) {
-    const miniUser = { id: loggedInUser._id, name: loggedInUser.fullName }
+    const miniUser = { id: loggedInUser._id, name: loggedInUser.fullName,imgUrl:loggedInUser.imgUrl}
 
     return async dispatch => {
         const order = await orderService.getOrder()
