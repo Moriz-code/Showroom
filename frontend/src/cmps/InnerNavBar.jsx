@@ -13,11 +13,16 @@ import { logout, addShopToUser } from '../actions/UserActions'
 import { CreateNewShop } from '../actions/ShopActions'
 import { withRouter } from 'react-router'
 import Modal from '../cmps/Modal'
+import close from '../styles/assets/imgs/left-arrow-white.png'
+
+import menu from '../styles/assets/imgs/menu.png'
+
 class InnerNavBar extends Component {
 
     state = {
         newOrders: 0,
         modalMsg: "",
+        isOpen: ''
 
     }
 
@@ -71,6 +76,12 @@ class InnerNavBar extends Component {
     }
 
 
+    toggleMenu = () => {
+        if (this.state.isOpen === '') this.setState({ 'isOpen': 'open' })
+        else this.setState({ 'isOpen': '' })
+    }
+
+
     render() {
 
         const { itemsInCart } = this.props
@@ -81,22 +92,25 @@ class InnerNavBar extends Component {
             <div className="inner-nav flex justify-space-between">
 
                 <Link to={`/`} ><p className="inner-logo">ShowRoom.</p></Link>
+                <img class={`menu-btn flex self-end`} onClick={this.toggleMenu} src={menu}></img>
 
                 <Search></Search>
 
-                <div className="nav-right-side flex align-center">
+                <div className={`nav-right-side flex align-center ${this.state.isOpen}`}>
+                    <img className={`close-btn ${this.state.isOpen}`} onClick={this.toggleMenu} src={close}></img>
+                    
+                    <div className=" flex"> 
+                    {/* //coral:nav-texts */}
+                        <NavLink to='/item' className="inner-nav-text explore" exact>Explore</NavLink>
 
-                    <NavLink to='/item' className="inner-nav-text" exact>Explore</NavLink>
-                    {/* <span><NavLink to='/' className="inner-nav-text" exact>My shop</NavLink></span> */}
-
-                    {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
-                        <button className="logout" onClick={this.props.logout}>Log out</button>}
+                        {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
+                            <button className="logout" onClick={this.props.logout}>Log out</button>}
 
 
 
-                    {/* <span ><NavLink to='/item' className="inner-nav-text" exact>Shop</NavLink></span> */}
 
-                    <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
+                        <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
+                    </div>
                     {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
                         <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
