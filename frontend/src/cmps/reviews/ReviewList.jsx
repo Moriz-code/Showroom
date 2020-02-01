@@ -6,7 +6,7 @@ export default function ReviewList(props) {
     <div className="reviews-container container wrap flex space-around">
    
       {props.item.reviews.map(review =>
-        <ReviewPrivew review={review}></ReviewPrivew>
+        <ReviewPrivew key={review.txt} review={review}></ReviewPrivew>
       )}
 
   </div>
