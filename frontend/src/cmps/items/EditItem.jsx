@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from "../../cmps/Loading";
 
 export default function EditItem(props) {
 
@@ -8,9 +9,14 @@ export default function EditItem(props) {
   return <React.Fragment>
     <div className="edit-item container">
 
-      <div className="img">
-        <img src={item.imgs[0]} />
-      </div>
+      {props.Loading ? <div className="imgs-item-preview"> <Loading /> </div> :
+        <div class="imgs-item-preview">
+          <img src={item.imgs[0]} />
+          <img src={item.imgs[1]} />
+          <img src={item.imgs[2]} />
+        </div>
+      }
+
 
       <div className="details">
 
@@ -44,13 +50,13 @@ export default function EditItem(props) {
 
             <div class="radio" >
               <label>
-                <input type="radio" name="gender" value="female" checked={item.gender === 'female' ? 'checked' : ''} /><i class="helper"></i>Female
+                <input type="radio" name="gender" value="women" checked={item.gender === 'women' ? 'checked' : ''} /><i class="helper"></i>Women
            </label>
             </div>
 
             <div class="radio">
               <label>
-                <input type="radio" name="gender" value="male" checked={item.gender === 'male' ? 'checked' : ''} /><i class="helper"></i>Male
+                <input type="radio" name="gender" value="men" checked={item.gender === 'men' ? 'checked' : ''} /><i class="helper"></i>Men
         </label>
             </div>
 
@@ -81,31 +87,37 @@ export default function EditItem(props) {
         <div className="form-labels" onChange={props.handleFormChange}>
 
           <div class="checkbox">
+            <label>
+              <input type="checkbox" name="labels" value="dress" checked={item.labels.includes('dress') ? 'checked' : null} /><i class="helper"></i>Boho
+      </label>
+
+            <label>
+              <input type="checkbox" name="labels" value="black" checked={item.labels.includes('black') ? 'checked' : null} /><i class="helper"></i>Boho
+      </label>
+
+            <label>
+              <input type="checkbox" name="labels" value="boho" checked={item.labels.includes('boho') ? 'checked' : null} /><i class="helper"></i>Boho
+      </label>
+
+
+            <label>
+              <input type="checkbox" name="labels" value="hipster" checked={item.labels.includes('hipster') ? 'checked' : null} /><i class="helper"></i>Hipster
+      </label>
+
+            <label>
+              <input type="checkbox" name="labels" value="winter" checked={item.labels.includes('winter') ? 'checked' : null} /><i class="helper"></i>Winter
+      </label>
+
+            <label>
+              <input type="checkbox" name="labels" value="accessories" checked={item.labels.includes('accessories') ? 'checked' : null} /><i class="helper"></i>Accessories
+      </label>
+
 
             <label>
               <input type="checkbox" name="labels" value="summer" checked={item.labels.includes('summer') ? 'checked' : null} /><i class="helper"></i>Summer
       </label>
-            <label>
-              <input type="checkbox" name="labels" value="winter" checked={item.labels.includes('winter') ? 'checked' : null} /><i class="helper"></i>Winter
-      </label>
-            <label>
-              <input type="checkbox" name="labels" value="colorful" checked={item.labels.includes('colorful') ? 'checked' : null} /><i class="helper"></i>Colorful
-      </label>
-            <label>
-              <input type="checkbox" name="labels" value="hipster" checked={item.labels.includes('hipster') ? 'checked' : null} /><i class="helper"></i>Hipster
-      </label>
-            <label>
-              <input type="checkbox" name="labels" value="dark" checked={item.labels.includes('dark') ? 'checked' : null} /><i class="helper"></i>Dark
-      </label>
-            <label>
-              <input type="checkbox" name="labels" value="daily" checked={item.labels.includes('daily') ? 'checked' : null} /><i class="helper"></i>Daily
-      </label>
-            <label>
-              <input type="checkbox" name="labels" value="boho" checked={item.labels.includes('boho') ? 'checked' : null} /><i class="helper"></i>Boho
-      </label>
-            <label>
-              <input type="checkbox" name="labels" value="minimal" checked={item.labels.includes('minimal') ? 'checked' : null} /><i class="helper"></i>Minimal
-      </label>
+
+
           </div>
 
 

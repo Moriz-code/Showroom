@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import UnsplashService from '../../services/UnsplashService';
-// import Axios from 'axios';
 
-class SearchImage extends React.Component {
+import close from '../../styles/assets/imgs/close.png';
+
+
+class SearchImage extends Component {
 
     state = {
         images: []
@@ -11,27 +13,41 @@ class SearchImage extends React.Component {
     handleSearch = async ev => {
         const searchKey = ev.target.value;
         let results = await UnsplashService.SearchImage(searchKey)
-        // console.log(results);
-
         this.setState({ images: results.data.results })
     }
 
+
+    // handleClick = (ev) => {
+    //     // console.log(imgUrl);
+    //     // console.log('handleClick', ev.target);
+
+    // }
+
+
+
     render() {
-        console.log('render', this.state.images);
+        let images = this.state.images.map(img => {
+            return (
+                <img key={img.urls.thumb} src={img.urls.regular} alt={this.props.alt} name={this.props.name} onClick={this.props.handleSettingChange}></img>
+            )
+        })
 
-        return <React.Fragment>
-            <div className="modal-search-image">
-                <h1> Search For the perfect Image</h1>
-                <input onChange={this.handleSearch} />
+        return (
+            <div className="screen">
+                <div className="modal-search-image">
+                    <button onClick={this.props.toggleSearchImage}><img src={close} /></button>
+                    <div className="head">
+                        <p> Search for the perfect Image</p>
+                        <input onChange={this.handleSearch} />
+                    </div>
+                    <div className="images-container">
+                        {images}
+                    </div>
 
-
-                {this.state.images ? <div className="images-search-container">
-                    {/* {this.state.images.map(img => { img.urls.thumb })} */}
                 </div>
-                    : ''}
             </div>
+        )
 
-        </React.Fragment>
 
     }
 }

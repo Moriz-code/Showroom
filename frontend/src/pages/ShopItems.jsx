@@ -28,8 +28,11 @@ class ShopItems extends Component {
     this.checkIfOwner()
     if (params) {
       if (params === 'women' || params === 'men') {
+
         this.props.loadItems({ 'gender': [params] })
       } else if (params === 'petit') this.props.loadItems({ 'size': ['xs', 's'] })
+
+
       else if (params === 'clearance') this.props.loadItems({ 'price': 40 })
       else if (params === 'winter' || params === 'boho' || params === 'hipster' || params === 'accessories' || params === 'summer') {
         this.props.loadItems({ 'labels': [params] })
@@ -46,8 +49,10 @@ class ShopItems extends Component {
 
   selectFilter = (ev) => {
     let { name, value } = ev.target;
+
     console.log(ev.target.name,ev.target.value);
     
+
     if (name !== 'price') {
       
       var list = [...this.state.filterBy[name]]

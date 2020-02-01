@@ -93,7 +93,7 @@ function _buildCriteria(filterBy) {
         else {
             filterBy.gender.forEach((value) => {
                 filters.push({ 'gender': value })
-                
+
             })
             criteria["$or"] = filters
         }
@@ -128,7 +128,8 @@ function _buildCriteria(filterBy) {
     if (filterBy.txt) {
         criteria["$or"] = [{ 'title': { $regex: filterBy.txt } }, { 'description': { $regex: filterBy.txt } }]
     }
-    
+
+    console.log('criteriacriteria', criteria);
 
     return criteria;
 }

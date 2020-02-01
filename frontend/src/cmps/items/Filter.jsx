@@ -16,6 +16,8 @@ class Filter extends Component {
   }
 
   onSelectFilter = (ev) => {
+    console.log('ev', ev);
+
     if (ev.target.name === 'price') this.setState({ 'priceValue': ev.target.value })
     this.props.selectFilter(ev)
   }
@@ -122,6 +124,7 @@ class Filter extends Component {
             <li>
               <label>
                 <input type="checkbox" value="5e33ffcf8fe37c0bb08eac3a" name="itemOwner" onChange={this.onSelectFilter} />Moriz</label>
+
             </li>
           </ul>
         </div>
