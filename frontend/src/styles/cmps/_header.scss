@@ -7,7 +7,7 @@
     height: 40vh;
   }
   @include for-wide-layout {
-    height: 50vh;
+    height: 80vh;
   }
 
   .menu-btn {
@@ -94,6 +94,9 @@
       z-index: 6;
       // font-size: rem(40px);
     }
+    a {
+      color: white;
+    }
     @include for-mobile-layout {
       font-size: rem(17px);
       display: flex;
@@ -113,7 +116,7 @@
         display: block;
         width: 12%;
         height: 12%;
-        margin-top:10px;
+        margin-top: 10px;
       }
       @include for-normal-layout {
         display: none;
@@ -179,6 +182,18 @@
 .header-text-search {
   color: white;
 
+  //   @include for-narrow-layout {
+  //     position: relative;
+  //     bottom: 106%;
+  //   }
+  //   @include for-normal-layout {
+  //     position: relative;
+  //     bottom: 96%;
+  //   }
+  //   @include for-wide-layout {
+  //     position: relative;
+  //     bottom: 90%;
+
   @include for-mobile-layout {
     // position: relative;
     // margin-bottom: 50px;
@@ -193,12 +208,30 @@
   }
 }
 
+// .header-text-search {
+//   color: white;
+
+//   @include for-narrow-layout {
+//     position: relative;
+//     bottom: 106%;
+//   }
+//   @include for-normal-layout {
+//     position: relative;
+//     bottom: 96%;
+//   }
+//   @include for-wide-layout {
+//     position: relative;
+//     bottom: 90%;
+//   }
+// }
+
 .search {
   z-index: 3;
   input {
     padding-left: 10px;
     background-color: $clr4;
     border: 0px;
+
     @include for-mobile-layout {
       margin-top: 30px;
       width: 300px;

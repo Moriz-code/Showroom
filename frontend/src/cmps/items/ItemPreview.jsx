@@ -47,7 +47,7 @@ class ItemPreview extends Component {
           <button onClick={() => this.handleEdit(this.props.item)}><img src={editIcon} /></button>
         </ div>)
 
-
+      // "item-edit-panel"
 
       case "customerMode":
         return (
@@ -67,6 +67,7 @@ class ItemPreview extends Component {
 
 
   handleDelete = (itemId) => {
+    
     this.props.deleteItem(itemId)
   }
 
@@ -99,9 +100,9 @@ class ItemPreview extends Component {
     this.setState({ heart: itemIcon })
     let removedItem = await (this.props.listMode === 'wishListMode') ? this.props.deleteItem(this.props.item._id) : null
     if (this.state.heartbeat === 'heartbeat') {
-      this.setState({ heartbeat : '' })
+      this.setState({ heartbeat: '' })
     }
-    else this.setState({ heartbeat : 'heartbeat' })
+    else this.setState({ heartbeat: 'heartbeat' })
   }
 
   render() {

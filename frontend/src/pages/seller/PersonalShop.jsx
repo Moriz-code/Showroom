@@ -6,7 +6,7 @@ import ItemService from '../../services/ItemService';
 import CloudinaryService from '../../services/CloudinaryService';
 
 
-import { loadShop, updateShopSettings, } from '../../actions/ShopActions';
+import { loadShop, updateShopSettings } from '../../actions/ShopActions';
 import { loadItems, deleteItem, saveItem } from '../../actions/ItemActions';
 import { addToCart } from '../../actions/OrderActions';
 
@@ -15,11 +15,8 @@ import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
 import InnerNavbar from '../../cmps/InnerNavBar';
-// import Loading from "../../cmps/Loading";
-
 import Footer from '../../cmps/Footer';
 
-import chat from '../../styles/assets/imgs/icons/chat.png';
 import addBtn from '../../styles/assets/imgs/add.png';
 
 class PersonalShop extends Component {
@@ -28,7 +25,8 @@ class PersonalShop extends Component {
         isOnEditSettigs: false,
         isOnChat: false,
         isOwner: false,
-        isLoadingImg: false,
+        isLoadingImgHeader: false,
+        isLoadingImgItem: false,
         isOnSearchImage: false,
 
         item: '',
@@ -39,16 +37,15 @@ class PersonalShop extends Component {
 
 
     async componentDidMount() {
-        await this.props.loadShop(this.props.match.params.id)
-
-        await this.props.loadItems();
         this.props.loadItems({ 'itemOwner': this.props.match.params.id })
 
+        await this.props.loadShop(this.props.match.params.id);
         this.setState({ shop: this.props.shop.selectedShop })
-        this.clearItemState();
-        this.checkIfOwner();
-    }
 
+        this.checkIfOwner();
+        this.clearItemState();
+
+    }
 
 
     clearItemState() {
@@ -65,20 +62,27 @@ class PersonalShop extends Component {
 
 
     notifciation = () => {
-        this.props.addToCart()
+        this.props.addToCart();
     }
 
 
     checkIfOwner = () => {
-        const user = (this.props.loggedInUser && this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id) ? this.setState({ isOwner: true }) : null
-        return user
+        const user = (this.props.loggedInUser && this.props.loggedInUser.shopId === this.props.match.params.id)
+            ? this.setState({ isOwner: true }) : null
     }
+
+
+
+    // const user = (this.props.loggedInUser && this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id) ?
+    //     this.setState({ isOwner: true }) : null
+    // return user
+
 
 
     handleColorChange = (ev) => {
 
-        const name = "bgColor";
-        const alt = "style";
+        const name = 'bgColor';
+        const alt = 'style';
         let value = ev.hex;
 
         this.setState(prevState => ({
@@ -97,7 +101,6 @@ class PersonalShop extends Component {
     handleSettingChange = async (ev) => {
 
 
-
         let { name, value, alt, src } = ev.target;
 
 
@@ -109,10 +112,10 @@ class PersonalShop extends Component {
             if (name === 'coverImgUpload') {
                 name = 'coverImgUrl'
             }
-            this.setState({ isLoadingImg: true });
+            this.setState({ isLoadingImgHeader: true });
             const res = await CloudinaryService.uploadImg(ev);
             value = res.url;
-            this.setState({ isLoadingImg: false })
+            this.setState({ isLoadingImgHeader: false })
         } else {
             if (name === 'coverImgUrl') {
                 value = src
@@ -156,15 +159,17 @@ class PersonalShop extends Component {
                 break;
 
             case 'imgs':
-                const id = +ev.target.id
 
-                this.setState({ isLoadingImg: true });
+                const id = +ev.target.id
+                this.setState({ isLoadingImgItem: true });
+
                 var list = [...this.state.item[name]];
                 const res = await CloudinaryService.uploadImg(ev);
                 let resUrl = res.url;
                 list[id] = resUrl;
                 value = list;
-                this.setState({ isLoadingImg: false })
+
+                this.setState({ isLoadingImgItem: false })
                 break;
 
         }
@@ -217,7 +222,7 @@ class PersonalShop extends Component {
         ev.preventDefault();
         await this.props.saveItem(this.state.item);
         this.clearItemState();
-        this.props.loadItems();
+        this.props.loadItems({ 'itemOwner': this.props.match.params.id })
         this.onEditMode()
     }
 
@@ -235,44 +240,43 @@ class PersonalShop extends Component {
 
 
     render() {
-
-
-        // console.log('shop:', this.state.shop)
         const { shop } = this.state;
         return (
             <React.Fragment>
 
-                <InnerNavbar isOwner={this.state.isOwner}></InnerNavbar>
+
                 {this.state.shop ?
                     <div className='shop-page' style={{ backgroundColor: shop.style.bgColor }}>
 
-
+                        <InnerNavbar isOwner={this.state.isOwner}></InnerNavbar>
 
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
-                            <HeaderShop Loading={this.state.isLoadingImg} onEditSettings={this.onEditSettings} isOnEditSettigs={this.state.isOnEditSettigs} selectedShop={shop}></HeaderShop>
-
+                            <HeaderShop isOwner={this.state.isOwner} Loading={this.state.isLoadingImgHeader} onEditSettings={this.onEditSettings} isOnEditSettigs={this.state.isOnEditSettigs} selectedShop={shop}></HeaderShop>
 
                             {this.state.isOnEditSettigs ?
                                 <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop} />
-                                : ''}
-
+                                : null}
 
                             {this.state.item ?
-                                <div className="shop-main">
+                                <div className='shop-main'>
                                     {this.state.isOnEditMode ?
-                                        <EditItem Loading={this.state.isLoadingImg} onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem> : ''}
+                                        <EditItem Loading={this.state.isLoadingImgItem} onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem> : null}
                                 </div>
-                                : ''}
+                                : null}
 
-                            <button className='add-item-btn' onClick={this.onAdd}>
-                                <img src={addBtn} className={this.state.isOnEditMode ? 'tranform45' : ''} alt="icon-add" />
-                            </button>
+                            {this.state.isOwner ?
+                                <button className='add-item-btn' onClick={this.onAdd}>
+                                    <img src={addBtn} className={this.state.isOnEditMode ? 'tranform45' : ''} alt='icon-add' />
+                                </button> : null}
 
-                            <div className="cards-shop-container">
-                                {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
-                                {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
+                            <div className='cards-shop-container'>
+
+
+                                {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items}
+                                    listMode={this.state.isOwner ? 'adminMode' : ''} /> : null}
+
                             </div>
-                            {/* socket */}
+
 
                         </div>
                     </div>
@@ -305,7 +309,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(PersonalShop);
-
-
-
-// listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"}

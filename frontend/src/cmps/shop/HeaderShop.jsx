@@ -9,16 +9,17 @@ import settingClose from '../../styles/assets/imgs/icons/wizard-close.png';
 import Loading from "../../cmps/Loading";
 
 export default function ShopSettings(props) {
-    console.log('ShopSettings', props);
-
 
     return <React.Fragment>
         {props.Loading ? <div className="shop-header"> <Loading /> </div> :
             <div className="shop-header" style={{ backgroundImage: 'url(' + props.selectedShop.style.coverImgUrl + ')' }}>
 
-                <button onClick={props.onEditSettings} className='shop-edit-btn'>
-                    <img src={props.isOnEditSettigs ? settingOpen : settingClose} />
-                </button>
+
+                {props.isOwner ?
+                    <button onClick={props.onEditSettings} className='shop-edit-btn'>
+                        <img src={props.isOnEditSettigs ? settingOpen : settingClose} />
+                    </button> : null}
+
                 <div className="shop-info">
                     <div className="details">
                         <img className="shop-logo" src={props.selectedShop.style.logoUrl} />

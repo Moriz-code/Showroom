@@ -14,15 +14,23 @@ import { addShopToUser, logout } from '../actions/UserActions'
 import { CreateNewShop } from '../actions/ShopActions'
 import { withRouter } from 'react-router'
 import Labels from '../cmps/items/Labels'
+
 import close from '../styles/assets/imgs/left-arrow-white.png'
 import menu from '../styles/assets/imgs/menu.png'
+
+import Modal from '../cmps/Modal'
+
 
 class Header extends Component {
 
   state = {
     isTop: true,
     newOrders: 0,
-    isOpen: ''
+
+    isOpen: '',
+
+    modalMsg: "",
+
   };
 
 
@@ -55,7 +63,11 @@ class Header extends Component {
 
     const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
     const newOrders = orders.find(order => !order.isRead)
-    if (newOrders) await this.setState({ newOrders: 1 })
+    if (newOrders) {
+      await this.setState({ newOrders: 1 })
+      await this.setState({ modalMode: true, modalMsg: "You Have a New Order" })
+      this.setState({ modalMode: false, modalMsg: "" })
+    }
 
   }
 
@@ -83,9 +95,10 @@ class Header extends Component {
     else this.setState({ 'isOpen': '' })
   }
 
-
   render() {
     return <React.Fragment>
+
+      <Modal msg={this.state.modalMsg}></Modal>
 
       <div className="main-header flex column" >
         <img class={`menu-btn flex self-end`} onClick={this.toggleMenu} src={menu}></img>
