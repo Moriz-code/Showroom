@@ -60,9 +60,9 @@ class ItemDetails extends Component {
 
     setWishListStatus = async () => {
         let itemInWishList = await UserService.itemFromWishList(this.props.item._id)
-        
-        let itemIcon=(!itemInWishList)? heart :heartfilled
-         this.setState({wishListStatus:itemIcon})
+
+        let itemIcon = (!itemInWishList) ? heart : heartfilled
+        this.setState({ wishListStatus: itemIcon })
 
 
     }
@@ -117,14 +117,14 @@ class ItemDetails extends Component {
 
 
     onAddToWishList = async () => {
-      let item = await UserService.toggleWishList(this.props.item)
-      let itemIcon=(!item)? heart :heartfilled
-      this.setState({wishListStatus:itemIcon})
+        let item = await UserService.toggleWishList(this.props.item)
+        let itemIcon = (!item) ? heart : heartfilled
+        this.setState({ wishListStatus: itemIcon })
 
 
-        }
+    }
 
-  
+
 
     onAddReview = async () => {
         await this.setState({ reviewMode: true })
@@ -270,12 +270,12 @@ class ItemDetails extends Component {
                         </div>
                         <div className="general-information">
                             <div className="buyer-protection flex">
-                            <img className="protect" src={protect} alt=""></img>
+                                <img className="protect" src={protect} alt=""></img>
                                 <div className="buyer-protection-txt">35-Day Buyer Protection </div>
                             </div>
                             <div className="free-shipping flex">
-                            <img className="truck" src={truck} alt=""></img>
-                                
+                                <img className="truck" src={truck} alt=""></img>
+
                                 <div className="free-shipping-txt">Free Shipping - Get it at: <span className="delivery-date">{this.state.date}</span></div>
                             </div>
                         </div>
