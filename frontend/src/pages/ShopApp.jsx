@@ -64,10 +64,10 @@ class ShopApp extends Component {
                 </ItemsList> : 'NO ITEMS!'}
 
             </div>
-            <select onChange={this.setUser} name="User" >
+            {/* <select onChange={this.setUser} name="User" >
                 <option value="Shop Owner">Shop Owner</option>
                 <option value="Customer">Customer</option>
-            </select>
+            </select> */}
             <Footer></Footer>
         </React.Fragment>
     }

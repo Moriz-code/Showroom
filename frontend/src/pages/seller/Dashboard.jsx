@@ -40,22 +40,22 @@ class Dashboard extends Component {
         const data = this.state.orders.map(order => {
 
             return (<div  className={order.isRead? "row" : "row newOrder"}>
-                <div className="cell" data-title="Customer Name">
-                    {order.byUser.name}
+                <div className="cell flex" data-title="Customer Name">
+                   <div>{order.byUser.name}</div> 
                 </div>
-                <div className="cell" data-title="Customer Image">
+                <div className="cell flex" data-title="Customer Image">
                 <Avatar src={order.byUser.imgUrl} alt=""></Avatar>
                 </div>
-                <div className="cell" data-title="Product title">
-                    {order.product.title}
+                <div className="cell flex" data-title="Product title">
+                   <div>{order.product.title}</div> 
                 </div>
-                <div className="cell" data-title="Price">
+                <div className="cell flex" data-title="Price">
                     ${order.product.price}
                 </div>
-                <div className="cell" data-title="Product Image">
+                {/* <div className="cell flex" data-title="Product Image">
                     <img src={order.product.imgUrl} alt=""/>
-                </div>
-                <div className="cell" data-title="Order Date">
+                </div> */}
+                <div className="cell flex" data-title="Order Date">
                     {order.boughtAt}
                 </div>
             </div>
@@ -81,10 +81,10 @@ class Dashboard extends Component {
 
                                 <div className="row header">
                                     <div className="cell">
-                                        Customer Name
+                                        Customer
 							</div>
                                     <div className="cell">
-                                        Customer Image
+                                        Image
 							</div>
                                     <div className="cell">
                                         Item
@@ -93,9 +93,9 @@ class Dashboard extends Component {
                                     <div className="cell">
                                         Price
 							</div>
-                                    <div className="cell">
+                                    {/* <div className="cell">
                                         Item Image
-							</div>
+							</div> */}
                                     <div className="cell">
                                         Order Date
 							</div>

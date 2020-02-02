@@ -363,5 +363,51 @@ Tue, 21 Jan 2020 16:13:03 GMT - Info - Server is running on port: 3030
 Tue, 21 Jan 2020 16:14:32 GMT - Info - Server is running on port: 3030
 Tue, 21 Jan 2020 16:16:34 GMT - Info - Server is running on port: 3030
 
-Sat, 01 Feb 2020 19:39:46 GMT - Debug - auth.service - login with email: coral@gmail.com
+
+
+Sat, 01 Feb 2020 20:07:12 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 20:09:30 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 20:18:33 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 21:05:18 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 21:29:35 GMT - Debug - auth.service - login with email: keren@gmail.com
+Sat, 01 Feb 2020 21:29:42 GMT - Debug - auth.service - login with email: keren@gmail.com
+Sat, 01 Feb 2020 21:39:05 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 22:01:21 GMT - Debug - Josh@gmail.com, , 123,Josh Cohen,,
+Sat, 01 Feb 2020 22:01:21 GMT - Debug - auth.service - signup with email: Josh@gmail.com, username: ,fullName: Josh Cohen,wishlist: 
+Sat, 01 Feb 2020 22:01:22 GMT - Debug - auth.route - new account created: {"email":"Josh@gmail.com","password":"$2b$10$LvX9B.2TFksuYrA2Wy2rHeqnReEBUo7imDUizvmThGS07UZFeybxO","username":"","fullName":"Josh Cohen","wishlist":[],"imgUrl":"http://res.cloudinary.com/moriz/image/upload/v1580594468/przpuvwqx10lzl3go4rw.png","shopId":"","_id":"5e35f5326c0cd450fcf26057"}
+Sat, 01 Feb 2020 22:01:22 GMT - Debug - auth.service - login with email: Josh@gmail.com
+Sun, 02 Feb 2020 06:57:00 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 07:00:04 GMT - Debug - royammar030783@gmail.com, , 123,Roy Amar,,
+Sun, 02 Feb 2020 07:00:04 GMT - Debug - auth.service - signup with email: royammar030783@gmail.com, username: ,fullName: Roy Amar,wishlist: 
+Sun, 02 Feb 2020 07:00:05 GMT - Debug - auth.route - new account created: {"email":"royammar030783@gmail.com","password":"$2b$10$oiKAejYCbRa4/zwdtp6owu52hv38hzC2iI.iTBpOiYWVYO57Tr9.G","username":"","fullName":"Roy Amar","wishlist":[],"imgUrl":"http://res.cloudinary.com/moriz/image/upload/v1580626780/aomefldqdafrjd7cpb0a.png","shopId":"","_id":"5e3673746c0cd450fcf2605a"}
+Sun, 02 Feb 2020 07:00:05 GMT - Debug - auth.service - login with email: royammar030783@gmail.com
+Sun, 02 Feb 2020 08:44:41 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 08:51:32 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 08:58:44 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 08:59:19 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 09:10:53 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 09:11:01 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 09:48:14 GMT - Debug - auth.service - login with email: roy@gmail.com
+
+Sat, 01 Feb 2020 20:35:11 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
+Sat, 01 Feb 2020 20:35:24 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 07:16:05 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 07:31:50 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 08:39:38 GMT - Debug - auth.service - login with email: coral179@gmail.com
+Sun, 02 Feb 2020 08:39:54 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 08:48:14 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 08:49:10 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 08:51:53 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 08:53:26 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 08:56:22 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 09:03:31 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 09:13:52 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 09:14:42 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 09:17:26 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 09:23:25 GMT - Debug - auth.service - login with email: josh@gmail.com
+Sun, 02 Feb 2020 09:23:43 GMT - Debug - auth.service - login with email: josh@gmail.com
+Sun, 02 Feb 2020 09:23:58 GMT - Debug - auth.service - login with email: keren@gmail.com
+Sun, 02 Feb 2020 09:47:01 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 09:54:10 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
+
 
