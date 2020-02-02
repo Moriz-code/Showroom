@@ -42,7 +42,7 @@
     height: 30px;
   }
   .nav-right-side {
-    padding-right: 15px;
+    // padding-right: 15px;
 
     .nav-texts {
       @include for-mobile-layout {
@@ -51,20 +51,25 @@
       @include for-normal-layout {
       }
       @include for-wide-layout {
+        > * {
+          padding-left: 15px;
+        }
       }
     }
 
     .inner-nav-icons {
-      padding-left: 10px;
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
+      > * {
+        padding-left: 10px;
+      }
+      // width: rem(150px);
     }
     .cart {
-      padding-left: 15px;
       display: block;
+      margin-right: 15px;
     }
     .inner-nav-text {
-      padding-left: 15px;
       color: $clr4;
 
       &:hover {
@@ -152,12 +157,17 @@
   }
   .notification-badge {
     position: absolute;
-    top: 20px;
-    right: 18px;
-    // right: -24px;
+    top: 10px;
+    right: 8px;
+    font-weight: bolder;
+    background-color: rgb(70, 160, 75);
+    border-radius: 100px;
+    color: $clr4;
+    text-align: center;
+    line-height: 15px;
+    width: 18px;
+    height: 18px;
     padding: 2px 5px;
-
-    color: green;
     font-size: 12px;
     z-index: 23;
     font-weight: bolder;
@@ -165,12 +175,16 @@
 
   .notification-seller-badge {
     position: absolute;
-    top: 23px;
-
-    right: 102px;
+    top: 10px;
+    right: 98px;
+    background-color: rgb(70, 160, 75);
+    border-radius: 100px;
+    color: $clr4;
+    text-align: center;
+    line-height: 15px;
+    width: 18px;
+    height: 18px;
     padding: 2px 5px;
-
-    color: black;
     font-size: 12px;
     z-index: 23;
     font-weight: bolder;
