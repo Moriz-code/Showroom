@@ -15,11 +15,9 @@
     margin-bottom: 87px;
     margin-top: 35px;
 
-
     width: 246px;
     height: 154px;
     font-size: 28px;
-
 
     .price {
       color: #008000;
@@ -33,6 +31,7 @@
   }
 
   .cart-no-items {
+    height: 85vh;
     max-width: 100vw;
     .cart-paragraph {
       font-size: rem(18px);
@@ -51,24 +50,21 @@
   }
 }
 
-.cart-total{
-
+.cart-total {
   font-size: 16px;
-  margin-left : 15px;
+  margin-left: 15px;
   margin-right: 15px;
 }
 
-.place-order{
-
+.place-order {
   background-color: green;
   // font-size: 16px;
   // font-weight: bold;
-  width: 100%
+  width: 100%;
 }
 
-.total-to-pay{
+.total-to-pay {
   margin-bottom: 9px;
   margin-top: 11px;
   border-top: 0.5px solid lightgray;
-
 }
