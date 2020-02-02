@@ -73,12 +73,6 @@ class PersonalShop extends Component {
 
 
 
-    // const user = (this.props.loggedInUser && this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id) ?
-    //     this.setState({ isOwner: true }) : null
-    // return user
-
-
-
     handleColorChange = (ev) => {
 
         const name = 'bgColor';
@@ -189,6 +183,7 @@ class PersonalShop extends Component {
     onSaveSettings = (ev) => {
         ev.preventDefault();
         this.props.updateShopSettings(this.state.shop);
+
     }
 
     onEditSettings = () => {
@@ -221,9 +216,10 @@ class PersonalShop extends Component {
     onSaveItem = async (ev) => {
         ev.preventDefault();
         await this.props.saveItem(this.state.item);
-        this.clearItemState();
         this.props.loadItems({ 'itemOwner': this.props.match.params.id })
+        this.clearItemState();
         this.onEditMode()
+
     }
 
 
@@ -234,6 +230,7 @@ class PersonalShop extends Component {
             item
         }))
         this.onEditMode();
+
     }
 
 
