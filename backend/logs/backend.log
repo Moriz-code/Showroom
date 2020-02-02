@@ -364,6 +364,7 @@ Tue, 21 Jan 2020 16:14:32 GMT - Info - Server is running on port: 3030
 Tue, 21 Jan 2020 16:16:34 GMT - Info - Server is running on port: 3030
 
 
+
 Sat, 01 Feb 2020 20:07:12 GMT - Debug - auth.service - login with email: roy@gmail.com
 Sat, 01 Feb 2020 20:09:30 GMT - Debug - auth.service - login with email: roy@gmail.com
 Sat, 01 Feb 2020 20:18:33 GMT - Debug - auth.service - login with email: roy@gmail.com
@@ -408,4 +409,5 @@ Sun, 02 Feb 2020 09:23:43 GMT - Debug - auth.service - login with email: josh@gm
 Sun, 02 Feb 2020 09:23:58 GMT - Debug - auth.service - login with email: keren@gmail.com
 Sun, 02 Feb 2020 09:47:01 GMT - Debug - auth.service - login with email: coral@gmail.com
 Sun, 02 Feb 2020 09:54:10 GMT - Debug - auth.service - login with email: coralsolomon179@gmail.com
+
 

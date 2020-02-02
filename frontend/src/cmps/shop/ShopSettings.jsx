@@ -27,6 +27,7 @@ class ShopSettings extends React.Component {
   }
 
   toggleSearchImage = () => {
+    window.scrollTo(0, 0)
     this.setState({ displaySearchImage: !this.state.displaySearchImage })
   }
 

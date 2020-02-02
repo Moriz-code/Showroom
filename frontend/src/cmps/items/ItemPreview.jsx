@@ -25,6 +25,7 @@ class ItemPreview extends Component {
     let itemIcon = (!itemInWishList) ? heart : heartfilled
     this.setState({ heart: itemIcon })
 
+
   }
 
 
@@ -42,10 +43,21 @@ class ItemPreview extends Component {
         )
 
       case "adminMode":
-        return (<div className={this.state.hover ? "item-edit-panel" : "display-none"} >
-          <button onClick={() => this.handleDelete(this.props.item._id)}><img src={deleteIcon} /></button>
-          <button onClick={() => this.handleEdit(this.props.item)}><img src={editIcon} /></button>
-        </ div>)
+
+        return (<React.Fragment>
+          {this.state.hover ?
+            <div className="item-edit-panel" >
+              <button onClick={() => this.handleEdit(this.props.item)}><img src={editIcon} /></button>
+              <button onClick={() => this.handleDelete(this.props.item._id)}><img src={deleteIcon} /></button>
+            </ div>
+
+            : ''}</React.Fragment>)
+
+
+      // (<div className={this.state.hover ? "item-edit-panel" : "display-none"} >
+      //   <button onClick={() => this.handleDelete(this.props.item._id)}><img src={deleteIcon} /></button>
+      //   <button onClick={() => this.handleEdit(this.props.item)}><img src={editIcon} /></button>
+      // </ div>)
 
       // "item-edit-panel"
 
@@ -61,19 +73,33 @@ class ItemPreview extends Component {
   }
 
 
-  toggleHover = () => {
-    this.setState({ hover: !this.state.hover })
+  // toggleHover = () => {
+  //   this.setState({ hover: !this.state.hover })
+  // }
+
+  //i had a bug so i had to split it to 2
+
+  onMouseHover = () => {
+    this.setState({ hover: true })
+  }
+
+  onMouseOut = () => {
+    this.setState({ hover: false })
   }
 
 
+
+
+
   handleDelete = (itemId) => {
-    
+
     this.props.deleteItem(itemId)
   }
 
 
   handleEdit = (item) => {
     this.props.editItem(item)
+
   }
 
 
@@ -98,6 +124,7 @@ class ItemPreview extends Component {
     let item = await UserService.toggleWishList(this.props.item)
     let itemIcon = (!item) ? heart : heartfilled
     this.setState({ heart: itemIcon })
+
     let removedItem = await (this.props.listMode === 'wishListMode') ? this.props.deleteItem(this.props.item._id) : null
     if (this.state.heartbeat === 'heartbeat') {
       this.setState({ heartbeat: '' })
@@ -106,9 +133,12 @@ class ItemPreview extends Component {
   }
 
   render() {
+
+
+
     let icon = this.state.heart
     return (<React.Fragment>
-      <div className="item-card" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
+      <div className="item-card" onMouseEnter={this.onMouseHover} onMouseLeave={this.onMouseOut}>
 
         {this.props.listMode !== 'adminMode' ?
           <img onClick={this.onAddToWishList} className={`heart-icon ${this.state.heartbeat}`} alt="heart" src={icon} /> : null}

@@ -6,7 +6,7 @@ export default function NoItems() {
         <div className="no-items">
             <div>
                 <img src={hanger}></img>
-                <p>No items yet..</p>
+                <p>No items yet...</p>
             </div>
         </div>
     </React.Fragment>)
