@@ -126,7 +126,7 @@ function _buildCriteria(filterBy) {
         criteria['price'] = { $lte: +filterBy.price }
     }
     if (filterBy.txt) {
-        criteria["$or"] = [{ 'title': { $regex: filterBy.txt } }, { 'description': { $regex: filterBy.txt } }]
+        criteria["$or"] = [{ 'title': { $regex:filterBy.txt.toLowerCase() } }, { 'description': { $regex: filterBy.txt.toLowerCase() } }]
     }
 
     console.log('criteriacriteria', criteria);

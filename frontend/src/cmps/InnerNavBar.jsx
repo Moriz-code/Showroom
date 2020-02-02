@@ -98,33 +98,30 @@ class InnerNavBar extends Component {
 
                 <div className={`nav-right-side flex align-center ${this.state.isOpen}`}>
                     <img className={`close-btn ${this.state.isOpen}`} onClick={this.toggleMenu} src={close}></img>
-                    
-                    <div className=" flex"> 
-                    {/* //coral:nav-texts */}
-                        <NavLink to='/item' className="inner-nav-text explore" exact>Explore</NavLink>
 
+                    <div className="nav-texts flex">
+                        <NavLink to='/item' className="inner-nav-text explore" exact>Explore</NavLink>
+                        <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
                         {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
                             <button className="logout" onClick={this.props.logout}>Log out</button>}
 
-
-
-
-                        <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
                     </div>
-                    {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
+                    
+                            {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
-                        <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
-                            <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
-                        </NavLink></span>
+                                <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
+                                  {this.state.newOrders > 0 &&  <span className="notification-seller-badge"> {this.state.newOrders}</span>}
+                                </NavLink></span>
 
-                        : ''}
-
+                                : ''}
+                        
 
                     <ul className="inner-nav-icons flex align-center">
+                        
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
 
                         <li className="cart"><NavLink activeClassName="active" to='/cart' exact>
-                            <span className="notification-badge">{itemsInCart}</span>
+                        {itemsInCart > 0 &&    <span className="notification-badge">{itemsInCart}</span>}
                             <img className="cart-icon" src={cart} />
                         </NavLink>
                         </li>

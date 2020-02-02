@@ -115,17 +115,17 @@ class Header extends Component {
             {this.props.loggedInUser === null ? <NavLink to='/login' exact> Sign in</NavLink> :
               <button className="logout" onClick={this.props.logout}>Log out</button>}
 
-
-            {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
+          </div>
+          {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
               <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
                 <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
               </NavLink></span>
               : ''}
-          </div>
 
           <ul className="menu-icons flex align-center">
+            
             <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
-            <li><NavLink activeClassName="active" to='/cart' exact><img src={cart} /> <span></span></NavLink></li>
+            <li className="cart"><NavLink activeClassName="active" to='/cart' exact><img  src={cart} /> <span></span></NavLink></li>
           </ul>
         </div>
         <div className="header-text-search flex column justify-center align-center">

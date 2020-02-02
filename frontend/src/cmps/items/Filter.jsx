@@ -24,28 +24,28 @@ class Filter extends Component {
 
   onToggleActiveSize = () => {
     this.setState((prevState) => {
-      if (prevState.isToggleSize === '') return this.state.isToggleSize = 'is-active'
-      return this.state.isToggleSize = ''
+      if (prevState.isToggleSize === '') return this.setState({'isToggleSize' :'is-active'})
+      return this.setState({'isToggleSize' :''})
     })
   }
 
   onToggleActiveGender = () => {
     this.setState((prevState) => {
-      if (prevState.isToggleGender === '') return this.state.isToggleGender = 'is-active'
-      return this.state.isToggleGender = ''
+      if (prevState.isToggleGender === '') return this.setState({'isToggleGender' : 'is-active'})
+      return this.setState({'isToggleGender' : ''})
     })
   }
 
   onToggleActiveShop = () => {
     this.setState((prevState) => {
-      if (prevState.isToggleShop === '') return this.state.isToggleShop = 'is-active'
-      return this.state.isToggleShop = ''
+      if (prevState.isToggleShop === '') return this.setState({'isToggleShop' : 'is-active'})
+      return this.setState({'isToggleShop' : ''})
     })
   }
   onToggleActivePrice = () => {
     this.setState((prevState) => {
-      if (prevState.isTogglePrice === 'show') return this.state.isTogglePrice = 'hide'
-      return this.state.isTogglePrice = 'show'
+      if (prevState.isTogglePrice === 'show') return this.setState({'isTogglePrice' : 'hide'})
+      return this.setState({'isTogglePrice' : 'show'}) 
     })
   }
 
