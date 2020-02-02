@@ -28,7 +28,7 @@ class InnerNavBar extends Component {
 
     componentDidMount = () => {
 
-        const listenToOrders = (this.props.loggedInUser && this.props.loggedInUser.shopId !== '') ?
+        const listenToOrders = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ?
             this.listenToOrders() : null
     }
 
@@ -98,18 +98,18 @@ class InnerNavBar extends Component {
 
                 <div className={`nav-right-side flex align-center ${this.state.isOpen}`}>
                     <img className={`close-btn ${this.state.isOpen}`} onClick={this.toggleMenu} src={close}></img>
-                    
-                    <div className=" flex"> 
-                    {/* //coral:nav-texts */}
+
+                    <div className=" flex">
+                        {/* //coral:nav-texts */}
                         <NavLink to='/item' className="inner-nav-text explore" exact>Explore</NavLink>
 
+                        <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
                         {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
                             <button className="logout" onClick={this.props.logout}>Log out</button>}
 
 
 
 
-                        <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
                     </div>
                     {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 

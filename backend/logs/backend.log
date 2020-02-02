@@ -375,3 +375,26 @@ Sat, 01 Feb 2020 19:51:43 GMT - Debug - auth.service - login with email: coral@g
 Sat, 01 Feb 2020 19:39:46 GMT - Debug - auth.service - login with email: coral@gmail.com
 Sat, 01 Feb 2020 19:59:02 GMT - Debug - auth.service - login with email: coral@gmail.com
 >>>>>>> c428167b30cb40e5ca818db79e1eb3bcd00d96c5
+Sat, 01 Feb 2020 20:07:12 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 20:09:30 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 20:18:33 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 21:05:18 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 21:29:35 GMT - Debug - auth.service - login with email: keren@gmail.com
+Sat, 01 Feb 2020 21:29:42 GMT - Debug - auth.service - login with email: keren@gmail.com
+Sat, 01 Feb 2020 21:39:05 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sat, 01 Feb 2020 22:01:21 GMT - Debug - Josh@gmail.com, , 123,Josh Cohen,,
+Sat, 01 Feb 2020 22:01:21 GMT - Debug - auth.service - signup with email: Josh@gmail.com, username: ,fullName: Josh Cohen,wishlist: 
+Sat, 01 Feb 2020 22:01:22 GMT - Debug - auth.route - new account created: {"email":"Josh@gmail.com","password":"$2b$10$LvX9B.2TFksuYrA2Wy2rHeqnReEBUo7imDUizvmThGS07UZFeybxO","username":"","fullName":"Josh Cohen","wishlist":[],"imgUrl":"http://res.cloudinary.com/moriz/image/upload/v1580594468/przpuvwqx10lzl3go4rw.png","shopId":"","_id":"5e35f5326c0cd450fcf26057"}
+Sat, 01 Feb 2020 22:01:22 GMT - Debug - auth.service - login with email: Josh@gmail.com
+Sun, 02 Feb 2020 06:57:00 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 07:00:04 GMT - Debug - royammar030783@gmail.com, , 123,Roy Amar,,
+Sun, 02 Feb 2020 07:00:04 GMT - Debug - auth.service - signup with email: royammar030783@gmail.com, username: ,fullName: Roy Amar,wishlist: 
+Sun, 02 Feb 2020 07:00:05 GMT - Debug - auth.route - new account created: {"email":"royammar030783@gmail.com","password":"$2b$10$oiKAejYCbRa4/zwdtp6owu52hv38hzC2iI.iTBpOiYWVYO57Tr9.G","username":"","fullName":"Roy Amar","wishlist":[],"imgUrl":"http://res.cloudinary.com/moriz/image/upload/v1580626780/aomefldqdafrjd7cpb0a.png","shopId":"","_id":"5e3673746c0cd450fcf2605a"}
+Sun, 02 Feb 2020 07:00:05 GMT - Debug - auth.service - login with email: royammar030783@gmail.com
+Sun, 02 Feb 2020 08:44:41 GMT - Debug - auth.service - login with email: coral@gmail.com
+Sun, 02 Feb 2020 08:51:32 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 08:58:44 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 08:59:19 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 09:10:53 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 09:11:01 GMT - Debug - auth.service - login with email: roy@gmail.com
+Sun, 02 Feb 2020 09:48:14 GMT - Debug - auth.service - login with email: roy@gmail.com

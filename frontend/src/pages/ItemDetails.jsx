@@ -325,8 +325,10 @@ class ItemDetails extends Component {
                     <div>You may also like</div>
                 </section> */}
                 <section className="container recently-viewed">
+                {(recentlyViewd.length > 0)?
+                    <div>
                     <h2 className="recently-title">Recently viewed</h2>
-                    {(recentlyViewd.length > 0) ? <ItemList items={recentlyViewd}></ItemList> : ''
+                    <ItemList items={recentlyViewd}></ItemList> </div>: ''
 
                     }
                 </section>
