@@ -1,5 +1,4 @@
 .main-header {
-  // height: 80vh;
   @include for-mobile-layout {
     height: 50vh;
   }
@@ -76,6 +75,7 @@
     }
     width: rem(90px);
     height: rem(90px);
+
   }
   .cover-photo {
     position: fixed;
@@ -89,10 +89,13 @@
 
   .nav-text {
     > * {
-      padding-right: 15px;
+      padding-left: 15px;
       color: white;
       z-index: 6;
       // font-size: rem(40px);
+      > * {
+        padding-left: 15px;
+      }
     }
     a {
       color: white;
@@ -108,7 +111,7 @@
     @include for-normal-layout {
     }
     @include for-wide-layout {
-      font-size: rem(22px);
+      font-size: rem(16px);
     }
 
     .close-btn {
@@ -167,8 +170,8 @@
   }
 
   .bell-icon {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
   .notification-seller-badge {
     right: 116px;

@@ -23,16 +23,12 @@ class ShopItems extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
     var params = this.props.match.params.searchTerm
-    console.log('coral-params', params);
 
     this.checkIfOwner()
     if (params) {
       if (params === 'women' || params === 'men') {
-
         this.props.loadItems({ 'gender': [params] })
       } else if (params === 'petit') this.props.loadItems({ 'size': ['xs', 's'] })
-
-
       else if (params === 'clearance') this.props.loadItems({ 'price': 40 })
       else if (params === 'winter' || params === 'boho' || params === 'hipster' || params === 'accessories' || params === 'summer') {
         this.props.loadItems({ 'labels': [params] })
