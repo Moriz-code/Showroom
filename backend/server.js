@@ -48,6 +48,9 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use(express.static('public'));
 
+app.get('/*',function(req,res){
+    res.sendFile(path.resolve(__dirname,'public/index.html'))
+})
 
 const logger = require('./services/logger.service')
 
