@@ -46,9 +46,6 @@ export default function ShopSettings(props) {
                     </div>
                 </div>
 
-                {/* <iframe id="youtube-player-2" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="100%" height="100%" src="https://www.youtube.com/embed/IJn-XF1QEPc?origin=https%3A%2F%2Fvivi-tv.com&playsinline=1&autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&widgetid=2"></iframe> */}
-
-
 
             </div>}
     </React.Fragment>

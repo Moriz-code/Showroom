@@ -37,7 +37,7 @@
 .shop-header {
   background-repeat: no-repeat;
   background-size: cover;
-  height: 70vh;
+  // height: 70vh;
 
   .loader {
     justify-content: center;
@@ -149,6 +149,15 @@
     color: $clr2;
     // font-family: lobster;
   }
+
+  @include for-narrow-layout {
+    // align-items: center;
+    // margin-bottom: 20px;
+  }
+  @include for-normal-layout {
+    // align-items: center;
+    // margin-bottom: 10px;
+  }
 }
 
 .field {
@@ -242,7 +251,7 @@
   display: flex;
   flex-direction: column;
   // justify-content: center;
-  height: 70vh;
+  // height: 70vh;
   z-index: 2;
   grid-column: 1;
   // grid-row: 1;

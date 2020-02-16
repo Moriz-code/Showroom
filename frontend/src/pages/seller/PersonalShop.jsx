@@ -98,7 +98,6 @@ class PersonalShop extends Component {
 
         let { name, value, alt, src } = ev.target;
 
-
         if (name === 'videoUrl') {
             value = Utils.getEmbdedUrl(value);
         }
@@ -108,16 +107,17 @@ class PersonalShop extends Component {
                 name = 'coverImgUrl'
             }
             this.setState({ isLoadingImgHeader: true });
+
             const res = await CloudinaryService.uploadImg(ev);
             value = res.url;
+
             this.setState({ isLoadingImgHeader: false })
+
         } else {
             if (name === 'coverImgUrl') {
                 value = src
             }
         }
-
-
 
 
         this.setState(prevState => ({

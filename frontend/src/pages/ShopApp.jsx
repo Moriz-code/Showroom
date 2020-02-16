@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Header from '../cmps/Header'
-import { loadItems } from '../actions/ItemActions'
-import ItemsList from '../cmps/items/ItemList'
+import Header from '../cmps/Header';
+import { loadItems } from '../actions/ItemActions';
+import ItemsList from '../cmps/items/ItemList';
 import Footer from '../cmps/Footer';
-import women from '../styles/assets/imgs/1111.jpg'
+
+import women from '../styles/assets/imgs/women2.jpg'
 import shoes from '../styles/assets/imgs/shoes.jpg'
 import men from '../styles/assets/imgs/men.jpg'
 import hat from '../styles/assets/imgs/hat.jpg'
