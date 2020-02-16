@@ -37,7 +37,7 @@ class SearchImage extends Component {
                 <div className="modal-search-image">
                     <button onClick={this.props.toggleSearchImage}><img src={close} /></button>
                     <div className="head">
-                        <p> Search for the perfect Image</p>
+                        <h2> Search for the perfect Image</h2>
                         <input onChange={this.handleSearch} />
                     </div>
                     <div className="images-container">

@@ -78,12 +78,10 @@ async function add(item) {
 }
 
 function _buildCriteria(filterBy) {
-    console.log('_buildCriteria',filterBy);
-    
     let filters;
     const criteria = {};
-    if(filterBy.labels){
-        criteria.labels = filterBy.labels   
+    if (filterBy.labels) {
+        criteria.labels = filterBy.labels
     }
     if (filterBy.gender) {
         filters = [];
@@ -126,10 +124,7 @@ function _buildCriteria(filterBy) {
         criteria['price'] = { $lte: +filterBy.price }
     }
     if (filterBy.txt) {
-        criteria["$or"] = [{ 'title': { $regex:filterBy.txt.toLowerCase() } }, { 'description': { $regex: filterBy.txt.toLowerCase() } }]
+        criteria["$or"] = [{ 'title': { $regex: filterBy.txt.toLowerCase() } }, { 'description': { $regex: filterBy.txt.toLowerCase() } }]
     }
-
-    console.log('criteriacriteria', criteria);
-
     return criteria;
 }

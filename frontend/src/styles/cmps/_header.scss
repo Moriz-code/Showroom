@@ -3,7 +3,7 @@
     height: 50vh;
   }
   @include for-normal-layout {
-    height: 40vh;
+    height: 60vh;
   }
   @include for-wide-layout {
     height: 80vh;
@@ -260,7 +260,7 @@
       font-size: rem(16px);
     }
     @include for-wide-layout {
-      font-size: rem(18px);
+      font-size: rem(14px);
     }
   }
   button {

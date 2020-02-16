@@ -16,6 +16,7 @@ import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
 import InnerNavbar from '../../cmps/InnerNavBar';
 import Footer from '../../cmps/Footer';
+import Loading from '../../cmps/Loading';
 
 import addBtn from '../../styles/assets/imgs/add.png';
 
@@ -76,15 +77,15 @@ class PersonalShop extends Component {
     handleColorChange = (ev) => {
 
         const name = 'bgColor';
-        const alt = 'style';
+        const type = 'style';
         let value = ev.hex;
 
         this.setState(prevState => ({
             ...prevState,
             shop: {
                 ...prevState.shop,
-                [alt]: {
-                    ...prevState.shop[alt],
+                [type]: {
+                    ...prevState.shop[type],
                     [name]: value
                 }
             }
@@ -182,7 +183,9 @@ class PersonalShop extends Component {
 
     onSaveSettings = (ev) => {
         ev.preventDefault();
+
         this.props.updateShopSettings(this.state.shop);
+        this.setState({isOnEditSettigs : false})
 
     }
 
@@ -240,8 +243,6 @@ class PersonalShop extends Component {
         const { shop } = this.state;
         return (
             <React.Fragment>
-
-
                 {this.state.shop ?
                     <div className='shop-page' style={{ backgroundColor: shop.style.bgColor }}>
 
@@ -278,8 +279,7 @@ class PersonalShop extends Component {
                         </div>
                     </div>
 
-                    : ''
-                }
+                    :<div className="loading-shop"> <Loading/> </div>             }
                 <Footer></Footer>
             </React.Fragment >)
     }
