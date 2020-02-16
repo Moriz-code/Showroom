@@ -42,7 +42,7 @@ class InnerNavBar extends Component {
     }
 
     loadMyOrders = async () => {
-
+        
         const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
 
         const newOrders = orders.find(order => !order.isRead)
@@ -69,7 +69,8 @@ class InnerNavBar extends Component {
             let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
 
                 await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
-
+        
+            
             let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
             this.props.history.push(`/shop/${newUser.shopId}`)
         }

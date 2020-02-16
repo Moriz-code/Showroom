@@ -74,21 +74,23 @@ class Header extends Component {
   getShopId = async () => {
     if (!this.props.loggedInUser) return this.props.history.push(`/login`)
     if (this.props.loggedInUser.shopId) {
-      this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
+        this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
 
 
     }
     else {
 
+        let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
 
-      let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
-
-        await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
-
-      let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
-      this.props.history.push(`/shop/${newUser.shopId}`)
+            await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
+      
+           
+            
+        
+        let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+        this.props.history.push(`/shop/${newUser.shopId}`)
     }
-  }
+}
 
   toggleMenu = () => {
     if (this.state.isOpen === '') this.setState({ 'isOpen': 'open' })
