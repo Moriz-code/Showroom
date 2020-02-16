@@ -9,7 +9,6 @@
 }
 
 .store-details {
-  
   @include for-narrow-layout {
     align-items: center;
     margin-bottom: 20px;
@@ -23,22 +22,16 @@
     margin-bottom: 20px;
   }
 }
-.item-description-txt{
-
+.item-description-txt {
   @include for-narrow-layout {
-   
   }
   @include for-normal-layout {
-   margin-top: 0px;
+    margin-top: 0px;
   }
   @include for-wide-layout {
-    
   }
-
-
-
-
 }
+
 .item-description {
   font-size: 14px;
 }
@@ -77,7 +70,6 @@
 }
 
 .secondary-img {
- 
   @include for-narrow-layout {
     display: none;
   }
@@ -86,15 +78,15 @@
   }
   @include for-wide-layout {
     display: block;
-  max-width: 100px;
-  max-height: 90px;
-  margin-bottom: 15px;
+    max-width: 100px;
+    max-height: 90px;
+    margin-bottom: 15px;
 
-  width: auto;
-  height: auto;
-  &:hover {
-    cursor: pointer;
-  }
+    width: auto;
+    height: auto;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -149,7 +141,6 @@
   }
 }
 .item-price {
-  
   @include for-narrow-layout {
     letter-spacing: 2px;
     font-size: 14px;
@@ -176,7 +167,6 @@
 }
 
 .item-details-main {
- 
   @include for-narrow-layout {
     border-bottom: 0.5px solid rgb(240, 240, 240);
     padding-bottom: 18px;
@@ -184,8 +174,6 @@
     margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
-  
-  
   }
   @include for-normal-layout {
     border-bottom: 0.5px solid rgb(240, 240, 240);
@@ -194,9 +182,8 @@
     margin-top: 15px;
     display: flex;
     flex-wrap: nowrap;
-  
   }
-        
+
   @include for-wide-layout {
     border-bottom: 0.5px solid rgb(240, 240, 240);
     padding-bottom: 18px;
@@ -204,7 +191,6 @@
     margin-top: 15px;
     display: flex;
     flex-wrap: nowrap;
-   
   }
 }
 
