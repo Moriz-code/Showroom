@@ -207,6 +207,11 @@ class PersonalShop extends Component {
     onAdd = () => {
         this.clearItemState();
         this.onEditMode();
+
+        if (this.state.isOnEditSettigs) {
+            this.onEditSettings();
+
+        }
     }
 
     onChat = () => {
