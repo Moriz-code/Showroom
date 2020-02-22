@@ -37,9 +37,13 @@ export function CreateNewShop(userId, userName) {
     return async dispatch => {
         try {
             let shop = createShop(userId, userName)
-            shop = await ShopService.add(shop);
-            dispatch({ type: 'ADD_SHOP', shop });
-            return shop
+            let newShop = await ShopService.add(shop);
+            console.log(newShop._id,'action');
+            
+            dispatch({ type: 'ADD_SHOP', newShop });
+            console.log('dispatched');
+            
+            return newShop
         } catch (err) {
             console.log(`cant add shop - shop action `);
         }
@@ -70,7 +74,7 @@ function createShop(userId, userName) {
         comments: [],
         info: {
             name: 'My Shop',
-            description: '',
+            description: 'Design Your Own Shop.',
             instagram: '',
             facebook: '',
         },
@@ -79,11 +83,11 @@ function createShop(userId, userName) {
             name: userName,
         },
         style: {
-            bgColor: '',
+            bgColor: '#F6F3F3',
             theme: '',
-            videoUrl: '',
-            coverImgUrl: '',
-            logoUrl: '',
+            videoUrl: 'https://www.youtube.com/embed/MuoZso0khAY/v/MuoZso0khAY?playsinline=1&loop=1&autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&widgetid=2&playlist=MuoZso0khAY>',
+            coverImgUrl: 'http://res.cloudinary.com/moriz/image/upload/v1582301186/vh1hytpdnkp6nnfuvwu9.png',
+            logoUrl: 'http://res.cloudinary.com/moriz/image/upload/v1582038994/phjpzptnfulzaegw6jjd.png',
             darkMode: ''
         },
 

@@ -71,7 +71,9 @@ class InnerNavBar extends Component {
                 await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
 
 
+
             let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+
             this.props.history.push(`/shop/${newUser.shopId}`)
         }
     }

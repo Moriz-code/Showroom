@@ -9,7 +9,7 @@
 }
 
 .store-details {
-  @include for-narrow-layout {
+  @include for-mobile-layout {
     align-items: center;
     margin-bottom: 20px;
   }
@@ -23,7 +23,7 @@
   }
 }
 .item-description-txt {
-  @include for-narrow-layout {
+  @include for-mobile-layout {
   }
   @include for-normal-layout {
     margin-top: 0px;
@@ -67,10 +67,21 @@
   width: auto;
   height: auto;
   margin: 0 15px;
+
+  @include for-mobile-layout {
+    width: 100%;
+  }
+}
+
+.item-img{
+  @include for-mobile-layout {
+    align-self: center;
+  }
+
 }
 
 .secondary-img {
-  @include for-narrow-layout {
+  @include for-mobile-layout {
     display: none;
   }
   @include for-normal-layout {
@@ -107,6 +118,11 @@
   width: 100%;
   max-height: 456.4px;
   margin-left: 40px;
+  @include for-mobile-layout {
+   
+  max-width: 80%;
+ 
+  }
 }
 
 .previous-img {
@@ -141,7 +157,7 @@
   }
 }
 .item-price {
-  @include for-narrow-layout {
+  @include for-mobile-layout {
     letter-spacing: 2px;
     font-size: 14px;
   }
@@ -167,30 +183,36 @@
 }
 
 .item-details-main {
-  @include for-narrow-layout {
+  @include for-mobile-layout {
+ 
     border-bottom: 0.5px solid rgb(240, 240, 240);
     padding-bottom: 18px;
     margin-bottom: 30px;
     margin-top: 15px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
-  @include for-normal-layout {
+    @include for-normal-layout {
+      align-items: center;
     border-bottom: 0.5px solid rgb(240, 240, 240);
     padding-bottom: 18px;
-    margin-bottom: 30px;
-    margin-top: 15px;
+    // margin-bottom: 30px;
+    // margin-top: 15px;
     display: flex;
     flex-wrap: nowrap;
+    flex-direction: row;
+    margin: 20px;
   }
 
   @include for-wide-layout {
+    margin: 0 auto;
     border-bottom: 0.5px solid rgb(240, 240, 240);
     padding-bottom: 18px;
     margin-bottom: 10px;
     margin-top: 15px;
     display: flex;
     flex-wrap: nowrap;
+    flex-direction: row;
   }
 }
 
@@ -436,4 +458,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 15px;
+  @include for-mobile-layout {
+    display: grid;
+    grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  }
 }

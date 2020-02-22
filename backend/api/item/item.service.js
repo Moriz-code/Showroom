@@ -13,6 +13,8 @@ module.exports = {
 
 
 async function query(filterBy = {}) {
+    console.log('query - filter by', filterBy);
+
     const criteria = await _buildCriteria(filterBy)
 
     const collection = await dbService.getCollection('item')
@@ -126,5 +128,8 @@ function _buildCriteria(filterBy) {
     if (filterBy.txt) {
         criteria["$or"] = [{ 'title': { $regex: filterBy.txt.toLowerCase() } }, { 'description': { $regex: filterBy.txt.toLowerCase() } }]
     }
+
+    console.log('searching ', criteria);
+
     return criteria;
 }

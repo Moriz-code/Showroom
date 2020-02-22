@@ -82,13 +82,16 @@ class Header extends Component {
 
       let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
 
-        await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
 
+            await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
+      
+           
+            
+        console.log(shop._id);
+        
+        let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+        this.props.history.push(`/shop/${newUser.shopId}`)
 
-
-
-      let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
-      this.props.history.push(`/shop/${newUser.shopId}`)
     }
   }
 
