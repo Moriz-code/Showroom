@@ -37,9 +37,13 @@ export function CreateNewShop(userId, userName) {
     return async dispatch => {
         try {
             let shop = createShop(userId, userName)
-            shop = await ShopService.add(shop);
-            dispatch({ type: 'ADD_SHOP', shop });
-            return shop
+            let newShop = await ShopService.add(shop);
+            console.log(newShop._id,'action');
+            
+            dispatch({ type: 'ADD_SHOP', newShop });
+            console.log('dispatched');
+            
+            return newShop
         } catch (err) {
             console.log(`cant add shop - shop action `);
         }

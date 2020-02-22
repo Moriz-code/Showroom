@@ -11,7 +11,7 @@ const initalState = {
 export default function (state = initalState, action = {}) {
     switch (action.type) {
         case 'SET_SHOP':
-            return { state, selectedShop: action.shop }
+            return { ...state, selectedShop: action.shop }
         case 'ADD_SHOP':
             return { ...state,shops: [...state.shops,action.newShop] }
 
