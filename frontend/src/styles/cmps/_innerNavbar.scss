@@ -62,8 +62,9 @@
           flex-direction: column;
           padding-left: 0px;
           align-items: center;
+
           > * :not:first-child{
-            padding-bottom: 15px;
+            padding-right: 15px;
           }
         }
         font-size: rem(17px);
@@ -74,6 +75,9 @@
         }
       }
       @include for-normal-layout {
+        > * {
+          padding-left: 15px;
+        }
       }
       @include for-wide-layout {
         > * {
@@ -84,9 +88,10 @@
  
     }
 
-    .inner-nav-icons {
-      width: 100px;
-      height: 100px;
+    .inner-nav-icons img {
+      width: 40px;
+      height: 40px;
+      padding:5px;
       > * {
         padding-left: 10px;
       }
@@ -98,6 +103,7 @@
     }
     .inner-nav-text {
       color: $clr4;
+      padding-right:10px;
 
       &:hover {
         cursor: pointer;
@@ -116,9 +122,10 @@
     .close-btn {
       @include for-mobile-layout {
         display: block;
-        width: 12%;
-        height: 12%;
-        margin-top: 10px;
+        width: 8%;
+        height:auto;
+        margin-top: 18px;
+        margin-left:18px;
       }
       @include for-normal-layout {
         display: none;

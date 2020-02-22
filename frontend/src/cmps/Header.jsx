@@ -121,14 +121,14 @@ class Header extends Component {
                 <button className="logout" onClick={this.props.logout}>Log out</button>}
             </div>
           </div>
-          {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
-            <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
-              <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
-            </NavLink></span>
-            : ''}
+        
 
           <ul className="menu-icons flex align-center">
-
+<li>  {this.props.loggedInUser && this.props.loggedInUser.shopId !== '' ?
+           <NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
+              <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
+            </NavLink>
+            : ''}</li>
             <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
             <li className="cart"><NavLink activeClassName="active" to='/cart' exact><img src={cart} /> <span></span></NavLink></li>
           </ul>
