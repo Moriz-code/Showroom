@@ -38,7 +38,7 @@ class PersonalShop extends Component {
 
 
     async componentDidMount() {
-        this.props.loadItems({ 'itemOwner': this.props.match.params.id })
+        await this.props.loadItems({ 'itemOwner': this.props.match.params.id })
 
         await this.props.loadShop(this.props.match.params.id);
         this.setState({ shop: this.props.shop.selectedShop })
@@ -185,7 +185,7 @@ class PersonalShop extends Component {
         ev.preventDefault();
 
         this.props.updateShopSettings(this.state.shop);
-        this.setState({isOnEditSettigs : false})
+        this.setState({ isOnEditSettigs: false })
 
     }
 
@@ -279,7 +279,7 @@ class PersonalShop extends Component {
                         </div>
                     </div>
 
-                    :<div className="loading-shop"> <Loading/> </div>             }
+                    : <div className="loading-shop"> <Loading /> </div>}
                 <Footer></Footer>
             </React.Fragment >)
     }

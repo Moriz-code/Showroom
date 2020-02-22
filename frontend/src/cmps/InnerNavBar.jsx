@@ -42,7 +42,7 @@ class InnerNavBar extends Component {
     }
 
     loadMyOrders = async () => {
-        
+
         const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
 
         const newOrders = orders.find(order => !order.isRead)
@@ -69,9 +69,9 @@ class InnerNavBar extends Component {
             let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
 
                 await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
-        
-            
-            let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+
+
+            const newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
             this.props.history.push(`/shop/${newUser.shopId}`)
         }
     }
@@ -110,22 +110,22 @@ class InnerNavBar extends Component {
 
 
                     </div>
-                    
-                            {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
-                                <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
-                                  {this.state.newOrders > 0 &&  <span className="notification-seller-badge"> {this.state.newOrders}</span>}
-                                </NavLink></span>
+                    {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
-                                : ''}
-                        
+                        <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
+                            {this.state.newOrders > 0 && <span className="notification-seller-badge"> {this.state.newOrders}</span>}
+                        </NavLink></span>
+
+                        : ''}
+
 
                     <ul className="inner-nav-icons flex align-center">
-                        
+
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
 
                         <li className="cart"><NavLink activeClassName="active" to='/cart' exact>
-                        {itemsInCart > 0 &&    <span className="notification-badge">{itemsInCart}</span>}
+                            {itemsInCart > 0 && <span className="notification-badge">{itemsInCart}</span>}
                             <img className="cart-icon" src={cart} />
                         </NavLink>
                         </li>

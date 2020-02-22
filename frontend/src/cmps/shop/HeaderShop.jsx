@@ -11,7 +11,7 @@ import Loading from "../../cmps/Loading";
 export default function ShopSettings(props) {
 
     return <React.Fragment>
-        {props.Loading ? <div className="shop-header"> <Loading /> </div> :
+        {props.Loading ? <div className="loading-header"> <Loading /> </div> :
             <div className="shop-header" style={{ backgroundImage: 'url(' + props.selectedShop.style.coverImgUrl + ')' }}>
 
 
