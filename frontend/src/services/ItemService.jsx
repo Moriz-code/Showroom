@@ -38,6 +38,7 @@ function query(filterBy = null) {
                 }
             }
         }
+        console.log('HttpService.get(`item?${str}`);', str);
 
         return HttpService.get(`item?${str}`);
 

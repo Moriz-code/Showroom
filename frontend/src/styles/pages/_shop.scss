@@ -1,7 +1,8 @@
 .shop-page {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: calc(100vh - 72px);
+  max-width: 100%;
 
   .inner-nav {
     position: sticky;
@@ -32,7 +33,25 @@
   width: 100%;
 }
 .modal-opened {
-  width: calc(100vw - 350px);
+  width: calc(100vw - 365px);
+
+  @include for-mobile-layout {
+    width: calc(100vw - 280px);
+
+    font-size: rem(10px);
+
+    .add-item-btn img {
+      display: none;
+    }
+
+    .description {
+      font-size: rem(10px);
+    }
+
+    .shop-video {
+      display: none;
+    }
+  }
 }
 .shop-header {
   background-repeat: no-repeat;
@@ -80,13 +99,25 @@
   grid-column: 2;
   grid-row: 1;
   width: 350px;
-  height: 255px;
+  height: 205px;
   border-radius: 20px;
   // mix-blend-mode: multiply;
   // background-color: whitesmoke;
   top: 0;
   right: 0;
   padding: 10px;
+
+  @include for-mobile-layout {
+    width: 300px;
+    height: 175px;
+  }
+  @include for-normal-layout {
+    // background-color: transparent;
+    // border: 0px;
+    // width: 55px;
+    // height: 55px;
+    // padding: 15px;
+  }
 }
 .insta-icon {
   max-width: 50px;
@@ -111,12 +142,16 @@
   height: 50px;
   padding: 5px;
   background: white;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 2px 2px 0px;
   border: none;
   box-shadow: 1px 1px rgba(204, 204, 204, 0.7);
   z-index: 5;
   img {
     width: 50%;
+  }
+
+  @include for-mobile-layout {
+    width: 65px;
   }
 }
 .modal-settings {
@@ -150,13 +185,8 @@
     // font-family: lobster;
   }
 
-  @include for-narrow-layout {
-    // align-items: center;
-    // margin-bottom: 20px;
-  }
-  @include for-normal-layout {
-    // align-items: center;
-    // margin-bottom: 10px;
+  @include for-mobile-layout {
+    width: 280px;
   }
 }
 
@@ -173,6 +203,9 @@
     border: 1px solid rgba(204, 204, 204, 0.5);
     padding: 5px 5px 5px 70px;
     transition: all 0.1s ease-out;
+    @include for-mobile-layout {
+      width: 260px;
+    }
   }
   input[type="text"] + label,
   input[type="file"] + label {
@@ -216,12 +249,16 @@
   width: 300px;
   background: linear-gradient(-45deg, $clr2, $clr3, $clr4);
   background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
+  animation: gradient 3s ease infinite;
   color: $clr4;
   border: none;
   height: rem(45px);
   font-size: rem(30px);
   margin-top: 10px;
+
+  @include for-mobile-layout {
+    width: 260px;
+  }
 }
 
 @keyframes gradient {
@@ -271,6 +308,17 @@
     .description {
       font-size: rem(30px);
     }
+
+    @include for-mobile-layout {
+      padding: 0px;
+      width: 100%;
+      padding-top: 10px;
+    }
+  }
+
+  @include for-mobile-layout {
+    margin-left: 0px;
+    // width: 100%;
   }
 }
 .shop-social {
@@ -335,6 +383,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+    @include for-mobile-layout {
+      flex-direction: column;
+
+      align-items: flex-start;
+    }
+
     // justify-content: space-between;
   }
   .gender {
@@ -361,17 +415,27 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+
+    @include for-mobile-layout {
+      flex-direction: column;
+    }
   }
   .uploadImage input {
     border: 1px solid black;
   }
 }
 
-.loading-shop{
-  flex:1;
-  margin-top:10%;
-  margin-left:46%;
+.loading-shop {
+  flex: 1;
+  margin-top: 10%;
+  margin-left: 46%;
+}
 
+.loading-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 514px;
 }
 
 @keyframes swing-in-left-fwd {

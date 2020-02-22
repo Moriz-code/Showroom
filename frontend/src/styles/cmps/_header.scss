@@ -17,6 +17,9 @@
       height: 55px;
       padding: 15px;
     }
+    @include for-narrow-layout {
+      display: none;
+    }
     @include for-normal-layout {
       display: none;
     }
@@ -75,7 +78,6 @@
     }
     width: rem(90px);
     height: rem(90px);
-
   }
   .cover-photo {
     position: fixed;

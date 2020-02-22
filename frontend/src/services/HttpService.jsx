@@ -31,15 +31,14 @@ export default {
 
 async function ajax(endpoint, method = 'get', data = null, dispatch) {
 
-
     try {
-
 
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
             method,
             data
         })
+
 
 
         return res.data;

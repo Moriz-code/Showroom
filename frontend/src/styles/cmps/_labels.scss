@@ -9,16 +9,16 @@
     border-radius: 20px;
     border: 0px;
     padding: 10px;
-    @include for-mobile-layout {
-      margin-top: 40px;
-      font-size: rem(12px);
-    }
-    @include for-normal-layout {
-      margin-top: 20px;
-      font-size: rem(14px);
-    }
-    @include for-wide-layout {
-      font-size: rem(18px);
-    }
+    // @include for-mobile-layout {
+    //   margin-top: 40px;
+    //   font-size: rem(12px);
+    // }
+    // @include for-normal-layout {
+    //   margin-top: 20px;
+    //   font-size: rem(14px);
+    // }
+    // @include for-wide-layout {
+    //   font-size: rem(18px);
+    // }
   }
 }
