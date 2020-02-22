@@ -86,6 +86,7 @@ class Header extends Component {
       
            
             
+        console.log(shop._id);
         
         let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
         this.props.history.push(`/shop/${newUser.shopId}`)
