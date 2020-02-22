@@ -74,23 +74,23 @@ class Header extends Component {
   getShopId = async () => {
     if (!this.props.loggedInUser) return this.props.history.push(`/login`)
     if (this.props.loggedInUser.shopId) {
-        this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
+      this.props.history.push(`/shop/${this.props.loggedInUser.shopId}`)
 
 
     }
     else {
 
-        let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
+      let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
 
-            await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
-      
-           
-            
-        
-        let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
-        this.props.history.push(`/shop/${newUser.shopId}`)
+        await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
+
+
+
+
+      let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+      this.props.history.push(`/shop/${newUser.shopId}`)
     }
-}
+  }
 
   toggleMenu = () => {
     if (this.state.isOpen === '') this.setState({ 'isOpen': 'open' })
@@ -109,25 +109,25 @@ class Header extends Component {
 
           <div className="nav-text">
             <img className={`close-btn ${this.state.isOpen}`} onClick={this.toggleMenu} src={close}></img>
+            <div className="nav-text-inner">
+              <span><NavLink to='/item' exact>Explore</NavLink></span>
 
-            <span><NavLink to='/item' exact>Explore</NavLink></span>
+              <span onClick={this.getShopId}>My shop</span>
 
-            <span onClick={this.getShopId}>My shop</span>
-
-            {this.props.loggedInUser === null ? <NavLink to='/login' exact> Sign in</NavLink> :
-              <button className="logout" onClick={this.props.logout}>Log out</button>}
-
+              {this.props.loggedInUser === null ? <NavLink to='/login' exact> Sign in</NavLink> :
+                <button className="logout" onClick={this.props.logout}>Log out</button>}
+            </div>
           </div>
           {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
-              <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
-                <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
-              </NavLink></span>
-              : ''}
+            <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
+              <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
+            </NavLink></span>
+            : ''}
 
           <ul className="menu-icons flex align-center">
-            
+
             <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
-            <li className="cart"><NavLink activeClassName="active" to='/cart' exact><img  src={cart} /> <span></span></NavLink></li>
+            <li className="cart"><NavLink activeClassName="active" to='/cart' exact><img src={cart} /> <span></span></NavLink></li>
           </ul>
         </div>
         <div className="header-text-search flex column justify-center align-center">

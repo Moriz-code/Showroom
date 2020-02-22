@@ -42,7 +42,7 @@ class InnerNavBar extends Component {
     }
 
     loadMyOrders = async () => {
-        
+
         const orders = await OrderService.getMyOrders(this.props.loggedInUser.shopId)
 
         const newOrders = orders.find(order => !order.isRead)
@@ -69,8 +69,8 @@ class InnerNavBar extends Component {
             let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
 
                 await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
-        
-            
+
+
             let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
             this.props.history.push(`/shop/${newUser.shopId}`)
         }
@@ -90,6 +90,7 @@ class InnerNavBar extends Component {
         return <React.Fragment>
 
             <Modal msg={this.state.modalMsg}></Modal>
+
             <div className="inner-nav flex justify-space-between">
 
                 <Link to={`/`} ><p className="inner-logo">ShowRoom.</p></Link>
@@ -98,34 +99,36 @@ class InnerNavBar extends Component {
                 <Search></Search>
 
                 <div className={`nav-right-side flex align-center ${this.state.isOpen}`}>
-                    <img className={`close-btn ${this.state.isOpen}`} onClick={this.toggleMenu} src={close}></img>
+                    {/* <img className={`close-btn ${this.state.isOpen}`} onClick={this.toggleMenu} src={close}></img> */}
 
 
                     <div className="nav-texts flex">
-                        <NavLink to='/item' className="inner-nav-text explore" exact>Explore</NavLink>
+                        <img className={`close-btn ${this.state.isOpen}`} onClick={this.toggleMenu} src={close}></img>
+                        <div className="nav-text-inner">
+                            <span><NavLink to='/item' className="inner-nav-text explore" exact>Explore</NavLink></span>
 
-                        <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
-                        {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
-                            <button className="logout" onClick={this.props.logout}>Log out</button>}
-
+                            <span onClick={this.getShopId} className="inner-nav-text">My shop</span>
+                            {this.props.loggedInUser === null ? <NavLink to='/login' className="inner-nav-text" exact> Sign in</NavLink> :
+                                <button className="logout" onClick={this.props.logout}>Log out</button>}
+                        </div>
 
                     </div>
-                    
-                            {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
-                                <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
-                                  {this.state.newOrders > 0 &&  <span className="notification-seller-badge"> {this.state.newOrders}</span>}
-                                </NavLink></span>
+                    {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
-                                : ''}
-                        
+                        <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
+                            {this.state.newOrders > 0 && <span className="notification-seller-badge"> {this.state.newOrders}</span>}
+                        </NavLink></span>
+
+                        : ''}
+
 
                     <ul className="inner-nav-icons flex align-center">
-                        
+
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
 
                         <li className="cart"><NavLink activeClassName="active" to='/cart' exact>
-                        {itemsInCart > 0 &&    <span className="notification-badge">{itemsInCart}</span>}
+                            {itemsInCart > 0 && <span className="notification-badge">{itemsInCart}</span>}
                             <img className="cart-icon" src={cart} />
                         </NavLink>
                         </li>

@@ -75,7 +75,6 @@
     }
     width: rem(90px);
     height: rem(90px);
-
   }
   .cover-photo {
     position: fixed;
@@ -102,6 +101,15 @@
       color: white;
     }
     @include for-mobile-layout {
+      .nav-text-inner {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0px;
+        align-items: center;
+        > * :not:first-child{
+          padding-bottom: 15px;
+        }
+      }
       font-size: rem(17px);
       display: flex;
       flex-direction: column;
@@ -121,6 +129,7 @@
         width: 12%;
         height: 12%;
         margin-top: 10px;
+        padding-left: 15px;
       }
       @include for-normal-layout {
         display: none;
@@ -142,6 +151,8 @@
       flex-direction: column;
       justify-content: space-between;
       background: $clr1;
+      opacity: 94%;
+
       position: fixed;
       right: 0;
       top: 0;
@@ -302,6 +313,7 @@
   border: none;
   color: white;
   font-size: 16px;
+  text-align: left;
   &:hover {
     cursor: pointer;
   }
