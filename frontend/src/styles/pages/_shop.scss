@@ -36,20 +36,32 @@
   width: calc(100vw - 365px);
 
   @include for-mobile-layout {
-    width: calc(100vw - 280px);
+    width: 100vw;
 
     font-size: rem(10px);
 
-    .add-item-btn img {
-      display: none;
-    }
+    // .add-item-btn img {
+    //   display: none;
+    // }
 
-    .description {
-      font-size: rem(10px);
-    }
+    // .description {
+    //   font-size: rem(10px);
+    // }
 
-    .shop-video {
-      display: none;
+    // .shop-video {
+    //   display: none;
+    // }
+
+    // .no-items div {
+    //   width: 10vh;
+    // }
+
+    // .shop-info .details .description {
+    //   font-size: 1.5rem;
+    // }
+
+    .shop-edit-btn {
+      left: 280px;
     }
   }
 }
