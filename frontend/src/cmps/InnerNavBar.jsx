@@ -116,17 +116,19 @@ class InnerNavBar extends Component {
 
                     </div>
 
-                    {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
-                        <span><NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
-                            {this.state.newOrders > 0 && <span className="notification-seller-badge"> {this.state.newOrders}</span>}
-                        </NavLink></span>
-
-                        : ''}
 
 
                     <ul className="inner-nav-icons flex align-center">
+                        <li>
+                            {this.props.loggedInUser && this.props.loggedInUser.shopId !== "" ?
 
+                                <NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
+                                    {this.state.newOrders > 0 && <span className="notification-seller-badge"> {this.state.newOrders}</span>}
+                                </NavLink>
+
+                                : ''}
+                        </li>
                         <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
 
                         <li className="cart"><NavLink activeClassName="active" to='/cart' exact>
