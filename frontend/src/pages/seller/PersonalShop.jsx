@@ -95,8 +95,8 @@ class PersonalShop extends Component {
 
     handleSettingChange = async (ev) => {
 
-
-        let { name, value, alt, src } = ev.target;
+        let category = ev.target.getAttribute("data-category");
+        let { name, value, src } = ev.target;
 
         if (name === 'videoUrl') {
             value = Utils.getEmbdedUrl(value);
@@ -124,8 +124,8 @@ class PersonalShop extends Component {
             ...prevState,
             shop: {
                 ...prevState.shop,
-                [alt]: {
-                    ...prevState.shop[alt],
+                [category]: {
+                    ...prevState.shop[category],
                     [name]: value
                 }
             }

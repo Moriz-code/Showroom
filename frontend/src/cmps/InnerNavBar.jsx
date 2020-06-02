@@ -96,7 +96,7 @@ class InnerNavBar extends Component {
             <div className="inner-nav flex justify-space-between">
 
                 <Link to={`/`} ><p className="inner-logo">ShowRoom.</p></Link>
-                <img class={`menu-btn flex self-end`} onClick={this.toggleMenu} src={menu}></img>
+                <img className={`menu-btn flex self-end`} onClick={this.toggleMenu} src={menu}></img>
 
                 <Search></Search>
 

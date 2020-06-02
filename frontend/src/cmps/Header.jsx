@@ -83,14 +83,14 @@ class Header extends Component {
       let shop = (this.props.loggedInUser && this.props.loggedInUser.shopId !== "") ? this.props.loggedInUser.shopId :
 
 
-            await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
-      
-           
-            
-        console.log(shop._id);
-        
-        let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
-        this.props.history.push(`/shop/${newUser.shopId}`)
+        await this.props.CreateNewShop(this.props.loggedInUser._id, this.props.loggedInUser.fullName)
+
+
+
+      console.log(shop._id);
+
+      let newUser = await this.props.addShopToUser(shop._id, this.props.loggedInUser)
+      this.props.history.push(`/shop/${newUser.shopId}`)
 
     }
   }
@@ -106,7 +106,7 @@ class Header extends Component {
       <Modal msg={this.state.modalMsg}></Modal>
 
       <div className="main-header flex column" >
-        <img class={`menu-btn flex self-end`} onClick={this.toggleMenu} src={menu}></img>
+        <img className={`menu-btn flex self-end`} onClick={this.toggleMenu} src={menu}></img>
         <div className={this.state.isTop ? `down nav-icon flex end align-center ${this.state.isOpen}` :
           `up nav-icon flex end align-center ${this.state.isOpen}`} >
 
@@ -121,14 +121,14 @@ class Header extends Component {
                 <button className="logout" onClick={this.props.logout}>Log out</button>}
             </div>
           </div>
-        
+
 
           <ul className="menu-icons flex align-center">
-<li>  {this.props.loggedInUser && this.props.loggedInUser.shopId !== '' ?
-           <NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
-              <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
-            </NavLink>
-            : ''}</li>
+            <li>  {this.props.loggedInUser && this.props.loggedInUser.shopId !== '' ?
+              <NavLink to='/dashboard' className="inner-nav-text" exact><img className="bell-icon" src={bell} />
+                <span className="notification-seller-badge">{this.state.newOrders > 0 && this.state.newOrders}</span>
+              </NavLink>
+              : ''}</li>
             <li><NavLink activeClassName="active" to='/wishlist' exact><img src={wishlist} /></NavLink></li>
             <li className="cart"><NavLink activeClassName="active" to='/cart' exact><img src={cart} /> <span></span></NavLink></li>
           </ul>
