@@ -1,195 +1,192 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { loadShop, updateShopSettings, } from '../../actions/ShopActions';
+import Utils from '../../services/UtilService';
+import ItemService from '../../services/ItemService';
+import CloudinaryService from '../../services/CloudinaryService';
+
+
+import { loadShop, updateShopSettings } from '../../actions/ShopActions';
 import { loadItems, deleteItem, saveItem } from '../../actions/ItemActions';
+import { addToCart } from '../../actions/OrderActions';
 
 import ItemsList from '../../cmps/items/ItemList';
 import EditItem from '../../cmps/items/EditItem';
 import ShopSettings from '../../cmps/shop/ShopSettings';
 import HeaderShop from '../../cmps/shop/HeaderShop';
+import InnerNavbar from '../../cmps/InnerNavBar';
+import Footer from '../../cmps/Footer';
+import Loading from '../../cmps/Loading';
 
-import Comments from '../../pages/seller/Comments';
-import InnerNavbar from '../../cmps/InnerNavBar'
-
-
-import Utils from '../../services/UtilService';
-// import SocketService from '../../services/SocketService';
-
-//icons
-import settingsIcon from '../../styles/assets/imgs/icons/settings.png';
-import chat from '../../styles/assets/imgs/icons/chat.png';
+import addBtn from '../../styles/assets/imgs/add.png';
 
 class PersonalShop extends Component {
     state = {
         isOnEditMode: false,
-        isOnEditSettigs: true,
+        isOnEditSettigs: false,
         isOnChat: false,
+        isOwner: false,
+        isLoadingImgHeader: false,
+        isLoadingImgItem: false,
+        isOnSearchImage: false,
 
-        //create empty item from the service
-        item: {
-            _id: '',
-            title: '',
-            price: '',
-            description: '',
-            sizeFit: '',
-            size: '',
-            gender: '',
-            itemOwner: {
-                //need to change the source that it came from - keep in session. ask tal.
-                id: this.props.match.params.id,
-                name: '',
-                logoUrl: ''
-            },
-            labels: [],
-            imgs: [],
-            reviews: []
-        },
+        item: '',
 
-        shop: {
-            _id: '',
-            comments: [],
-            info: {
-                name: '',
-                description: '',
-                instagram: '',
-                facebook: '',
-            },
-            owner: {
-                id: '',
-                name: ''
-            },
-            style: {
-                bgColor: '',
-                theme: '',
-                videoUrl: '',
-                coverImgUrl: '',
-                logoUrl: '',
-                darkMode: ''
-            },
-
-        }
+        shop: ''
     }
+
+
 
     async componentDidMount() {
-        console.log('did mount');
-        await this.props.loadShop(this.props.match.params.id)
-        await this.props.loadItems();
+        await this.props.loadItems({ 'itemOwner': this.props.match.params.id })
+
+        await this.props.loadShop(this.props.match.params.id);
         this.setState({ shop: this.props.shop.selectedShop })
 
-        // //sockets
-        // SocketService.setup();
-        // SocketService.emit('chat topic', this.props.match.params.id);
-        // SocketService.emit('user send msg', { text: `${this.props.loggedInUser.userName} has joined the chat` });
-        // SocketService.on('chat addMsg', this.addComment)
-        // SocketService.on('user send msg', this.addComment)
+        this.checkIfOwner();
+        this.clearItemState();
+
     }
 
-    // componentDidUpdate() {
-    //     this.props.loadItems();
-    // }
+
+    clearItemState() {
+        let newItem = ItemService.getNewItem();
+        newItem.itemOwner.id = this.props.match.params.id;
+        newItem.itemOwner.name = this.state.shop.info.name;
+        newItem.itemOwner.logoUrl = this.state.shop.style.logoUrl;
+
+        this.setState(_ => ({
+            item: newItem
+        }))
+    }
+
+
+
+    notifciation = () => {
+        this.props.addToCart();
+    }
+
+
+    checkIfOwner = () => {
+        const user = (this.props.loggedInUser && this.props.loggedInUser.shopId === this.props.match.params.id)
+            ? this.setState({ isOwner: true }) : null
+    }
 
 
 
     handleColorChange = (ev) => {
 
-        const name = "bgColor";
-        const alt = "style";
+        const name = 'bgColor';
+        const type = 'style';
         let value = ev.hex;
-
-  
 
         this.setState(prevState => ({
             ...prevState,
             shop: {
                 ...prevState.shop,
-                [alt]: {
-                    ...prevState.shop[alt],
+                [type]: {
+                    ...prevState.shop[type],
                     [name]: value
                 }
             }
         }))
     }
 
-    handleSettingChange = (ev) => {
-        console.log(ev);
 
-        let { name, value, alt } = ev.target;
+    handleSettingChange = async (ev) => {
+
+        let category = ev.target.getAttribute("data-category");
+        let { name, value, src } = ev.target;
 
         if (name === 'videoUrl') {
             value = Utils.getEmbdedUrl(value);
         }
 
+        if (name === 'coverImgUpload' || name === 'logoUrl') {
+            if (name === 'coverImgUpload') {
+                name = 'coverImgUrl'
+            }
+            this.setState({ isLoadingImgHeader: true });
+
+            const res = await CloudinaryService.uploadImg(ev);
+            value = res.url;
+
+            this.setState({ isLoadingImgHeader: false })
+
+        } else {
+            if (name === 'coverImgUrl') {
+                value = src
+            }
+        }
+
+
         this.setState(prevState => ({
             ...prevState,
             shop: {
                 ...prevState.shop,
-                [alt]: {
-                    ...prevState.shop[alt],
+                [category]: {
+                    ...prevState.shop[category],
                     [name]: value
                 }
             }
         }))
     }
 
-    handleFormChange = (ev) => {
-
-
+    handleFormChange = async (ev) => {
         let { name, value } = ev.target;
 
-        if (name === 'labels' || name === 'imgs') {
-            var list = [...this.state.item[name]];
-            var i = list.indexOf(value)
+        switch (name) {
+            case 'labels':
+                var list = [...this.state.item[name]];
+                var i = list.indexOf(value)
 
-            if (i >= 0) {
-                list.splice(i, 1)
-                value = list
-            }
-            else {
-                value = list.concat(value);
-            }
+                if (i >= 0) {
+                    list.splice(i, 1)
+                    value = list
+                }
+                else {
+                    value = list.concat(value);
+                }
+                break;
+
+            case 'price':
+                value = parseInt(value)
+                break;
+
+            case 'imgs':
+
+                const id = +ev.target.id
+                this.setState({ isLoadingImgItem: true });
+
+                var list = [...this.state.item[name]];
+                const res = await CloudinaryService.uploadImg(ev);
+                let resUrl = res.url;
+                list[id] = resUrl;
+                value = list;
+
+                this.setState({ isLoadingImgItem: false })
+                break;
+
         }
 
         this.setState(prevState => ({
+
             ...prevState,
             item: {
                 ...prevState.item, [name]: value
             }
         }))
 
-
     }
 
-    // handleCommentAdd = (ev) =>{
-    //     // let {name , comment} = ev.target;
-
-    // console.log(ev.target);
-
-    // //     else {
-    // //         value = list.concat(value);
-    // //     }
-    // // }
-
-    // // this.setState(prevState => ({
-    // //     ...prevState,
-    // //     item: {
-    // //         ...prevState.item, [name]: value
-    // //     }
-    // // }))
-    // }
-
-    // sendComment = (text) => {
-    //     SocketService.emit('chat newMsg', { user: { userName: "Guest" }, text });
-    // };
-
-    // onAddComment = (newMsg) => {
-    //     this.setState(prevState => ({ comments: [...prevState.comments, newMsg] }));
-    // }
 
 
     onSaveSettings = (ev) => {
         ev.preventDefault();
+
         this.props.updateShopSettings(this.state.shop);
+        this.setState({ isOnEditSettigs: false })
+
     }
 
     onEditSettings = () => {
@@ -203,6 +200,18 @@ class PersonalShop extends Component {
         this.setState(state => ({
             isOnEditMode: !state.isOnEditMode,
         }))
+        window.scrollTo(0, 400)
+
+    }
+
+    onAdd = () => {
+        this.clearItemState();
+        this.onEditMode();
+
+        if (this.state.isOnEditSettigs) {
+            this.onEditSettings();
+
+        }
     }
 
     onChat = () => {
@@ -215,8 +224,9 @@ class PersonalShop extends Component {
     onSaveItem = async (ev) => {
         ev.preventDefault();
         await this.props.saveItem(this.state.item);
+        this.props.loadItems({ 'itemOwner': this.props.match.params.id })
         this.clearItemState();
-        this.props.loadItems();
+        this.onEditMode()
 
     }
 
@@ -228,87 +238,54 @@ class PersonalShop extends Component {
             item
         }))
         this.onEditMode();
+
     }
 
-    clearItemState() {
-        this.setState(prevState => ({
-            isOnEditMode: false,
-            item: {
-                _id: '',
-                title: '',
-                price: '',
-                description: '',
-                sizeFit: '',
-                size: '',
-                gender: '',
-                itemOwner: {
-                    id: this.props.match.params.id,
-                    name: '',
-                    logoUrl: ''
-                },
-                labels: [],
-                imgs: [],
-                reviews: [
-                    {
-                        byUser: {
-                            name: '',
-                            id: ''
-                        },
-                        txt: '',
-                        rate: ''
-                    }
-                ]
-
-            }
-        }))
-    }
-
-    componentWillUnmount = () => {
-        // if (!this.props.loggedInUser) return
-        // SocketService.off('chat addMsg')
-        // SocketService.off('user send msg')
-        // SocketService.terminate()
-    }
 
 
 
     render() {
-        // console.log('shop:', this.state.shop)
         const { shop } = this.state;
         return (
             <React.Fragment>
-                <InnerNavbar></InnerNavbar>
                 {this.state.shop ?
-                    <div className='shop-page'>
+                    <div className='shop-page' style={{ backgroundColor: shop.style.bgColor }}>
+
+                        <InnerNavbar isOwner={this.state.isOwner}></InnerNavbar>
+
                         <div className={this.state.isOnEditSettigs ? 'modal-opened shop-container' : 'full-width shop-container'}>
-                            <HeaderShop selectedShop={shop}></HeaderShop>
+                            <HeaderShop isOwner={this.state.isOwner} Loading={this.state.isLoadingImgHeader} onEditSettings={this.onEditSettings} isOnEditSettigs={this.state.isOnEditSettigs} selectedShop={shop}></HeaderShop>
 
-                            <button className='btn-style-none' onClick={this.onEditSettings}><img className='shop-edit-btn' src={settingsIcon} /></button>
-                            <div className={this.state.isOnEditSettigs ? 'modal-settings' : 'display-none'}>
-                                <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop}></ShopSettings>
+                            {this.state.isOnEditSettigs ?
+                                <ShopSettings onSaveSettings={this.onSaveSettings} handleColorChange={this.handleColorChange} handleSettingChange={this.handleSettingChange} shop={this.state.shop} />
+                                : null}
+
+                            {this.state.item ?
+                                <div className='shop-main'>
+                                    {this.state.isOnEditMode ?
+                                        <EditItem Loading={this.state.isLoadingImgItem} onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem> : null}
+                                </div>
+                                : null}
+
+                            {this.state.isOwner ?
+                                <button className='add-item-btn' onClick={this.onAdd}>
+                                    <img src={addBtn} className={this.state.isOnEditMode ? 'tranform45' : ''} alt='icon-add' />
+                                </button> : null}
+
+                            <div className='cards-shop-container'>
+
+
+                                {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items}
+                                    listMode={this.state.isOwner ? 'adminMode' : ''} /> : null}
+
                             </div>
 
-                            <div style={{ backgroundColor: shop.style.bgColor }}>
-                                <button className="add-item-btn" onClick={this.onEditMode}>Add Item</button>
-                                <div className={this.state.isOnEditMode ? 'modal' : 'display-none'}>
-                                    <EditItem onSaveItem={this.onSaveItem} handleFormChange={this.handleFormChange} item={this.state.item}></EditItem>
-                                </div>
 
-                                <button className="chat-icon" onClick={this.onChat}> <img src={chat} alt="icon" /></button>
-                                <div className={this.state.isOnChat ? 'modal-chat' : 'display-none'}>
-                                    {/* <Comments addComment={this.onAddComment} comments={shop.comments}></Comments> */}
-                                </div>
-
-
-                                {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} items={this.props.items} listMode="adminMode" /> : 'There is No Items'}
-                                {/* {this.props.items ? <ItemsList editItem={this.editItem} deleteItem={this.props.deleteItem} listMode={this.props.shop.selectedShop.owner.id === this.props.loggedInUser._id ? "adminMode" : "customerMode"} items={this.props.items} /> : 'There is No Items'} */}
-
-                                {/* socket */}
-
-                            </div>
                         </div>
                     </div>
-                    : ''}
+
+                    : <div className="loading-shop"> <Loading /> </div>}
+                <Footer></Footer>
             </React.Fragment >)
     }
 }
@@ -327,13 +304,10 @@ const mapDispatchToProps = {
     deleteItem,
     updateShopSettings,
     saveItem,
+    addToCart
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(PersonalShop);
-
-
-
-// listMode={this.props.shop.selectedShop.owner.id===this.props.loggedInUser._id ?"adminMode":"customerMode"}

@@ -20,10 +20,10 @@ class Search extends Component {
 
     render() {
         return (
-            <div className="search flex column align-center">
-                <input onChange={this.onInputChange} type="text" value={this.props.searchBy} placeholder="   Let's take a tour and SEARCH an amazing products" name="txt" ></input>
-                <Link to={`/item/${this.state.txt}`}><button>Search</button></Link>
 
+            <div className="search flex column align-center">
+                <input autoComplete="off" onChange={this.onInputChange} type="text" value={this.props.searchBy} placeholder="So what is your look for tonight?" name="txt" ></input>
+                <Link to={`/item/${this.state.txt}`}><button>Search</button></Link>
             </div>
         )
     }

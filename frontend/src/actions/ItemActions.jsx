@@ -1,8 +1,8 @@
 import ItemService from '../services/ItemService'
 
 export function loadItems(filterBy) {
-    console.log('filterBy1',filterBy);
-    
+
+
     return async dispatch => {
         try {
             const items = await ItemService.query(filterBy);
@@ -14,7 +14,7 @@ export function loadItems(filterBy) {
 }
 
 function setItems(items) {
-    
+
     return {
         type: 'SET_ITEMS',
         items
@@ -23,18 +23,17 @@ function setItems(items) {
 
 export function saveItem(item) {
     return async dispatch => {
-        console.log('save Item ', item);
         try {
             if (!item._id) {
 
                 // item._id = _makeId();
                 delete item._id
                 const addedItem = await ItemService.add(item);
-                dispatch({type: 'ITEM_ADD', addedItem})
+                dispatch({ type: 'ITEM_ADD', addedItem })
             } else {
-                // console.log('edit item');
+
                 const editedItem = await ItemService.put(item);
-                 dispatch({ type: 'ITEM_UPDATE', editedItem});
+                dispatch({ type: 'ITEM_UPDATE', editedItem });
             }
         } catch (err) {
             console.log('ITEMS Actions: err in EDIT ITEM');
@@ -58,10 +57,12 @@ export function setCurrentItem(itemId) {
 
 
 export function deleteItem(itemId) {
+
     return async dispatch => {
         try {
             const item = await ItemService.remove(itemId);
-            await dispatch({ type: 'DELETE_ITEM', item })
+            await dispatch({ type: 'DELETE_ITEM', itemId })
+
         } catch (err) {
             console.log('ItemsActions: err in loadReviews', err);
         }

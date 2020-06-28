@@ -1,7 +1,9 @@
 const itemService = require('./item.service')
 
 async function getItems(req, res) {
-console.log('getItems',req.query);
+
+console.log('getItems6',req.query);
+
 
     const items = await itemService.query(req.query)
 
@@ -27,7 +29,7 @@ async function addItem(req, res) {
     res.send(item)
 }
 
-async function deleteItem(req,res) {
+async function deleteItem(req, res) {
     await itemService.remove(req.params.id)
     res.end()
 }

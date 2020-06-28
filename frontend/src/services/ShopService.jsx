@@ -3,6 +3,7 @@ import HttpService from './HttpService';
 export default {
     get,
     put,
+    add
     // add
 }
 
@@ -16,10 +17,12 @@ async function put(shop){
     return shopUpdate
 }
 
-// async function put(shop){
-//     const shopUpdate = await HttpService.put(`shop/${shop._id}` , shop)
-//     return shopUpdate
-// }
+async function add(shop){
+    const NewShop = await HttpService.post('shop', shop)
+    console.log('newShop',NewShop);
+    
+    return NewShop
+}
 
 
 // async function add(item) {

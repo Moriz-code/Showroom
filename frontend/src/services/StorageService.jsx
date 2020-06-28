@@ -7,7 +7,8 @@ export default {
     put,
     remove,
     postMany,
-    clearStorage
+    clearStorage,
+    getwishlist
 }
 
 function query(entityType) {
@@ -21,7 +22,7 @@ function get(entityType, entityId) {
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 function post(entityType, newEntity) {
-      
+
     // newEntity._id = _makeId() //// turned off because it changes the item id(roy)    
     return query(entityType)
         .then(entities => {
@@ -53,8 +54,10 @@ function put(entityType, updatedEntity) {
 function remove(entityType, entityId) {
     return query(entityType)
         .then(entities => {
+            
             const idx = entities.findIndex(entity => entity._id === entityId);
-         
+
+            
             entities.splice(idx, 1)
             _save(entityType, entities)
         })
@@ -65,9 +68,14 @@ function _save(entityType, entities) {
 }
 
 
-function clearStorage(entity){
+function clearStorage(entity) {
     localStorage.removeItem(entity);
 
+}
+
+function getwishlist(entityType) {
+    var entities = JSON.parse(localStorage.getItem(entityType)) || []
+    return entities
 }
 
 // function _makeId(length = 5) {

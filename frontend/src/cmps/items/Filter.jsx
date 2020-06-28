@@ -1,47 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { setFilters, removeFilter, setSorts } from '../../actions/ItemActions'
-
-
 // import InputRange from 'react-input-range';
-
+import { loadItems } from '../../actions/ItemActions'
+import { removeFromWishList } from '../../actions/UserActions';
 
 
 class Filter extends Component {
-
-
   state = {
     isToggleSize: '',
     isToggleGender: '',
     isToggleShop: '',
+    isTogglePrice: 'hide',
     priceValue: 0
   }
 
   onSelectFilter = (ev) => {
+    console.log('ev', ev);
+
     if (ev.target.name === 'price') this.setState({ 'priceValue': ev.target.value })
     this.props.selectFilter(ev)
   }
 
-  onToggleActiveSize = (ev) => {
-    console.log('mormormor', ev.target);
-
+  onToggleActiveSize = () => {
     this.setState((prevState) => {
-      if (prevState.isToggleSize === '') return this.state.isToggleSize = 'is-active'
-      return this.state.isToggleSize = ''
+      if (prevState.isToggleSize === '') return this.setState({'isToggleSize' :'is-active'})
+      return this.setState({'isToggleSize' :''})
     })
   }
 
   onToggleActiveGender = () => {
     this.setState((prevState) => {
-      if (prevState.isToggleGender === '') return this.state.isToggleGender = 'is-active'
-      return this.state.isToggleGender = ''
+      if (prevState.isToggleGender === '') return this.setState({'isToggleGender' : 'is-active'})
+      return this.setState({'isToggleGender' : ''})
     })
   }
 
   onToggleActiveShop = () => {
     this.setState((prevState) => {
-      if (prevState.isToggleShop === '') return this.state.isToggleShop = 'is-active'
-      return this.state.isToggleShop = ''
+      if (prevState.isToggleShop === '') return this.setState({'isToggleShop' : 'is-active'})
+      return this.setState({'isToggleShop' : ''})
+    })
+  }
+  onToggleActivePrice = () => {
+    this.setState((prevState) => {
+      if (prevState.isTogglePrice === 'show') return this.setState({'isTogglePrice' : 'hide'})
+      return this.setState({'isTogglePrice' : 'show'}) 
     })
   }
 
@@ -53,19 +57,23 @@ class Filter extends Component {
   // }
 
 
-  onSelectSort = (ev) => {
-    this.props.setSorts({ [ev.target.name]: ev.target.value })
+  // onSelectSort = (ev) => {
+  //   this.props.setSorts({ [ev.target.name]: ev.target.value })
+  // }
+
+  onClearFilter = () => {
+    this.props.loadItems();
   }
 
 
 
   render() {
     return <React.Fragment>
-      <div className="flex justify-center" style={{}}>
+      <div className="filters flex justify-center" style={{}}>
         {/* sizes */}
-        <div className={`checkbox-dropdown ${this.state.isToggleSize}`} onClick={this.onToggleActiveSize} >
-          Size
-  <ul className="checkbox-dropdown-list" >
+        <div className={`checkbox-dropdown ${this.state.isToggleSize} flex align-center justify-center`} onClick={this.onToggleActiveSize} >
+          <div className="">Size</div>
+          <ul className="checkbox-dropdown-list" >
             <li>
               <label>
                 <input type="checkbox" value="s" name="size" onChange={this.onSelectFilter} />S</label>
@@ -83,7 +91,7 @@ class Filter extends Component {
 
 
         {/* Gender */}
-        <div className={`checkbox-dropdown ${this.state.isToggleGender}`} onClick={this.onToggleActiveGender}>
+        <div className={`checkbox-dropdown ${this.state.isToggleGender} flex align-center justify-center`} onClick={this.onToggleActiveGender}>
           Gender
   <ul className="checkbox-dropdown-list" >
             <li>
@@ -102,29 +110,45 @@ class Filter extends Component {
         </div>
 
         {/* Shops */}
-        <div className={`checkbox-dropdown ${this.state.isToggleShop}`} onClick={this.onToggleActiveShop}>
+        <div className={`checkbox-dropdown ${this.state.isToggleShop} flex align-center justify-center`} onClick={this.onToggleActiveShop}>
           Shops
   <ul className="checkbox-dropdown-list" >
             <li>
               <label>
-                <input type="checkbox" value="MyBrand" name="shop" onChange={this.onSelectFilter} />MyBrand</label>
+                <input type="checkbox" value="5e333c471c9d44000097c9f9" name="itemOwner" onChange={this.onSelectFilter} />ICON MEN</label>
             </li>
             <li>
               <label>
-                <input type="checkbox" value="coral" name="shop" onChange={this.onSelectFilter} />Coral</label>
+                <input type="checkbox" value="5e298e5ec82c34ede14ea41a" name="itemOwner" onChange={this.onSelectFilter} />The Ground Round</label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" value="5e33ffcf8fe37c0bb08eac3a" name="itemOwner" onChange={this.onSelectFilter} />Moriz</label>
+
             </li>
           </ul>
         </div>
 
 
         {/* Price */}
-        <div className="flex">
-          <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
-          <p>{this.state.priceValue}$</p>
+        <div className={`checkbox-dropdown flex align-center justify-center`} onClick={this.onToggleActivePrice}>
+          Price
+  {/* <ul className="checkbox-dropdown-list" >
+            <li>
+              <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
+            </li>
+          </ul> */}
+        </div>
+
+        <div className={`flex align-center justify-center ${this.state.isTogglePrice}`}>
+          <div className="flex scale-in-center ">
+            <input type="range" name="price" min="0" max="300" onChange={this.onSelectFilter}  ></input>
+            <p className="price-filter">${this.state.priceValue}</p>
+          </div>
         </div>
 
 
-
+        <button className="flex clear-all" onClick={this.onClearFilter}>Clear All</button>
 
 
       </div>
@@ -136,14 +160,11 @@ class Filter extends Component {
 }
 const mapStateToProps = state => {
   return {
-    // filter: state.filter
   };
 };
 
 const mapDispatchToProps = {
-  // setFilters,
-  // removeFilter,
-  // setSorts
+  loadItems
 };
 
 export default connect(

@@ -1,5 +1,29 @@
 .main-header {
-  height: 80vh;
+  @include for-mobile-layout {
+    height: 50vh;
+  }
+  @include for-normal-layout {
+    height: 60vh;
+  }
+  @include for-wide-layout {
+    height: 80vh;
+  }
+
+  .menu-btn {
+    @include for-mobile-layout {
+      background-color: transparent;
+      border: 0px;
+      width: 55px;
+      height: 55px;
+      padding: 15px;
+    }
+    @include for-normal-layout {
+      display: none;
+    }
+    @include for-wide-layout {
+      display: none;
+    }
+  }
 
   .headlines {
     position: relative;
@@ -7,40 +31,114 @@
   }
 
   .showRoom-title {
+    display: flex;
     font-family: Lobster;
-    font-size: 120px;
+    color: $clr1;
+
+    @include for-mobile-layout {
+      font-size: 55px;
+    }
+    @include for-normal-layout {
+      font-size: 80px;
+    }
+    @include for-wide-layout {
+      font-size: 120px;
+    }
   }
 
   .marketplace-title {
     font-family: Lobster;
-    font-size: 40px;
-    position: relative;
-    bottom: 80px;
-    left: 160px;
+    color: $clr1;
+    @include for-mobile-layout {
+      font-size: 30px;
+      position: relative;
+      bottom: 50px;
+      left: 54px;
+    }
+    @include for-normal-layout {
+      font-size: 30px;
+      position: relative;
+      bottom: 60px;
+      left: 100px;
+    }
+    @include for-wide-layout {
+      font-size: 40px;
+      position: relative;
+      bottom: 80px;
+      left: 160px;
+    }
   }
 
-  .menu-icons {
+  .menu-icons img{
     > * {
       padding-left: 15px;
     }
-    width: rem(80px);
-    height: rem(80px);
+    width: 40px;
+    height: 40px;
+    padding:5px;
   }
   .cover-photo {
+    position: fixed;
     object-fit: cover;
     object-position: top;
-    height: 80vh;
-    // filter: brightness(40%);
+    height: 100%;
+    top: 5%;
+    margin: -100px 0 0 0;
+    z-index: -1;
   }
-
 
   .nav-text {
     > * {
-      padding-right: 15px;
+      padding-left: 15px;
+      color: white;
+      z-index: 6;
+      cursor: pointer;
+      // font-size: rem(40px);
+      > * {
+        padding-left: 15px;
+      }
+    }
+    a {
+      color: white;
+    }
+    @include for-mobile-layout {
+      .nav-text-inner {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0px;
+        align-items: center;
+        > * :not:first-child {
+          padding-bottom: 15px;
+        }
+      }
+      font-size: rem(17px);
+      display: flex;
+      flex-direction: column;
+      :not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+    @include for-normal-layout {
+    }
+    @include for-wide-layout {
+      font-size: rem(16px);
     }
 
-    color: $clr4;
-    font-size: rem(16px);
+    .close-btn {
+      @include for-mobile-layout {
+        display: block;
+        width: 12%;
+        height: 12%;
+        margin-top: 10px;
+        padding-left: 15px;
+      }
+      @include for-normal-layout {
+        display: none;
+      }
+      @include for-wide-layout {
+        display: none;
+      }
+    }
   }
 
   .nav-icon {
@@ -50,45 +148,187 @@
     z-index: 4;
     padding: 10px;
     width: 100%;
+    @include for-mobile-layout {
+      flex-direction: column;
+      justify-content: space-between;
+      background: $clr1;
+      opacity: 94%;
+
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100vh;
+      width: 44vh;
+      transform: translate(100%, 0);
+      transition: transform 0.6s;
+    }
+    @include for-normal-layout {
+    }
+    @include for-wide-layout {
+    }
+    &.open {
+      @include for-mobile-layout {
+        transform: translate(0, 0);
+      }
+      @include for-normal-layout {
+      }
+      @include for-wide-layout {
+      }
+    }
   }
- 
+
   .up {
     background-color: $clr1;
     transition: background-color 0.4s ease-out;
   }
-}
 
+  .bell-icon {
+    // width: 28px;
+    // height: 28px;
+    // @include for-mobile-layout {
+    //   position: absolute;
+    //   right:5px;
+    // }
+  }
+  .notification-seller-badge {
+    right: 116px;
+    position: absolute;
+    top: 16px;
+    color: black;
+    font-size: 14px;
+  }
+}
 
 .header-text-search {
-  position: absolute;
-  bottom: 38vh;
-  right: 32vw;
   color: white;
+
+  //   @include for-narrow-layout {
+  //     position: relative;
+  //     bottom: 106%;
+  //   }
+  //   @include for-normal-layout {
+  //     position: relative;
+  //     bottom: 96%;
+  //   }
+  //   @include for-wide-layout {
+  //     position: relative;
+  //     bottom: 90%;
+
+  @include for-mobile-layout {
+    // position: relative;
+    // margin-bottom: 50px;
+  }
+  @include for-normal-layout {
+    // position: relative;
+    // margin-bottom: 50px;
+  }
+  @include for-wide-layout {
+    // position: relative;
+    // margin-top: 2%;
+  }
 }
+
+// .header-text-search {
+//   color: white;
+
+//   @include for-narrow-layout {
+//     position: relative;
+//     bottom: 106%;
+//   }
+//   @include for-normal-layout {
+//     position: relative;
+//     bottom: 96%;
+//   }
+//   @include for-wide-layout {
+//     position: relative;
+//     bottom: 90%;
+//   }
+// }
 
 .search {
   z-index: 3;
   input {
-    width: 600px;
-    height: 50px;
+    padding-left: 10px;
     background-color: $clr4;
     border: 0px;
+
+    @include for-mobile-layout {
+      margin-top: 30px;
+      width: 300px;
+      height: 35px;
+    }
+    @include for-normal-layout {
+      margin-top: 20px;
+      width: 400px;
+      height: 40px;
+    }
+    @include for-wide-layout {
+      width: 600px;
+      height: 50px;
+    }
+  }
+  input::placeholder {
+    font-style: italic;
+    @include for-mobile-layout {
+      font-size: rem(12px);
+    }
+    @include for-normal-layout {
+      font-size: rem(16px);
+    }
+    @include for-wide-layout {
+      font-size: rem(14px);
+    }
   }
   button {
-    font-size: rem(18px);
     margin-top: 20px;
     background-color: $clr1;
-    position: relative;
-    left: 240px;
-    bottom: 65px;
     border: 0px;
-    width: 100px;
-    height: 40px;
     color: $clr4;
+    @include for-mobile-layout {
+      font-size: rem(14px);
+      position: relative;
+      font-size: rem(12px);
+      left: 110px;
+      bottom: 50px;
+      width: 70px;
+      height: 25px;
+    }
+    @include for-normal-layout {
+      font-size: rem(14px);
+      position: relative;
+      left: 155px;
+      bottom: 55px;
+      width: 80px;
+      height: 30px;
+    }
+    @include for-wide-layout {
+      font-size: rem(18px);
+      position: relative;
+      left: 240px;
+      bottom: 65px;
+      width: 100px;
+      height: 40px;
+    }
   }
 }
 
+.logout {
+  background-color: inherit;
 
+  border: none;
+  color: white;
+  font-size: 16px;
+  text-align: left;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.inner-nav-text {
+  &:hover {
+    cursor: pointer;
+  }
+}
 .text-flicker-in-glow {
   animation: text-flicker-in-glow 4s linear both;
 }

@@ -4,28 +4,30 @@ import { createBrowserHistory } from 'history';
 
 import './styles/global.scss';
 
-import ShopApp from './pages/ShopApp'
-import SignUp from './pages/SignUp'
-import ShopItems from './pages/ShopItems'
-import Login from './pages/Login'
-import ItemDetails from './pages/ItemDetails'
-import About from './pages/About'
-import PersonalShop from './pages/seller/PersonalShop'
-import Dashboard from './pages/seller/Dashboard'
-import Wishlist from './pages/customer/Wishlist'
-import Cart from './pages/customer/Cart'
-import Footer from './cmps/Footer'
+import ShopApp from './pages/ShopApp';
+import SignUp from './pages/SignUp';
+import ShopItems from './pages/ShopItems';
+import Login from './pages/Login';
+import ItemDetails from './pages/ItemDetails';
+import About from './pages/About';
+import PersonalShop from './pages/seller/PersonalShop';
+import Dashboard from './pages/seller/Dashboard';
+import Wishlist from './pages/customer/Wishlist';
+import Cart from './pages/customer/Cart';
+import Footer from './cmps/Footer';
+
 
 const history = createBrowserHistory();
 
 function App() {
-  //this is my test
+
+  
   return <React.Fragment>
     <Router history={history}>
-      
+
       <Switch>
         <Route component={ShopApp} path="/" exact></Route>
-        <Route component={SignUp} path="/signUp" exact></Route>
+        <Route component={SignUp} path="/signup" exact></Route>
         <Route component={ShopItems} path="/item/:searchTerm?" exact></Route>
         <Route component={Login} path="/login" exact></Route>
         <Route component={Wishlist} path="/wishlist" exact></Route>

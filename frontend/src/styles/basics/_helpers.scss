@@ -38,6 +38,15 @@
         justify-content: flex-end;
 
     }
+    &.self-end{
+        align-self: flex-end;
+    }
+    &.wrap{
+        flex-wrap: wrap;
+    }
+    &.grow{
+        flex-grow: 1;
+    }
 }
 
 
@@ -55,6 +64,14 @@
 
 .display-none{
     display: none;
+}
+
+.border-none{
+    border:none;
+}
+
+.opacity-0{
+    opacity:0;
 }
 
 
