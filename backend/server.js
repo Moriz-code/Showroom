@@ -7,7 +7,7 @@ const session = require('express-session')
 
 const app = express()
 const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+
 
 const itemRoutes = require('./api/item/item.routes')
 const shopRoutes = require('./api/shop/shop.routes')
@@ -15,6 +15,9 @@ const orderRoutes = require('./api/order/order.routes')
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const connectSockets = require('./api/socket/socket.routes')
+
+
+
 
 
 app.use(cookieParser())
@@ -43,10 +46,25 @@ app.use('/api/shop', shopRoutes)
 app.use('/api/order', orderRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
-connectSockets(io)
+app.use(express.static('public'));
+
+app.get('/*',function(req,res){
+    res.sendFile(path.resolve(__dirname,'public/index.html'))
+})
 
 const logger = require('./services/logger.service')
+
 const port = process.env.PORT || 3030;
-http.listen(port, () => {
-    logger.info('Server is running on port: ' + port)
+var server= app.listen(port, () => {
+ console.log(`App listening on port ${port}!`)
 });
+
+const io = require('socket.io').listen(server);
+connectSockets(io)
+
+
+// const port = process.env.PORT || 3030;
+// http.listen(port, () => {
+//     logger.info('Server is running on port: ' + port)
+// });
+

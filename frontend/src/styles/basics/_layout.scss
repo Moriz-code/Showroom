@@ -1,25 +1,26 @@
 .container {
   // max-width: $normal-breakpoint;
   margin: 0 auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  // padding-left: 10px;
+  // padding-right: 10px;
   // min-height: 100vh;
   // position:relative;
-  
+
+  @include for-mobile-layout {
+    max-width: $mobile-breakpoint;
+  }
   @include for-narrow-layout {
-      max-width: $mobile-breakpoint;
+    max-width: $narrow-breakpoint;
   }
   @include for-normal-layout {
-      max-width: $narrow-breakpoint;
+    max-width: $normal-breakpoint;
   }
   @include for-wide-layout {
-      max-width: $normal-breakpoint;
+    max-width: $wide-breakpoint;
   }
 }
 
-
 //modal
-
 
 .display-block {
   display: block;

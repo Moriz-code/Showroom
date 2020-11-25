@@ -9,17 +9,18 @@
 
 .main-footer {
   // position: fixed;
-  z-index: 100;
+  z-index: 3;
   color: $clr4;
-  bottom:0;
+  bottom: 0;
   width: 100%;
   background-color: $clr1;
-  height:50px;
-  .footer-logo{
-      font-family: Lobster;
-      font-size: rem(20px);
-      position: relative;
-      bottom: 8px;
-      margin-left: 8px;
+  height: 50px;
+  flex: 0;
+  .footer-logo {
+    font-family: Lobster;
+    font-size: rem(20px);
+    position: relative;
+    bottom: 8px;
+    margin-left: 8px;
   }
 }

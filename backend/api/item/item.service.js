@@ -13,6 +13,8 @@ module.exports = {
 
 
 async function query(filterBy = {}) {
+    console.log('query - filter by', filterBy);
+
     const criteria = await _buildCriteria(filterBy)
 
     const collection = await dbService.getCollection('item')
@@ -80,6 +82,9 @@ async function add(item) {
 function _buildCriteria(filterBy) {
     let filters;
     const criteria = {};
+    if (filterBy.labels) {
+        criteria.labels = filterBy.labels
+    }
     if (filterBy.gender) {
         filters = [];
         if (typeof filterBy.gender === 'string') {
@@ -88,8 +93,7 @@ function _buildCriteria(filterBy) {
         else {
             filterBy.gender.forEach((value) => {
                 filters.push({ 'gender': value })
-                console.log('corcorcor',filters);
-                
+
             })
             criteria["$or"] = filters
         }
@@ -106,14 +110,14 @@ function _buildCriteria(filterBy) {
             criteria["$or"] = filters
         }
     }
-    if (filterBy.shop) {
+    if (filterBy.itemOwner) {
         filters = [];
-        if (typeof filterBy.shop === 'string') {
-            criteria.shop = filterBy.shop
+        if (typeof filterBy.itemOwner === 'string') {
+            criteria['itemOwner.id'] = filterBy.itemOwner
         }
         else {
-            filterBy.shop.forEach((value) => {
-                filters.push({ 'shop': value })
+            filterBy.itemOwner.forEach((value) => {
+                filters.push({ 'itemOwner.id': value })
             })
             criteria["$or"] = filters
         }
@@ -122,9 +126,10 @@ function _buildCriteria(filterBy) {
         criteria['price'] = { $lte: +filterBy.price }
     }
     if (filterBy.txt) {
-        criteria["$or"] = [{ 'title': { $regex: filterBy.txt } }, { 'description': { $regex: filterBy.txt } }]
+        criteria["$or"] = [{ 'title': { $regex: filterBy.txt.toLowerCase() } }, { 'description': { $regex: filterBy.txt.toLowerCase() } }]
     }
-    console.log('criteriacriteria', criteria);
+
+    console.log('searching ', criteria);
 
     return criteria;
 }

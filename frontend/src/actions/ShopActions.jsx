@@ -33,6 +33,23 @@ export function updateShopSettings(shop) {
     }
 
 }
+export function CreateNewShop(userId, userName) {
+    return async dispatch => {
+        try {
+            let shop = createShop(userId, userName)
+            let newShop = await ShopService.add(shop);
+            console.log(newShop._id,'action');
+            
+            dispatch({ type: 'ADD_SHOP', newShop });
+            console.log('dispatched');
+            
+            return newShop
+        } catch (err) {
+            console.log(`cant add shop - shop action `);
+        }
+    }
+
+}
 
 
 export function saveComment(comment) {
@@ -40,7 +57,7 @@ export function saveComment(comment) {
     return async dispatch => {
         try {
             const commentToAdd = await ShopService.post(comment);
-            await dispatch({type: 'ADD_COMMENT',commentToAdd })
+            await dispatch({ type: 'ADD_COMMENT', commentToAdd })
         }
 
         catch {
@@ -50,24 +67,32 @@ export function saveComment(comment) {
 
 }
 
-// function setSettings(shop) {
-//     return {
 
-//     }
-// }
+function createShop(userId, userName) {
 
+    let shop = {
+        comments: [],
+        info: {
+            name: 'My Shop',
+            description: 'Design Your Own Shop.',
+            instagram: '',
+            facebook: '',
+        },
+        owner: {
+            id: userId,
+            name: userName,
+        },
+        style: {
+            bgColor: '#F6F3F3',
+            theme: '',
+            videoUrl: 'https://www.youtube.com/embed/MuoZso0khAY/v/MuoZso0khAY?playsinline=1&loop=1&autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&widgetid=2&playlist=MuoZso0khAY>',
+            coverImgUrl: 'http://res.cloudinary.com/moriz/image/upload/v1582301186/vh1hytpdnkp6nnfuvwu9.png',
+            logoUrl: 'http://res.cloudinary.com/moriz/image/upload/v1582038994/phjpzptnfulzaegw6jjd.png',
+            darkMode: ''
+        },
 
-
-// export function setCurrentItem(itemId) {
-//     return async dispatch => {
-//         try {
-//             const item = await ItemService.get(itemId);
-//             await dispatch({ type: 'SET_ITEM', item })
-//         } catch (err) {
-//             console.log('ReviewActions: err in loadReviews', err);
-//         }
-
-//     }
-// }
+    }
+    return shop
+}
 
 

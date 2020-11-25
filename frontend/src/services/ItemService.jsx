@@ -5,22 +5,29 @@ export default {
     query,
     remove,
     get,
-    put
+    put,
+    getNewItem
 };
 
 function query(filterBy = null) {
-    console.log('filterBy2',filterBy);
-    
     if (filterBy === null) return HttpService.get('item');
+
     else {
         let str = '';
         for (const key in filterBy) {
+
+
             if (filterBy[key].length === 0) continue
             else {
-                if (filterBy[key].length === 1||typeof filterBy[key]==='string') {
+
+                if (filterBy[key].length === 1 || typeof filterBy[key] === 'string' || typeof filterBy[key] === 'number') {
                     if (str !== '') str += '&'
-                    if (key === 'txt' || key === 'price') {
+
+
+                    if (key === 'txt' || key === 'price' || key === 'labels' || key === 'itemOwner') {
                         str += key + '=' + filterBy[key]
+
+
                     } else str += key + '=' + filterBy[key][0]
                 }
                 else {
@@ -31,9 +38,10 @@ function query(filterBy = null) {
                 }
             }
         }
-        console.log("`item?${str}`",`item?${str}`);
-        
+        console.log('HttpService.get(`item?${str}`);', str);
+
         return HttpService.get(`item?${str}`);
+
     }
 }
 
@@ -57,11 +65,33 @@ async function get(itemId) {
 
 
 
-async function put(editedItem) {  
-    const itemToEdit = await HttpService.put(`item/${editedItem._id}` , editedItem);
-    // console.log(itemToEdit,'updated');
-     return itemToEdit
+async function put(editedItem) {
+    const itemToEdit = await HttpService.put(`item/${editedItem._id}`, editedItem);
 
+    return itemToEdit
+
+}
+
+
+function getNewItem() {
+    return {
+        _id: '',
+        title: '',
+        price: null,
+        description: '',
+        sizeFit: '',
+        size: '',
+        gender: '',
+        itemOwner: {
+            //need to change the source that it came from - keep in session. ask tal.
+            id: '',
+            name: '',
+            logoUrl: ''
+        },
+        labels: [],
+        imgs: [null, null, null],
+        reviews: []
+    }
 }
 
 

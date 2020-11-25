@@ -17,7 +17,9 @@ import TextField from '@material-ui/core/TextField';
 
 import ItemList from '../cmps/items/ItemList'
 import UserService from '../services/UserService';
-
+import Footer from '../cmps/Footer';
+import truck from '../styles/assets/imgs/shipping.png'
+import protect from '../styles/assets/imgs/protcet.png'
 
 class ItemDetails extends Component {
 
@@ -34,13 +36,15 @@ class ItemDetails extends Component {
         wishListStatus: heart,
         recentlyViewd: '',
         date: '',
-        size: ''
+        size: '',
+        errorMsgClass: 'hide'
 
     }
 
 
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         this.loadItems()
     }
 
@@ -54,19 +58,14 @@ class ItemDetails extends Component {
 
     }
 
-    setWishListStatus = () => {
-        const { wishlist } = this.props.loggedInUser
-        const { item } = this.props;
-        // if (item===null) return
-        const { _id } = item;
+    setWishListStatus = async () => {
+        let itemInWishList = await UserService.itemFromWishList(this.props.item._id)
 
-        const isFound = !!wishlist.find(_item => _item._id === _id);
-        const wishListStatus = (isFound) ? heartfilled : heart;
+        let itemIcon = (!itemInWishList) ? heart : heartfilled
+        this.setState({ wishListStatus: itemIcon })
 
-        this.setState({ wishListStatus })
+
     }
-
-
 
 
     componentDidUpdate(prevProps) {
@@ -96,40 +95,44 @@ class ItemDetails extends Component {
     }
 
     onAddToCart = async () => {
-        OrderService.addItemtoCart(this.props.item)
-        this.props.addToCart()
-        await this.setState({ modalMode: true, modalMsg: "Added To Cart" })
-        this.setState({ modalMode: false, modalMsg: "" })
+        if (!this.state.size) this.setState({ errorMsgClass: "show" })
+        else {
+            OrderService.addItemtoCart(this.props.item)
+            this.props.addToCart()
+            await this.setState({ modalMode: true, modalMsg: "Added To Cart" })
+            this.setState({ modalMode: false, modalMsg: "" })
+            this.setState({ errorMsgClass: "hide" })
+        }
 
     }
 
     onBuyNow = async () => {
-        await OrderService.addItemtoCart(this.props.item)
-        this.props.addToCart()
-        this.props.history.push('/cart')
+        if (!this.state.size) this.setState({ errorMsgClass: "show" })
+        else {
+            await OrderService.addItemtoCart(this.props.item)
+            this.props.addToCart()
+            this.props.history.push('/cart')
+        }
     }
 
 
     onAddToWishList = async () => {
-
-        if (this.state.wishListStatus === heart) {
-            await this.props.addToWishList(this.props.item, this.props.loggedInUser)
-            await this.setState({ modalMsg: "Added to Wishlist", wishListStatus: heartfilled })
-            await this.setState({ modalMsg: "" })
-
-
-        }
-        else {
-            await this.props.removeFromWishList(this.props.item._id, this.props.loggedInUser)
-            await this.setState({ modalMsg: "Removed from Wishlist", wishListStatus: heart })
-            await this.setState({ modalMsg: "" })
-        }
+        let item = await UserService.toggleWishList(this.props.item)
+        let itemIcon = (!item) ? heart : heartfilled
+        this.setState({ wishListStatus: itemIcon })
 
 
     }
 
+
+
     onAddReview = async () => {
         await this.setState({ reviewMode: true })
+
+    }
+
+    reviewClose = () => {
+        this.setState({ reviewMode: false })
 
     }
 
@@ -178,8 +181,10 @@ class ItemDetails extends Component {
     }
 
     handleSizeSelect = (ev) => {
-        let size = ev.target.value
-        this.setState({ size })
+        let selectedSize = ev.target.value
+        if (selectedSize === this.state.size) this.setState({ size: '' })
+        else this.setState({ size: selectedSize })
+        this.setState({ errorMsgClass: "hide" })
     }
 
     setDeliveryDate = () => {
@@ -232,30 +237,30 @@ class ItemDetails extends Component {
                                 </div>
                             </Link>
 
-                            <h1 className="item-details-title">{item.title}</h1>
-                                <div className="flex justify-space-between">
-                                    <div className="item-price flex">
-                                        ${Number.parseFloat(item.price).toFixed(2)}
-                                        <div className="was-price">
-                                            ${Number.parseFloat(Math.floor(item.price / 0.9)).toFixed(2)}</div>
-                                        {/* <div className="discount">-10%</div> */}
-                                    </div>
-                                    <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
+                            <h1 className=" container item-details-title">{item.title}</h1>
+                            <div className="price-and-rate flex">
+                                <div className="item-price flex">
+                                    ${Number.parseFloat(item.price).toFixed(2)}
+                                    <div className="was-price">
+                                        ${Number.parseFloat(Math.floor(item.price / 0.9)).toFixed(2)}</div>
                                 </div>
-                            
+                                <ReviewRating amount={item.reviews.length} rate={this.calculateAvgRating()}></ReviewRating>
+                            </div>
+
                         </div>
 
                         <h3 className="item-description">
-                                <p>{item.description}</p>
-                                <h5>{item.sizeFit}</h5>
+                            <p className="item-description-txt">{item.description}</p>
+                            <p className="size-fit">{item.sizeFit}</p>
 
-                            </h3>
+                        </h3>
 
                         <div className="size-select">
-                            <button className="item-sizes" id="btn-s" value="S" onClick={this.handleSizeSelect}>S</button>
-                            <button className="item-sizes" id="btn-m" value="M" onClick={this.handleSizeSelect}>M</button>
-                            <button className="item-sizes" id="btn-l" value="L" onClick={this.handleSizeSelect}>L</button>
-                            <button className="item-sizes size-xl" id="btn-xl" value="XL" onClick={this.handleSizeSelect}>XL</button>
+                            <button className={(this.state.size === "S") ? "item-sizes selected" : "item-sizes"} id="btn-s" value="S" onClick={this.handleSizeSelect}>S</button>
+                            <button className={(this.state.size === "M") ? "item-sizes selected" : "item-sizes"} id="btn-m" value="M" onClick={this.handleSizeSelect}>M</button>
+                            <button className={(this.state.size === "L") ? "item-sizes selected" : "item-sizes"} id="btn-l" value="L" onClick={this.handleSizeSelect}>L</button>
+                            <button className={(this.state.size === "XL") ? "item-sizes selected size-xl" : "item-sizes size-xl"} id="btn-xl" value="XL" onClick={this.handleSizeSelect}>XL</button>
+                            <small className={this.state.errorMsgClass}>*Please select a size first</small>
                         </div>
 
 
@@ -265,18 +270,19 @@ class ItemDetails extends Component {
                         </div>
                         <div className="general-information">
                             <div className="buyer-protection flex">
-                                <div>35-Day Buyer Protection </div>
+                                <img className="protect" src={protect} alt=""></img>
+                                <div className="buyer-protection-txt">35-Day Buyer Protection </div>
                             </div>
                             <div className="free-shipping flex">
-                                <div>Free Shipping - Get it at: <span className="delivery-date">{this.state.date}</span></div>
+                                <img className="truck" src={truck} alt=""></img>
+
+                                <div className="free-shipping-txt">Free Shipping - Get it at: <span className="delivery-date">{this.state.date}</span></div>
                             </div>
-                            
                         </div>
                     </div>
                 </section>
 
                 <div className="container reviews ">
-                    {/* ////coral//// */}
                     <div className="reviews-items">
                         {item.reviews.length > 0 &&
                             <div className="container">
@@ -289,6 +295,7 @@ class ItemDetails extends Component {
                         <button className="btn1" onClick={this.onAddReview}>Add Review</button>}
                     {this.state.reviewMode &&
                         <form className="review-section flex column justify-space-between" onSubmit={this.handleSubmit}>
+                            <div className="review-cancel" onClick={this.reviewClose}>X</div>
                             <div onChange={this.handleInput} className="review-input flex column justify-space-between">
 
                                 <TextField style={{ marginBottom: "20px" }} name="title" required id="standard-required" label="Title" />
@@ -298,16 +305,19 @@ class ItemDetails extends Component {
                                     rows="4"
                                     variant="outlined" name="txt" required id="standard-required" label="Review" />
                             </div>
+
                             <fieldset className="rating" onChange={this.handleInput} >
 
-                                <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
+                                <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" className="radio-lable" title="Rocks!">5 stars</label>
                                 <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
                                 <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
                                 <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
                                 <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
                             </fieldset>
-                            <button>Submit</button>
+
+                            <button className="btn2">Submit</button>
                         </form>}
+
                 </div>
 
                 {/* } */}
@@ -315,11 +325,14 @@ class ItemDetails extends Component {
                     <div>You may also like</div>
                 </section> */}
                 <section className="container recently-viewed">
-                    <h2>Recently viewed</h2>
-                    {(recentlyViewd.length > 0) ? <ItemList items={recentlyViewd}></ItemList> : ''
+                {(recentlyViewd.length > 0)?
+                    <div>
+                    <h2 className="recently-title">Recently viewed</h2>
+                    <ItemList items={recentlyViewd}></ItemList> </div>: ''
 
                     }
                 </section>
+                <Footer></Footer>
             </React.Fragment >
         )
     }
